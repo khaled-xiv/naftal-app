@@ -13,6 +13,13 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -119,10 +126,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\naftal-app\public\css" />
+      <recent name="C:\xampp\htdocs\naftal-app\public\js" />
+      <recent name="C:\xampp\htdocs\naftal-app\public" />
+      <recent name="C:\xampp\htdocs\naftal-app\resources\assets" />
+      <recent name="C:\xampp\htdocs\naftal-app\public\font-awesome" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -160,11 +178,42 @@
       <workItem from="1580561153078" duration="659000" />
       <workItem from="1580580017963" duration="75000" />
       <workItem from="1580580156737" duration="4793000" />
-      <workItem from="1580666690914" duration="2874000" />
+      <workItem from="1580666690914" duration="3574000" />
+      <workItem from="1580739479379" duration="1583000" />
+      <workItem from="1580927324402" duration="2573000" />
+      <workItem from="1581278039005" duration="94000" />
+      <workItem from="1581497730218" duration="1443000" />
+      <workItem from="1581499645951" duration="18554000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1581505455466">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581505455466" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1581505455466">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581505455466" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1581505455464">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581505455464" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1581505455466">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581505455466" />
+    <state x="186" y="0" key="SettingsEditor" timestamp="1580927781475">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="186" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1580927781475" />
+    <state x="405" y="280" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1581498586688">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="405" y="280" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.728@0.0.1366.728" timestamp="1581498586688" />
   </component>
 </project>
