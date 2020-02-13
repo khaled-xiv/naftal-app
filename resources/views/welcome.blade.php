@@ -4,17 +4,17 @@
 <!-- Home -->
 <section id="home">
 
-    <!-- Background Video -->
+<!--     Background Video -->
     <video id="home-bg-video" poster="video/solo.jpg" autoplay loop muted>
         <source src="video/solo.mp4" type="video/mp4">
         <source src="video/solo.ogv" type="video/ogg">
         <source src="video/solo.webm" type="video/webm">
     </video>
 
-    <!-- Overlay -->
+<!--     Overlay -->
     <div id="home-overlay"></div>
 
-    <!-- Home Content -->
+<!--     Home Content -->
     <div id="home-content">
 
         <div id="home-content-inner" class="text-center">
@@ -36,7 +36,7 @@
 
     </div>
 
-    <!-- Arrow Down -->
+<!--     Arrow Down -->
     <a href="#about" id="arrow-down" class="smooth-scroll">
         <i class="fa fa-angle-down"></i>
     </a>
@@ -55,7 +55,7 @@
 
                 <div class="col-md-6">
 
-                    <!-- Contact Left -->
+<!--                     Contact Left -->
                     <div id="contact-left">
 
                         <div class="vertical-heading">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-md-6">
 
-                    <!-- Contact Right -->
+<!--                     Contact Right -->
                     <div id="contact-right">
 
                         <form>
@@ -173,3 +173,4 @@
 <!-- Google Map Ends -->
 
 @stop
+

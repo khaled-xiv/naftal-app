@@ -8,7 +8,7 @@
         Grey:                #212226
         White Smoke:         #f4f4f4
         White:               #fff
-        Black:               #000
+        Black:               #000   
 ============================================ */
 
 
@@ -377,8 +377,8 @@ section {
 }
 .about-item h3,
 .about-item p {
-    -webkit-transition: all 400ms linear;
-    transition: all 400ms linear;
+   -webkit-transition: all 400ms linear;
+    transition: all 400ms linear;  
 }
 
 /* =========================================
@@ -1235,7 +1235,6 @@ ul.office-details li i {
 
 #map {
     height: 600px;
-    background-color: red;
 }
 
 
@@ -1358,5 +1357,3 @@ ul.navbar-nav>li>a:focus {
     -webkit-animation-delay: 3s;
     animation-delay: 3s;
 }
-
-

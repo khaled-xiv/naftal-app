@@ -126,7 +126,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -135,8 +135,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\naftal-app\public\css" />
       <recent name="C:\xampp\htdocs\naftal-app\public\js" />
+      <recent name="C:\xampp\htdocs\naftal-app\public\css" />
       <recent name="C:\xampp\htdocs\naftal-app\public" />
       <recent name="C:\xampp\htdocs\naftal-app\resources\assets" />
       <recent name="C:\xampp\htdocs\naftal-app\public\font-awesome" />
@@ -183,7 +183,10 @@
       <workItem from="1580927324402" duration="2573000" />
       <workItem from="1581278039005" duration="94000" />
       <workItem from="1581497730218" duration="1443000" />
-      <workItem from="1581499645951" duration="18554000" />
+      <workItem from="1581499645951" duration="18787000" />
+      <workItem from="1581530786301" duration="5887000" />
+      <workItem from="1581598257294" duration="6640000" />
+      <workItem from="1581620194927" duration="4384000" />
     </task>
     <servers />
   </component>
@@ -191,26 +194,34 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1581505455466">
+    <state x="275" y="24" key="#Notifications" timestamp="1581600650752">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581505455466" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1581505455466">
+    <state x="275" y="24" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1581600650752" />
+    <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1581600763410">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581505455466" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1581505455464">
+    <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1581600763410" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1581518914214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581505455464" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1581505455466">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581518914214" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1581518914214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581505455466" />
-    <state x="186" y="0" key="SettingsEditor" timestamp="1580927781475">
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581518914214" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1581518914213">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="186" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1580927781475" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581518914213" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1581518914214">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581518914214" />
+    <state x="186" y="0" key="SettingsEditor" timestamp="1581600777509">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="186" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1581600777509" />
     <state x="405" y="280" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1581498586688">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
