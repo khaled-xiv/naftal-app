@@ -1,0 +1,23 @@
+
+.form-control{
+    font-size: 15px;
+    color: #1b3815;
+    line-height: 1.2;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: #ebebeb;
+    border-radius: 27px;
+    padding: 0 35px 0 35px;
+}
+
+.verify_link{
+    color:#f4c613;
+    font-size: 20px;
+}
+
+.verify_link:hover{
+    color:#f4c613;
+}

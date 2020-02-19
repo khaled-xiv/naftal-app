@@ -17,6 +17,13 @@ Route::get('/', function () {
 
 Auth::routes(['verify'=>true]);
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+});
+
+
 Route::get('/home', 'HomeController@index')->name('home') ;
+
 
 

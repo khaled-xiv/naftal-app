@@ -1,12 +1,14 @@
 @extends('layouts.app')
-@section('title', 'Home')
+@section('page_title')
+{{ "Home" }}
+@endsection
 @section('content')
 <!-- Home -->
 <section id="home">
 
 <!--     Background Video -->
     <video id="home-bg-video" poster="video/solo.jpg" autoplay loop muted>
-        <source src="video/solo.mp4" type="video/mp4">
+        <source src="video/Video_institutionnelle.mp4" type="video/mp4">
         <source src="video/solo.ogv" type="video/ogg">
         <source src="video/solo.webm" type="video/webm">
     </video>
