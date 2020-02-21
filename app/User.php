@@ -38,8 +38,17 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         'email_verified_at' => 'datetime',
     ];
 
-    public function  role()
+    public function role()
     {
-        return $this->$this->belongsTo('App\Role');
+        return $this->belongsTo("App\Role");
+    }
+
+    public function is_chef_district()
+    {
+        if($this->role->name=='chef_district' && $this->is_active==1){
+            return true;
+        }
+        return false;
     }
 }
+

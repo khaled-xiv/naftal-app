@@ -1,7 +1,5 @@
 @extends('layouts.app')
-@section('page_title')
-{{ "Home" }}
-@endsection
+@section('title', 'Home')
 @section('content')
 <!-- Home -->
 <section id="home">

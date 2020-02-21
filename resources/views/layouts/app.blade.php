@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('includes.head')
+    <title>@yield('title')</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="65" >
     <!-- Preloader -->

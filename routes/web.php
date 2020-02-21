@@ -26,4 +26,17 @@ Route::get('/logout', function () {
 Route::get('/home', 'HomeController@index')->name('home') ;
 
 
+Route::get('users/create', 'Auth\RegisterController@showRegistrationForm');
+Route::post('users/create', 'Auth\RegisterController@register')->name('register');
+
+Route::group(['middleware'=>'chef_district'],function(){
+
+    Route::get('center',function (){
+        return view('center');
+    } );
+
+    Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('users/create', 'Auth\RegisterController@register');
+});
+
 

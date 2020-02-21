@@ -24,7 +24,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name">
-                                        @error('name')
+                                  @error('name')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div id="submit-btn" class="pull-right">
-                                    <button class="btn btn-general btn-yellow" type="submit" href="#" title="Submit" role="button">Add User</button>
+                                    <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Add User</button>
                                 </div>
 
                             </div>
