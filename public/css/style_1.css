@@ -3,7 +3,6 @@
     font-size: 15px;
     color: #1b3815;
     line-height: 1.2;
-
     position: relative;
     display: block;
     width: 100%;
@@ -21,3 +20,69 @@
 .verify_link:hover{
     color:#f4c613;
 }
+
+
+/* =========================================
+                Account
+============================================ */
+
+.account-settings {
+    background-color: #f2f6fa;
+    border-radius: 8px;
+}
+
+.credential:first-child{
+    padding-top: 15px;
+
+}
+
+.credential:last-child{
+    padding-bottom: 15px;
+
+}
+
+.credential label{
+    font-family: "Raleway", sans-serif;
+    margin-left: 40px;
+    line-height: 40px;
+}
+
+.credential .credential-detail{
+    line-height: 40px;
+    padding: 10px;
+    margin-left: 18px;
+    border-radius: 6px;
+    white-space: nowrap;
+    line-height: 40px;
+    color: #202d4a;
+}
+
+.credential .edit{
+    padding-left: 10px;
+    visibility: hidden;
+}
+
+#remove_form{
+    display: inline;
+}
+
+/* =========================================
+                pagination
+============================================ */
+.page-item .page-link{
+    color:#36304a;
+}
+
+.page-item.active .page-link,
+.page-item.active .page-link:hover{
+    color:#fff;
+    background-color: #36304a;
+    border-color: #36304a;
+}
+
+
+
+
+
+
+

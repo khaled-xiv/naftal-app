@@ -25,18 +25,23 @@ Route::get('/logout', function () {
 
 Route::get('/home', 'HomeController@index')->name('home') ;
 
+Route::post('/account/removeAddress', 'AccountController@removeAddress');
+Route::post('/account/removePhone', 'AccountController@removePhone');
+Route::resource('/account', 'AccountController')->middleware('auth') ;
 
-Route::get('users/create', 'Auth\RegisterController@showRegistrationForm');
-Route::post('users/create', 'Auth\RegisterController@register')->name('register');
+
+Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
+Route::post('/users/removePhone/{id}', 'UsersController@removePhone');
+Route::resource('/users', 'UsersController')->middleware('auth') ;
+
+
+
 
 Route::group(['middleware'=>'chef_district'],function(){
 
-    Route::get('center',function (){
-        return view('center');
-    } );
-
-    Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::post('users/create', 'Auth\RegisterController@register');
+//    Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//    Route::post('users/create', 'Auth\RegisterController@register');
 });
 
-
+Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('users/create', 'Auth\RegisterController@register');

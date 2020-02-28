@@ -13,28 +13,30 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST" action="{{ route('login') }}">
+            <form class="login100-form p-l-55 p-r-55 p-t-178" method="POST" action="{{ route('login') }}">
                 @csrf
-                @if($errors->any())
-                <span class="alert alert_1  alert alert-danger">
-                    {{ $errors->first() }}
-                </span>
-                @else
+
                 <span class="login100-form-title">
                         Sign In
                 </span>
-                @endif
 
-
-                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-                    <input class="input100" type="email" name="email" placeholder="Email" required>
-                    <span class="focus-input100"></span>
+                <div class="wrap-input100  m-b-16">
+                    <input class="input100" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
+                           placeholder="Email Address" required>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate = "Please enter password">
+                <div class="wrap-input100  input-group">
                     <input class="input100" type="password" name="password" placeholder="Password" required>
-
-                    <span class="focus-input100"></span>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </div>
 
                 <div class="text-right p-t-13 p-b-23">
@@ -54,7 +56,7 @@
                 </div>
 
                 <div class="go_back">
-                    <a href="/" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>
+                    <a href="/" id="back"><i class="fa fa-arrow-left"> Go Back</i></a>
 
                 </div>
 

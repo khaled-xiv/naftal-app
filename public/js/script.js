@@ -103,3 +103,4 @@ $(window).on('load', function () {
     $("#arrow-down i").addClass("animated fadeInDown infinite");
 
 });
+

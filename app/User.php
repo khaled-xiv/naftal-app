@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','is_active'
+        'name', 'email', 'password','role_id','is_active','phone', 'isVerified','address','email_verified_at'
     ];
 
     /**
@@ -38,6 +38,12 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         'email_verified_at' => 'datetime',
     ];
 
+    public function unverify()
+    {
+        $this->email_verified_at = null;
+
+        $this->save();
+    }
     public function role()
     {
         return $this->belongsTo("App\Role");
@@ -50,5 +56,6 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         }
         return false;
     }
+
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Role;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -32,7 +33,13 @@ class RegisterController extends Controller
      * @var string
      */
 //    protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/';
+    protected $redirectTo = '/users/create';
+
+    public function showRegistrationForm()
+    {
+        $roles=Role::all()->pluck('name','id');
+        return view('users.create',compact('roles'));
+    }
 
     /**
      * Create a new controller instance.
@@ -41,7 +48,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('chef_district');
+//        $this->middleware('chef_district');
+//        $this->middleware('guest');
     }
 
     /**
@@ -69,10 +77,13 @@ class RegisterController extends Controller
     {
          return User::create([
             'name' => $data['name'],
+            'role_id' => $data['role_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+
 
     public function register(Request $request)
     {

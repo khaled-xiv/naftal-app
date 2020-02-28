@@ -13,35 +13,35 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 wrap-login100_2">
-            <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST" action="{{ route('password.update') }}">
+            <form class="login100-form  p-l-55 p-r-55 p-t-135" method="POST" action="{{ route('password.update') }}">
                 @csrf
 
                 <input type="hidden" name="token" value="{{ $token }}">
 
-
-
-                @if($errors->any())
-                <span class="alert alert_1  alert alert-danger">
-                    {{ $errors->first() }}
-                </span>
-                @else
                 <span class=" login100-form-title_1">
                         Reset password
                 </span>
-                @endif
 
-                <div class="wrap-input100  validate-input m-b-16" >
+                <div class="wrap-input100   m-b-16" >
                     <input class="input100" type="email" name="email" value="{{ $email ?? old('email') }}" placeholder="E-Mail Address" required autocomplete="email" autofocus>
-                    <span class="focus-input100"></span>
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </div>
 
-                <div class="wrap-input100  validate-input m-b-16" >
+                <div class="wrap-input100   m-b-16" >
                     <input class="input100" type="password"  placeholder="Password"  name="password" required autocomplete="new-password">
-                    <span class="focus-input100"></span>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
 
                 </div>
 
-                <div class="wrap-input100  validate-input m-b-16" data-validate="Please enter username">
+                <div class="wrap-input100   m-b-16" data-validate="Please enter username">
                     <input class="input100" type="password"  placeholder="Confirm Password"  name="password_confirmation" required autocomplete="new-password">
                     <span class="focus-input100"></span>
                 </div>
