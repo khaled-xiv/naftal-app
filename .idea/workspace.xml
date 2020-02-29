@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2127cca1-6d13-486b-af12-fbf3877bb425" name="Default Changelist" comment="updating register function">
+
+      <change beforePath="$PROJECT_DIR$/.idea/naftal-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/naftal-app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" />
@@ -15,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +41,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -145,7 +152,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/req_inter" />
+=======
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js/bootbox" />
+>>>>>>> 8f5a9bd122f9ff11ec8e6393c3576476304e55ba
+>>>>>>> 10da3e22862b0957cdc450f1734a5ce9cfed1720
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -234,10 +249,19 @@
       <workItem from="1582703588021" duration="15794000" />
       <workItem from="1582794371256" duration="8166000" />
       <workItem from="1582832720022" duration="8453000" />
+<<<<<<< HEAD
+      <workItem from="1582890637224" duration="4273000" />
+      <workItem from="1582905419394" duration="4661000" />
+=======
       <workItem from="1582890637224" duration="5353000" />
       <workItem from="1582918779241" duration="5835000" />
+<<<<<<< HEAD
       <workItem from="1582965130479" duration="12631000" />
       <workItem from="1583003657263" duration="595000" />
+=======
+      <workItem from="1582965130479" duration="10882000" />
+>>>>>>> 8f5a9bd122f9ff11ec8e6393c3576476304e55ba
+>>>>>>> 10da3e22862b0957cdc450f1734a5ce9cfed1720
     </task>
     <servers />
   </component>
@@ -249,15 +273,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="updating register function" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="24" key="#Notifications" timestamp="1581968428345">
+    <state x="275" y="24" key="#Notifications" timestamp="1582909155078">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="24" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1581968428345" />
-    <state x="425" y="172" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582365959840">
+    <state x="275" y="24" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1582909155078" />
+    <state x="425" y="172" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582910860055">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
+<<<<<<< HEAD
+    <state x="425" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1582910860055" />
+    <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1582712518128">
+=======
     <state x="425" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1582365959840" />
     <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1582978212841">
+>>>>>>> 8f5a9bd122f9ff11ec8e6393c3576476304e55ba
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1582978212841" />
@@ -273,22 +302,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1582042242771" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1581518914214">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1582911994549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581518914214" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1581518914214">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1582911994549" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1582911994549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581518914214" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1581518914213">
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1582911994549" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1582911994549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581518914213" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1581518914214">
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1582911994549" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1582911994549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581518914214" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1582911994549" />
     <state x="263" y="108" key="IDE.errors.dialog" timestamp="1582041968656">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -297,6 +326,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1582042251502" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1582905419197">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1582905419197" />
     <state x="339" y="157" key="run.anything.popup" timestamp="1581862015533">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

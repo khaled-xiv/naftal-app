@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Role;
+use App\Center;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -37,8 +38,9 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
+        $centers=Center::all()->pluck('code','id');
         $roles=Role::all()->pluck('name','id');
-        return view('users.create',compact('roles'));
+        return view('users.create',compact('roles', 'centers'));
     }
 
     /**
@@ -78,6 +80,7 @@ class RegisterController extends Controller
          return User::create([
             'name' => $data['name'],
             'role_id' => $data['role_id'],
+            'center_id' => $data['center_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -87,6 +90,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));

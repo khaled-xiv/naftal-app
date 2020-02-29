@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','is_active','phone', 'isVerified','address','email_verified_at'
+        'name', 'email', 'password', 'role_id', 'center_id', 'is_active', 'phone', 'isVerified', 'address', 'email_verified_at'
     ];
 
     /**
@@ -47,6 +47,11 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
     public function role()
     {
         return $this->belongsTo("App\Role");
+    }
+
+    public function center()
+    {
+        return $this->belongsTo("App\Center");
     }
 
     public function is_chef_district()

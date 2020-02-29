@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            {!! Form::select('center_id', $roles , null, ['class'=>'form-control','placeholder'=>'select a center'])!!}
+                                            {!! Form::select('center_id', $centers , null, ['class'=>'form-control','placeholder'=>'select a center'])!!}
                                         </div>
 
                                     </div>
