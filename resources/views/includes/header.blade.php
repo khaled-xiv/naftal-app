@@ -14,11 +14,11 @@
                 <div class="container ">
                     <div class="collapse navbar-collapse ">
                         <ul class="nav navbar-nav pull-right">
-                            <li><a class="btn btn-link" href=" {{ route('home')}}">Home</a></li>
+                            <li><a class="btn btn-link" href=" {{ url('/')}}">Home</a></li>
                             <li><a class="smooth-scroll" href="#about">About</a></li>
                             <li><a class="smooth-scroll" href="#team">Team</a></li>
                             <li><a class="smooth-scroll" href="#services">Services</a></li>
-                            <li><a class="smooth-scroll" href="#portfolio">Work</a></li>
+                            <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">Intervention</a></li>
                             <li><a class="btn btn-link" href="{{url('users')}}">Users</a></li>
                             <li><a class="smooth-scroll" href="#contact">Contact</a></li>
                             @guest
@@ -51,11 +51,11 @@
 
                     <div id="mobile-nav-content">
                         <ul class="nav">
-                            <li><a class="btn btn-link" href=" {{ route('home')}}">Home</a></li>
+                            <li><a class="btn btn-link" href=" {{ url('/')}}">Home</a></li>
                             <li><a class="smooth-scroll" href="#about">About</a></li>
                             <li><a class="smooth-scroll" href="#team">Team</a></li>
                             <li><a class="smooth-scroll" href="#services">Services</a></li>
-                            <li><a class="smooth-scroll" href="#portfolio">Work</a></li>
+                            <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">Intervention</a></li>
                             <li><a class="btn btn-link" href="{{url('users')}}">Users</a></li>
                             <li><a class="smooth-scroll" href="#contact">Contact</a></li>
                             @guest
