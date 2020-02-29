@@ -47,6 +47,12 @@
     line-height: 40px;
 }
 
+#delete-message{
+    font-family: "Raleway", sans-serif;
+    margin-right: 40px;
+    line-height: 25px;
+}
+
 .credential .credential-detail{
     line-height: 40px;
     padding: 10px;

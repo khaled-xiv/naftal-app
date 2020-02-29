@@ -27,11 +27,13 @@ Route::get('/home', 'HomeController@index')->name('home') ;
 
 Route::post('/account/removeAddress', 'AccountController@removeAddress');
 Route::post('/account/removePhone', 'AccountController@removePhone');
+Route::post('/account/close', 'AccountController@close');
 Route::resource('/account', 'AccountController')->middleware('auth') ;
 
 
 Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
 Route::post('/users/removePhone/{id}', 'UsersController@removePhone');
+Route::post('/users/close/{id}', 'UsersController@close');
 Route::resource('/users', 'UsersController')->middleware('auth') ;
 
 

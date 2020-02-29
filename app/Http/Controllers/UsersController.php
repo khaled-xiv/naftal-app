@@ -74,6 +74,14 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function close(Request $request,$id)
+    {
+        $user=User::findOrfail($id);
+        $user->is_active=0;
+        $user->update();
+        return redirect('/users');
+    }
+
     public function removeAddress(Request $request,$id)
     {
         $user=User::findOrfail($id);

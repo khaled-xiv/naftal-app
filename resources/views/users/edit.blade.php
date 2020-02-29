@@ -149,7 +149,6 @@
                             </div>
                         </div>
 
-
                     </div>
 
                     <h3>Phone</h3>
@@ -209,6 +208,52 @@
                                     </span>
 
                                 @endif
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <h3>Deactivate Account</h3>
+
+                    <div class="account-settings ">
+                        <div class="credential row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label id="delete-message">If you want to close the account just click to the button
+                                    bellow <br>
+                                    Note that the account still be closed untill next logged in
+                                </label>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <span>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            Are you sure you want to close the account ?
+                                          </div>
+                                          <div class="modal-footer">
+                                              {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['UsersController@close',$user->id]]) !!}
+                                              @csrf
+                                              <button type="button" onclick="form_submit('delete_modal')" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                              {!! Form::close() !!}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <button class="btn  btn-danger" style="margin-left: 40px ;"
+                                            data-toggle="modal" data-target="#exampleModal">Close</button>
+                                </span>
+
                             </div>
 
                         </div>

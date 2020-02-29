@@ -330,6 +330,7 @@ table {
     width: 100%;
     margin: 0 auto;
     position: relative;
+    empty-cells: show;
 }
 table * {
     position: relative;
@@ -387,32 +388,33 @@ tbody tr:hover {
     cursor: pointer;
 }
 
-.column1 {
+.column5 {
     width: 260px;
-    padding-left: 40px;
-}
 
-.column2 {
-    width: 160px;
-}
-
-.column3 {
-    width: 245px;
 }
 
 .column4 {
-    width: 110px;
-    text-align: right;
+    width: 160px;
 }
 
-.column5 {
-    width: 170px;
-    text-align: right;
+.column2 {
+    width: 245px;
 }
 
 .column6 {
+    width: 110px;
+    text-align: left;
+}
+
+.column1 {
+    width: 170px;
+    padding-left: 40px;
+    text-align: left;
+}
+
+.column3 {
     width: 222px;
-    text-align: right;
+    text-align: left;
     padding-right: 62px;
 }
 
@@ -450,22 +452,22 @@ tbody tr:hover {
         top: 0;
     }
     table tbody tr td:nth-child(1):before {
-        content: "Date";
-    }
-    table tbody tr td:nth-child(2):before {
-        content: "Order ID";
-    }
-    table tbody tr td:nth-child(3):before {
         content: "Name";
     }
+    table tbody tr td:nth-child(2):before {
+        content: "Email";
+    }
+    table tbody tr td:nth-child(3):before {
+        content: "Email Verified At";
+    }
     table tbody tr td:nth-child(4):before {
-        content: "Price";
+        content: "Phone";
     }
     table tbody tr td:nth-child(5):before {
-        content: "Quantity";
+        content: "Address";
     }
     table tbody tr td:nth-child(6):before {
-        content: "Total";
+        content: "Status";
     }
 
     .column4,
