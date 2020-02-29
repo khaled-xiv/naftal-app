@@ -47,3 +47,6 @@ Route::group(['middleware'=>'chef_district'],function(){
 
 Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('users/create', 'Auth\RegisterController@register');
+
+
+Route::resource('centers', 'CenterController');
