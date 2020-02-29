@@ -37,6 +37,9 @@ Route::post('/users/close/{id}', 'UsersController@close');
 Route::resource('/users', 'UsersController')->middleware('auth') ;
 
 
+Route::resource('/request-of-intervention', 'Req_interController') ;
+
+
 
 
 Route::group(['middleware'=>'chef_district'],function(){
