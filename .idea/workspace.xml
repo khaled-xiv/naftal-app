@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2127cca1-6d13-486b-af12-fbf3877bb425" name="Default Changelist" comment="updating register function">
+
       <change beforePath="$PROJECT_DIR$/.idea/naftal-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/naftal-app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +141,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js/bootbox" />
+>>>>>>> 8f5a9bd122f9ff11ec8e6393c3576476304e55ba
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -148,16 +154,17 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\naftal-app\resources\views\includes" />
-      <recent name="C:\xampp\htdocs\naftal-app\public\img\logo" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\naftal-app\public\js\bootbox" />
       <recent name="C:\xampp\htdocs\naftal-app\resources\views\users" />
       <recent name="C:\xampp\htdocs\naftal-app\public\img" />
       <recent name="C:\xampp\htdocs\naftal-app\public\css\sweetalert2" />
       <recent name="C:\xampp\htdocs\naftal-app\resources\views\auth" />
-      <recent name="C:\xampp\htdocs\naftal-app\public\video" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\naftal-app\public\js\popper" />
+      <recent name="C:\xampp\htdocs\naftal-app\resources\views\includes" />
+      <recent name="C:\xampp\htdocs\naftal-app\public\img\logo" />
     </key>
   </component>
   <component name="RunManager">
@@ -227,8 +234,14 @@
       <workItem from="1582703588021" duration="15794000" />
       <workItem from="1582794371256" duration="8166000" />
       <workItem from="1582832720022" duration="8453000" />
+<<<<<<< HEAD
       <workItem from="1582890637224" duration="4273000" />
       <workItem from="1582905419394" duration="4661000" />
+=======
+      <workItem from="1582890637224" duration="5353000" />
+      <workItem from="1582918779241" duration="5835000" />
+      <workItem from="1582965130479" duration="10882000" />
+>>>>>>> 8f5a9bd122f9ff11ec8e6393c3576476304e55ba
     </task>
     <servers />
   </component>
@@ -247,15 +260,20 @@
     <state x="425" y="172" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582910860055">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
+<<<<<<< HEAD
     <state x="425" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1582910860055" />
     <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1582712518128">
+=======
+    <state x="425" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1582365959840" />
+    <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1582978212841">
+>>>>>>> 8f5a9bd122f9ff11ec8e6393c3576476304e55ba
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1582712518128" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582835123780">
+    <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1582978212841" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582978272152">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1582835123780" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1582978272152" />
     <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1582299032111">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

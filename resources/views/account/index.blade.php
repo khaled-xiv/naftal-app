@@ -13,7 +13,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=> ['AccountController@update',Auth()->user()->id]]) !!}
+                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=>
+                ['AccountController@update',Auth()->user()->id]]) !!}
 
                 @csrf
                 {{ Form::hidden('field',null,['id'=>'field_hidden']) }}
@@ -70,12 +71,13 @@
 
 
                     <div id="submit-btn" class="text-center">
-                        <button class="btn btn-general btn-yellow" id="submitForm" type="button" onclick="form_submit()">Update
+                        <button class="btn btn-general btn-yellow" id="submitForm" type="button"
+                                onclick="form_submit('submit_modal')">Update
                         </button>
                     </div>
 
                 </div>
-<!--                </form>-->
+                <!--                </form>-->
                 {!! Form::close() !!}
                 <!--                        </form>-->
             </div>
@@ -90,11 +92,11 @@
 
             <div class="row"><br><br></div>
             <div class="row col-md-10 col-md-offset-1">
-                <div class="col-md-4 col-sm-4" style="-webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); border-radius: 8px">
+                <div class="col-md-4 col-sm-4"
+                     style="-webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); border-radius: 8px">
                     <div class="row"><br></div>
-                        <p style="font-size: 25px">{{Auth()->user()->name}}</p>
-                        <p style="font-size: 18px; ">{{Auth()->user()->email}}</p>
-
+                    <p style="font-size: 25px">{{Auth()->user()->name}}</p>
+                    <p style="font-size: 18px; ">{{Auth()->user()->email}}</p>
 
 
                 </div>
@@ -159,15 +161,18 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('phone')" style="@if(Auth()->user()->phone==null) display:none @endif">
+                                      onclick="fill_field('phone')"
+                                      style="@if(Auth()->user()->phone==null) display:none @endif">
                                     {{Auth()->user()->phone}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;&nbsp;
                                 @if(Auth()->user()->phone==null)
                                 <button class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field('phone+add')">Add Phone</button>
+                                        onclick="fill_field('phone+add')">Add Phone
+                                </button>
                                 @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['AccountController@removePhone']]) !!}
+                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>
+                                ['AccountController@removePhone']]) !!}
 
                                 @csrf
                                 <span>
@@ -189,19 +194,22 @@
                                 <label>Address</label>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
-                                <span class="credential-detail"  data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('address')" style="@if(Auth()->user()->address==null) display:none @endif">
+                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
+                                      onclick="fill_field('address')"
+                                      style="@if(Auth()->user()->address==null) display:none @endif">
                                     {{Auth()->user()->address}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;
-                                    @if(Auth()->user()->address==null)
+                                @if(Auth()->user()->address==null)
                                 <button class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field('address+add')">Add Address</button>
+                                        onclick="fill_field('address+add')">Add Address
+                                </button>
                                 @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['AccountController@removeAddress']]) !!}
+                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>
+                                ['AccountController@removeAddress']]) !!}
 
                                 @csrf
-                                    <span>
+                                <span>
                                         {!! Form::submit('Remove', ['class'=>'btn btn-danger']) !!}
                                 {!! Form::close() !!}
                                     </span>
@@ -217,28 +225,43 @@
 
                     <div class="account-settings ">
                         <div class="credential row">
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <label>Address</label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label id="delete-message">If you want to close your account just click to the button
+                                    bellow <br>
+                                    Note that your account still be closed untill you logged in next time
+                                </label>
                             </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <span class="credential-detail"  data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('address')" style="@if(Auth()->user()->address==null) display:none @endif">
-                                    {{Auth()->user()->address}}
-                                    <span class="edit"><i class="fa fa-pencil "></i>  </span>
-                                </span>&nbsp;&nbsp;
-                                @if(Auth()->user()->address==null)
-                                <button class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field('address+add')">Add Address</button>
-                                @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['AccountController@removeAddress']]) !!}
-
-                                @csrf
+                            <div class="col-md-12 col-sm-12 col-xs-12">
                                 <span>
-                                        {!! Form::submit('Remove', ['class'=>'btn btn-danger']) !!}
-                                {!! Form::close() !!}
-                                    </span>
 
-                                @endif
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            Are you sure you want to close your account ?
+                                          </div>
+                                          <div class="modal-footer">
+                                              {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['AccountController@close']]) !!}
+                                              @csrf
+                                              <button type="button" onclick="form_submit('delete_modal')" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                              {!! Form::close() !!}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <button class="btn  btn-danger" style="margin-left: 40px ;"
+                                            data-toggle="modal" data-target="#exampleModal">Close</button>
+                                </span>
+
                             </div>
 
                         </div>
@@ -253,5 +276,6 @@
 
 </section>
 <!-- Contact Ends -->
+
 
 @endSection

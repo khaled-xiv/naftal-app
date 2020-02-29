@@ -105,8 +105,18 @@ class AccountController extends Controller
         return redirect('/account');
     }
 
+    public function close(Request $request)
+    {
+        $user=User::findOrfail(Auth::user()->id);
+        $user->is_active=0;
+        $user->update();
+        return redirect('/logout');
+    }
+
+
     public function update(Request $request, $id)
     {
+
 
         $input=$request->all();
         if ($input['name']!=null){

@@ -15,10 +15,6 @@ $(function () {
 
 });
 
-
-
-
-
 /* =========================================
               Show Icon on hover
 ============================================ */
@@ -43,12 +39,18 @@ function fill_field(s){
         if (s.includes('+')){
             s=s.substr(0, s.indexOf('+'));
             $('#form-alert-header').text('Add '+s);
-        }else{
+        }else if (s.includes('+close')){
+            s=s.substr(0, s.indexOf('+'));
+            $('#close_hidden').val(s);
+            $('#form-alert-header').text('Enter Your'+s);
+        }
+        else{
             $('#form-alert-header').text('Change Your '+s);
         }
 
         console.log(s);
         $('#field_hidden').val(s);
+        console.log('sala'+s);
         $('.modal-body form .hide-form').css('display','none');
         $('.modal-body form  #'+s).parents(':eq(1)').show();
         if(s=='password'){
@@ -75,12 +77,23 @@ function fill_field1(s){
 
 $('.modal-body form .hide-form').css('display','none');
 
-function form_submit() {
-    document.getElementById("submit_modal").submit(function () {
-
+function form_submit(s) {
+    console.log(s)
+    document.getElementById(s).submit(function () {
     });
 }
 
+$('button[name="remove_levels"]').on('click', function(e) {
+    var $form = $(this).closest('form');
+    e.preventDefault();
+    $('#confirmModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+        .on('click', '#delete', function(e) {
+            $form.trigger('submit');
+        });
+});
 
 
 
