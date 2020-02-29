@@ -58,7 +58,8 @@ class CenterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $center = Center::findOrFail($id);
+        return view('centers.edit', compact('center'));
     }
 
     /**
@@ -70,7 +71,8 @@ class CenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Center::findOrFail($id)->update($request->all());
+        return redirect('/');
     }
 
     /**
