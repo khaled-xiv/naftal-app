@@ -78,6 +78,16 @@
 
                         {!! Form::close() !!}
                         <!--                        </form>-->
+
+                        {!! Form::open(['method'=>'DELETE', 'action'=> ['CenterController@destroy', $center->id]]) !!}
+
+                            <div class="row">
+                                <div id="submit-btn" class="pull-right" style="margin-top:5px;">
+                                    <button class="btn btn-general btn-danger" type="submit" role="button">Delete Center</button>
+                                </div>
+                            </div>
+
+                        {!! Form::close() !!}
                         </div>
 
                     </div>
@@ -89,5 +99,5 @@
         </div>
 
     </section>
-    <!-- Add Center Ends -->
+    <!-- Edit Center Ends -->
 @endsection
