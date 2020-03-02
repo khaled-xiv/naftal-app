@@ -13,15 +13,25 @@
                         <table>
                             <thead>
                             <tr class="table100-head">
-                                <th class="column1">Name</th>
-                                <th class="column2">Email</th>
-                                <th class="column3">Email verified at</th>
-                                <th class="column4">Phone</th>
-                                <th class="column5">Address</th>
+                                <th class="column1">Number</th>
+                                <th class="column2">Equipement</th>
+                                <th class="column3">Description</th>
+                                <th class="column4">Degree of urgency</th>
+                                <th class="column5">Created at</th>
                                 <th class="column6">Status</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($req_inters as $req_inter)
+                            <tr>
+                                <td class="column1">{{$req_inter->number}}</td>
+                                <td class="column2">{{$req_inter->equipement->designation}}</td>
+                                <td class="column3">{{$req_inter->description}}</td>
+                                <td class="column4">{{$req_inter->degree_urgency}}</td>
+                                <td class="column5">{{$req_inter->created_at}}</td>
+                                <td class="column6"></td>
+                            </tr>
+                            @endforeach
 
                             </tbody>
                         </table>

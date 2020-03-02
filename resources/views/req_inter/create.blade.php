@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'Add user')
+@section('title', 'Create request of intervention')
 @section('content')
 <!-- Add User -->
 <br>
@@ -15,83 +15,96 @@
 
                     <div id="contact-right">
 
-                        {!! Form::open(['method'=>'POST', 'action'=> 'Auth\RegisterController@register']) !!}
-                            @csrf
-                            <h4>Add User</h4>
-                        <br><br>
+                        {!! Form::open(['method'=>'POST', 'action'=> 'Req_interController@store']) !!}
+                        @csrf
+                        <h4>Create Request of Intervention</h4>
+                        <br>
 
-
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name">
-                                            @error('name')
-                                            <span class="invalid-feedback" role="alert">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="number" type="text"
+                                           class="form-control @error('number') is-invalid @enderror" name="number"
+                                           value="{{ old('number') }}" required autocomplete="number"
+                                           placeholder="Enter the request number">
+                                    @error('number')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                            @enderror
-                                        </div>
+                                    @enderror
+                                </div>
 
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    {!! Form::select('equipement_id', $equips , null,
+                                    ['class'=>'form-control','placeholder'=>'Select an equipement'])!!}
+                                    @error('equipement_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
 
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    {!! Form::select('degree_urgency', array('1','2','3') , null,
+                                    ['class'=>'form-control','placeholder'=>'Select the degree of urgency'])!!}
+                                    @error('degree_urgency')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="created_at" type="datetime-local"
+                                           class="form-control @error('created_at')  is-invalid @enderror" name="created_at"
+                                           value="{{ old('created_at') }}" required autocomplete="created_at">
+                                    @error('created_at')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                            </div>
+                        </div>
 
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
+
+                        <div class="form-group">
+                            <textarea class="form-control" id="description" required name="description" placeholder="description"></textarea>
+                            @error('descrption')
+                            <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            {!! Form::select('role_id', $roles , null, ['class'=>'form-control','placeholder'=>'Select a role'])!!}
-                                        </div>
+                            @enderror
+                        </div>
 
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            {!! Form::select('center_id', $roles , null, ['class'=>'form-control','placeholder'=>'select a center'])!!}
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div id="submit-btn" class="pull-right">
-                                        <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Add User</button>
-                                    </div>
-                                </div>
+                        <div class="row">
+                            <div id="submit-btn" class="pull-right">
+                                <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
 
                         {!! Form::close() !!}
-<!--                        </form>-->
+
                     </div>
 
                 </div>
 
+
             </div>
 
         </div>
+
+    </div>
 
     </div>
 

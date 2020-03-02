@@ -1,272 +1,113 @@
 @extends('layouts.without_footer')
-@section('title', 'User Settings')
+@section('title', 'Edit request of intervention')
 @section('content')
-<!-- Edit User -->
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=> ['UsersController@update',$user->id]]) !!}
-
-                @csrf
-                {{ Form::hidden('field',null,['id'=>'field_hidden']) }}
-                <h4 id="form-alert-header" style="text-transform:capitalize;"></h4>
-                <div class="row">
-
-                    <div class="col-md-12 col-sm-12 hide-form">
-                        <div class="form-group ">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                   name="name" value='' required
-                                   placeholder="Name">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12 hide-form">
-                        <div class="form-group">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                   name="email" value="" required autocomplete="email"
-                                   placeholder="Email Address">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12 hide-form">
-                        <div class="form-group">
-                            <input id="password" type="password"
-                                   class="form-control @error('password') is-invalid @enderror" name="password" required
-                                   autocomplete="new-password" placeholder="Password">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12 hide-form">
-                        <div class="form-group">
-                            <input id="password-confirm" type="password" class="form-control"
-                                   name="password_confirmation" required autocomplete="new-password"
-                                   placeholder="Confirm Password">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12 hide-form">
-                        <div class="form-group">
-                            <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                                   name="phone" value='' required autocomplete="phone"
-                                   placeholder="Phone Number">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12 hide-form">
-                        <div class="form-group">
-                            <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-                                   name="address" value='' required autocomplete="address"
-                                   placeholder="Address">
-                        </div>
-                    </div>
-
-
-                    <div id="submit-btn" class="text-center">
-                        <button class="btn btn-general btn-yellow" id="submitForm" type="button" onclick="form_submit()">Update
-                        </button>
-                    </div>
-
-                </div>
-                <!--                </form>-->
-                {!! Form::close() !!}
-                <!--                        </form>-->
-            </div>
-        </div>
-    </div>
-</div>
-
-<section id="account">
+<!-- Add User -->
+<br>
+<section id="req_inter">
 
     <div class="content-box-md">
+
         <div class="container">
 
-            <div class="row"><br><br></div>
-            <div class="row col-md-10 col-md-offset-1">
+            <div class="row">
 
-                <div class="col-md-4 col-sm-4">
-                    <div class="row"><br></div>
-                    <div id="contact-right" style="border-radius: 8px">
-                        <p style="font-size: 25px; line-height: 0px">{{$user->name}}</p>
-                        <p style="font-size: 20px; line-height: 0px">{{$user->email}}</p>
+                <div class="col-md-6 col-md-offset-4">
+
+                    <div id="contact-right">
+
+                        {!! Form::model($req_inter,['method'=>'PATCH', 'action'=> ['Req_interController@update',$req_inter->id]]) !!}
+                        @csrf
+                        <h4>Edit Request of Intervention</h4>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="number" type="text"
+                                           class="form-control @error('number') is-invalid @enderror" name="number"
+                                           value="{{ $req_inter->number }}" required autocomplete="number"
+                                           placeholder="Enter the request number">
+                                    @error('number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    {!! Form::select('equipement_id', $equips , null,
+                                    ['class'=>'form-control','placeholder'=>'Select an equipement'])!!}
+                                    @error('equipement_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    {!! Form::select('degree_urgency', degree_urgency , null,
+                                    ['class'=>'form-control','placeholder'=>'Select the degree of urgency'])!!}
+                                    @error('degree_urgency')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="created_at" type="datetime-local"
+                                           class="form-control @error('created_at')  is-invalid @enderror" name="created_at"
+                                           value="{{ old('created_at') }}" required autocomplete="created_at">
+                                    @error('created_at')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <textarea class="form-control" id="description" required name="description" placeholder="description"></textarea>
+                            @error('descrption')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+
+                        <div class="row">
+                            <div id="submit-btn" class="pull-right">
+                                <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+
+                        {!! Form::close() !!}
 
                     </div>
 
                 </div>
-                <div class="col-md-1 col-sm-1"></div>
-                <div class="col-md-7 col-sm-7">
-                    @if($errors->any())
-                    <div class="alert alert-danger text-center">
-                        <h3>{{$errors->first()}}</h3>
-                    </div>
-                    @endif
-                    <h3>Account</h3>
 
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-9">
-                                <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('name')">
-                                    {{$user->name}}
-                                    <span class="edit"><i class="fa fa-pencil "></i>  </span>
-                                </span>
-                            </div>
-                        </div>
 
-                        <div class="credential row">
-                            <div class="col-md-3">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-9">
-                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('email')">
-                                {{$user->email}}
-                                <span class="edit"><i class="fa fa-pencil "></i> </span>
-                            </span>
-                            </div>
-                        </div>
-
-                        <div class="credential row">
-                            <div class="col-md-3">
-                                <label>Password</label>
-                            </div>
-                            <div class="col-md-9">
-                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('password')">
-                                ••••••••
-                                <span class="edit"><i class="fa fa-pencil "></i></span>
-                            </span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <h3>Phone</h3>
-
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-9">
-                                <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('phone')" style="@if($user->phone==null) display:none @endif">
-                                    {{$user->phone}}
-                                    <span class="edit"><i class="fa fa-pencil "></i>  </span>
-                                </span>&nbsp;&nbsp;&nbsp;
-                                @if($user->phone==null)
-                                <button class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field1('phone+add')">Add Phone</button>
-                                @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removePhone',$user->id]]) !!}
-
-                                @csrf
-                                <span>
-                                        {!! Form::submit('Remove', ['class'=>'btn btn-danger']) !!}
-                                {!! Form::close() !!}
-                                    </span>
-
-                                @endif
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <h3>Address</h3>
-
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3">
-                                <label>Address</label>
-                            </div>
-                            <div class="col-md-9">
-                                <span class="credential-detail"  data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('address')" style="@if($user->address==null) display:none @endif">
-                                    {{$user->address}}
-                                    <span class="edit"><i class="fa fa-pencil "></i>  </span>
-                                </span>&nbsp;&nbsp;
-                                @if($user->address==null)
-                                <button class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field1('address+add')">Add Address</button>
-                                @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removeAddress',$user->id]]) !!}
-
-                                @csrf
-                                <span>
-                                        {!! Form::submit('Remove', ['class'=>'btn btn-danger']) !!}
-                                {!! Form::close() !!}
-                                    </span>
-
-                                @endif
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <h3>Deactivate Account</h3>
-
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label id="delete-message">If you want to close the account just click to the button
-                                    bellow <br>
-                                    Note that the account still be closed untill next logged in
-                                </label>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <span>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                         aria-hidden="true">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                            Are you sure you want to close the account ?
-                                          </div>
-                                          <div class="modal-footer">
-                                              {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['UsersController@close',$user->id]]) !!}
-                                              @csrf
-                                              <button type="button" onclick="form_submit('delete_modal')" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                              {!! Form::close() !!}
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <button class="btn  btn-danger" style="margin-left: 40px ;"
-                                            data-toggle="modal" data-target="#exampleModal">Close</button>
-                                </span>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
         </div>
+
+    </div>
 
     </div>
 
 </section>
-<!-- Edit User Ends -->
-
-@endSection
+<!-- Add User Ends -->
+@endsection

@@ -5,16 +5,12 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!--Title-->
-<!--<title>@yield('page_title', 'Sign In ')</title>-->
-
 <!-- Favicon -->
 <link rel="shortcut icon" src="{{ asset ('favicon.ico')}}">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-
 
 <!-- Fontawesome -->
 <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -25,8 +21,6 @@
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
 
-<!--SweetAlert-->
-<link href="{{asset('css/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet">
 
 <!-- Custom Styles -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
