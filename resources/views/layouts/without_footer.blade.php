@@ -14,7 +14,7 @@
 
 </body>
 <!-- Jquery -->
-<script src="{{ asset('js/jquery.min.js') }}" defer></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 
 <!--    Bootstrap-->
 <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>

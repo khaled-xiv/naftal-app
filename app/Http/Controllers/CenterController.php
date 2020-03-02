@@ -14,7 +14,9 @@ class CenterController extends Controller
      */
     public function index()
     {
-        //
+
+        $centers = Center::all();
+        return view('centers.index', compact('centers'));
     }
 
     /**
@@ -36,7 +38,7 @@ class CenterController extends Controller
     public function store(Request $request)
     {
         Center::create($request->all());
-        return redirect('/');
+        return redirect('/centers');
     }
 
     /**
@@ -47,7 +49,8 @@ class CenterController extends Controller
      */
     public function show($id)
     {
-        //
+        $center = Center::where('id', $id)->first();
+        return view('centers.show', compact('center'));
     }
 
     /**
@@ -58,7 +61,8 @@ class CenterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $center = Center::findOrFail($id);
+        return view('centers.edit', compact('center'));
     }
 
     /**
@@ -70,7 +74,8 @@ class CenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Center::findOrFail($id)->update($request->all());
+        return redirect('/centers');
     }
 
     /**
@@ -81,6 +86,7 @@ class CenterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Center::findOrFail($id)->delete();
+        return redirect('/centers');
     }
 }
