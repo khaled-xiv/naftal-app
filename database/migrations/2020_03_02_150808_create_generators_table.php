@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEquipementsTable extends Migration
+class CreateGeneratorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateEquipementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipements', function (Blueprint $table) {
+        Schema::create('generators', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('designation');
+            $table->foreign('equipment_id')->references('id')->on('equipments');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateEquipementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipements');
+        Schema::dropIfExists('generators');
     }
 }

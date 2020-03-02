@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipement;
+use App\Equipment;
 use App\Req_inter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +28,7 @@ class Req_interController extends Controller
      */
     public function create()
     {
-        $equips=Equipement::all()->pluck('designation','id');
+        $equips=Equipment::all()->pluck('designation','id');
         return  view('req_inter.create',compact('equips'));
     }
 
@@ -45,7 +45,7 @@ class Req_interController extends Controller
             'number' => [ 'required','string', 'max:255','unique:req_inters'],
 //            'created_at' => [ 'required','date'],
             'degree_urgency' => ['required'],
-            'equipement_id' => ['required'],
+            'equipment_id' => ['required'],
         ]);
     }
 
@@ -54,12 +54,12 @@ class Req_interController extends Controller
         $this->validator($request->all())->validate();
         Req_inter::create([
             'number' => $request['number'],
-            'equipement_id' => $request['equipement_id'],
+            'equipment_id' => $request['equipment_id'],
             'degree_urgency' => $request['degree_urgency']+1,
             'description' => $request['description'],
             'created_at' => $request['created_at']
         ]);
-        $equips=Equipement::all()->pluck('designation','id');
+        $equips=Equipment::all()->pluck('designation','id');
         return  view('req_inter.create',compact('equips'));
     }
 
@@ -83,7 +83,7 @@ class Req_interController extends Controller
     public function edit($id)
     {
         $req_inter=Req_inter::findOrFail($id);
-        $equips=Equipement::all()->pluck('designation','id');
+        $equips=Equipment::all()->pluck('designation','id');
         return view('req_inter.edit',compact('req_inter','equips'));
     }
 
