@@ -16,7 +16,7 @@
                         <ul class="nav navbar-nav pull-right">
                             <li><a class="btn btn-link" href=" {{ url('/')}}">Home</a></li>
                             <li><a class="smooth-scroll" href="#about">About</a></li>
-                            <li><a class="smooth-scroll" href="#team">Team</a></li>
+                            <li><a class="smooth-scroll" href="{{url('equipments')}}">Equipments</a></li>
                             <li><a class="smooth-scroll" href="{{url('centers')}}">Centers</a></li>
                             <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">Intervention</a></li>
                             <li><a class="btn btn-link" href="{{url('users')}}">Users</a></li>

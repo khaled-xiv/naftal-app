@@ -15,6 +15,7 @@ class CreatePumpsTable extends Migration
     {
         Schema::create('pumps', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('equipment_id');
             $table->foreign('equipment_id')->references('id')->on('equipments');
             $table->string('product');
             $table->integer('rate');

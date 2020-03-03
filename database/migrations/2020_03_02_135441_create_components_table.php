@@ -15,6 +15,7 @@ class CreateComponentsTable extends Migration
     {
         Schema::create('components', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('equipment_id');
             $table->foreign('equipment_id')->references('id')->on('equipments');
             $table->string('designation');
             $table->string('mark');

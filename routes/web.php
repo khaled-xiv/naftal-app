@@ -53,3 +53,4 @@ Route::post('users/create', 'Auth\RegisterController@register');
 
 
 Route::resource('centers', 'CenterController');
+Route::resource('equipments', 'EquipmentController');

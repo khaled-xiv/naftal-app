@@ -9,7 +9,7 @@ class Generator extends Model
 
     protected function equipment(){
 
-        return $this->belongsTo('App/Equipment');
+        return $this->belongsTo('App\Equipment');
 
     }
 

@@ -15,6 +15,7 @@ class CreateEquipmentsTable extends Migration
     {
         Schema::create('equipments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('center_id');
             $table->foreign('center_id')->references('id')->on('centers');
             $table->string('code');
             $table->string('mark');

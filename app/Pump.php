@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Pump extends Model
 {
     protected $fillable = [
-        'product','rate','state'
+        'product','rate'
     ];
 
     protected function equipment(){
 
-        return $this->belongsTo('App/Equipment');
+        return $this->belongsTo('App\Equipment');
 
     }
 
