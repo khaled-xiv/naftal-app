@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEquipementsTable extends Migration
+class CreateFuelMetersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateEquipementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipements', function (Blueprint $table) {
+        Schema::create('fuel_meters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('designation');
+            $table->unsignedBigInteger('equipment_id');
+            $table->foreign('equipment_id')->references('id')->on('equipments');
+            $table->string('category');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateEquipementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipements');
+        Schema::dropIfExists('fuel_meters');
     }
 }

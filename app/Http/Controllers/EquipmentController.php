@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipment;
-use App\Req_inter;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
-class Req_interController extends Controller
+use App\FuelMeter;
+use App\Generator;
+use App\LoadingArm;
+use App\Pump;
+use App\Tank;
+use Illuminate\Http\Request;
+
+class EquipmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +19,14 @@ class Req_interController extends Controller
      */
     public function index()
     {
-        $req_inters=Req_inter::all();
-        return view('req_inter.index',compact('req_inters'));
+        $pumps = Pump::all();
+        $tanks = Tank::all();
+        $loadingArms = LoadingArm::all();
+        $generators = Generator::all();
+        $fuelMeters = FuelMeter::all();
+
+        return view('equipments.index', compact('pumps', 'tanks', 'loadingArms', 'generators', 'fuelMeters'));
+
     }
 
     /**
@@ -28,8 +36,7 @@ class Req_interController extends Controller
      */
     public function create()
     {
-        $equips=Equipment::all()->pluck('designation','id');
-        return  view('req_inter.create',compact('equips'));
+        //
     }
 
     /**
@@ -38,29 +45,9 @@ class Req_interController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'number' => [ 'required','string', 'max:255','unique:req_inters'],
-//            'created_at' => [ 'required','date'],
-            'degree_urgency' => ['required'],
-            'equipment_id' => ['required'],
-        ]);
-    }
-
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
-        Req_inter::create([
-            'number' => $request['number'],
-            'equipment_id' => $request['equipment_id'],
-            'degree_urgency' => $request['degree_urgency']+1,
-            'description' => $request['description'],
-            'created_at' => $request['created_at']
-        ]);
-        $equips=Equipment::all()->pluck('designation','id');
-        return  view('req_inter.create',compact('equips'));
+        //
     }
 
     /**
@@ -82,9 +69,7 @@ class Req_interController extends Controller
      */
     public function edit($id)
     {
-        $req_inter=Req_inter::findOrFail($id);
-        $equips=Equipment::all()->pluck('designation','id');
-        return view('req_inter.edit',compact('req_inter','equips'));
+        //
     }
 
     /**
