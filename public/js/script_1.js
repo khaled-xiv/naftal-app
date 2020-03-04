@@ -63,7 +63,12 @@ function fill_field1(s){
         s=s.substr(0, s.indexOf('+'));
         $('#form-alert-header').text('Add '+s);
     }else{
-        $('#form-alert-header').text('Change  '+s);
+        if(s.includes('_')){
+            $('#form-alert-header').text('Change  '+s.substr(0, s.indexOf('_')));
+        }else {
+            $('#form-alert-header').text('Change  '+s);
+        }
+
     }
 
     console.log(s);
@@ -83,21 +88,22 @@ function form_submit(s) {
     });
 }
 
-$('button[name="remove_levels"]').on('click', function(e) {
-    var $form = $(this).closest('form');
-    e.preventDefault();
-    $('#confirmModal').modal({
-        backdrop: 'static',
-        keyboard: false
-    })
-        .on('click', '#delete', function(e) {
-            $form.trigger('submit');
-        });
-});
 
-/*----------------------------------------
-            date picker
--------------------------------------------*/
+// $(".dropdown").on('click', function (event) {
+//     event.stopPropagation();
+// });
+
+// $(document).ready(function () {
+//
+//     $(".dropdown").mouseenter(function(){
+//         $(".dropdown-menu").show();
+//     });
+//
+//     $(".dropdown,.dropdown-menu").mouseleave(function(){
+//         $(".dropdown-menu").hide();
+//     });
+// });
+
 
 
 

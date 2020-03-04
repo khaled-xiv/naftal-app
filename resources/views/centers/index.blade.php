@@ -9,6 +9,18 @@
             <div class="limiter">
                 <div class="container-table100">
                     <div class="wrap-table100">
+                        <div class="pull-left">
+                            {!! Form::open(['method'=>'GET', 'action'=> ['CenterController@create']]) !!}
+
+                            <div class="row">
+                                <div id="submit-btn" class="pull-right" style="margin:10px 7px 7px 7px;">
+                                    <button class="btn btn-general btn-yellow" type="submit" role="button">Add Center</button>
+                                </div>
+                            </div>
+
+                            {!! Form::close() !!}
+                        </div>
+
                         <div class="table100">
                             <table>
                                 <thead>
@@ -31,23 +43,15 @@
                                 </tbody>
                             </table>
                         </div>
-                        {!! Form::open(['method'=>'GET', 'action'=> ['CenterController@create']]) !!}
 
-                            <div class="row">
-                                <div id="submit-btn" class="pull-right" style="margin:10px 7px 0px 0px;">
-                                    <button class="btn btn-general btn-primary" type="submit" role="button">Add Center</button>
-                                </div>
-                            </div>
-
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
 
 
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-5">
-
+                <div class="text-center">
+                    {{$centers->render()}}
                 </div>
             </div>
 

@@ -41,6 +41,12 @@
 
 }
 
+.break{
+    margin: 20px -20px;
+    height: 2px;
+    background-color: #fff;
+}
+
 .credential label{
     font-family: "Raleway", sans-serif;
     margin-left: 40px;
@@ -85,7 +91,6 @@
     background-color: #36304a;
     border-color: #36304a;
 }
-
 
 
 

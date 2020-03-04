@@ -9,6 +9,18 @@
         <div class="limiter">
             <div class="container-table100">
                 <div class="wrap-table100">
+                    <div class="pull-left">
+                        {!! Form::open(['method'=>'GET', 'action'=> ['Auth\RegisterController@showRegistrationForm']]) !!}
+
+                        <div class="row">
+                            <div id="submit-btn" class="pull-right" style="margin:10px 7px 7px 7px;">
+                                <button class="btn btn-general btn-yellow" type="submit" role="button">Add User</button>
+                            </div>
+                        </div>
+
+                        {!! Form::close() !!}
+                    </div>
+
                     <div class="table100">
                         <table>
                             <thead>
@@ -23,7 +35,7 @@
                             </thead>
                             <tbody>
                             @foreach($users as $user)
-                            <tr>
+                            <tr class="clickable-row" data-href="users/{{$user->id}}">
                                 <td class="column1">{{$user->name}}</td>
                                 <td class="column2">{{$user->email}}</td>
                                 <td class="column3">@if(!$user->email_verified_at) Not Verified @else {{$user->email_verified_at}} @endif</td>
@@ -42,7 +54,7 @@
 
 
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-5">
+            <div class="text-center">
                 {{$users->render()}}
             </div>
         </div>
@@ -52,6 +64,12 @@
 
 <!-- Users Ends -->
 @endSection
-
-
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script>
+    $(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+        });
+    });
+</script>
 

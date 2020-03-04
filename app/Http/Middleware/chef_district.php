@@ -17,7 +17,7 @@ class chef_district
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
-            if(Auth::user()->is_chef_district()){
+            if(Auth::user()->is_district_chief()){
                 return $next($request);
             }
         }

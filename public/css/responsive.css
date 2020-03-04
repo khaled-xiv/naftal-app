@@ -86,7 +86,7 @@
 
 
 /*==================================================
-			Bootstrap 3 Media Queries        
+			Bootstrap 3 Media Queries
 ==================================================*/
 
 
@@ -124,11 +124,14 @@
 
 /* Small Devices (Portrait Tablets & Small Desktops) */
 
+
+
 @media (min-width: 768px) and (max-width: 991px) {
     /* Navigation */
     .site-nav-wrapper {
         padding: 0;
     }
+
     /* Home */
     #home-heading h1 {
         font-size: 41px;

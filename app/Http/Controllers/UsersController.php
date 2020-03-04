@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Center;
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::where('id', '!=', Auth::id())->paginate(1);
+        $users=User::where('id', '!=', Auth::id())->paginate(3);
         return view('users.index',compact('users'));
     }
 
@@ -50,7 +52,9 @@ class UsersController extends Controller
     public function show($id)
     {
         $user=User::findOrfail($id);
-        return view('users.edit',compact('user'));
+        $centers=Center::all()->pluck('code','id');
+        $roles=Role::all()->pluck('name','id');
+        return view('users.edit',compact('user','centers','roles'));
     }
 
     /**

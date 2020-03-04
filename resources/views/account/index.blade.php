@@ -98,7 +98,6 @@
                     <p style="font-size: 25px">{{Auth()->user()->name}}</p>
                     <p style="font-size: 18px; ">{{Auth()->user()->email}}</p>
 
-
                 </div>
                 <div class="col-md-1 col-sm-1"></div>
                 <div class="col-md-7 col-sm-7">

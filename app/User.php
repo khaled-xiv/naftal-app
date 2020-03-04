@@ -54,9 +54,9 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         return $this->belongsTo("App\Center");
     }
 
-    public function is_chef_district()
+    public function is_district_chief()
     {
-        if($this->role->name=='chef_district' && $this->is_active==1){
+        if($this->role->name=='district_chief' && $this->is_active==1){
             return true;
         }
         return false;

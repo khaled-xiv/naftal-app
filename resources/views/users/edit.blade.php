@@ -62,6 +62,18 @@
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
+                            {!! Form::select('center_id', $centers , null, ['class'=>'form-control','id'=>'center_id','placeholder'=>'select a center'])!!}
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 hide-form">
+                        <div class="form-group">
+                            {!! Form::select('role_id', $roles , null, ['class'=>'form-control','id'=>'role_id','placeholder'=>'select a role'])!!}
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 hide-form">
+                        <div class="form-group">
                             <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
                                    name="address" value='' required autocomplete="address"
                                    placeholder="Address">
@@ -70,7 +82,7 @@
 
 
                     <div id="submit-btn" class="text-center">
-                        <button class="btn btn-general btn-yellow" id="submitForm" type="button" onclick="form_submit()">Update
+                        <button class="btn btn-general btn-yellow" id="submitForm" type="button" onclick="form_submit('submit_modal')">Update
                         </button>
                     </div>
 
@@ -89,15 +101,12 @@
         <div class="container">
 
             <div class="row"><br><br></div>
-            <div class="row col-md-10 col-md-offset-1">
-
-                <div class="col-md-4 col-sm-4">
+            <div class="row col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="col-md-4 col-sm-4"
+                     style="-webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); border-radius: 8px">
                     <div class="row"><br></div>
-                    <div id="contact-right" style="border-radius: 8px">
-                        <p style="font-size: 25px; line-height: 0px">{{$user->name}}</p>
-                        <p style="font-size: 20px; line-height: 0px">{{$user->email}}</p>
-
-                    </div>
+                    <p style="font-size: 25px">{{$user->name}}</p>
+                    <p style="font-size: 18px; ">{{$user->email}}</p>
 
                 </div>
                 <div class="col-md-1 col-sm-1"></div>
@@ -111,10 +120,10 @@
 
                     <div class="account-settings ">
                         <div class="credential row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
                                 <label>Name</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('name')">
                                     {{$user->name}}
@@ -124,7 +133,7 @@
                         </div>
 
                         <div class="credential row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
                                 <label>Email</label>
                             </div>
                             <div class="col-md-9">
@@ -137,13 +146,40 @@
                         </div>
 
                         <div class="credential row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
                                 <label>Password</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('password')">
                                 ••••••••
+                                <span class="edit"><i class="fa fa-pencil "></i></span>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="break"></div>
+
+                        <div class="credential row">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <label>Center</label>
+                            </div>
+                            <div class="col-md-9">
+                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
+                                      onclick="fill_field1('center_id')">
+                                {{$user->center->code}}
+                                <span class="edit"><i class="fa fa-pencil "></i></span>
+                            </span>
+                            </div>
+                        </div>
+
+                        <div class="credential row">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <label>Role</label>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-9">
+                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
+                                      onclick="fill_field1('role_id')">
+                                {{$user->role->name}}
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
                             </div>
@@ -155,10 +191,10 @@
 
                     <div class="account-settings ">
                         <div class="credential row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
                                 <label>Phone</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('phone')" style="@if($user->phone==null) display:none @endif">
                                     {{$user->phone}}
@@ -186,10 +222,10 @@
 
                     <div class="account-settings ">
                         <div class="credential row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
                                 <label>Address</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail"  data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('address')" style="@if($user->address==null) display:none @endif">
                                     {{$user->address}}

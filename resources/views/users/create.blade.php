@@ -27,8 +27,8 @@
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name">
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
 
@@ -67,12 +67,23 @@
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
                                             {!! Form::select('role_id', $roles , null, ['class'=>'form-control','placeholder'=>'Select a role'])!!}
+
+                                            @error('role_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
 
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
                                             {!! Form::select('center_id', $centers , null, ['class'=>'form-control','placeholder'=>'select a center'])!!}
+                                            @error('center_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
 
                                     </div>
