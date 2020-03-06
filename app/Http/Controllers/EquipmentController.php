@@ -9,6 +9,7 @@ use App\LoadingArm;
 use App\Pump;
 use App\Tank;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class EquipmentController extends Controller
 {
@@ -36,7 +37,14 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        //
+        switch($_COOKIE['equip']){
+            case "Pumps": return "a";
+            case "Tanks": return "b";
+            case "Loading Arms": return "c";
+            case "Generators": return "d";
+            case "Fuel Meters": return "e";
+            default : return "abcde";
+        };
     }
 
     /**
