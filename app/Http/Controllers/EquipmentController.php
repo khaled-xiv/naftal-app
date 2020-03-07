@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 
+use App\Center;
+use App\Equipment;
 use App\FuelMeter;
 use App\Generator;
 use App\LoadingArm;
 use App\Pump;
 use App\Tank;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
 
 class EquipmentController extends Controller
 {
@@ -37,14 +38,10 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        switch($_COOKIE['equip']){
-            case "Pumps": return "a";
-            case "Tanks": return "b";
-            case "Loading Arms": return "c";
-            case "Generators": return "d";
-            case "Fuel Meters": return "e";
-            default : return "abcde";
-        };
+
+        $centers=Center::all()->pluck('code','id');
+        return view('equipments.create', compact('centers'));
+
     }
 
     /**
@@ -55,7 +52,49 @@ class EquipmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $center = Center::findOrFail($request->center_id);
+        $equipment = new Equipment();
+        $equipment->code = $request->code;
+        $equipment->type = $request->type;
+        $equipment->mark = $request->mark;
+        $equipment->model = $request->model;
+        $equipment->state = $request->state;
+
+        $center->equipments()->save($equipment);
+        $temp = Equipment::latest()->first();
+
+        switch($_COOKIE['equip']){
+            case 'Pumps':
+                $secEq = new Pump();
+                $secEq->rate = $request->rate;
+                $secEq->product = $request->product;
+                $temp->pump()->save($secEq);
+                break;
+            case 'Loading Arms':
+                $secEq = new LoadingArm();
+                $secEq->rate = $request->rate;
+                $secEq->product = $request->product;
+                $temp->loading_arm()->save($secEq);
+                break;
+            case 'Tanks':
+                $secEq = new Tank();
+                $secEq->product = $request->product;
+                $secEq->height = $request->height;
+                $secEq->diameter = $request->diameter;
+                $secEq->capacity = $request->capacity;
+                $temp->tank()->save($secEq);
+                break;
+            case 'Generators':
+                $secEq = new Generator();
+                $temp->generator()->save($secEq);
+                break;
+            case 'Fuel Meters':
+                $secEq = new FuelMeter();
+                $secEq->category = $request->category;
+                $temp->fuel_meter()->save($secEq);
+                break;
+        }
+        return redirect('/equipments');
     }
 
     /**

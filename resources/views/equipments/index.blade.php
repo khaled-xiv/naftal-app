@@ -115,7 +115,7 @@
                             </thead>
                             <tbody>
                             @foreach($loadingArms as $loadingArm)
-                                <tr class="clickable-row" data-href="equipments/{{$loadinArm->equipment->id}}">
+                                <tr class="clickable-row" data-href="equipments/{{$loadingArm->equipment->id}}">
                                     <td>{{$loadingArm->equipment->code}}</td>
                                     <td>{{$loadingArm->equipment->mark}}</td>
                                     <td>{{$loadingArm->equipment->type}}</td>
@@ -136,8 +136,6 @@
                                 <th>mark</th>
                                 <th>type</th>
                                 <th>model</th>
-                                <th>product</th>
-                                <th>rate</th>
                                 <th>state</th>
                             </tr>
                             </thead>
@@ -148,8 +146,6 @@
                                     <td>{{$generator->equipment->mark}}</td>
                                     <td>{{$generator->equipment->type}}</td>
                                     <td>{{$generator->equipment->model}}</td>
-                                    <td>{{$generator->product}}</td>
-                                    <td>{{$generator->rate}}</td>
                                     <td>{{$generator->equipment->state}}</td>
                                 </tr>
                             @endforeach
@@ -207,5 +203,3 @@
 
     });
 </script>
-
-
