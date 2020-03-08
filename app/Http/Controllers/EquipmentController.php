@@ -116,7 +116,24 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        switch($_COOKIE['equip']){
+            case 'Pumps':
+                $equipment = Equipment::with('pump')->find($id);
+                break;
+            case 'Tanks':
+                $equipment = Equipment::with('tank')->find($id);
+                break;
+            case 'Loading Arms':
+                $equipment = Equipment::with('loading_arm')->find($id);
+                break;
+            case 'Generators':
+                $equipment = Equipment::with('generator')->find($id);
+                break;
+            case 'Fuel Meters':
+                $equipment = Equipment::with('fuel_meter')->find($id);
+                break;
+        }
+        return view('equipments.edit', compact('equipment', 'x'));
     }
 
     /**
@@ -128,7 +145,16 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        //return $request;
+        Equipment::findOrFail($id)->update($request->all());
+        if($request->has('pump')) Pump::where('equipment_id', $id)->update($request->pump);
+        else if($request->has('tank')) Tank::where('equipment_id', $id)->update($request->tank);
+        else if($request->has('loading_arm')) LoadingArm::where('equipment_id', $id)->update($request->loading_arm);
+        else if($request->has('generator')) Generator::where('equipment_id', $id)->update($request->generator);
+        else if($request->has('fuel_meter')) FuelMeter::where('equipment_id', $id)->update($request->fuel_meter);
+
+        return redirect('/equipments');
     }
 
     /**

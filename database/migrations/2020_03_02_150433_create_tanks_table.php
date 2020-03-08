@@ -16,7 +16,7 @@ class CreateTanksTable extends Migration
         Schema::create('tanks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('equipment_id');
-            $table->foreign('equipment_id')->references('id')->on('equipments');
+            $table->foreign('equipment_id')->references('id')->on('equipments')->onDelete('cascade')->onUpdate('cascade');
             $table->string('product');
             $table->integer('height');
             $table->integer('diameter');

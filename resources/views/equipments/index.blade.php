@@ -55,7 +55,7 @@
                             </thead>
                             <tbody>
                             @foreach($pumps as $pump)
-                                <tr class="clickable-row" data-href="equipments/{{$pump->equipment->id}}">
+                                <tr class="clickable-row" data-href="equipments/{{$pump->equipment->id}}/edit">
                                     <td>{{$pump->equipment->code}}</td>
                                     <td>{{$pump->equipment->mark}}</td>
                                     <td>{{$pump->equipment->type}}</td>
@@ -85,7 +85,7 @@
                             </thead>
                             <tbody>
                             @foreach($tanks as $tank)
-                                <tr class="clickable-row" data-href="equipments/{{$tank->equipment->id}}">
+                                <tr class="clickable-row" data-href="equipments/{{$tank->equipment->id}}/edit">
                                     <td>{{$tank->equipment->code}}</td>
                                     <td>{{$tank->equipment->mark}}</td>
                                     <td>{{$tank->equipment->model}}</td>
@@ -115,7 +115,7 @@
                             </thead>
                             <tbody>
                             @foreach($loadingArms as $loadingArm)
-                                <tr class="clickable-row" data-href="equipments/{{$loadingArm->equipment->id}}">
+                                <tr class="clickable-row" data-href="equipments/{{$loadingArm->equipment->id}}/edit">
                                     <td>{{$loadingArm->equipment->code}}</td>
                                     <td>{{$loadingArm->equipment->mark}}</td>
                                     <td>{{$loadingArm->equipment->type}}</td>
@@ -141,7 +141,7 @@
                             </thead>
                             <tbody>
                             @foreach($generators as $generator)
-                                <tr class="clickable-row" data-href="equipments/{{$generator->equipment->id}}">
+                                <tr class="clickable-row" data-href="equipments/{{$generator->equipment->id}}/edit">
                                     <td>{{$generator->equipment->code}}</td>
                                     <td>{{$generator->equipment->mark}}</td>
                                     <td>{{$generator->equipment->type}}</td>
@@ -166,7 +166,7 @@
                             </thead>
                             <tbody>
                             @foreach($fuelMeters as $fuelMeter)
-                                <tr class="clickable-row" data-href="equipments/{{$fuelMeter->equipment->id}}">
+                                <tr class="clickable-row" data-href="equipments/{{$fuelMeter->equipment->id}}/edit">
                                     <td>{{$fuelMeter->equipment->code}}</td>
                                     <td>{{$fuelMeter->equipment->mark}}</td>
                                     <td>{{$fuelMeter->equipment->type}}</td>
@@ -184,7 +184,7 @@
         </div>
     </section>
 
-    <!-- Centers Ends -->
+    <!-- Equipments Ends -->
 @endSection
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script>

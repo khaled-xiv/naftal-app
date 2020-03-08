@@ -1,5 +1,9 @@
+<?php
+    $temp = $_COOKIE['equip'];
+?>
+
 @extends('layouts.without_footer')
-@section('title', 'Add a '.substr($_COOKIE['equip'], 0, -1))
+@section('title', 'Add a '.substr($temp, 0, -1))
 @section('content')
     <!-- Add Equipment -->
     <br>
@@ -16,7 +20,7 @@
                         <div id="contact-right">
                             {!! Form::open(['method'=>'POST', 'action'=> 'EquipmentController@store']) !!}
                             @csrf
-                            <h4>Add {{substr($_COOKIE['equip'], 0, -1)}}</h4>
+                            <h4>Add {{substr($temp, 0, -1)}}</h4>
                             <br><br>
 
 
@@ -91,8 +95,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($_COOKIE['equip'] != 'Generators')
-                                @if($_COOKIE['equip'] == 'Pumps' || $_COOKIE['equip'] == 'Loading Arms')
+                            @if($temp != 'Generators')
+                                @if($temp == 'Pumps' || $temp == 'Loading Arms')
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
@@ -115,7 +119,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif($_COOKIE['equip'] == 'Tanks')
+                                @elseif($temp == 'Tanks')
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
@@ -179,7 +183,7 @@
                             @endif
                             <div class="row">
                                 <div id="submit-btn" class="pull-right">
-                                    <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Add {{substr($_COOKIE['equip'], 0, -1)}}</button>
+                                    <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Add {{substr($temp, 0, -1)}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}

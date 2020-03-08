@@ -10,7 +10,7 @@ class Pump extends Model
         'product','rate'
     ];
 
-    protected function equipment(){
+    public function equipment(){
 
         return $this->belongsTo('App\Equipment');
 
