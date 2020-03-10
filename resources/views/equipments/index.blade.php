@@ -6,6 +6,9 @@
 
         <div class="content-box-md">
 
+            <div class="container">
+
+
             <div class="limiter">
                 <div class="container-table100">
                     <div class="wrap-table100">
@@ -45,25 +48,25 @@
                     <table>
                         <thead>
                         <tr class="table100-head">
-                            <th class="column1">code</th>
-                            <th class="column2">mark</th>
-                            <th class="column3">type</th>
-                            <th class="column4">model</th>
-                            <th class="column5">product</th>
-                            <th class="column6">rate</th>
-                            <th class="column7">state</th>
+                            <th>code</th>
+                            <th>mark</th>
+                            <th>type</th>
+                            <th>model</th>
+                            <th>product</th>
+                            <th>rate</th>
+                            <th>state</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($pumps as $pump)
                             <tr class="clickable-row" data-href="pumps/{{$pump->id}}">
-                                <td class="column1">{{$pump->equipment->code}}</td>
-                                <td class="column2">{{$pump->equipment->mark}}</td>
-                                <td class="column3">{{$pump->equipment->type}}</td>
-                                <td class="column4">{{$pump->equipment->model}}</td>
-                                <td class="column5">{{$pump->product}}</td>
-                                <td class="column6">{{$pump->rate}}</td>
-                                <td class="column7">{{$pump->equipment->state}}</td>
+                                <td >{{$pump->equipment->code}}</td>
+                                <td>{{$pump->equipment->mark}}</td>
+                                <td >{{$pump->equipment->type}}</td>
+                                <td >{{$pump->equipment->model}}</td>
+                                <td >{{$pump->product}}</td>
+                                <td >{{$pump->rate}}</td>
+                                <td >{{$pump->equipment->state}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -73,29 +76,29 @@
                     <table>
                         <thead>
                         <tr class="table100-head">
-                            <th class="column1">code</th>
-                            <th class="column2">mark</th>
-                            <th class="column3">type</th>
-                            <th class="column4">model</th>
-                            <th class="column5">product</th>
-                            <th class="column6">height</th>
-                            <th class="column7">diameter</th>
-                            <th class="column8">capacity</th>
-                            <th class="column9">state</th>
+                            <th >code</th>
+                            <th >mark</th>
+                            <th >type</th>
+                            <th >model</th>
+                            <th >product</th>
+                            <th >height</th>
+                            <th >diameter</th>
+                            <th >capacity</th>
+                            <th >state</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($tanks as $tank)
                             <tr class="clickable-row" data-href="pumps/{{$tank->id}}">
-                                <td class="column1">{{$tank->equipment->code}}</td>
-                                <td class="column2">{{$tank->equipment->mark}}</td>
-                                <td class="column3">{{$tank->equipment->type}}</td>
-                                <td class="column4">{{$tank->equipment->model}}</td>
-                                <td class="column1">{{$tank->product}}</td>
-                                <td class="column2">{{$tank->height}}</td>
-                                <td class="column2">{{$tank->diameter}}</td>
-                                <td class="column2">{{$tank->capacity}}</td>
-                                <td class="column4">{{$tank->equipment->state}}</td>
+                                <td >{{$tank->equipment->code}}</td>
+                                <td >{{$tank->equipment->mark}}</td>
+                                <td >{{$tank->equipment->type}}</td>
+                                <td >{{$tank->equipment->model}}</td>
+                                <td >{{$tank->product}}</td>
+                                <td >{{$tank->height}}</td>
+                                <td >{{$tank->diameter}}</td>
+                                <td >{{$tank->capacity}}</td>
+                                <td >{{$tank->equipment->state}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -105,25 +108,25 @@
                     <table>
                         <thead>
                         <tr class="table100-head">
-                            <th class="column1">code</th>
-                            <th class="column2">mark</th>
-                            <th class="column3">type</th>
-                            <th class="column4">model</th>
-                            <th class="column5">product</th>
-                            <th class="column6">rate</th>
-                            <th class="column7">state</th>
+                            <th >code</th>
+                            <th >mark</th>
+                            <th >type</th>
+                            <th >model</th>
+                            <th >product</th>
+                            <th >rate</th>
+                            <th >state</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($loadingArms as $loadingArm)
                             <tr class="clickable-row" data-href="pumps/{{$loadingArm->id}}">
-                                <td class="column1">{{$loadingArm->equipment->code}}</td>
-                                <td class="column2">{{$loadingArm->equipment->mark}}</td>
-                                <td class="column3">{{$loadingArm->equipment->type}}</td>
-                                <td class="column4">{{$loadingArm->equipment->model}}</td>
-                                <td class="column5">{{$loadingArm->product}}</td>
-                                <td class="column6">{{$loadingArm->rate}}</td>
-                                <td class="column7">{{$loadingArm->equipment->state}}</td>
+                                <td >{{$loadingArm->equipment->code}}</td>
+                                <td >{{$loadingArm->equipment->mark}}</td>
+                                <td >{{$loadingArm->equipment->type}}</td>
+                                <td >{{$loadingArm->equipment->model}}</td>
+                                <td >{{$loadingArm->product}}</td>
+                                <td >{{$loadingArm->rate}}</td>
+                                <td >{{$loadingArm->equipment->state}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -133,25 +136,25 @@
                     <table>
                         <thead>
                         <tr class="table100-head">
-                            <th class="column1">code</th>
-                            <th class="column2">mark</th>
-                            <th class="column3">type</th>
-                            <th class="column4">model</th>
-                            <th class="column5">product</th>
-                            <th class="column6">rate</th>
-                            <th class="column7">state</th>
+                            <th >code</th>
+                            <th >mark</th>
+                            <th >type</th>
+                            <th >model</th>
+                            <th >product</th>
+                            <th >rate</th>
+                            <th >state</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($generators as $generator)
                             <tr class="clickable-row" data-href="pumps/{{$generator->id}}">
-                                <td class="column1">{{$generator->equipment->code}}</td>
-                                <td class="column2">{{$generator->equipment->mark}}</td>
-                                <td class="column3">{{$generator->equipment->type}}</td>
-                                <td class="column4">{{$generator->equipment->model}}</td>
-                                <td class="column5">{{$generator->product}}</td>
-                                <td class="column6">{{$generator->rate}}</td>
-                                <td class="column7">{{$generator->equipment->state}}</td>
+                                <td >{{$generator->equipment->code}}</td>
+                                <td >{{$generator->equipment->mark}}</td>
+                                <td>{{$generator->equipment->type}}</td>
+                                <td >{{$generator->equipment->model}}</td>
+                                <td >{{$generator->product}}</td>
+                                <td >{{$generator->rate}}</td>
+                                <td >{{$generator->equipment->state}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -161,23 +164,23 @@
                     <table>
                         <thead>
                         <tr class="table100-head">
-                            <th class="column1">code</th>
-                            <th class="column2">mark</th>
-                            <th class="column3">type</th>
-                            <th class="column4">model</th>
-                            <th class="column5">category</th>
-                            <th class="column6">state</th>
+                            <th >code</th>
+                            <th >mark</th>
+                            <th >type</th>
+                            <th >model</th>
+                            <th >category</th>
+                            <th >state</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($fuelMeters as $fuelMeter)
                             <tr class="clickable-row" data-href="pumps/{{$fuelMeter->id}}">
-                                <td class="column1">{{$fuelMeter->equipment->code}}</td>
-                                <td class="column2">{{$fuelMeter->equipment->mark}}</td>
-                                <td class="column3">{{$fuelMeter->equipment->type}}</td>
-                                <td class="column4">{{$fuelMeter->equipment->model}}</td>
-                                <td class="column5">{{$fuelMeter->category}}</td>
-                                <td class="column6">{{$fuelMeter->equipment->state}}</td>
+                                <td >{{$fuelMeter->equipment->code}}</td>
+                                <td >{{$fuelMeter->equipment->mark}}</td>
+                                <td >{{$fuelMeter->equipment->type}}</td>
+                                <td >{{$fuelMeter->equipment->model}}</td>
+                                <td >{{$fuelMeter->category}}</td>
+                                <td>{{$fuelMeter->equipment->state}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -187,6 +190,7 @@
 
             {{--            Tab Elements End --}}
 
+            </div>
         </div>
     </section>
 

@@ -10,9 +10,9 @@
 <body>
 
 
-<div class="limiter">
+<div class="limiter" >
     <div class="container-login100">
-        <div class="wrap-login100">
+        <div class="wrap-login100" >
             <form class="login100-form p-l-55 p-r-55 p-t-178" method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -73,7 +73,7 @@
 
 <!--    Bootstrap-->
 <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>
-<script src="{{ asset('js/main.js') }}" defer></script>
+<!--<script src="{{ asset('js/main.js') }}" defer></script>-->
 
 </body>
 </html>
