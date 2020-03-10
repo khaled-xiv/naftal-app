@@ -94,7 +94,7 @@ class EquipmentController extends Controller
                 $temp->fuel_meter()->save($secEq);
                 break;
         }
-        return redirect('/equipments');
+        return redirect('/equipment/'.$temp->id.'/components');
     }
 
     /**
@@ -165,6 +165,13 @@ class EquipmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Equipment::findOrFail($id)->delete();
+        return redirect('/equipments');
+    }
+
+    public function addComponents($id)
+    {
+        $equipment = Equipment::findOrFail($id);
+        return view('equipments.addComponents', compact('equipment'));
     }
 }

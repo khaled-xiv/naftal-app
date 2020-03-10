@@ -190,6 +190,17 @@
                             </div>
                         {!! Form::close() !!}
                         <!--                        </form>-->
+
+                            {!! Form::open(['method'=>'DELETE', 'action'=> ['EquipmentController@destroy', $equipment->id]]) !!}
+                            @csrf
+                            <div class="row">
+                                <div id="submit-btn" class="pull-right" style="margin-top:5px;">
+                                    <button class="btn btn-general btn-danger" type="submit" role="button">Delete {{substr($temp, 0, -1)}}</button>
+                                </div>
+                            </div>
+
+                            {!! Form::close() !!}
+
                         </div>
 
                     </div>

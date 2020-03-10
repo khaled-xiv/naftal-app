@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Component;
+use App\Equipment;
 use Illuminate\Http\Request;
-use App\Center;
 
-class CenterController extends Controller
+class ComponentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,7 @@ class CenterController extends Controller
      */
     public function index()
     {
-        $centers = Center::paginate(5);
-        return view('centers.index', compact('centers'));
+        //
     }
 
     /**
@@ -25,7 +25,7 @@ class CenterController extends Controller
      */
     public function create()
     {
-        return view('centers.create');
+        //
     }
 
     /**
@@ -36,8 +36,16 @@ class CenterController extends Controller
      */
     public function store(Request $request)
     {
-        Center::create($request->all());
-        return redirect('/centers');
+        $equipment = Equipment::findOrFail($request->equipment);
+
+        $component = new Component();
+        $component->designation = $request->designation;
+        $component->mark = $request->mark;
+        $component->reference = $request->reference;
+        $component->commissioned_on = $request->commissioned_on;
+
+        $equipment->components()->save($component);
+        return view('equipments.addComponents', compact('equipment'));
     }
 
     /**
@@ -48,8 +56,7 @@ class CenterController extends Controller
      */
     public function show($id)
     {
-        $center = Center::where('id', $id)->first();
-        return view('centers.show', compact('center'));
+        //
     }
 
     /**
@@ -60,8 +67,7 @@ class CenterController extends Controller
      */
     public function edit($id)
     {
-        $center = Center::findOrFail($id);
-        return view('centers.edit', compact('center'));
+        //
     }
 
     /**
@@ -73,8 +79,7 @@ class CenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Center::findOrFail($id)->update($request->all());
-        return redirect('/centers');
+        //
     }
 
     /**
@@ -85,7 +90,6 @@ class CenterController extends Controller
      */
     public function destroy($id)
     {
-        Center::findOrFail($id)->delete();
-        return redirect('/centers');
+        //
     }
 }

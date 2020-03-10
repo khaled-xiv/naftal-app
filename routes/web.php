@@ -54,3 +54,5 @@ Route::post('users/create', 'Auth\RegisterController@register');
 
 Route::resource('centers', 'CenterController');
 Route::resource('equipments', 'EquipmentController');
+Route::resource('components', 'ComponentController');
+Route::get('equipment/{id}/components', 'EquipmentController@addComponents');

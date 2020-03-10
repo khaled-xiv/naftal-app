@@ -10,7 +10,7 @@ class Component extends Model
         'designation', 'mark', 'reference', 'commissioned_on'
     ];
 
-    protected function equipment(){
+    public function equipment(){
 
         return $this->belongsTo('App\Equipment');
 
