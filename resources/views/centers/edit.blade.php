@@ -80,7 +80,7 @@
                         <!--                        </form>-->
 
                         {!! Form::open(['method'=>'DELETE', 'action'=> ['CenterController@destroy', $center->id]]) !!}
-
+                            @csrf
                             <div class="row">
                                 <div id="submit-btn" class="pull-right" style="margin-top:5px;">
                                     <button class="btn btn-general btn-danger" type="submit" role="button">Delete Center</button>

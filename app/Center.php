@@ -10,12 +10,12 @@ class Center extends Model
         'code', 'location', 'phone', 'storage_capacity'
     ];
 
-    protected function users()
+    public function users()
     {
         return $this->hasMany("App\User");
     }
 
-    protected function equipments()
+    public function equipments()
     {
         return $this->hasMany("App\Equipment");
     }

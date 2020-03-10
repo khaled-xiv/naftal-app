@@ -13,43 +13,43 @@ class Equipment extends Model
         'code', 'mark', 'type', 'model', 'state'
     ];
 
-    protected function center(){
+    public function center(){
 
         return $this->belongsTo('App\Center');
 
     }
 
-    protected function pump(){
+    public function pump(){
 
         return $this->hasOne('App\Pump');
 
     }
 
-    protected function loading_arm(){
+    public function loading_arm(){
 
         return $this->hasOne('App\LoadingArm');
 
     }
 
-    protected function tank(){
+    public function tank(){
 
         return $this->hasOne('App\Tank');
 
     }
 
-    protected function fuel_meter(){
+    public function fuel_meter(){
 
         return $this->hasOne('App\FuelMeter');
 
     }
 
-    protected function generator(){
+    public function generator(){
 
         return $this->hasOne('App\Generator');
 
     }
 
-    protected function components(){
+    public function components(){
 
         return $this->hasMany('App\Component');
 
