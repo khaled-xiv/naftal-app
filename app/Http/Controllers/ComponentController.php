@@ -25,7 +25,8 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        //
+        $id = $_GET['equipment'];
+        return redirect('/equipment/'.$id.'/components');
     }
 
     /**
@@ -45,7 +46,7 @@ class ComponentController extends Controller
         $component->commissioned_on = $request->commissioned_on;
 
         $equipment->components()->save($component);
-        return view('equipments.addComponents', compact('equipment'));
+        return view('components.create', compact('equipment'));
     }
 
     /**
@@ -67,7 +68,8 @@ class ComponentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $component = Component::findOrFail($id);
+        return view('components.edit', compact('component'));
     }
 
     /**
@@ -90,6 +92,7 @@ class ComponentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Component::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

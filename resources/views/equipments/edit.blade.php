@@ -15,8 +15,8 @@
             <div class="container">
 
                 <div class="row">
-
-                    <div class="col-md-6 col-md-offset-4">
+                    <!-- col-md-offset-3 -->
+                    <div class="col-md-6">
 
                         <div id="contact-right">
                             {!! Form::model($equipment, ['method'=>'PUT', 'action'=> ['EquipmentController@update', $equipment->id]]) !!}
@@ -203,6 +203,37 @@
 
                         </div>
 
+                    </div>
+                    <div class="col-md-6">
+                        <div id="contact-right">
+                            @foreach($components as $component)
+                                    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+                                        <div class="card-header">
+                                            {{$component->designation}}
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">{{$component->mark}}, {{$component->reference}}</p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
+                                                        <button style="color: #069;text-decoration: underline;cursor: pointer;" type="submit" role="button">Edit Component</button>
+                                                    {!! Form::close() !!}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {!! Form::open(['method'=>'DELETE', 'action'=> ['ComponentController@destroy', $component->id]]) !!}
+                                                        @csrf
+                                                        <button style="color: #ff3333;text-decoration: underline;cursor: pointer;" type="submit" role="button">Delete Component</button>
+                                                    {!! Form::close() !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><hr>
+                            @endforeach
+                            {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@create']]) !!}
+                                <input type="hidden" name="equipment" value="{{$equipment->id}}"/>
+                                <button class="btn btn-primary" type="submit" role="button">Add Component</button>
+                            {!! Form::close() !!}
+                        </div>
                     </div>
 
                 </div>

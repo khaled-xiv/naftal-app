@@ -3,7 +3,7 @@
 ?>
 
 @extends('layouts.without_footer')
-@section('title', 'Add a '.substr($temp, 0, -1))
+@section('title', 'Add a component')
 @section('content')
 
     <section id="add-equipment">
@@ -15,7 +15,7 @@
                 <div class="row">
 
                     <div class="col-md-6 col-md-offset-3">
-                        This part is optional, you can skip it
+                        <p>This part is optional, you can skip it</p>
                         <div id="contact-right">
                             {!! Form::open(['method'=>'POST', 'action'=> 'ComponentController@store']) !!}
                             @csrf

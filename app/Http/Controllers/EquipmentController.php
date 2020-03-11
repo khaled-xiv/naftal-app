@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Center;
+use App\Component;
 use App\Equipment;
 use App\FuelMeter;
 use App\Generator;
@@ -38,10 +39,7 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-
-        $centers=Center::all()->pluck('code','id');
-        return view('equipments.create', compact('centers'));
-
+        return redirect('/equipment/'.$temp->id.'/components');
     }
 
     /**
@@ -133,7 +131,8 @@ class EquipmentController extends Controller
                 $equipment = Equipment::with('fuel_meter')->find($id);
                 break;
         }
-        return view('equipments.edit', compact('equipment', 'x'));
+        $components = Component::whereEquipmentId($id)->get();
+        return view('equipments.edit', compact('equipment', 'components'));
     }
 
     /**
@@ -172,6 +171,6 @@ class EquipmentController extends Controller
     public function addComponents($id)
     {
         $equipment = Equipment::findOrFail($id);
-        return view('equipments.addComponents', compact('equipment'));
+        return view('components.create', compact('equipment'));
     }
 }
