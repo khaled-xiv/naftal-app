@@ -28,7 +28,6 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="code" placeholder="Code">--}}
                                         {!! Form::text('code', old('code'), ['class'=> $errors->get('code') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('code')
                                         <span class="invalid-feedback" role="alert">
@@ -40,7 +39,6 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" placeholder="Type">--}}
                                         {!! Form::text('type', old('type'), ['class'=> $errors->get('type') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('type')
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +51,6 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" required autocomplete="mark" placeholder="Mark">--}}
                                         {!! Form::text('mark', old('mark'), ['class'=> $errors->get('mark') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('mark')
                                         <span class="invalid-feedback" role="alert">
@@ -64,7 +61,6 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="model" type="text" class="form-control" name="model" required autocomplete="model" placeholder="Model">--}}
                                         {!! Form::text('model', old('model'), ['class'=> $errors->get('model') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('model')
                                         <span class="invalid-feedback" role="alert">
@@ -206,13 +202,17 @@
                     </div>
                     <div class="col-md-6">
                         <div id="contact-right">
+                            <h4>Components:</h4>
+                            <hr>
                             @foreach($components as $component)
                                     <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
                                         <div class="card-header">
-                                            {{$component->designation}}
+                                            <em>{{$component->designation}}</em>
                                         </div>
                                         <div class="card-body">
-                                            <p class="card-text">{{$component->mark}}, {{$component->reference}}</p>
+                                            <p class="card-text">
+                                                <b>mark:</b> {{$component->mark}}<br>
+                                                <b>reference:</b> {{$component->reference}}</p>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
@@ -229,10 +229,7 @@
                                         </div>
                                     </div><hr>
                             @endforeach
-                            {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@create']]) !!}
-                                <input type="hidden" name="equipment" value="{{$equipment->id}}"/>
-                                <button class="btn btn-primary" type="submit" role="button">Add Component</button>
-                            {!! Form::close() !!}
+                                <button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" type="submit" role="button">Add Component</button>
                         </div>
                     </div>
 
@@ -240,6 +237,73 @@
 
             </div>
 
+        </div>
+
+        <div class="modal fade" id="ComponentModal" tabindex="-1" role="dialog" aria-labelledby="addComponent" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addComponent">Add new component</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {!! Form::open(['method'=>'POST', 'action'=> 'ComponentController@store']) !!}
+                    <div class="modal-body">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="equipment" value="{{$equipment->id}}"/>
+                                    <input id="designation" type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" required autocomplete="designation" placeholder="Designation">
+                                    @error('designation')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="Mark">
+                                    @error('mark')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" required autocomplete="reference" placeholder="Reference">
+                                    @error('reference')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="commissioned_on" type="date" class="form-control" name="commissioned_on" required autocomplete="commissioned_on">
+                                    @error('commissioned_on')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-yellow">Add this component</button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
         </div>
 
     </section>

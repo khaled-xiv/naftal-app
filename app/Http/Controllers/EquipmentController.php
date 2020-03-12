@@ -39,7 +39,8 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return redirect('/equipment/'.$temp->id.'/components');
+        $centers=Center::all()->pluck('code','id');
+        return view('equipments.create', compact('centers'));
     }
 
     /**
@@ -92,7 +93,7 @@ class EquipmentController extends Controller
                 $temp->fuel_meter()->save($secEq);
                 break;
         }
-        return redirect('/equipment/'.$temp->id.'/components');
+        return redirect('/equipments');
     }
 
     /**
@@ -144,8 +145,6 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        //return $request;
         Equipment::findOrFail($id)->update($request->all());
         if($request->has('pump')) Pump::where('equipment_id', $id)->update($request->pump);
         else if($request->has('tank')) Tank::where('equipment_id', $id)->update($request->tank);
@@ -166,11 +165,5 @@ class EquipmentController extends Controller
     {
         Equipment::findOrFail($id)->delete();
         return redirect('/equipments');
-    }
-
-    public function addComponents($id)
-    {
-        $equipment = Equipment::findOrFail($id);
-        return view('components.create', compact('equipment'));
     }
 }
