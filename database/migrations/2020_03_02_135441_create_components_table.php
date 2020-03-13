@@ -22,6 +22,7 @@ class CreateComponentsTable extends Migration
             $table->string('reference');
             $table->date('commissioned_on');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

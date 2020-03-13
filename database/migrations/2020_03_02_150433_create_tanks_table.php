@@ -22,6 +22,7 @@ class CreateTanksTable extends Migration
             $table->integer('diameter');
             $table->integer('capacity');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

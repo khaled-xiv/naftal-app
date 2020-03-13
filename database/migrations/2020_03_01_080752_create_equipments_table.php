@@ -23,6 +23,7 @@ class CreateEquipmentsTable extends Migration
             $table->string('model');
             $table->string('state');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

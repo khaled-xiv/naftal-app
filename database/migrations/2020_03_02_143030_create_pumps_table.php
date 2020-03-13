@@ -20,6 +20,7 @@ class CreatePumpsTable extends Migration
             $table->string('product');
             $table->integer('rate');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -19,6 +19,7 @@ class CreateFuelMetersTable extends Migration
             $table->foreign('equipment_id')->references('id')->on('equipments')->onDelete('cascade')->onUpdate('cascade');
             $table->string('category');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

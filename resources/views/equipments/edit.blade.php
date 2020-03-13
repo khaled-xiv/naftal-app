@@ -187,15 +187,11 @@
                         {!! Form::close() !!}
                         <!--                        </form>-->
 
-                            {!! Form::open(['method'=>'DELETE', 'action'=> ['EquipmentController@destroy', $equipment->id]]) !!}
-                            @csrf
                             <div class="row">
                                 <div id="submit-btn" class="pull-right" style="margin-top:5px;">
-                                    <button class="btn btn-general btn-danger" type="submit" role="button">Delete {{substr($temp, 0, -1)}}</button>
+                                    <button class="btn btn-general btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">Delete {{substr($temp, 0, -1)}}</button>
                                 </div>
                             </div>
-
-                            {!! Form::close() !!}
 
                         </div>
 
@@ -220,16 +216,13 @@
                                                     {!! Form::close() !!}
                                                 </div>
                                                 <div class="col-md-6">
-                                                    {!! Form::open(['method'=>'DELETE', 'action'=> ['ComponentController@destroy', $component->id]]) !!}
-                                                        @csrf
-                                                        <button style="color: #ff3333;text-decoration: underline;cursor: pointer;" type="submit" role="button">Delete Component</button>
-                                                    {!! Form::close() !!}
+                                                        <button class="component-del" style="color: #ff3333;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">Delete Component</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><hr>
                             @endforeach
-                                <button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" type="submit" role="button">Add Component</button>
+                                <button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" role="button">Add Component</button>
                         </div>
                     </div>
 
@@ -306,6 +299,59 @@
             </div>
         </div>
 
+
+        <div class="modal fade" id="DeleteEquipModal" tabindex="-1" role="dialog" aria-labelledby="DeleteEquipment" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="DeleteEquipment">Are you sure you want to delete this equipment?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {!! Form::open(['method'=>'DELETE', 'action'=> ['EquipmentController@destroy', $equipment->id]]) !!}
+                    @csrf
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete equipment</button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="DeleteCompModal" tabindex="-1" role="dialog" aria-labelledby="DeleteComponent" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content component-del-2">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="DeleteComponent">Are you sure you want to delete this component?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete component</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script>
+
+        $(document).on("click", ".component-del", function () {
+            let Id = $(this).data('comp-id');
+            $(".component-del-2 form").attr('action', '/components/'+Id);
+            console.log($(".component-del-2 form").attr('action'));
+        });
+
+    </script>
     <!-- Edit Equipment Ends -->
 @endsection
