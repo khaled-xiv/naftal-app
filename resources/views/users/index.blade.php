@@ -25,7 +25,7 @@
                         <table>
                             <thead>
                             <tr class="table100-head">
-                                <th class="column1">Name</th>
+                                <th class="column1">Welcome</th>
                                 <th class="column2">Email</th>
                                 <th class="column3">Email verified at</th>
                                 <th class="column4">Phone</th>

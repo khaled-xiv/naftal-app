@@ -4,7 +4,6 @@
     @include('includes.head')
     <title>Sign In</title>
     <!-- Custom Styles -->
-    <link href="{{asset('css/util.css')}}" rel="stylesheet">
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
 </head>
 <body>
@@ -13,16 +12,15 @@
 <div class="limiter" >
     <div class="container-login100">
         <div class="wrap-login100" >
-            <form class="login100-form p-l-55 p-r-55 p-t-178" method="POST" action="{{ route('login') }}">
+            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ route('login') }}">
                 @csrf
-
                 <span class="login100-form-title">
                         Sign In
                 </span>
-
-                <div class="wrap-input100  m-b-16">
+                <div class="wrap-input100" style="margin-bottom: 16px">
                     <input class="input100" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
                            placeholder="Email Address" required>
+                    <span class="focus-input100"></span>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -32,6 +30,7 @@
 
                 <div class="wrap-input100  input-group">
                     <input class="input100" type="password" name="password" placeholder="Password" required>
+                    <span class="focus-input100"></span>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -39,7 +38,7 @@
                     @enderror
                 </div>
 
-                <div class="text-right p-t-13 p-b-23">
+                <div class="text-right" style="padding: 13px 0 23px 0 ">
 						<span class="txt1">
 							Forgot
 						</span>
@@ -65,15 +64,6 @@
         </div>
     </div>
 </div>
-
-
-<!--===============================================================================================-->
-<!-- Jquery -->
-<script src="{{ asset('js/jquery.min.js') }}" defer></script>
-
-<!--    Bootstrap-->
-<script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>
-<!--<script src="{{ asset('js/main.js') }}" defer></script>-->
 
 </body>
 </html>

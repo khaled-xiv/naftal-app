@@ -15,15 +15,17 @@ class CreateReqIntersTable extends Migration
     {
         Schema::create('req_inters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('equipement_id')->index()->unsigned()->nullable();
+            $table->unsignedBigInteger('equipment_id');
+            $table->foreign('equipment_id')->references('id')->on('equipments');
             $table->string('number')->unique();
+            $table->string('equipment_name');
             $table->string('description');
             $table->enum('degree_urgency',array('1','2','3'));
-            $table->timestamp('received_at_1')->nullable();
-            $table->string('description_2')->nullable();
-            $table->timestamp('received_at_2')->nullable();
-            $table->string('description_3')->nullable();
+            $table->timestamp('intervention_date')->nullable();
             $table->boolean('need_district')->default(0);
+            $table->string('description_2')->nullable();
+            $table->timestamp('intervention_date_2')->nullable();
+            $table->string('description_3')->nullable();
             $table->boolean('valide')->default(0);
             $table->timestamps();
         });

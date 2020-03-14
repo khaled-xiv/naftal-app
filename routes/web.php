@@ -38,6 +38,7 @@ Route::resource('/users', 'UsersController');
 
 
 Route::resource('/request-of-intervention', 'Req_interController') ;
+Route::post('/getequipment', 'Req_interController@getEquipment') ;
 
 
 
