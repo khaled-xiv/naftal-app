@@ -15,8 +15,8 @@
             <div class="container">
 
                 <div class="row">
-
-                    <div class="col-md-6 col-md-offset-4">
+                    <!-- col-md-offset-3 -->
+                    <div class="col-md-6">
 
                         <div id="contact-right">
                             {!! Form::model($equipment, ['method'=>'PUT', 'action'=> ['EquipmentController@update', $equipment->id]]) !!}
@@ -28,7 +28,6 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="code" placeholder="Code">--}}
                                         {!! Form::text('code', old('code'), ['class'=> $errors->get('code') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('code')
                                         <span class="invalid-feedback" role="alert">
@@ -40,7 +39,6 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" placeholder="Type">--}}
                                         {!! Form::text('type', old('type'), ['class'=> $errors->get('type') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('type')
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +51,6 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" required autocomplete="mark" placeholder="Mark">--}}
                                         {!! Form::text('mark', old('mark'), ['class'=> $errors->get('mark') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('mark')
                                         <span class="invalid-feedback" role="alert">
@@ -64,7 +61,6 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="model" type="text" class="form-control" name="model" required autocomplete="model" placeholder="Model">--}}
                                         {!! Form::text('model', old('model'), ['class'=> $errors->get('model') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('model')
                                         <span class="invalid-feedback" role="alert">
@@ -190,8 +186,44 @@
                             </div>
                         {!! Form::close() !!}
                         <!--                        </form>-->
+
+                            <div class="row">
+                                <div id="submit-btn" class="pull-right" style="margin-top:5px;">
+                                    <button class="btn btn-general btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">Delete {{substr($temp, 0, -1)}}</button>
+                                </div>
+                            </div>
+
                         </div>
 
+                    </div>
+                    <div class="col-md-6">
+                        <div id="contact-right">
+                            <h4>Components:</h4>
+                            <hr>
+                            @foreach($components as $component)
+                                    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+                                        <div class="card-header">
+                                            <em>{{$component->designation}}</em>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <b>mark:</b> {{$component->mark}}<br>
+                                                <b>reference:</b> {{$component->reference}}</p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
+                                                        <button style="color: #069;text-decoration: underline;cursor: pointer;" type="submit" role="button">Edit Component</button>
+                                                    {!! Form::close() !!}
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <button class="component-del" style="color: #ff3333;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">Delete Component</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><hr>
+                            @endforeach
+                                <button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" role="button">Add Component</button>
+                        </div>
                     </div>
 
                 </div>
@@ -200,6 +232,126 @@
 
         </div>
 
+        <div class="modal fade" id="ComponentModal" tabindex="-1" role="dialog" aria-labelledby="addComponent" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addComponent">Add new component</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {!! Form::open(['method'=>'POST', 'action'=> 'ComponentController@store']) !!}
+                    <div class="modal-body">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="hidden" name="equipment" value="{{$equipment->id}}"/>
+                                    <input id="designation" type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" required autocomplete="designation" placeholder="Designation">
+                                    @error('designation')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="Mark">
+                                    @error('mark')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" required autocomplete="reference" placeholder="Reference">
+                                    @error('reference')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input id="commissioned_on" type="date" class="form-control" name="commissioned_on" required autocomplete="commissioned_on">
+                                    @error('commissioned_on')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-yellow">Add this component</button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="DeleteEquipModal" tabindex="-1" role="dialog" aria-labelledby="DeleteEquipment" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="DeleteEquipment">Are you sure you want to delete this equipment?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {!! Form::open(['method'=>'DELETE', 'action'=> ['EquipmentController@destroy', $equipment->id]]) !!}
+                    @csrf
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete equipment</button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="DeleteCompModal" tabindex="-1" role="dialog" aria-labelledby="DeleteComponent" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content component-del-2">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="DeleteComponent">Are you sure you want to delete this component?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete component</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script>
+
+        $(document).on("click", ".component-del", function () {
+            let Id = $(this).data('comp-id');
+            $(".component-del-2 form").attr('action', '/components/'+Id);
+            console.log($(".component-del-2 form").attr('action'));
+        });
+
+    </script>
     <!-- Edit Equipment Ends -->
 @endsection

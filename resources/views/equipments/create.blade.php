@@ -15,7 +15,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-6 col-md-offset-4">
+                    <div class="col-md-6 col-md-offset-3">
 
                         <div id="contact-right">
                             {!! Form::open(['method'=>'POST', 'action'=> 'EquipmentController@store']) !!}
@@ -188,6 +188,7 @@
                             </div>
                         {!! Form::close() !!}
                         <!--                        </form>-->
+
                         </div>
 
                     </div>
