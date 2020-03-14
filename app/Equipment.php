@@ -27,6 +27,11 @@ class Equipment extends Model
 
     }
 
+    public function req_inters()
+    {
+        return $this->hasMany('App\Req_inter');
+    }
+
     public function pump(){
 
         return $this->hasOne('App\Pump');

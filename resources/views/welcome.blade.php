@@ -5,10 +5,8 @@
 <section id="home">
 
 <!--     Background Video -->
-    <video id="home-bg-video" poster="video/solo.jpg" autoplay loop muted>
-        <source src="video/Video_institutionnelle.mp4" type="video/mp4">
-        <source src="video/solo.ogv" type="video/ogg">
-        <source src="video/solo.webm" type="video/webm">
+    <video id="home-bg-video" poster="{{asset('video/naftal_demo.PNG')}}" autoplay loop muted>
+        <source src="{{asset('video/Video_institutionnelle.mp4')}}" type="video/mp4">
     </video>
 
 <!--     Overlay -->
@@ -163,13 +161,13 @@
 <!-- Contact Ends -->
 
 <!-- Google Map -->
-<section id="google-map">
-    <div class="container-fluid">
-        <div class="row">
-            <div id="map"></div>
-        </div>
-    </div>
-</section>
+<!--<section id="google-map">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--            <div id="map"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 <!-- Google Map Ends -->
 
 @stop

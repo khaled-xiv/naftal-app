@@ -24,7 +24,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="code2" type="text" class="form-control @error('code') is-invalid @enderror" name="code2" value="{{ old('code') }}" required autocomplete="name" placeholder="Code">--}}
+                                        {!! Form::label('code', 'Code:',['class'=>'label_padding']) !!}
                                         {!! Form::text('code', old('code'), ['class'=> $errors->get('code') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('code')
                                         <span class="invalid-feedback" role="alert">
@@ -36,12 +36,12 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="email" placeholder="Location">--}}
-                                        {!! Form::text('location', old('code'), ['class'=> $errors->get('location') ? 'form-control is-invalid' : 'form-control']) !!}
+                                        {!! Form::label('location', 'Location:',['class'=>'label_padding']) !!}
+                                        {!! Form::text('location', old('location'), ['class'=> $errors->get('location') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('location')
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -49,8 +49,8 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="storage_capacity" type="number" class="form-control @error('number') is-invalid @enderror" name="storage_capacity" required autocomplete="new-password" placeholder="Storage Capacity">--}}
-                                        {!! Form::text('storage_capacity', old('code'), ['class'=> $errors->get('storage_capacity') ? 'form-control is-invalid' : 'form-control']) !!}
+                                        {!! Form::label('storage_capacity', 'Storage capacity:',['class'=>'label_padding']) !!}
+                                        {!! Form::number('storage_capacity', old('storage_capacity'), ['class'=> $errors->get('storage_capacity') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('storage_capacity')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -60,8 +60,8 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-{{--                                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone" placeholder="Phone Number">--}}
-                                        {!! Form::text('phone', old('code'), ['class'=> $errors->get('phone') ? 'form-control is-invalid' : 'form-control']) !!}
+                                        {!! Form::label('phone', 'Phone number:',['class'=>'label_padding']) !!}
+                                        {!! Form::text('phone', old('phone'), ['class'=> $errors->get('phone') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -18,12 +18,11 @@
                         {!! Form::open(['method'=>'POST', 'action'=> 'Auth\RegisterController@register']) !!}
                             @csrf
                             <h4>Add User</h4>
-                        <br><br>
-
-
+                        <br>
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
+                                            {!! Form::label('name', 'Name:',['class'=>'label_padding']) !!}
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name">
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -35,6 +34,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
+                                            {!! Form::label('email', 'Email:',['class'=>'label_padding']) !!}
                                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
 
                                             @error('email')
@@ -48,6 +48,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
+                                            {!! Form::label('password', 'Password:',['class'=>'label_padding']) !!}
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
 
                                             @error('password')
@@ -59,6 +60,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
+                                            {!! Form::label('password-confirm', 'Confimr Password:',['class'=>'label_padding']) !!}
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                                         </div>
                                     </div>
@@ -66,6 +68,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
+                                            {!! Form::label('role_id', 'Role:',['class'=>'label_padding']) !!}
                                             {!! Form::select('role_id', $roles , null, ['class'=>'form-control','placeholder'=>'Select a role'])!!}
 
                                             @error('role_id')
@@ -78,6 +81,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
+                                            {!! Form::label('center_id', 'Center:',['class'=>'label_padding']) !!}
                                             {!! Form::select('center_id', $centers , null, ['class'=>'form-control','placeholder'=>'select a center'])!!}
                                             @error('center_id')
                                             <span class="invalid-feedback" role="alert">

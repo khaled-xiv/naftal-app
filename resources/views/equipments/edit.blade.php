@@ -35,6 +35,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('code', 'Code:',['class'=>'label_padding']) !!}
                                         {!! Form::text('code', old('code'), ['class'=> $errors->get('code') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('code')
                                         <span class="invalid-feedback" role="alert">
@@ -46,6 +47,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('type', 'Type:',['class'=>'label_padding']) !!}
                                         {!! Form::text('type', old('type'), ['class'=> $errors->get('type') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('type')
                                         <span class="invalid-feedback" role="alert">
@@ -58,6 +60,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('mark', 'Mark:',['class'=>'label_padding']) !!}
                                         {!! Form::text('mark', old('mark'), ['class'=> $errors->get('mark') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('mark')
                                         <span class="invalid-feedback" role="alert">
@@ -68,6 +71,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('model', 'Model:',['class'=>'label_padding']) !!}
                                         {!! Form::text('model', old('model'), ['class'=> $errors->get('model') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('model')
                                         <span class="invalid-feedback" role="alert">
@@ -82,6 +86,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
+                                                {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
                                                 {!! Form::text(($temp == 'Pumps') ? 'pump[product]' : 'loading_arm[product]',
                                                                ($temp == 'Pumps') ? old('pump[product]') : old('loading_arm[product]'),
                                                                ['class'=> (($temp == 'Pumps') && $errors->get('pump[product]')) ||
@@ -96,6 +101,7 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
+                                                {!! Form::label('rate', 'Rate:',['class'=>'label_padding']) !!}
                                                 {!! Form::number(($temp == 'Pumps') ? 'pump[rate]' : 'loading_arm[rate]',
                                                                 ($temp == 'Pumps') ? old('pump[rate]') : old('loading_arm[rate]'),
                                                                 ['class'=> (($temp == 'Pumps') && $errors->get('pump[rate]')) ||
@@ -113,6 +119,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
+                                                {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
                                                 {!! Form::text('tank[product]', old('tank[product]'), ['class'=> $errors->get('tank[product]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[product]')
                                                 <span class="invalid-feedback" role="alert">
@@ -123,6 +130,7 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
+                                                {!! Form::label('capacity', 'Capacity:',['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[capacity]', old('tank[capacity]'), ['class'=> $errors->get('tank[capacity]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[capacity]')
                                                 <span class="invalid-feedback" role="alert">
@@ -135,6 +143,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
+                                                {!! Form::label('height', 'Height:',['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[height]', old('tank[height]'), ['class'=> $errors->get('tank[height]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[height]')
                                                 <span class="invalid-feedback" role="alert">
@@ -145,6 +154,7 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
+                                                {!! Form::label('diameter', 'Diameter:',['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[diameter]', old('tank[diameter]'), ['class'=> $errors->get('tank[diameter]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[diameter]')
                                                 <span class="invalid-feedback" role="alert">
@@ -158,6 +168,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
+                                                {!! Form::label('category', 'Category:',['class'=>'label_padding']) !!}
                                                 {!! Form::text('fuel_meter[category]', old('fuel_meter[category]'), ['class'=> $errors->get('fuel_meter[category]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('fuel_meter[category]')
                                                 <span class="invalid-feedback" role="alert">
@@ -174,6 +185,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('state', 'State:',['class'=>'label_padding']) !!}
                                         {!! Form::select('state',  ['ON' => 'Active', 'OFF' => 'Not Active'], null, ['class'=>'form-control'])!!}
                                         @error('state')
                                         <span class="invalid-feedback" role="alert">
@@ -255,6 +267,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <input type="hidden" name="equipment" value="{{$equipment->id}}"/>
+                                    {!! Form::label('designation', 'Designation:',['class'=>'label_padding']) !!}
                                     <input id="designation" type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" required autocomplete="designation" placeholder="Designation">
                                     @error('designation')
                                     <span class="invalid-feedback" role="alert">
@@ -265,6 +278,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
+                                    {!! Form::label('mark', 'Mark:',['class'=>'label_padding']) !!}
                                     <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="Mark">
                                     @error('mark')
                                     <span class="invalid-feedback" role="alert">
@@ -277,6 +291,7 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
+                                    {!! Form::label('reference', 'Reference:',['class'=>'label_padding']) !!}
                                     <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" value="{{ old('reference') }}" required autocomplete="reference" placeholder="Reference">
                                     @error('reference')
                                     <span class="invalid-feedback" role="alert">
@@ -287,6 +302,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
+                                    {!! Form::label('commissioned_on', 'Commissioned on:',['class'=>'label_padding']) !!}
                                     <input id="commissioned_on" type="date" class="form-control" name="commissioned_on" required autocomplete="commissioned_on">
                                     @error('commissioned_on')
                                     <span class="invalid-feedback" role="alert">

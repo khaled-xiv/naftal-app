@@ -34,10 +34,11 @@ Route::resource('/account', 'AccountController')->middleware('auth') ;
 Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
 Route::post('/users/removePhone/{id}', 'UsersController@removePhone');
 Route::post('/users/close/{id}', 'UsersController@close');
-Route::resource('/users', 'UsersController')->middleware('auth') ;
+Route::resource('/users', 'UsersController');
 
 
 Route::resource('/request-of-intervention', 'Req_interController') ;
+Route::post('/getequipment', 'Req_interController@getEquipment') ;
 
 
 

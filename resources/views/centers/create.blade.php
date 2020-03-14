@@ -11,7 +11,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-6 col-md-offset-4">
+                    <div class="col-md-6 col-md-offset-3">
 
                         <div id="contact-right">
 
@@ -24,6 +24,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('code', 'Code:',['class'=>'label_padding']) !!}
                                         <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="name" placeholder="Code">
                                         @error('code')
                                         <span class="invalid-feedback" role="alert">
@@ -35,6 +36,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('location', 'Location:',['class'=>'label_padding']) !!}
                                         <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="email" placeholder="Location">
 
                                         @error('location')
@@ -48,8 +50,8 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('storage_capacity', 'Storage capacity:',['class'=>'label_padding']) !!}
                                         <input id="storage_capacity" type="number" class="form-control @error('number') is-invalid @enderror" name="storage_capacity" value="{{ old('storage_capacity') }}" required autocomplete="new-password" placeholder="Storage Capacity">
-
                                         @error('storage_capacity')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -59,8 +61,8 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
+                                        {!! Form::label('phone', 'Phone number:',['class'=>'label_padding']) !!}
                                         <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" placeholder="Phone Number">
-
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
