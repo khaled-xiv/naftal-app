@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" required autocomplete="mark" placeholder="Mark">
+                                        <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="Mark">
 
                                         @error('mark')
                                         <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input id="model" type="text" class="form-control" name="model" required autocomplete="model" placeholder="Model">
+                                        <input id="model" type="text" class="form-control" name="model" value="{{ old('model') }}" required autocomplete="model" placeholder="Model">
                                         @error('model')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        {!! Form::select('center_id', $centers , null, ['class'=>'form-control', 'placeholder'=>'select a center'])!!}
+                                        {!! Form::select('center_id', $centers , null, ['class'=>'form-control'])!!}
                                         @error('center_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -100,7 +100,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" required autocomplete="product" placeholder="Product">
+                                                <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" required autocomplete="product" placeholder="Product">
                                                 @error('product')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -110,7 +110,7 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input id="rate" type="number" class="form-control" name="rate" required autocomplete="rate" placeholder="Rate">
+                                                <input id="rate" type="number" class="form-control" name="rate" value="{{ old('rate') }}" required autocomplete="rate" placeholder="Rate">
                                                 @error('rate')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -123,7 +123,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" required autocomplete="product" placeholder="Product">
+                                            <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" required autocomplete="product" placeholder="Product">
                                             @error('product')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <input id="capacity" type="number" class="form-control" name="capacity" required autocomplete="capacity" placeholder="Capacity">
+                                            <input id="capacity" type="number" class="form-control" name="capacity" value="{{ old('capacity') }}" required autocomplete="capacity" placeholder="Capacity">
                                             @error('capacity')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -145,7 +145,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <input id="height" type="number" class="form-control @error('height') is-invalid @enderror" name="height" required autocomplete="height" placeholder="Height">
+                                            <input id="height" type="number" class="form-control @error('height') is-invalid @enderror" name="height" value="{{ old('height') }}" required autocomplete="height" placeholder="Height">
                                             @error('height')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -155,7 +155,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <input id="diameter" type="number" class="form-control" name="diameter" required autocomplete="diameter" placeholder="Diameter">
+                                            <input id="diameter" type="number" class="form-control" name="diameter" value="{{ old('diameter') }}" required autocomplete="diameter" placeholder="Diameter">
                                             @error('diameter')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -168,7 +168,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input id="category" type="text" class="form-control" name="category" required autocomplete="category" placeholder="Category">
+                                                <input id="category" type="text" class="form-control" name="category" value="{{ old('category') }}" required autocomplete="category" placeholder="Category">
                                                 @error('category')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

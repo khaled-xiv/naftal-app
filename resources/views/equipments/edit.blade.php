@@ -14,6 +14,13 @@
 
             <div class="container">
 
+
+                <div class="row" style="display:{!! $errors->hasBag('components') ? 'inline;' : 'none;' !!}">
+                    <div class="alert alert-danger" role = "alert">
+                        component not added, make sure that the reference is unique.
+                    </div>
+                </div>
+
                 <div class="row">
                     <!-- col-md-offset-3 -->
                     <div class="col-md-6">
@@ -270,7 +277,7 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" required autocomplete="reference" placeholder="Reference">
+                                    <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" value="{{ old('reference') }}" required autocomplete="reference" placeholder="Reference">
                                     @error('reference')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -345,13 +352,13 @@
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script>
-
-        $(document).on("click", ".component-del", function () {
-            let Id = $(this).data('comp-id');
-            $(".component-del-2 form").attr('action', '/components/'+Id);
-            console.log($(".component-del-2 form").attr('action'));
+        $(document).ready(function($) {
+            $(document).on("click", ".component-del", function () {
+                let Id = $(this).data('comp-id');
+                $(".component-del-2 form").attr('action', '/components/' + Id);
+                console.log($(".component-del-2 form").attr('action'));
+            });
         });
-
     </script>
     <!-- Edit Equipment Ends -->
 @endsection

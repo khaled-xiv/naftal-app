@@ -19,6 +19,7 @@
                             <li><a class="smooth-scroll" href="{{url('centers')}}">Centers</a></li>
                             <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">Intervention</a></li>
                             <li><a class="btn btn-link" href="{{url('users')}}">Users</a></li>
+                            <li><a class="btn btn-link" href="{{url('forums')}}">Forums</a></li>
                             <li><a class="smooth-scroll" href="#contact">Contact</a></li>
                             @guest
                             <li><a class="btn btn-link" href="{{ route('login')}}">Sign in</a></li>
@@ -53,6 +54,7 @@
                             <li><a class="smooth-scroll" href="{{url('centers')}}">Centers</a></li>
                             <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">Intervention</a></li>
                             <li><a class="btn btn-link" href="{{url('users')}}">Users</a></li>
+                            <li><a class="btn btn-link" href="{{url('forums')}}">Forums</a></li>
                             <li><a class="smooth-scroll" href="#contact">Contact</a></li>
                             @guest
                             <li><a class="btn btn-link" href="{{ route('login')}}">Sign in</a></li>

@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use App\Component;
 use App\Equipment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ComponentController extends Controller
 {
+
+    protected function validator(array $data, $id)
+    {
+        return Validator::make($data, [
+            'designation' => ['required', 'string', 'max:255'],
+            'mark' => ['required', 'string', 'max:255'],
+            'reference' => ['required', 'string', 'max:255', Rule::unique('components')->ignore($id)],
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +48,14 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $this->validator($request->all(), -1);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator, 'components')
+                ->withInput();
+        }
+
         $equipment = Equipment::findOrFail($request->equipment);
 
         $component = new Component();
@@ -80,6 +100,15 @@ class ComponentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validator = $this->validator($request->all(), $id);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $component = Component::findOrFail($id);
         $component->update($request->all());
         $equip = $component->equipment->id;

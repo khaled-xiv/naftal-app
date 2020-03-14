@@ -12,9 +12,23 @@ use App\LoadingArm;
 use App\Pump;
 use App\Tank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class EquipmentController extends Controller
 {
+
+    protected function validator(array $data, $id)
+    {
+        return Validator::make($data, [
+            'code' => ['required', 'string', 'max:255', Rule::unique('equipments')->ignore($id)],
+            'type' => ['required', 'string', 'max:255'],
+            'mark' => ['required', 'string', 'max:255'],
+            'model' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'string', 'max:255'],
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,6 +65,14 @@ class EquipmentController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $this->validator($request->all(), -1);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $center = Center::findOrFail($request->center_id);
         $equipment = new Equipment();
         $equipment->code = $request->code;
@@ -145,6 +167,15 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validator = $this->validator($request->all(), $id);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         Equipment::findOrFail($id)->update($request->all());
         if($request->has('pump')) Pump::where('equipment_id', $id)->update($request->pump);
         else if($request->has('tank')) Tank::where('equipment_id', $id)->update($request->tank);
