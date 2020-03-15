@@ -43,16 +43,49 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
+                <div class="container">
+                    <h3>Testing</h3>
+                    <hr>
+                    /////////////////////////////
+                    /////////////////////////////
+                    /////////////////////////////
+                    <hr>
+                    @foreach($centers->chunk(3) as $chunk)
+                        <div class="row">
+                            @foreach($chunk as $center)
+                                <div class="col-md-4">
+                                    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+                                        <div class="card-header">
+                                            <em>{{$center->location}}</em>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <b>code:</b> {{$center->code}}<br>
+                                                <b>phone number:</b> {{$center->phone}}</p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <button style="color: #069;text-decoration: underline;cursor: pointer;" role="button">Edit center</button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button class="component-del" style="color: #ff3333;text-decoration: underline;cursor: pointer;" role="button">Delete center</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
             </div>
-
 
             <div class="row">
                 <div class="text-center">
                     {{$centers->render()}}
                 </div>
+
             </div>
 
         </div>

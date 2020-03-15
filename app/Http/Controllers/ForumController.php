@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Forum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ForumController extends Controller
 {
+
+    protected function validator(array $data, $id)
+    {
+        return Validator::make($data, [
+            'title' => ['required', 'string', 'max:255'],
+            'body' => ['required'],
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +25,8 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forums.index');
+        $forums = Forum::paginate(10);
+        return view('forums.index', compact('forums'));
     }
 
     /**
@@ -23,7 +36,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        //
+        return view('forums.create');
     }
 
     /**
@@ -34,7 +47,19 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $this->validator($request->all(), -1);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $forum = new Forum();
+        $forum->title = $request->title;
+        $forum->body = $request->body;
+        $user = Auth::user();
+        $user->forums()->save($forum);
+        return redirect('/forums');
     }
 
     /**
