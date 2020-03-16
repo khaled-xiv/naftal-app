@@ -81,7 +81,7 @@
 
                             <div class="row">
                                 <div id="submit-btn" class="pull-right" style="margin-top:5px;">
-                                    <button class="btn btn-general btn-danger" data-toggle="modal" data-target="#DeleteCenterModal" role="button">Delete Center</button>
+                                    <button role="button" class="btn btn-general btn-danger" data-toggle="modal" data-target="#DeleteCenterModal">Delete Center</button>
                                 </div>
                             </div>
 
@@ -96,7 +96,7 @@
         </div>
 
         <div class="modal fade" id="DeleteCenterModal" tabindex="-1" role="dialog" aria-labelledby="DeleteCenter" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="DeleteCenter">Are you sure you want to delete this center?</h5>
@@ -114,7 +114,6 @@
                 </div>
             </div>
         </div>
-
 
     </section>
     <!-- Edit Center Ends -->

@@ -220,14 +220,15 @@
                             <h4>Components:</h4>
                             <hr>
                             @foreach($components as $component)
-                                    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+                                    <div class="card border-dark mb-3" style="max-width: 23rem;">
                                         <div class="card-header">
                                             <em>{{$component->designation}}</em>
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">
                                                 <b>mark:</b> {{$component->mark}}<br>
-                                                <b>reference:</b> {{$component->reference}}</p>
+                                                <b>reference:</b> {{$component->reference}}
+                                            </p>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
@@ -252,7 +253,7 @@
         </div>
 
         <div class="modal fade" id="ComponentModal" tabindex="-1" role="dialog" aria-labelledby="addComponent" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="addComponent">Add new component</h5>
@@ -324,7 +325,7 @@
 
 
         <div class="modal fade" id="DeleteEquipModal" tabindex="-1" role="dialog" aria-labelledby="DeleteEquipment" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="DeleteEquipment">Are you sure you want to delete this equipment?</h5>
@@ -345,7 +346,7 @@
 
 
         <div class="modal fade" id="DeleteCompModal" tabindex="-1" role="dialog" aria-labelledby="DeleteComponent" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content component-del-2">
                     <div class="modal-header">
                         <h5 class="modal-title" id="DeleteComponent">Are you sure you want to delete this component?</h5>
@@ -372,7 +373,6 @@
             $(document).on("click", ".component-del", function () {
                 let Id = $(this).data('comp-id');
                 $(".component-del-2 form").attr('action', '/components/' + Id);
-                console.log($(".component-del-2 form").attr('action'));
             });
         });
     </script>
