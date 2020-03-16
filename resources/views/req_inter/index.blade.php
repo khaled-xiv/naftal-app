@@ -54,7 +54,7 @@
                         @foreach($openned_req as $openned_req)
                         <tr class="clickable-row" >
                             <td>{{$openned_req->number}}</td>
-                            <td>{{$openned_req->equipment}}</td>
+{{--                            <td>{{$openned_req->equipment}}</td>--}}
                             <td>{{$openned_req->equipment_code->code}}</td>
                             <td>{{$openned_req->description}}</td>
                             <td>{{$openned_req->degree_urgency}}</td>

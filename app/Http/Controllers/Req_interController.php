@@ -23,8 +23,8 @@ class Req_interController extends Controller
     public function index()
     {
         //$openned_req=Req_inter::where('intervention_date', null)->get();
-        $opened_req=Req_inter::where('id', 1)->first();
-        return $opened_req->equipment;
+        $opened_req=Req_inter::all();
+//        return $opened_req->equipment;
 
         return view('req_inter.index',compact('opened_req'));
     }
