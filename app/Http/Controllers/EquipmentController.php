@@ -73,7 +73,7 @@ class EquipmentController extends Controller
                 ->withInput();
         }
 
-        $center = Center::findOrFail($request->center_id);
+        $center = Center::findOrFail($request->centers);
         $equipment = new Equipment();
         $equipment->code = $request->code;
         $equipment->type = $request->type;

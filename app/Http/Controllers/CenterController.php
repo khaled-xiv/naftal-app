@@ -27,7 +27,7 @@ class CenterController extends Controller
      */
     public function index()
     {
-        $centers = Center::paginate(5);
+        $centers = Center::all();
         return view('centers.index', compact('centers'));
     }
 

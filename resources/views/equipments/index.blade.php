@@ -10,12 +10,22 @@
                     <div class="container-table100">
                         <div class="wrap-table100">
                             <div class="table100">
-                                <ul class="nav nav-tabs">
-                                    <li class = "active equipment"><a data-toggle="tab" href="#pumps">Pumps</a></li>
-                                    <li class = "equipment"><a data-toggle="tab" href="#tanks">Tanks</a></li>
-                                    <li class = "equipment"><a data-toggle="tab" href="#loadingArms">Loading Arms</a></li>
-                                    <li class = "equipment"><a data-toggle="tab" href="#generators">Generators</a></li>
-                                    <li class = "equipment"><a data-toggle="tab" href="#fuelMeters">Fuel Meters</a></li>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class = "nav-item active equipment">
+                                        <a class="nav-link" id="pumps-tab" data-toggle="tab" href="#pumps" role="tab" aria-controls="pumps" aria-selected="true">Pumps</a>
+                                    </li>
+                                    <li class = "nav-item equipment">
+                                        <a class="nav-link" id="tanks-tab" data-toggle="tab" href="#tanks" role="tab" aria-controls="tanks" aria-selected="false">Tanks</a>
+                                    </li>
+                                    <li class = "nav-item equipment">
+                                        <a class="nav-link" id="loadingArms-tab" data-toggle="tab" href="#loadingArms" role="tab" aria-controls="loadingArms" aria-selected="false">Loading Arms</a>
+                                    </li>
+                                    <li class = "nav-item equipment">
+                                        <a class="nav-link" id="generators-tab" data-toggle="tab" href="#generators" role="tab" aria-controls="generators" aria-selected="false">Generators</a>
+                                    </li>
+                                    <li class = "nav-item equipment">
+                                        <a class="nav-link" id="fuelMeters-tab" data-toggle="tab" href="#fuelMeters" role="tab" aria-controls="fuelMeters" aria-selected="false">Fuel Meters</a>
+                                    </li>
                                 </ul>
                             </div>
                             {!! Form::open(['method'=>'GET', 'action'=> ['EquipmentController@create']]) !!}
@@ -24,23 +34,15 @@
                                     <button class="btn btn-general btn-primary" type="submit" role="button"></button>
                                 </div>
                             </div>
-
                             {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
 
-
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-5">
-
-                    </div>
-                </div>
-
                 {{--            Tab Elements--}}
 
-                <div class="tab-content">
-                    <div id="pumps" class="tab-pane fade in active">
+                <div class="tab-content" id="myTabContent">
+                    <div id="pumps" class="tab-pane fade show active" role="tabpanel" aria-labelledby="pumps-tab">
                         <table>
                             <thead>
                             <tr class="table100-head">
@@ -68,7 +70,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="tanks" class="tab-pane fade">
+                    <div id="tanks" class="tab-pane fade" role="tabpanel" aria-labelledby="tanks-tab">
                         <table>
                             <thead>
                             <tr class="table100-head">
@@ -100,7 +102,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="loadingArms" class="tab-pane fade">
+                    <div id="loadingArms" class="tab-pane fade" role="tabpanel" aria-labelledby="loadingArms-tab">
                         <table>
                             <thead>
                             <tr class="table100-head">
@@ -128,7 +130,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="generators" class="tab-pane fade">
+                    <div id="generators" class="tab-pane fade" role="tabpanel" aria-labelledby="generators-tab">
                         <table>
                             <thead>
                             <tr class="table100-head">
@@ -152,7 +154,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="fuelMeters" class="tab-pane fade">
+                    <div id="fuelMeters" class="tab-pane fade" role="tabpanel" aria-labelledby="fuelMeters-tab">
                         <table>
                             <thead>
                             <tr class="table100-head">

@@ -546,3 +546,7 @@ ul.navbar-nav>li>a:focus{
     -webkit-animation-delay: 3s;
     animation-delay: 3s;
 }
+
+.card-text {
+    font : 1.1em 'serif';
+}
