@@ -1,9 +1,10 @@
 
 <!-- Header -->
 <header>
-    <nav class="navbar navbar-fixed-top white-nav-top">
+{{--    <nav class="navbar  white-nav-top">--}}
+        <nav class="navbar navbar-expand-lg  fixed-top  white-nav-top">
         <div class="container-fluid">
-            <div class="site-nav-wrapper">
+            <div class="site-nav-wrapper ml-auto">
 
                 <div class="navbar-header">
                     <!-- Mobile Menu Open Button -->
@@ -15,12 +16,12 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav pull-right">
                             <li><a class="btn btn-link" href=" {{ url('/')}}">Home</a></li>
-                            <li><a class="smooth-scroll" href="{{url('equipments')}}">Equipments</a></li>
-                            <li><a class="smooth-scroll" href="{{url('centers')}}">Centers</a></li>
+                            <li><a class="btn btn-link" href="{{url('equipments')}}">Equipments</a></li>
+                            <li><a class="btn btn-link" href="{{url('centers')}}">Centers</a></li>
                             <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">Intervention</a></li>
                             <li><a class="btn btn-link" href="{{url('users')}}">Users</a></li>
                             <li><a class="btn btn-link" href="{{url('forums')}}">Forums</a></li>
-                            <li><a class="smooth-scroll" href="#contact">Contact</a></li>
+                            <li><a class="btn btn-link" href="#contact">Contact</a></li>
                             @guest
                             <li><a class="btn btn-link" href="{{ route('login')}}">Sign in</a></li>
                             @else
@@ -45,17 +46,17 @@
                 <!-- Mobile Menu -->
                 <div id="mobile-nav">
                     <!-- Mobile Menu Close Button -->
-                    <span id="mobile-nav-close-btn">&times;</span>
+                    <span id="mobile-nav-close-btn" style="margin-bottom: 0px">&times;</span>
 
                     <div id="mobile-nav-content">
-                        <ul class="nav">
-                            <li><a class="btn btn-link" href=" {{ url('/')}}">Home</a></li>
-                            <li><a class="smooth-scroll" href="{{url('equipments')}}">Equipments</a></li>
-                            <li><a class="smooth-scroll" href="{{url('centers')}}">Centers</a></li>
+                        <ul class="nav " style="display: flex;flex-direction: column;">
+                            <li><a class="btn btn-link list-inline-item" href=" {{ url('/')}}">Home</a></li>
+                            <li><a class="btn btn-link" href="{{url('equipments')}}">Equipments</a></li>
+                            <li><a class="btn btn-link" href="{{url('centers')}}">Centers</a></li>
                             <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">Intervention</a></li>
                             <li><a class="btn btn-link" href="{{url('users')}}">Users</a></li>
                             <li><a class="btn btn-link" href="{{url('forums')}}">Forums</a></li>
-                            <li><a class="smooth-scroll" href="#contact">Contact</a></li>
+                            <li><a class="btn btn-link" href="#contact">Contact</a></li>
                             @guest
                             <li><a class="btn btn-link" href="{{ route('login')}}">Sign in</a></li>
                             @else

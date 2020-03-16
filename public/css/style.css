@@ -419,6 +419,7 @@ ul.navbar-nav>li>a:hover,
 ul.navbar-nav>li>a:focus{
     background: none;
     color: #f4c613;
+    text-decoration: none;
 }
 
 
@@ -426,7 +427,7 @@ ul.navbar-nav>li>a:focus{
 
 .white-nav-top {
     background: #fff;
-    padding: 10px 0;
+    padding: 20px 0;
     -webkit-box-shadow: 0 8px 6px -9px #999;
     box-shadow: 0 8px 6px -9px #999;
     z-index: 2;
