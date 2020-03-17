@@ -7,7 +7,7 @@
     <div class="content-box-md">
 
         <div class="limiter">
-
+{{--            <img src="{{assets('img/1.png')}}"/>--}}
             <ul class="list-group">
                 <a href="{{url('centers/'.$center->id.'/edit')}}" class="list-group-item list-group-item-action active">{{$center->code}}</a>
                 <li class="list-group-item">{{$center->location}}</li>

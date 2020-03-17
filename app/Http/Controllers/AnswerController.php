@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Forum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class ForumController extends Controller
+class AnswerController extends Controller
 {
+
 
     protected function validator(array $data, $id)
     {
         return Validator::make($data, [
-            'title' => ['required', 'string', 'max:255'],
             'body' => ['required'],
         ]);
     }
@@ -25,8 +26,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $forums = Forum::paginate(10);
-        return view('forums.index', compact('forums'));
+        //
     }
 
     /**
@@ -36,7 +36,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forums.create');
+        //
     }
 
     /**
@@ -51,15 +51,16 @@ class ForumController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()
-                ->withErrors($validator)
+                ->withErrors($validator, 'components')
                 ->withInput();
         }
-        $forum = new Forum();
-        $forum->title = $request->title;
-        $forum->body = $request->body;
+
+        $answer = new Answer();
+        $answer->body = $request->body;
+        $answer->forum_id = $request->forum;
         $user = Auth::user();
-        $user->forums()->save($forum);
-        return redirect('/forums');
+        $user->forums()->save($answer);
+        return redirect()->back();
     }
 
     /**
@@ -70,8 +71,7 @@ class ForumController extends Controller
      */
     public function show($id)
     {
-        $forum = Forum::findOrFail($id);
-        return view('forums.show', compact('forum'));
+        //
     }
 
     /**

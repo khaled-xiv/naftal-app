@@ -1,10 +1,7 @@
-<div class="card my-4">
-    <h5 class="card-header">Search</h5>
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for...">
-        <span class="input-group-btn">
-                                    <button class="btn btn-secondary" type="button">Go!</button>
-                                </span>
+<div class="input-group mb-3">
+    <input type="text" style="border-radius:5px 0px 0px 5px;" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
     </div>
 </div>
 <br>

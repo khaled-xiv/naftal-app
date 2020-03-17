@@ -13,7 +13,7 @@
 
                     <div class="col-md-6 col-md-offset-3">
 
-                        <div id="contact-right">
+                        <div class="contact-right">
 
                             {!! Form::open(['method'=>'POST', 'action'=> 'CenterController@store']) !!}
                             @csrf

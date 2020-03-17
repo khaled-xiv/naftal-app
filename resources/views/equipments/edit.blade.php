@@ -25,7 +25,7 @@
                     <!-- col-md-offset-3 -->
                     <div class="col-md-6">
 
-                        <div id="contact-right">
+                        <div class="contact-right">
                             {!! Form::model($equipment, ['method'=>'PUT', 'action'=> ['EquipmentController@update', $equipment->id]]) !!}
                             @csrf
                             <h4>Edit {{substr($temp, 0, -1)}}</h4>
@@ -216,7 +216,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <div id="contact-right">
+                        <div class="contact-right">
                             <h4>Components:</h4>
                             <hr>
                             @foreach($components as $component)

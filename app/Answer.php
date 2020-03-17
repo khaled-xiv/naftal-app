@@ -4,19 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Forum extends Model
+class Answer extends Model
 {
-
-    protected $fillable = ['title', 'body', 'votes'];
+    protected $fillable = ['body', 'votes'];
 
     public function user()
     {
         return $this->belongsTo("App\User");
     }
 
-    public function answers()
+    public function forum()
     {
-        return $this->hasMany("App\Answer");
+        return $this->belongsTo("App\Forum");
     }
 
 }

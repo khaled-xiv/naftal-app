@@ -13,7 +13,7 @@
 
                     <div class="col-md-6 col-md-offset-4">
 
-                        <div id="contact-right">
+                        <div class="contact-right">
 
                             {!! Form::model($center, ['method'=>'PUT', 'action'=> ['CenterController@update', $center->id]]) !!}
                             @csrf

@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <div id="contact-right">
+                        <div class="contact-right">
                             {!! Form::model($component, ['method'=>'PUT', 'action'=> ['ComponentController@update', $component->id]]) !!}
                             @csrf
                             <h4>Edit Component</h4>

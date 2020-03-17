@@ -107,7 +107,7 @@
                 <div class="col-md-6">
 
 <!--                     Contact Right -->
-                    <div id="contact-right">
+                    <div class="contact-right">
 
                         <form>
                             <h4>Send Message</h4>

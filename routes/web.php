@@ -57,3 +57,4 @@ Route::resource('centers', 'CenterController');
 Route::resource('equipments', 'EquipmentController');
 Route::resource('components', 'ComponentController');
 Route::resource('forums', 'ForumController');
+Route::resource('answers', 'AnswerController');
