@@ -58,3 +58,7 @@ Route::resource('equipments', 'EquipmentController');
 Route::resource('components', 'ComponentController');
 Route::resource('forums', 'ForumController');
 Route::resource('answers', 'AnswerController');
+Route::post('forums/{id}/upvote', 'ForumController@upvote');
+Route::post('forums/{id}/downvote', 'ForumController@downvote');
+Route::post('answers/{id}/upvote', 'AnswerController@upvote');
+Route::post('answers/{id}/downvote', 'AnswerController@downvote');

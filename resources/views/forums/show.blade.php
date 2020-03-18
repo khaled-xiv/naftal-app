@@ -14,10 +14,8 @@
 
                     <!-- Post Content Column -->
                     <div class="col-lg-8">
-
                         <!-- Title -->
                         <h2 class="mt-4">{{$forum->title}}</h2>
-
                         <!-- Author -->
                         by
                         <a href="#">{{$forum->user->name}}</a>
@@ -26,10 +24,30 @@
 
                         <hr>
                         <!-- Post Content -->
-                        <p class="lead">
-                            {{$forum->body}}
-                        </p>
-
+                        <div class="row">
+                            <div class="col-1">
+                                <div>
+                                    <div class="vote">
+                                        <button onclick="updateVotes(1, 1, {{$forum->id}})">
+                                            <i class="fa fa-2x fa-caret-up"></i>
+                                        </button>
+                                    </div>
+                                    <div id="votesBoxF{{$forum->id}}" class="vote">
+                                        {{$forum->votes}}
+                                    </div>
+                                    <div class="vote">
+                                        <button onclick="updateVotes(1, 2, {{$forum->id}})">
+                                            <i class="fa fa-2x fa-caret-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <p class="lead">
+                                    {{$forum->body}}
+                                </p>
+                            </div>
+                        </div>
                         <hr>
 
                         <!-- Answers -->
@@ -53,13 +71,34 @@
                                         @foreach($forum->answers as $answer)
                                         <li class="media">
                                             <div class="media-body">
-                                                <span class="text-muted pull-right">
-                                                    <small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
-                                                </span>
-                                                <strong style="color: #f4c613;">{{$answer->user->name}}</strong>
-                                                <p>
-                                                    {{$answer->body}}
-                                                </p>
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <div>
+                                                            <div class="vote">
+                                                                <button onclick="updateVotes(2, 1, {{$answer->id}})">
+                                                                    <i class="fa fa-2x fa-caret-up"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div id="votesBoxA{{$answer->id}}" class="vote">
+                                                                {{$answer->votes}}
+                                                            </div>
+                                                            <div class="vote">
+                                                                <button onclick="updateVotes(2, 2, {{$answer->id}})">
+                                                                    <i class="fa fa-2x fa-caret-down"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-11">
+                                                        <span class="text-muted pull-right">
+                                                            <small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
+                                                        </span>
+                                                        <strong style="color: #f4c613;">{{$answer->user->name}}</strong>
+                                                        <p>
+                                                            {{$answer->body}}
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </li>
                                         @endforeach
@@ -91,6 +130,31 @@
 
 
     </section>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script>
+
+        function updateVotes(type, up, id){
+            let forumOrAnswer = (type === 1) ? '/forums/' : '/answers/';
+            let upOrDown = (up === 1) ? '/upvote':'/downvote';
+            $.ajax({
+                type:'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {// change data to this object
+                    _token : $('meta[name="csrf-token"]').attr('content')
+                },
+                url:forumOrAnswer + id + upOrDown,
+                success:function(data) {
+                    if(forumOrAnswer === '/forums/')
+                        $("#votesBoxF"+id).html(data.msg);
+                    else
+                        $("#votesBoxA"+id).html(data.msg);
+                }
+            });
+        }
+    </script>
 
 
 

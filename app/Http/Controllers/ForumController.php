@@ -107,4 +107,23 @@ class ForumController extends Controller
     {
         //
     }
+
+    public function upvote($id){
+        $forum = Forum::findOrFail($id);
+        $votes = $forum->votes;
+        $votes++;
+        $forum->votes = $votes;
+        $forum->save();
+        return response()->json(array('msg'=> $votes), 200);
+    }
+
+    public function downvote($id){
+        $forum = Forum::findOrFail($id);
+        $votes = $forum->votes;
+        $votes--;
+        $forum->votes = $votes;
+        $forum->save();
+        return response()->json(array('msg'=> $votes), 200);
+    }
+
 }

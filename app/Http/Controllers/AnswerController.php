@@ -107,4 +107,23 @@ class AnswerController extends Controller
     {
         //
     }
+
+    public function upvote($id){
+        $answer = Answer::findOrFail($id);
+        $votes = $answer->votes;
+        $votes++;
+        $answer->votes = $votes;
+        $answer->save();
+        return response()->json(array('msg'=> $votes), 200);
+    }
+
+    public function downvote($id){
+        $answer = Answer::findOrFail($id);
+        $votes = $answer->votes;
+        $votes--;
+        $answer->votes = $votes;
+        $answer->save();
+        return response()->json(array('msg'=> $votes), 200);
+    }
+
 }

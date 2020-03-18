@@ -113,3 +113,16 @@
     border-bottom:1px dashed #efefef;
     margin-bottom:25px;
 }
+
+.vote {
+    text-align: center;
+    justify-content: center;
+}
+
+.fa-caret-up:hover {
+    color: #f4c613;
+}
+
+.fa-caret-down:hover {
+    color: #007bff;
+}
