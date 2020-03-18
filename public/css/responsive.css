@@ -239,6 +239,7 @@
         line-height: 18px;
         margin: 8px 2px 30px 2px;
     }
+
     /* Generic */
     .btn-general {
         padding: 8px 25px 6px 25px;
@@ -429,6 +430,13 @@
 
 
 /* Extra Small Devices (Portrait Phones & Smaller Devices) */
+@media (max-width: 575px) {
+    /*account*/
+    .credential .credential-detail{
+        margin-left: 40px;
+        margin-top: 0;
+    }
+}
 
 @media (max-width: 480px) {
     /* Home */

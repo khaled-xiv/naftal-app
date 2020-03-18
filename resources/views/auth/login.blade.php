@@ -18,9 +18,8 @@
                         Sign In
                 </span>
                 <div class="wrap-input100" style="margin-bottom: 16px">
-                    <input class="input100" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
-                           placeholder="Email Address" required>
-                    <span class="focus-input100"></span>
+                    <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
+                           placeholder="Enter your email address" required>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -29,8 +28,7 @@
                 </div>
 
                 <div class="wrap-input100  input-group">
-                    <input class="input100" type="password" name="password" placeholder="Password" required>
-                    <span class="focus-input100"></span>
+                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="Enter your password" required>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

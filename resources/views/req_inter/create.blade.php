@@ -11,7 +11,7 @@
 
             <div class="row">
 
-                <div class="col-md-6 col-md-offset-4">
+                <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
 
                     <div id="contact-right">
 
@@ -21,7 +21,7 @@
                         <br>
 
                         <div class="row">
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     {!! Form::label('number', 'Request number:',['class'=>'label_padding']) !!}
                                     <input id="number" type="text"
@@ -37,7 +37,7 @@
 
                             </div>
 
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     {!! Form::label('degree_urgency', 'Degree of urgency:',['class'=>'label_padding']) !!}
                                     {!! Form::select('degree_urgency', array('1'=>'1','2'=>'2','3'=>'3') , null,
@@ -55,7 +55,7 @@
 
                         <div class="row">
 
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     {!! Form::label('created_at', 'Date of creation:',['class'=>'label_padding']) !!}
                                     <input id="created_at" type="datetime-local"
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     {!! Form::label('equipment', 'Select an equipment:',['class'=>'label_padding']) !!}
                                     {!! Form::select('equipment', $equips , null,
@@ -84,7 +84,7 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group" id="equipment_id_code" style="display: none">
                                     {!! Form::label('equipment_id', 'Select the equipment code:',['class'=>'label_padding']) !!}
                                     {!! Form::select('equipment_id',[], null,
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="row">
-                            <div id="submit-btn" class="pull-right">
+                            <div id="submit-btn" class="ml-auto">
                                 <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">
                                     Create
                                 </button>
@@ -129,9 +129,6 @@
         </div>
 
     </div>
-
-    </div>
-
 </section>
 <!--  Add Request Ends -->
 @endsection

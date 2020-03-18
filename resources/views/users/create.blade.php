@@ -11,7 +11,7 @@
 
             <div class="row">
 
-                <div class="col-md-6 col-md-offset-4">
+                <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
 
                     <div id="contact-right">
 
@@ -20,7 +20,7 @@
                             <h4>Add User</h4>
                         <br>
                                 <div class="row">
-                                    <div class="col-md-6 col-sm-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('name', 'Name:',['class'=>'label_padding']) !!}
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name">
@@ -32,10 +32,10 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-md-6 col-sm-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('email', 'Email:',['class'=>'label_padding']) !!}
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Exemple@exemple.com">
 
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 col-sm-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('password', 'Password:',['class'=>'label_padding']) !!}
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
@@ -58,7 +58,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-sm-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('password-confirm', 'Confimr Password:',['class'=>'label_padding']) !!}
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 col-sm-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('role_id', 'Role:',['class'=>'label_padding']) !!}
                                             {!! Form::select('role_id', $roles , null, ['class'=>'form-control','placeholder'=>'Select a role'])!!}
@@ -79,7 +79,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-md-6 col-sm-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('center_id', 'Center:',['class'=>'label_padding']) !!}
                                             {!! Form::select('center_id', $centers , null, ['class'=>'form-control','placeholder'=>'select a center'])!!}
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div id="submit-btn" class="pull-right">
+                                    <div id="submit-btn" class="ml-auto">
                                         <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Add User</button>
                                     </div>
                                 </div>

@@ -10,6 +10,7 @@ use App\Pump;
 use App\Req_inter;
 use App\Tank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,11 +23,10 @@ class Req_interController extends Controller
      */
     public function index()
     {
-        //$openned_req=Req_inter::where('intervention_date', null)->get();
-        $opened_req=Req_inter::all();
-//        return $opened_req->equipment;
+        $openned_reqs=Req_inter::where('intervention_date', null)
+            ->get();
 
-        return view('req_inter.index',compact('opened_req'));
+        return view('req_inter.index',compact('openned_reqs'));
     }
 
     public function getEquipment(Request $request)
@@ -34,30 +34,35 @@ class Req_interController extends Controller
         $pumps = DB::table('equipments')
             ->leftJoin('pumps', 'equipments.id', '=', 'pumps.equipment_id')
             ->whereNotNull('pumps.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
             ->select('equipments.code', 'pumps.equipment_id')
             ->get();
 
         $tanks = DB::table('equipments')
             ->join('tanks', 'equipments.id', '=', 'tanks.equipment_id')
             ->whereNotNull('tanks.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
             ->select('equipments.code', 'tanks.equipment_id')
             ->get();
 
         $loadingArms = DB::table('equipments')
             ->join('loading_Arms', 'equipments.id', '=', 'loading_Arms.equipment_id')
             ->whereNotNull('loading_Arms.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
             ->select('equipments.code', 'loading_Arms.equipment_id')
             ->get();
 
         $generators = DB::table('equipments')
             ->join('generators', 'equipments.id', '=', 'generators.equipment_id')
             ->whereNotNull('generators.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
             ->select('equipments.code', 'generators.equipment_id')
             ->get();
 
         $fuelMeters =  DB::table('equipments')
             ->join('fuel_Meters', 'equipments.id', '=', 'fuel_Meters.equipment_id')
             ->whereNotNull('fuel_Meters.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
             ->select('equipments.code', 'fuel_Meters.equipment_id')
             ->get();
         switch ($request['name']){
@@ -109,7 +114,7 @@ class Req_interController extends Controller
             'created_at' => $request['created_at']
         ]);
         $equips=['Pumps'=>'Pumps','Tanks'=>'Tanks','Loding arms'=>'Loding arms','Generators'=>'Generators','Fuel meters'=>'Fuel meters'];
-        return view('req_inter.create', compact('equips'));
+        return  view('req_inter.create', compact('equips'));
     }
 
     /**
