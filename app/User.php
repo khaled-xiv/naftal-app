@@ -67,5 +67,10 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         return $this->hasMany("App\Forum");
     }
 
+    public function answers()
+    {
+        return $this->hasMany("App\Answer");
+    }
+
 }
 

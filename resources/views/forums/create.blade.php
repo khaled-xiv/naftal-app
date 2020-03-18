@@ -15,7 +15,7 @@
                     <!-- Post Content Column -->
                     <div class="col-lg-8 col-md-8">
 
-                        <div id="contact-right">
+                        <div class="contact-right" style="overflow: hidden;">
 
                             {!! Form::open(['method'=>'POST', 'action'=> 'ForumController@store']) !!}
                             @csrf
@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('body', 'Content:',['class'=>'label_padding']) !!}
-                                <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required></textarea>
+                                <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required placeholder="Type your problem here..."></textarea>
                                 @error('body')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

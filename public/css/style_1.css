@@ -108,3 +108,8 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}

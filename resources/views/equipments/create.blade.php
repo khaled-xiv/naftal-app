@@ -15,9 +15,9 @@
 
                 <div class="row">
 
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-6">
 
-                        <div id="contact-right">
+                        <div class="contact-right">
                             {!! Form::open(['method'=>'POST', 'action'=> 'EquipmentController@store']) !!}
                             @csrf
                             <h4>Add {{substr($temp, 0, -1)}}</h4>
