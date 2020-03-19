@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Forum;
+use App\Likable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -109,20 +110,53 @@ class ForumController extends Controller
     }
 
     public function upvote($id){
+
         $forum = Forum::findOrFail($id);
         $votes = $forum->votes;
-        $votes++;
-        $forum->votes = $votes;
-        $forum->save();
+        $user = Auth::user();
+        $likable = $user->liked_forums()->where('likable_id', $id)->first();
+        if ($likable === null){
+            $votes++;
+            $forum->votes = $votes;
+            $forum->save();
+            $user->liked_forums()->attach($id, ['up' => 1]);
+        }else if($likable->pivot->up === 0){
+                $votes += 2;
+                $forum->votes = $votes;
+                $forum->save();
+                $user->liked_forums()->sync([$id => ['up' => 1]]);
+        }else{
+            $votes--;
+            $forum->votes = $votes;
+            $forum->save();
+            $user->liked_forums()->detach($id);
+        }
         return response()->json(array('msg'=> $votes), 200);
+
     }
 
     public function downvote($id){
+
         $forum = Forum::findOrFail($id);
         $votes = $forum->votes;
-        $votes--;
-        $forum->votes = $votes;
-        $forum->save();
+        $user = Auth::user();
+        $likable = $user->liked_forums()->where('likable_id', $id)->first();
+        if ($likable === null){
+            $votes--;
+            $forum->votes = $votes;
+            $forum->save();
+            $user->liked_forums()->attach($id, ['up' => 0]);
+        }else if($likable->pivot->up === 1){
+            $votes -= 2;
+            $forum->votes = $votes;
+            $forum->save();
+            $user->liked_forums()->sync([$id => ['up' => 0]]);
+        }else{
+            $votes++;
+            $forum->votes = $votes;
+            $forum->save();
+            $user->liked_forums()->detach($id);
+        }
         return response()->json(array('msg'=> $votes), 200);
     }
 

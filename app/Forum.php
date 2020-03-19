@@ -19,4 +19,10 @@ class Forum extends Model
         return $this->hasMany("App\Answer");
     }
 
+    public function users()
+    {
+        return $this->morphToMany('App\User', 'likable');
+    }
+
+
 }
