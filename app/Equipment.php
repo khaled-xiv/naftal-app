@@ -9,6 +9,7 @@ use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
 class Equipment extends Model
 {
     use SoftDeletes;
+    use SoftCascadeTrait;
 
     protected $dates = ['deleted_at'];
 
