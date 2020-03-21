@@ -10,6 +10,13 @@
 
             <div class="container">
 
+
+                <div class="row" style="display:{!! $errors->hasBag('update') ? 'inline;' : 'none;' !!}">
+                    <div class="alert alert-danger" role = "alert">
+                        could not complete your request, make sure your input is valid.
+                    </div>
+                </div>
+
                 <div class="row">
 
                     <!-- Post Content Column -->
@@ -46,6 +53,11 @@
                                 <p class="lead">
                                     {{$forum->body}}
                                 </p>
+                                @if(Auth::user() == $forum->user)
+                                    <div class="pull-right">
+                                        <button class="editFsAndAs-1" style="color: #069;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">Edit question</button>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <hr>
@@ -97,12 +109,12 @@
                                                             <small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
                                                         </span>
                                                         <strong style="color: #f4c613;">{{$answer->user->name}}</strong>
-                                                        <p>
+                                                        <p id="{{$answer->id}}">
                                                             {{$answer->body}}
                                                         </p>
                                                         @if(Auth::user() == $answer->user)
                                                         <div class="pull-right">
-                                                            <button style="color: #069;text-decoration: underline;cursor: pointer;">Edit answer</button>
+                                                            <button class="editFsAndAs-1" style="color: #069;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button">Edit answer</button>
                                                         </div>
                                                         @endif
                                                     </div>
@@ -137,11 +149,73 @@
         <!-- /.container -->
 
 
+        <div class="modal fade" id="EditFsAndAsModal" tabindex="-1" role="dialog" aria-labelledby="EditFsAndAs" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content editFsAndAs-2">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="EditFsAndAs"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST">
+                        @csrf
+                        <input type="hidden" name="_method" value="PUT"/>
+                        <div class="modal-body">
+                            <div class="form-group forum-title">
+                                {!! Form::label('title', 'Title:',['class'=>'label_padding']) !!}
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required>
+                                @error('designation')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('body', 'Content:',['class'=>'label_padding']) !!}
+                                <textarea id="Modalbody" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required rows="5"></textarea>
+                                @error('body')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Edit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script>
 
+        $(document).ready(function($) {
+            $(document).on("click", ".editFsAndAs-1", function () {
+                let target;
+                let Id = $(this).data('id');
+                if(Id < 0){
+                    $(".forum-title").show();
+                    $("#EditFsAndAs").html("Edit Question");
+                    $("#title").val($("h2.mt-4").html().trim());
+                    $("textarea#Modalbody").val($("p.lead").html().trim());
+                    Id = -Id;
+                    target = '/forums/';
+                }else{
+                    $(".forum-title").hide();
+                    $("#EditFsAndAs").html("Edit Answer");
+                    $("#title").val("no title");
+                    $("textarea#Modalbody").val($("#"+Id).html().trim());
+                    target = '/answers/';
+                }
+                $(".editFsAndAs-2 form").attr('action', target + Id);
+            });
+        });
 
         function updateVotes(type, up, id){
             let forumOrAnswer = (type === 1) ? '/forums/' : '/answers/';

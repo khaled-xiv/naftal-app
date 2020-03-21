@@ -63,11 +63,11 @@ class Req_interController extends Controller
             ->select('equipments.code', 'fuel_Meters.equipment_id')
             ->get();
         switch ($request['name']){
-            case "Pumps": return response()->json($pumps,200)  ;
-            case "Generators": return  response()->json($generators,200) ;
-            case "Tanks": return  response()->json($tanks,200);
-            case "Loding arms": return  response()->json($loadingArms,200) ;
-            case "Fuel meters": return   response()->json($fuelMeters,200);
+            case "Pumps": return response()->json(array('msg'=> $pumps),200);
+            case "Generators": return  response()->json(array('msg'=> $generators),200);
+            case "Tanks": return  response()->json(array('msg'=> $tanks),200);
+            case "Loding arms": return  response()->json(array('msg'=> $loadingArms),200);
+            case "Fuel meters": return   response()->json(array('msg'=> $fuelMeters),200);
         }
     }
     /**

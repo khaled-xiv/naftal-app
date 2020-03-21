@@ -95,7 +95,15 @@ class ForumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validator($request->all(), $id);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator, 'update')
+                ->withInput();
+        }
+        Forum::findOrFail($id)->update($request->all());
+        return redirect()->back();
     }
 
     /**

@@ -77,7 +77,7 @@
                                     @error('equipment')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                        </span>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -132,7 +132,6 @@
 </section>
 <!--  Add Request Ends -->
 @endsection
-
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script>
 
@@ -150,11 +149,10 @@
             data: { name:$("select[name='equipment']").val(), _token: '{{csrf_token()}}' },
             success:function(data){
                 $("#equipment_id_code").show();
-                console.log(data);
+                console.log(data.msg);
                 $("#equipment_id").children().remove();
-                for (var i = 0; i <= data.length; i++) {
-
-                    $("#equipment_id").append('<option value='+data[i].equipment_id+' >' + data[i].code + '</option>').val(data[i].equipment_id);
+                for (var i = 0; i < data.msg.length; i++){
+                    $("#equipment_id").append('<option value='+data.msg[i].equipment_id+' >' + data.msg[i].code + '</option>');//.val(data.msg[i].equipment_id);
                 }
 
             }
