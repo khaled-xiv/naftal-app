@@ -68,6 +68,9 @@
                                     <div class="clearfix"></div>
                                     <hr>
                                     <ul class="media-list">
+                                        <div class="answers">
+                                            {{$number = $forum->answers->count()}} @if($number != 1) Answers @else Answer @endif
+                                        </div>
                                         @foreach($forum->answers as $answer)
                                         <li class="media">
                                             <div class="media-body">
@@ -97,6 +100,11 @@
                                                         <p>
                                                             {{$answer->body}}
                                                         </p>
+                                                        @if(Auth::user() == $answer->user)
+                                                        <div class="pull-right">
+                                                            <button style="color: #069;text-decoration: underline;cursor: pointer;">Edit answer</button>
+                                                        </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

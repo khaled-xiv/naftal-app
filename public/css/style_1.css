@@ -128,7 +128,9 @@
 }
 
 
-
+.answers {
+    text-align : right;
+}
 
 
 .container .box
