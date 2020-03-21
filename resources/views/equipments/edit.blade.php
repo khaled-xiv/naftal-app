@@ -367,7 +367,7 @@
         </div>
     </section>
 
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+
     <script>
         $(document).ready(function($) {
             $(document).on("click", ".component-del", function () {
