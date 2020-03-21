@@ -107,4 +107,56 @@ class AnswerController extends Controller
     {
         //
     }
+
+    public function upvote($id){
+
+        $answer = Answer::findOrFail($id);
+        $votes = $answer->votes;
+        $user = Auth::user();
+        $likable = $user->liked_answers()->where('likable_id', $id)->first();
+        if ($likable === null){
+            $votes++;
+            $answer->votes = $votes;
+            $answer->save();
+            $user->liked_answers()->attach($id, ['up' => 1]);
+        }else if($likable->pivot->up === 0){
+            $votes += 2;
+            $answer->votes = $votes;
+            $answer->save();
+            $user->liked_answers()->sync([$id => ['up' => 1]]);
+        }else{
+            $votes--;
+            $answer->votes = $votes;
+            $answer->save();
+            $user->liked_answers()->detach($id);
+        }
+        return response()->json(array('msg'=> $votes), 200);
+
+    }
+
+    public function downvote($id){
+
+        $answer = Answer::findOrFail($id);
+        $votes = $answer->votes;
+        $user = Auth::user();
+        $likable = $user->liked_answers()->where('likable_id', $id)->first();
+        if ($likable === null){
+            $votes--;
+            $answer->votes = $votes;
+            $answer->save();
+            $user->liked_answers()->attach($id, ['up' => 0]);
+        }else if($likable->pivot->up === 1){
+            $votes -= 2;
+            $answer->votes = $votes;
+            $answer->save();
+            $user->liked_answers()->sync([$id => ['up' => 0]]);
+        }else{
+            $votes++;
+            $answer->votes = $votes;
+            $answer->save();
+            $user->liked_answers()->detach($id);
+        }
+        return response()->json(array('msg'=> $votes), 200);
+    }
+
 }

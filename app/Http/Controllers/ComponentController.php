@@ -16,7 +16,9 @@ class ComponentController extends Controller
         return Validator::make($data, [
             'designation' => ['required', 'string', 'max:255'],
             'mark' => ['required', 'string', 'max:255'],
-            'reference' => ['required', 'string', 'max:255', Rule::unique('components')->ignore($id)],
+            'reference' => ['required', 'string', 'max:255', Rule::unique('components')->where(function ($query) {
+                return $query->where('deleted_at', null);
+            })->ignore($id)],
         ]);
     }
 

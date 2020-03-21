@@ -16,7 +16,7 @@ class CreateReqIntersTable extends Migration
         Schema::create('req_inters', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('equipment_id');
-            $table->foreign('equipment_id')->references('id')->on('equipments');
+            $table->foreign('equipment_id')->references('id')->on('equipments')->onDelete('set null')->onUpdate('cascade');;
             $table->string('number')->unique();
             $table->string('equipment_name');
             $table->string('description');

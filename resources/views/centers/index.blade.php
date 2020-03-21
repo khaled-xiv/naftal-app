@@ -16,33 +16,33 @@
                     </div>
                     {!! Form::close() !!}
                     <hr>
+                    <div class="container">
                     @foreach($centers->chunk(3) as $chunk)
                         <div class="row">
                             @foreach($chunk as $center)
                                 <div class="col-md-4">
-                                    <div class="card mb-3">
-                                        <img src="{{ asset('img/1.png') }}" class="card-img-top" alt="..." height="300px">
-                                        <div class="card-body">
-                                            <h5 class="card-title">>>><a href="{{url('centers/'.$center->id)}}" style="color:black; text-decoration: underline"><em>{{$center->location}}</em></a></h5>
-                                            <p class="card-text">
+                                    <div class="box">
+                                        <div class="imgBx">
+                                            <img src="{{ asset('img/1.png') }}" class="card-img-top" alt="..." height="300px">
+                                        </div>
+                                        <div class="content">
+                                            <h4><a href="{{url('centers/'.$center->id)}}" style="color : black; text-decoration: underline"><em>{{$center->location}}</em></a></h4>
+                                            <br>
+                                            <p>
                                                 <b>Code:</b> {{$center->code}}<br>
-                                                <b>Phone number:</b> {{$center->phone}}</p>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    {!! Form::open(['method'=>'GET', 'action'=> ['CenterController@edit', $center->id]]) !!}
-                                                        <button style="color: #069;text-decoration: underline;cursor: pointer;" role="button">edit center</button>
-                                                    {!! Form::close() !!}
-                                                </div>
-                                                <div class="col-md-6">
-<button class="center-del" data-toggle="modal" data-target="#DeleteCenterModal" data-center-id="{{$center->id}}" style="color: #ff3333;text-decoration: underline;cursor: pointer;" role="button">delete center</button>
-                                                </div>
-                                            </div>
+                                                <b>Phone number:</b> {{$center->phone}}
+                                            </p>
+                                            {!! Form::open(['method'=>'GET', 'action'=> ['CenterController@edit', $center->id]]) !!}
+                                                <button style="color: #069;text-decoration: underline;cursor: pointer;" role="button">edit center</button>
+                                            {!! Form::close() !!}
+                                            <button class="center-del" data-toggle="modal" data-target="#DeleteCenterModal" data-center-id="{{$center->id}}" style="color: #ff3333;text-decoration: underline;cursor: pointer;" role="button">delete center</button>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     @endforeach
+                    </div>
                 </div>
             </div>
 

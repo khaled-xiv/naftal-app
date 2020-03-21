@@ -21,7 +21,9 @@ class EquipmentController extends Controller
     protected function validator(array $data, $id)
     {
         return Validator::make($data, [
-            'code' => ['required', 'string', 'max:255', Rule::unique('equipments')->ignore($id)],
+            'code' => ['required', 'string', 'max:255', Rule::unique('equipments')->where(function ($query) {
+                return $query->where('deleted_at', null);
+            })->ignore($id)],
             'type' => ['required', 'string', 'max:255'],
             'mark' => ['required', 'string', 'max:255'],
             'model' => ['required', 'string', 'max:255'],

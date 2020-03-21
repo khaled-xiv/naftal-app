@@ -18,4 +18,9 @@ class Answer extends Model
         return $this->belongsTo("App\Forum");
     }
 
+    public function users()
+    {
+        return $this->morphToMany('App\User', 'likable');
+    }
+
 }
