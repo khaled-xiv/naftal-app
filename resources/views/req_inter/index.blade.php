@@ -123,8 +123,7 @@
 </section>
 
 <!-- Request of intervention Ends -->
-@endSection
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+
 <script>
     $(document).ready(function ($) {
         $(".clickable-row").click(function () {
@@ -132,6 +131,6 @@
         });
     });
 </script>
-
+@endSection
 
 

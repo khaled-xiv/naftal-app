@@ -71,7 +71,6 @@
 
     <!-- Centers Ends -->
 @endSection
-<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script>
     $(document).ready(function($) {
             $(document).on("click", ".center-del", function () {

@@ -132,7 +132,7 @@
 </section>
 <!--  Add Request Ends -->
 @endsection
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+
 <script>
 
 
@@ -161,3 +161,5 @@
 
 
 </script>
+
+@endsection
