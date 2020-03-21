@@ -38,6 +38,8 @@ Route::resource('/users', 'UsersController');
 
 
 Route::resource('/request-of-intervention', 'Req_interController') ;
+Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter') ;
+Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter') ;
 Route::post('/getequipment', 'Req_interController@getEquipment') ;
 
 

@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipment;
-use App\FuelMeter;
-use App\Generator;
-use App\LoadingArm;
-use App\Pump;
+use App\Component;
 use App\Req_inter;
-use App\Tank;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,10 +19,11 @@ class Req_interController extends Controller
      */
     public function index()
     {
-        $openned_reqs=Req_inter::where('intervention_date', null)
-            ->get();
+        $openned_reqs=Req_inter::where('valide', 0)->get();
+        $closed_reqs=Req_inter::where('valide', 1)->get();
+        $received_reqs=Req_inter::where('need_district', 1)->get();
 
-        return view('req_inter.index',compact('openned_reqs'));
+        return view('req_inter.index',compact('openned_reqs','closed_reqs','received_reqs'));
     }
 
     public function getEquipment(Request $request)
@@ -136,9 +133,50 @@ class Req_interController extends Controller
      */
     public function edit($id)
     {
-        $req_inter=Req_inter::findOrFail($id);
-        $equips=Equipment::all()->pluck('designation','id');
-        return view('req_inter.edit',compact('req_inter','equips'));
+        $req_inter=Req_inter::findOrFail($id)->equipment_id;
+        $comps=Component::where('equipment_id',$req_inter)->pluck('designation','id');
+
+        $pumps = DB::table('equipments')
+            ->leftJoin('pumps', 'equipments.id', '=', 'pumps.equipment_id')
+            ->whereNotNull('pumps.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
+            ->select('equipments.code', 'pumps.equipment_id')->get()
+            ->pluck('code','equipment_id');
+
+        $tanks = DB::table('equipments')
+            ->join('tanks', 'equipments.id', '=', 'tanks.equipment_id')
+            ->whereNotNull('tanks.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
+            ->select('equipments.code', 'tanks.equipment_id')
+            ->get()->pluck('code','equipment_id');
+
+        $loadingArms = DB::table('equipments')
+            ->join('loading_Arms', 'equipments.id', '=', 'loading_Arms.equipment_id')
+            ->whereNotNull('loading_Arms.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
+            ->select('equipments.code', 'loading_Arms.equipment_id')
+            ->get()->pluck('code','equipment_id');
+
+        $generators = DB::table('equipments')
+            ->join('generators', 'equipments.id', '=', 'generators.equipment_id')
+            ->whereNotNull('generators.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
+            ->select('equipments.code', 'generators.equipment_id')
+            ->get()->pluck('code','equipment_id');
+
+        $fuelMeters =  DB::table('equipments')
+            ->join('fuel_Meters', 'equipments.id', '=', 'fuel_Meters.equipment_id')
+            ->whereNotNull('fuel_Meters.equipment_id')
+            ->where('equipments.center_id',Auth::user()->center->id)
+            ->select('equipments.code', 'fuel_Meters.equipment_id')
+            ->get()->pluck('code','equipment_id');
+
+        $openned_req=Req_inter::findOrFail($id);
+        $openned_req['created_at']=Carbon::parse($openned_req['created_at'])->format('Y-m-d\TH:i');
+        if ($openned_req['intervention_date'])$openned_req['intervention_date']=Carbon::parse($openned_req['intervention_date'])->format('Y-m-d\TH:i');
+        $openned_req['equipment']=$openned_req['equipment_name'];
+        $equips=['Pumps'=>'Pumps','Tanks'=>'Tanks','Loding arms'=>'Loding arms','Generators'=>'Generators','Fuel meters'=>'Fuel meters'];
+        return view('req_inter.edit',compact('openned_req','equips','comps','fuelMeters','pumps','loadingArms','tanks','generators'));
     }
 
     /**
@@ -150,7 +188,28 @@ class Req_interController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validator($request->all())->validate();
+        $openned_req=Req_inter::findOrFail($id);
+    }
+
+    public function update_after_inter(Request $request,$id)
+    {
+        $openned_req=Req_inter::findOrFail($id);
+        if(!$request['need_district']) $openned_req->valide=1;
+        if($request['need_district']) $openned_req->valide=0;
+
+        $openned_req->update($request->all());
+        return  redirect('request-of-intervention/'.$id.'/edit');
+    }
+
+    public function update_discrict_inter(Request $request,$id)
+    {
+        $openned_req=Req_inter::findOrFail($id);
+        if(!$request['need_district']) $openned_req->valide=1;
+        if($request['need_district']) $openned_req->valide=0;
+
+        $openned_req->update($request->all());
+        return  redirect('request-of-intervention/'.$id.'/edit');
     }
 
     /**

@@ -17,7 +17,6 @@
 
 <!-- Bootstrap CSS -->
 <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet" >
-
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
 
@@ -27,3 +26,10 @@
 
 <!-- Responsive  Css -->
 <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+{{--jquery--}}
+<script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>

@@ -16,6 +16,9 @@
                                 <li class = "nav-item equipment">
                                     <a class="nav-link" id="closed-request-tab" data-toggle="tab" href="#closed-request" role="tab" aria-controls="tanks" aria-selected="false">Closed Request</a>
                                 </li>
+                                <li class = "nav-item equipment">
+                                    <a class="nav-link" id="received-request-tab" data-toggle="tab" href="#received-request" role="tab" aria-controls="tanks" aria-selected="false">Received Request</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -63,28 +66,53 @@
                     <table>
                         <thead>
                         <tr class="table100-head">
-                            <th>code</th>
-                            <th>mark</th>
-                            <th>type</th>
-                            <th>model</th>
-                            <th>product</th>
-                            <th>height</th>
+                            <th>Number</th>
+                            <th>Equipment</th>
+                            <th>Equipment code</th>
+                            <th>Degree of urgency</th>
+                            <th>Description</th>
+                            <th>Created at</th>
                         </tr>
                         </thead>
                         <tbody>
-{{--                        @foreach($tanks as $tank)--}}
-{{--                            <tr class="clickable-row" data-href="equipments/{{$tank->equipment->id}}/edit">--}}
-{{--                                <td>{{$tank->equipment->code}}</td>--}}
-{{--                                <td>{{$tank->equipment->mark}}</td>--}}
-{{--                                <td>{{$tank->equipment->model}}</td>--}}
-{{--                                <td>{{$tank->equipment->type}}</td>--}}
-{{--                                <td>{{$tank->product}}</td>--}}
-{{--                                <td>{{$tank->height}}</td>--}}
-{{--                                <td>{{$tank->diameter}}</td>--}}
-{{--                                <td>{{$tank->capacity}}</td>--}}
-{{--                                <td>{{$tank->equipment->state}}</td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
+                        @foreach($closed_reqs as $closed_req)
+                            <tr class="clickable-row" data-href="request-of-intervention/{{$closed_req->id}}/edit">
+                                <td>{{$closed_req->number}}</td>
+                                <td>{{$closed_req->equipment_name}}</td>
+                                <td>{{$closed_req->equipment->code}}</td>
+                                <td>{{$closed_req->degree_urgency}}</td>
+                                <td>{{$closed_req->description}}</td>
+                                <td>{{$closed_req->created_at}}</td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="received-request" class="tab-pane fade" role="tabpanel" aria-labelledby="received-request-tab">
+                    <table>
+                        <thead>
+                        <tr class="table100-head">
+                            <th>Number</th>
+                            <th>Equipment</th>
+                            <th>Equipment code</th>
+                            <th>Degree of urgency</th>
+                            <th>Description</th>
+                            <th>Created at</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($received_reqs as $received_req)
+                            <tr class="clickable-row" data-href="request-of-intervention/{{$received_req->id}}/edit">
+                                <td>{{$received_req->number}}</td>
+                                <td>{{$received_req->equipment_name}}</td>
+                                <td>{{$received_req->equipment->code}}</td>
+                                <td>{{$received_req->degree_urgency}}</td>
+                                <td>{{$received_req->description}}</td>
+                                <td>{{$received_req->created_at}}</td>
+                            </tr>
+                        @endforeach
+
                         </tbody>
                     </table>
                 </div>
