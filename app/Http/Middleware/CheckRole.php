@@ -19,10 +19,12 @@ class CheckRole
         $roles = array_slice(func_get_args(), 2);
 
         foreach ($roles as $role) {
-
-                if (Auth::user()->has_role($role)) {
-                    return $next($request);
+                if (Auth::check()){
+                    if (Auth::user()->has_role($role)) {
+                        return $next($request);
+                    }
                 }
+
         }
 
         return back();
