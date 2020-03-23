@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class chef_district
+class CheckRole
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,15 @@ class chef_district
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
-            if(Auth::user()->is_district_chief()){
-                return $next($request);
-            }
+        $roles = array_slice(func_get_args(), 2);
+
+        foreach ($roles as $role) {
+
+                if (Auth::user()->has_role($role)) {
+                    return $next($request);
+                }
         }
-        return redirect('/');
+
+        return back();
     }
 }

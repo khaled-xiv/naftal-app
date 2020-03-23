@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,37 +11,37 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 
+//Route::get('/home', 'HomeController@index')->name('home') ;
 
-Route::get('/home', 'HomeController@index')->name('home') ;
-
-Route::post('/account/removeAddress', 'AccountController@removeAddress');
-Route::post('/account/removePhone', 'AccountController@removePhone');
-Route::post('/account/close', 'AccountController@close');
-Route::resource('/account', 'AccountController')->middleware('auth') ;
-
-
-Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
-Route::post('/users/removePhone/{id}', 'UsersController@removePhone');
-Route::post('/users/close/{id}', 'UsersController@close');
-Route::resource('/users', 'UsersController');
-
-
-Route::resource('/request-of-intervention', 'Req_interController') ;
-Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter') ;
-Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter') ;
-Route::post('/getequipment', 'Req_interController@getEquipment') ;
-
-
-
-
-Route::group(['middleware'=>'chef_district'],function(){
-
-//    Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
-//    Route::post('users/create', 'Auth\RegisterController@register');
+Route::group(['middleware'=>'role:chief_district,chief_center,technician,admin'],function() {
+    Route::post('/account/removeAddress', 'AccountController@removeAddress');
+    Route::post('/account/removePhone', 'AccountController@removePhone');
+    Route::post('/account/close', 'AccountController@close');
+    Route::resource('/account', 'AccountController')->middleware('auth');
 });
 
-Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('users/create', 'Auth\RegisterController@register');
+Route::group(['middleware'=>'role:admin,chief_district'],function() {
+    Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
+    Route::post('/users/removePhone/{id}', 'UsersController@removePhone');
+    Route::post('/users/close/{id}', 'UsersController@close');
+    Route::resource('/users', 'UsersController');
+});
+
+Route::group(['middleware'=>'role:chief_district,chief_center'],function() {
+    Route::resource('/request-of-intervention', 'Req_interController');
+    Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter');
+    Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
+    Route::post('/getequipment', 'Req_interController@getEquipment');
+    Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');
+});
+
+
+
+Route::group(['middleware'=>'role:admin'],function(){
+    Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('users/create', 'Auth\RegisterController@register');
+});
+
 
 
 Route::resource('centers', 'CenterController');

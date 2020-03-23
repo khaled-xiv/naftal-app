@@ -14,7 +14,7 @@ class Req_inter extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'equipment_id', 'equipment_name','description', 'component_id','number', 'degree_urgency', 'created_at','intervention_date', 'description_2',
+        'equipment_id', 'equipment_name','description', 'component_id[]','number', 'degree_urgency', 'created_at','intervention_date', 'description_2',
         'intervention_date_2', 'description_3', 'need_district', 'valide'
     ];
 
@@ -27,7 +27,8 @@ class Req_inter extends Model
 
     public function components()
     {
-        return $this->belongsToMany('App\Component');
+        return $this->belongsToMany('App\Component','component_req_inter',
+            'req_inter_id','component_id')->withTimestamps();
     }
 
 

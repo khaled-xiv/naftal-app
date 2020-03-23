@@ -26,6 +26,16 @@ class Req_interController extends Controller
         return view('req_inter.index',compact('openned_reqs','closed_reqs','received_reqs'));
     }
 
+    public function getSelectedComps(Request $request)
+    {
+        $selected_comp=Req_inter::findOrFail($request['id'])->components()->get();
+        $temp=[];
+        foreach ($selected_comp as $c){
+            array_push($temp,  $c->pivot->component_id);
+        }
+        return   response()->json(array('msg'=> $temp),200);
+    }
+
     public function getEquipment(Request $request)
     {
         $pumps = DB::table('equipments')
@@ -134,7 +144,8 @@ class Req_interController extends Controller
     public function edit($id)
     {
         $req_inter=Req_inter::findOrFail($id)->equipment_id;
-        $comps=Component::where('equipment_id',$req_inter)->pluck('designation','id');
+        $comps=Component::where('equipment_id',$req_inter)
+            ->pluck('designation','id');
 
         $pumps = DB::table('equipments')
             ->leftJoin('pumps', 'equipments.id', '=', 'pumps.equipment_id')
@@ -174,6 +185,7 @@ class Req_interController extends Controller
         $openned_req=Req_inter::findOrFail($id);
         $openned_req['created_at']=Carbon::parse($openned_req['created_at'])->format('Y-m-d\TH:i');
         if ($openned_req['intervention_date'])$openned_req['intervention_date']=Carbon::parse($openned_req['intervention_date'])->format('Y-m-d\TH:i');
+        if ($openned_req['intervention_date_2'])$openned_req['intervention_date_2']=Carbon::parse($openned_req['intervention_date_2'])->format('Y-m-d\TH:i');
         $openned_req['equipment']=$openned_req['equipment_name'];
         $equips=['Pumps'=>'Pumps','Tanks'=>'Tanks','Loding arms'=>'Loding arms','Generators'=>'Generators','Fuel meters'=>'Fuel meters'];
         return view('req_inter.edit',compact('openned_req','equips','comps','fuelMeters','pumps','loadingArms','tanks','generators'));
@@ -194,21 +206,28 @@ class Req_interController extends Controller
 
     public function update_after_inter(Request $request,$id)
     {
+
         $openned_req=Req_inter::findOrFail($id);
+        $data=$request->all();
+        unset($data['component_id']);
         if(!$request['need_district']) $openned_req->valide=1;
         if($request['need_district']) $openned_req->valide=0;
-
-        $openned_req->update($request->all());
+        $comps=$request['component_id'];
+        if($comps) $comps = array_map('intval', $comps);
+        $openned_req->components()->sync($comps);
+        $openned_req->update($data);
         return  redirect('request-of-intervention/'.$id.'/edit');
     }
 
     public function update_discrict_inter(Request $request,$id)
     {
         $openned_req=Req_inter::findOrFail($id);
-        if(!$request['need_district']) $openned_req->valide=1;
-        if($request['need_district']) $openned_req->valide=0;
-
-        $openned_req->update($request->all());
+        $data=$request->all();
+        unset($data['component_id']);
+        $comps=$request['component_id'];
+        if($comps) $comps = array_map('intval', $comps);
+        $openned_req->components()->sync($comps);
+        $openned_req->update($data);
         return  redirect('request-of-intervention/'.$id.'/edit');
     }
 
@@ -220,6 +239,7 @@ class Req_interController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Req_inter::findOrFail($id)->delete();
+        return  redirect('/request-of-intervention');
     }
 }

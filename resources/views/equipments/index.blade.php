@@ -187,7 +187,7 @@
     </section>
 
     <!-- Equipments Ends -->
-@endSection
+
 <script>
     $(document).ready(function($) {
         $(".clickable-row").click(function() {
@@ -204,3 +204,4 @@
 
     });
 </script>
+@endSection

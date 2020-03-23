@@ -21,4 +21,9 @@ class Component extends Model
 
     }
 
+    public function req_inters()
+    {
+        return $this->belongsToMany('App\Req_inter','component_req_inter','component_id','req_inter_id');
+    }
+
 }
