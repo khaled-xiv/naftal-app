@@ -1,7 +1,5 @@
-
 <!-- Header -->
 <header>
-{{--    <nav class="navbar  white-nav-top">--}}
         <nav class="navbar navbar-expand-lg  fixed-top  white-nav-top">
         <div class="container-fluid">
             <div class="site-nav-wrapper ml-auto">
@@ -13,7 +11,7 @@
 
                 <!-- Main Menu -->
                 <div class="container ">
-                    <div class="collapse navbar-collapse">
+                    <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
                             <li><a class="btn btn-link" href=" {{ url('/')}}">Home</a></li>
                             <li><a class="btn btn-link" href="{{url('equipments')}}">Equipments</a></li>
@@ -26,17 +24,16 @@
                             <li><a class="btn btn-link" href="{{ route('login')}}">Sign in</a></li>
                             @else
 
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth()->user()->name}} <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{url('/account')}}"><i class="fa fa-fw fa-user"></i> Account</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                                    </li>
-                                </ul>
-                            </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle center-block" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{Auth()->user()->name}}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{url('/account')}}"> Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-fw fa-user ml-auto"></i> </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{route('logout')}}"> Log Out &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-fw fa-power-off ml-auto"></i> </a>
+                                    </div>
+                                </li>
 
                             @endguest
                         </ul>
@@ -60,17 +57,16 @@
                             @guest
                             <li><a class="btn btn-link" href="{{ route('login')}}">Sign in</a></li>
                             @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{Auth()->user()->name}} <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{url('/account')}}"><i class="fa fa-fw fa-user"></i> Account</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                                    </li>
-                                </ul>
-                            </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        {{Auth()->user()->name}}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{url('/account')}}"> Account &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-fw fa-user ml-auto"></i> </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{route('logout')}}"> Log Out &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-fw fa-power-off ml-auto"></i> </a>
+                                    </div>
+                                </li>
                             @endguest
                         </ul>
                     </div>

@@ -4,27 +4,25 @@
     <!-- Add Request -->
     <br>
     <section id="req_inter">
-
         <div class="content-box-md">
-
             <div class="container">
-
                 <div class="row">
-
-                    <div class="col-xl-6  col-lg-8  col-md-10  col-sm-10  col-xs-8 ">
+                    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
 
                         <div class="contact-right">
 
-                            {!! Form::model($openned_req,['method'=>'PUT', 'action'=> ['Req_interController@update',$openned_req->id]]) !!}
+                            {!! Form::model($openned_req,['method'=>'PUT','id'=>'edit_form', 'action'=> ['Req_interController@update',$openned_req->id]]) !!}
                             @csrf
-                            <h4>Create Request of Intervention</h4>
+                            <h4>Edit Request of Intervention</h4>
                             <br>
+                            <input type="hidden" id="is_admin" @if(Auth()->user()->is_district_chief())  value="true" @endif>
 
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('number', 'Request number:',['class'=>'label_padding']) !!}
                                         {!! Form::text('number', old('number'), ['class'=> $errors->get('number') ? 'form-control is-invalid' : 'form-control']) !!}
+
                                         @error('number')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -119,177 +117,167 @@
 
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
+                                    @if(!$openned_req->intervention_date)
+                                    <button class="btn btn-general btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                    @endif
                                     <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">Update</button>
                                 </div>
                             </div>
 
                             {!! Form::close() !!}
-                            @if(!$openned_req->intervention_date)
+
+                            <hr>
+
+                            {!! Form::model($openned_req,['method'=>'PUT', 'id'=>'afet_inter_form','action'=> ['Req_interController@update_after_inter',$openned_req->id]]) !!}
+
+                            {!!Form::hidden('req_id',$openned_req->id,['id'=>'req_id'])!!}
+                            @csrf
+                            <h4>After Intervention</h4>
+                            <br>
+
                             <div class="row">
-                                <div id="submit-btn" class="ml-auto">
-                                    <button class="btn btn-general btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                                </div>
-                            </div>
-                            @endif
 
-                        </div>
-
-                    </div>
-                    <div class="col-xl-6   col-lg-8  col-md-10  col-sm-10  col-xs-8 ">
-                        <div class="row">
-                            <div class="contact-right">
-
-                                {!! Form::model($openned_req,['method'=>'PUT', 'action'=> ['Req_interController@update_after_inter',$openned_req->id]]) !!}
-
-                                {!!Form::hidden('req_id',$openned_req->id,['id'=>'req_id'])!!}
-                                @csrf
-                                <h4>After Intervention</h4>
-                                <br>
-
-                                <div class="row">
-
-                                    <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            {!! Form::label('intervention_date', 'Date of intervention:',['class'=>'label_padding']) !!}
-                                            <input id="intervention_date" type="datetime-local"
-                                                   class="form-control @error('intervention_date')  is-invalid @enderror" name="intervention_date"
-                                                   value="{{$openned_req->intervention_date}}" required autocomplete="created_at" @if(Auth()->user()->is_district_chief()) readonly @endif>
-                                            @error('intervention_date')
-                                            <span class="invalid-feedback" role="alert">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        {!! Form::label('intervention_date', 'Date of intervention:',['class'=>'label_padding']) !!}
+                                        <input id="intervention_date" type="datetime-local"
+                                               class="form-control @error('intervention_date')  is-invalid @enderror" name="intervention_date"
+                                               value="{{$openned_req->intervention_date}}" required autocomplete="created_at">
+                                        @error('intervention_date')
+                                        <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
+                                </div>
 
-                                    <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            {!! Form::label('need_district', 'Send to district:',['class'=>'label_padding']) !!}
-                                            @if(Auth()->user()->is_district_chief())
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        {!! Form::label('need_district', 'Send to district:',['class'=>'label_padding']) !!}
+                                        @if(Auth()->user()->is_district_chief())
                                             {!! Form::select('need_district', array('1'=>'Yes','0'=>'No') , null,
                                             ['class'=>'form-control','required' => 'required', 'disabled'])!!}
-                                            @else
-                                                {!! Form::select('need_district', array('1'=>'Yes','0'=>'No') , null,
-                                            ['class'=>'form-control','required' => 'required'])!!}@endif
-                                            @error('need_district')
-                                            <span class="invalid-feedback" role="alert">
+                                        @else
+                                            {!! Form::select('need_district', array('1'=>'Yes','0'=>'No') , null,
+                                        ['class'=>'form-control','required' => 'required'])!!}@endif
+                                        @error('need_district')
+                                        <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                         </span>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            {!! Form::label('component_id', 'Select components:',['class'=>'label_padding']) !!}
-                                            {!! Form::select('component_id[]', $comps, null,
-                                            ['class'=>'selectpicker','id'=>'component_id_1','multiple'=>'multiple'])!!}
-                                        </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {!! Form::label('component_id', 'Select components:',['class'=>'label_padding']) !!}
+                                        {!! Form::select('component_id[]', $comps, null,
+                                        ['class'=>'selectpicker','id'=>'component_id_1','multiple'=>'multiple'])!!}
                                     </div>
                                 </div>
+                            </div>
 
 
-                                <div class="form-group">
-                                    {!! Form::label('description_2', 'Description:',['class'=>'label_padding']) !!}
-                                    <textarea class="form-control text-left" id="description_2"  required name="description_2" placeholder="Enter a description"> {{$openned_req->description_2}} </textarea>
-                                    @error('description_2')
-                                    <span class="invalid-feedback" role="alert">
+                            <div class="form-group">
+                                {!! Form::label('description_2', 'Description:',['class'=>'label_padding']) !!}
+                                <textarea class="form-control text-left" id="description_2"  required name="description_2" placeholder="Enter a description"> {{$openned_req->description_2}} </textarea>
+                                @error('description_2')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
+                                @enderror
+                            </div>
+
+                            <div class="row">
+                                <div id="submit-btn" class="ml-auto">
+                                    <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">
+                                        Update
+                                    </button>
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                    <div id="submit-btn" class="ml-auto">
-                                        <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">
-                                            Update
-                                        </button>
-                                    </div>
-                                </div>
+                            {!! Form::close() !!}
 
-                                {!! Form::close() !!}
+                            @if($openned_req->need_district)
 
-                                <hr>
+                            <hr>
 
-                                {!! Form::model($openned_req,['method'=>'PUT', 'action'=> ['Req_interController@update_discrict_inter',$openned_req->id]]) !!}
+                            {!! Form::model($openned_req,['method'=>'PUT', 'action'=> ['Req_interController@update_discrict_inter',$openned_req->id]]) !!}
 
-                                {!!Form::hidden('req_id',$openned_req->id,['id'=>'req_id'])!!}
-                                @csrf
-                                <h4>District Intervention</h4>
-                                <br>
+                            {!!Form::hidden('req_id',$openned_req->id,['id'=>'req_id'])!!}
+                            @csrf
+                            <h4>District Intervention</h4>
+                            <br>
 
-                                <div class="row">
+                            <div class="row">
 
-                                    <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            {!! Form::label('intervention_date', 'Date of intervention:',['class'=>'label_padding']) !!}
-                                            <input id="intervention_date" type="datetime-local"
-                                                   class="form-control @error('intervention_date_2')  is-invalid @enderror" name="intervention_date_2"
-                                                   value="{{$openned_req->intervention_date_2}}" required autocomplete="created_at">
-                                            @error('intervention_date_2')
-                                            <span class="invalid-feedback" role="alert">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        {!! Form::label('intervention_date', 'Date of intervention:',['class'=>'label_padding']) !!}
+                                        <input id="intervention_date" type="datetime-local"
+                                               class="form-control @error('intervention_date_2')  is-invalid @enderror" name="intervention_date_2"
+                                               value="{{$openned_req->intervention_date_2}}" required autocomplete="created_at">
+                                        @error('intervention_date_2')
+                                        <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
+                                </div>
 
-                                    <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            {!! Form::label('valide', 'Valide:',['class'=>'label_padding']) !!}
-                                            {!! Form::select('valide', array('1'=>'Yes','0'=>'No') , null,
-                                            ['class'=>'form-control','required' => 'required'])!!}
-                                            @error('valide')
-                                            <span class="invalid-feedback" role="alert">
+                                <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        {!! Form::label('valide', 'Valide:',['class'=>'label_padding']) !!}
+                                        {!! Form::select('valide', array('1'=>'Yes','0'=>'No') , null,
+                                        ['class'=>'form-control','required' => 'required'])!!}
+                                        @error('valide')
+                                        <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                         </span>
-                                            @enderror
-                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            {!! Form::label('component_id', 'Select components:',['class'=>'label_padding']) !!}
-                                            {!! Form::select('component_id[]', $comps, null,
-                                            ['class'=>'selectpicker','id'=>'component_id_2','multiple'=>'multiple'])!!}
-                                        </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {!! Form::label('component_id', 'Select components:',['class'=>'label_padding']) !!}
+                                        {!! Form::select('component_id[]', $comps, null,
+                                        ['class'=>'selectpicker','id'=>'component_id_2','multiple'=>'multiple'])!!}
                                     </div>
                                 </div>
+                            </div>
 
 
-                                <div class="form-group">
-                                    {!! Form::label('description_3', 'Description:',['class'=>'label_padding']) !!}
-                                    <textarea class="form-control text-left" id="description_2"  required name="description_3" placeholder="Enter a description"> {{$openned_req->description_3}} </textarea>
-                                    @error('description_3')
-                                    <span class="invalid-feedback" role="alert">
+                            <div class="form-group">
+                                {!! Form::label('description_3', 'Description:',['class'=>'label_padding']) !!}
+                                <textarea class="form-control text-left" id="description_2"  required name="description_3" placeholder="Enter a description"> {{$openned_req->description_3}} </textarea>
+                                @error('description_3')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
-
-                                <div class="row">
-                                    <div id="submit-btn" class="ml-auto">
-                                        <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">
-                                            Update
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {!! Form::close() !!}
-
+                                @enderror
                             </div>
+
+                            <div class="row">
+                                <div id="submit-btn" class="ml-auto">
+                                    <button class="btn btn-general btn-yellow" type="submit" title="Submit" role="button">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+
+                            {!! Form::close() !!}
+
+                            @endif
                         </div>
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </section>
 
@@ -319,6 +307,10 @@
 <script >
 
     $('.selectpicker').selectpicker();
+
+    if($('#is_admin').val()=='true'){
+        $("#edit_form :input,#afet_inter_form :input").prop("disabled", true);
+    }
 
     $(document).ready(function () {
         $.ajax({

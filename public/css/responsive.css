@@ -12,9 +12,9 @@
     cursor: pointer;
     z-index: 2;
     position: absolute;
-    right: 0;
     top: -24px;
-    /* hide mobile nav open btn */
+    right: 12px;
+     /*hide mobile nav open btn */
     display: none;
 }
 
@@ -40,7 +40,7 @@
     cursor: pointer;
     position: absolute;
     top: -24px;
-    right: 12px;
+    right: 17px;
     -webkit-transition: .3s;
     transition: .3s;
 }
@@ -93,6 +93,8 @@
 
 /* Large Devices (Desktops & Laptops) */
 
+
+
 @media (min-width: 1200px) and (max-width: 1299px) {
     /* Navigation */
     .site-nav-wrapper {
@@ -112,14 +114,6 @@
     .vertical-heading h2 {
         font-size: 29px;
     }
-    /* Services 02 */
-    #services-tabs .tab-bg {
-        padding: 16px 30px;
-        min-height: 300px;
-    }
-    .service-tab p {
-        line-height: 20px;
-    }
 }
 
 
@@ -129,17 +123,12 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
     /* Navigation */
-    /*.site-nav-wrapper {*/
-    /*    padding: 0;*/
-    /*}*/
-
-    /* Navigaiton */
     .navbar {
-        padding: 20px 0;
+        padding:  10px 0px 0px 0px;
     }
     .site-nav-wrapper,
     .white-nav-top {
-        padding: 12px 0;
+        padding: 17px 0px ;
     }
     /* show mobile nav open btn */
     #mobile-nav-open-btn {
@@ -190,19 +179,6 @@
         padding-bottom: 5px;
         -webkit-transition: border-color 300ms linear;
         transition: border-color 300ms linear;
-    }
-    /* Pricing */
-    .pricing-table .price h2 {
-        margin: 0 0 0 6px;
-        font-size: 35px;
-    }
-    /* Stats */
-    .stats-item p {
-        line-height: 18px;
-    }
-    /* Blog */
-    .blog-post .post-meta p {
-        line-height: 14px;
     }
     /* Contact */
     ul.office-details li {
@@ -431,6 +407,9 @@
 
 /* Extra Small Devices (Portrait Phones & Smaller Devices) */
 @media (max-width: 575px) {
+    #ul_element{
+        text-align:center;
+    }
     /*account*/
     .credential .credential-detail{
         margin-left: 40px;
@@ -439,6 +418,10 @@
 }
 
 @media (max-width: 480px) {
+    #ul_element{
+        text-align:center;
+    }
+
     /* Home */
     #home-heading h1 {
         font-size: 18px;
@@ -474,6 +457,10 @@
 /* Extra Small Devices (Portrait Phones & Smaller Devices) */
 
 @media (max-width: 320px) {
+    #ul_element{
+        text-align:center;
+    }
+
     /* Testimonials */
     .testimonial h3 {
         font-size: 12px;

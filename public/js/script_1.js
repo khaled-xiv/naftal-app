@@ -89,22 +89,9 @@ function form_submit(s) {
 }
 
 
-// $(".dropdown").on('click', function (event) {
-//     event.stopPropagation();
-// });
-
-// $(document).ready(function () {
-//
-//     $(".dropdown").mouseenter(function(){
-//         $(".dropdown-menu").show();
-//     });
-//
-//     $(".dropdown,.dropdown-menu").mouseleave(function(){
-//         $(".dropdown-menu").hide();
-//     });
-// });
-
-
+// $('div#dd.wrapper-dropdown-3').hover(function () {
+//     // alert("salam");
+// })
 
 
 

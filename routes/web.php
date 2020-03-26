@@ -37,10 +37,10 @@ Route::group(['middleware'=>'role:chief_district,chief_center'],function() {
 
 
 
-Route::group(['middleware'=>'role:admin'],function(){
+//Route::group(['middleware'=>'role:admin'],function(){
     Route::get('users/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('users/create', 'Auth\RegisterController@register');
-});
+//});
 
 
 

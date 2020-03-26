@@ -17,6 +17,12 @@ class Req_interController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
+
     public function index()
     {
         $openned_reqs=Req_inter::where('valide', 0)->get();
@@ -38,46 +44,52 @@ class Req_interController extends Controller
 
     public function getEquipment(Request $request)
     {
-        $pumps = DB::table('equipments')
-            ->leftJoin('pumps', 'equipments.id', '=', 'pumps.equipment_id')
-            ->whereNotNull('pumps.equipment_id')
-            ->where('equipments.center_id',Auth::user()->center->id)
-            ->select('equipments.code', 'pumps.equipment_id')
-            ->get();
-
-        $tanks = DB::table('equipments')
-            ->join('tanks', 'equipments.id', '=', 'tanks.equipment_id')
-            ->whereNotNull('tanks.equipment_id')
-            ->where('equipments.center_id',Auth::user()->center->id)
-            ->select('equipments.code', 'tanks.equipment_id')
-            ->get();
-
-        $loadingArms = DB::table('equipments')
-            ->join('loading_Arms', 'equipments.id', '=', 'loading_Arms.equipment_id')
-            ->whereNotNull('loading_Arms.equipment_id')
-            ->where('equipments.center_id',Auth::user()->center->id)
-            ->select('equipments.code', 'loading_Arms.equipment_id')
-            ->get();
-
-        $generators = DB::table('equipments')
-            ->join('generators', 'equipments.id', '=', 'generators.equipment_id')
-            ->whereNotNull('generators.equipment_id')
-            ->where('equipments.center_id',Auth::user()->center->id)
-            ->select('equipments.code', 'generators.equipment_id')
-            ->get();
-
-        $fuelMeters =  DB::table('equipments')
-            ->join('fuel_Meters', 'equipments.id', '=', 'fuel_Meters.equipment_id')
-            ->whereNotNull('fuel_Meters.equipment_id')
-            ->where('equipments.center_id',Auth::user()->center->id)
-            ->select('equipments.code', 'fuel_Meters.equipment_id')
-            ->get();
         switch ($request['name']){
-            case "Pumps": return response()->json(array('msg'=> $pumps),200);
-            case "Generators": return  response()->json(array('msg'=> $generators),200);
-            case "Tanks": return  response()->json(array('msg'=> $tanks),200);
-            case "Loding arms": return  response()->json(array('msg'=> $loadingArms),200);
-            case "Fuel meters": return   response()->json(array('msg'=> $fuelMeters),200);
+            case "Pumps": {
+                $pumps = DB::table('equipments')
+                    ->leftJoin('pumps', 'equipments.id', '=', 'pumps.equipment_id')
+                    ->whereNotNull('pumps.equipment_id')
+                    ->where('equipments.center_id',Auth::user()->center->id)
+                    ->select('equipments.code', 'pumps.equipment_id')
+                    ->get();
+                return response()->json(array('msg'=> $pumps),200);
+            }
+            case "Generators": {
+                $generators = DB::table('equipments')
+                    ->join('generators', 'equipments.id', '=', 'generators.equipment_id')
+                    ->whereNotNull('generators.equipment_id')
+                    ->where('equipments.center_id',Auth::user()->center->id)
+                    ->select('equipments.code', 'generators.equipment_id')
+                    ->get();
+                return  response()->json(array('msg'=> $generators),200);
+            }
+            case "Tanks": {
+                $tanks = DB::table('equipments')
+                    ->join('tanks', 'equipments.id', '=', 'tanks.equipment_id')
+                    ->whereNotNull('tanks.equipment_id')
+                    ->where('equipments.center_id',Auth::user()->center->id)
+                    ->select('equipments.code', 'tanks.equipment_id')
+                    ->get();
+                return  response()->json(array('msg'=> $tanks),200);
+            }
+            case "Loding arms": {
+                $loadingArms = DB::table('equipments')
+                    ->join('loading_Arms', 'equipments.id', '=', 'loading_Arms.equipment_id')
+                    ->whereNotNull('loading_Arms.equipment_id')
+                    ->where('equipments.center_id',Auth::user()->center->id)
+                    ->select('equipments.code', 'loading_Arms.equipment_id')
+                    ->get();
+                return  response()->json(array('msg'=> $loadingArms),200);
+            }
+            case "Fuel meters": {
+                $fuelMeters =  DB::table('equipments')
+                    ->join('fuel_Meters', 'equipments.id', '=', 'fuel_Meters.equipment_id')
+                    ->whereNotNull('fuel_Meters.equipment_id')
+                    ->where('equipments.center_id',Auth::user()->center->id)
+                    ->select('equipments.code', 'fuel_Meters.equipment_id')
+                    ->get();
+                return   response()->json(array('msg'=> $fuelMeters),200);
+            }
         }
     }
     /**
@@ -120,8 +132,7 @@ class Req_interController extends Controller
             'description' => $request['description'],
             'created_at' => $request['created_at']
         ]);
-        $equips=['Pumps'=>'Pumps','Tanks'=>'Tanks','Loding arms'=>'Loding arms','Generators'=>'Generators','Fuel meters'=>'Fuel meters'];
-        return  view('req_inter.create', compact('equips'));
+        return  redirect('/request-of-intervention/create');
     }
 
     /**

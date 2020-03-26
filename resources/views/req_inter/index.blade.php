@@ -10,15 +10,17 @@
                     <div class="wrap-table100">
                         <div class="table100">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class = "nav-item active equipment">
-                                    <a class="nav-link" id="openned-request-tab" data-toggle="tab" href="#opened-request" role="tab" aria-controls="pumps" aria-selected="true">Openned Request</a>
+                                <li class = "nav-item active ">
+                                    <a class="nav-link" id="openned-request-tab" data-toggle="tab" href="#opened-request" role="tab" aria-controls=openned-request" aria-selected="true">Openned Request</a>
                                 </li>
-                                <li class = "nav-item equipment">
-                                    <a class="nav-link" id="closed-request-tab" data-toggle="tab" href="#closed-request" role="tab" aria-controls="tanks" aria-selected="false">Closed Request</a>
+                                <li class = "nav-item ">
+                                    <a class="nav-link" id="closed-request-tab" data-toggle="tab" href="#closed-request" role="tab" aria-controls="closed-request" aria-selected="false">Closed Request</a>
                                 </li>
-                                <li class = "nav-item equipment">
-                                    <a class="nav-link" id="received-request-tab" data-toggle="tab" href="#received-request" role="tab" aria-controls="tanks" aria-selected="false">Received Request</a>
+                                @if(Auth()->user()->is_district_chief())
+                                <li class = "nav-item ">
+                                    <a class="nav-link" id="received-request-tab" data-toggle="tab" href="#received-request" role="tab" aria-controls="received-request" aria-selected="false">Received Request</a>
                                 </li>
+                                @endif
                             </ul>
                         </div>
 

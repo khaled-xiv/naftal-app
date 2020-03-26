@@ -21,7 +21,7 @@ class Req_inter extends Model
 
     public function equipment(){
 
-        return $this->belongsTo('App\Equipment');
+        return $this->belongsTo('App\Equipment')->withTrashed();
 
     }
 

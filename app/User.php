@@ -62,9 +62,9 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         return false;
     }
 
-    public function is_center_chief()
+    public function is_district_chief()
     {
-        if($this->role->name=='chief_center' && $this->is_active==1){
+        if($this->role->name=='chief_district' && $this->is_active==1){
             return true;
         }
         return false;
