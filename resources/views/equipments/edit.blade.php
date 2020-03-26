@@ -21,9 +21,9 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <!-- col-md-offset-3 -->
-                    <div class="col-md-6">
+                <div class="row" style="border: 1px solid red">
+
+                    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
 
                         <div class="contact-right">
                             {!! Form::model($equipment, ['method'=>'PUT', 'action'=> ['EquipmentController@update', $equipment->id]]) !!}
@@ -33,7 +33,7 @@
 
 
                             <div class="row">
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('code', 'Code:',['class'=>'label_padding']) !!}
                                         {!! Form::text('code', old('code'), ['class'=> $errors->get('code') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -45,7 +45,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('type', 'Type:',['class'=>'label_padding']) !!}
                                         {!! Form::text('type', old('type'), ['class'=> $errors->get('type') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('mark', 'Mark:',['class'=>'label_padding']) !!}
                                         {!! Form::text('mark', old('mark'), ['class'=> $errors->get('mark') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -69,7 +69,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('model', 'Model:',['class'=>'label_padding']) !!}
                                         {!! Form::text('model', old('model'), ['class'=> $errors->get('model') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -84,7 +84,7 @@
                             @if($temp != 'Generators')
                                 @if($temp == 'Pumps' || $temp == 'Loading Arms')
                                     <div class="row">
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
                                                 {!! Form::text(($temp == 'Pumps') ? 'pump[product]' : 'loading_arm[product]',
@@ -99,7 +99,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('rate', 'Rate:',['class'=>'label_padding']) !!}
                                                 {!! Form::number(($temp == 'Pumps') ? 'pump[rate]' : 'loading_arm[rate]',
@@ -117,7 +117,7 @@
                                     </div>
                                 @elseif($temp == 'Tanks')
                                     <div class="row">
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
                                                 {!! Form::text('tank[product]', old('tank[product]'), ['class'=> $errors->get('tank[product]') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -128,7 +128,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('capacity', 'Capacity:',['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[capacity]', old('tank[capacity]'), ['class'=> $errors->get('tank[capacity]') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -141,7 +141,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('height', 'Height:',['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[height]', old('tank[height]'), ['class'=> $errors->get('tank[height]') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -152,7 +152,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('diameter', 'Diameter:',['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[diameter]', old('tank[diameter]'), ['class'=> $errors->get('tank[diameter]') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -166,7 +166,7 @@
                                     </div>
                                 @else
                                     <div class="row">
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('category', 'Category:',['class'=>'label_padding']) !!}
                                                 {!! Form::text('fuel_meter[category]', old('fuel_meter[category]'), ['class'=> $errors->get('fuel_meter[category]') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -177,13 +177,13 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                         </div>
                                     </div>
                                 @endif
                             @endif
                             <div class="row">
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('state', 'State:',['class'=>'label_padding']) !!}
                                         {!! Form::select('state',  ['ON' => 'Active', 'OFF' => 'Not Active'], null, ['class'=>'form-control'])!!}
@@ -195,27 +195,28 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                 </div>
                             </div>
                             <div class="row">
-                                <div id="submit-btn" class="pull-right">
-                                    <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Edit {{substr($temp, 0, -1)}}</button>
+                                <div id="submit-btn" class="ml-auto">
+                                    <button class="btn  btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">Delete {{substr($temp, 0, -1)}}</button>
+                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">Edit {{substr($temp, 0, -1)}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}
                         <!--                        </form>-->
 
                             <div class="row">
-                                <div id="submit-btn" class="pull-right" style="margin-top:5px;">
-                                    <button class="btn btn-general btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">Delete {{substr($temp, 0, -1)}}</button>
+                                <div id="submit-btn" class="ml-auto" style="margin-top:5px;">
+
                                 </div>
                             </div>
 
                         </div>
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
                         <div class="contact-right">
                             <h4>Components:</h4>
                             <hr>
@@ -230,12 +231,12 @@
                                                 <b>reference:</b> {{$component->reference}}
                                             </p>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
                                                     {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
                                                         <button style="color: #069;text-decoration: underline;cursor: pointer;" type="submit" role="button">Edit Component</button>
                                                     {!! Form::close() !!}
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
                                                         <button class="component-del" style="color: #ff3333;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">Delete Component</button>
                                                 </div>
                                             </div>

@@ -31,7 +31,7 @@
                             {!! Form::open(['method'=>'GET', 'action'=> ['EquipmentController@create']]) !!}
                             <div class="row">
                                 <div id="submit-btn" class="pull-right" style="margin:10px 7px 0px 0px;">
-                                    <button class="btn btn-general btn-primary" type="submit" role="button"></button>
+                                    <button class="btn  btn-primary" type="submit" role="button"></button>
                                 </div>
                             </div>
                             {!! Form::close() !!}

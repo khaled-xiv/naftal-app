@@ -11,7 +11,7 @@
                     {!! Form::open(['method'=>'GET', 'action'=> ['CenterController@create']]) !!}
                     <div class="row">
                         <div id="submit-btn" class="pull-right" style="margin:10px 7px 7px 7px;">
-                            <button class="btn btn-general btn-yellow" type="submit" role="button">Add Center</button>
+                            <button class="btn  btn-yellow" type="submit" role="button">Add Center</button>
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -56,7 +56,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST">
+                    <form method="post">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE"/>
                         <div class="modal-footer">

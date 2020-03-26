@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="row">
                                     <div id="submit-btn" class="ml-auto">
-                                        <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Add User</button>
+                                        <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">Add User</button>
                                     </div>
                                 </div>
 

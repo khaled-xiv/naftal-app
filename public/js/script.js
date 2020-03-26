@@ -50,30 +50,6 @@ $(function () {
     }
 });
 
-$('li.dropdown a').on('click', function (event) {
-    $(this).parent().toggleClass('open');
-});
-
-// $(document).ready(function(){
-//     $('.nav-item.dropdown').hover(
-//         function(){
-//             $(this).children('.dropdown-menu').show('fast');
-//         },
-//         function () {
-//             $(this).children('.dropdown-menu').hide(2000);
-//         });
-// });
-
-// $(document).ready(function () {
-//
-//     $(".nav-item.dropdown,.dropdown-menu").hover(function(){
-//         $(".dropdown-menu").show();
-//     });
-//
-//     $(".nav-item.dropdown ").mouseout(function(){
-//         $(".dropdown-menu").hide();
-//     });
-// });
 
 // Smooth Scrolling
 $(function () {

@@ -14,7 +14,7 @@
 
                         <div class="row">
                             <div id="submit-btn" class="pull-right" style="margin:10px 7px 7px 7px;">
-                                <button class="btn btn-general btn-yellow" type="submit" role="button">Add User</button>
+                                <button class="btn  btn-yellow" type="submit" role="button">Add User</button>
                             </div>
                         </div>
 

@@ -11,18 +11,18 @@
 
                 <div class="row">
 
-                    <div class="col-md-6 col-md-offset-4">
+                    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
 
                         <div class="contact-right">
 
                             {!! Form::model($center, ['method'=>'PUT', 'action'=> ['CenterController@update', $center->id]]) !!}
                             @csrf
                             <h4>Edit Center</h4>
-                            <br><br>
+                            <br>
 
 
                             <div class="row">
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('code', 'Code:',['class'=>'label_padding']) !!}
                                         {!! Form::text('code', old('code'), ['class'=> $errors->get('code') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -34,7 +34,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('location', 'Location:',['class'=>'label_padding']) !!}
                                         {!! Form::text('location', old('location'), ['class'=> $errors->get('location') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('storage_capacity', 'Storage capacity:',['class'=>'label_padding']) !!}
                                         {!! Form::number('storage_capacity', old('storage_capacity'), ['class'=> $errors->get('storage_capacity') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -58,7 +58,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('phone', 'Phone number:',['class'=>'label_padding']) !!}
                                         {!! Form::text('phone', old('phone'), ['class'=> $errors->get('phone') ? 'form-control is-invalid' : 'form-control']) !!}
@@ -71,19 +71,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div id="submit-btn" class="pull-right">
-                                    <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Edit Center</button>
+                                <div id="submit-btn" class="ml-auto">
+                                    <button role="button" class="btn  btn-danger" data-toggle="modal" data-target="#DeleteCenterModal">Delete Center</button>
+                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">Edit Center</button>
                                 </div>
                             </div>
 
                         {!! Form::close() !!}
-                        <!--                        </form>-->
-
-                            <div class="row">
-                                <div id="submit-btn" class="pull-right" style="margin-top:5px;">
-                                    <button role="button" class="btn btn-general btn-danger" data-toggle="modal" data-target="#DeleteCenterModal">Delete Center</button>
-                                </div>
-                            </div>
 
                         </div>
 

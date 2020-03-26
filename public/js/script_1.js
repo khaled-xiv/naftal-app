@@ -1,3 +1,4 @@
+
 /* =========================================
               Mobile Menu
 ============================================ */
@@ -9,7 +10,7 @@ $(function () {
     });
 
     // Hide mobile nav
-    $("#mobile-nav-close-btn, #mobile-nav a").click(function () {
+    $("#mobile-nav-close-btn").click(function () {
         $("#mobile-nav").css("height", "0%");
     });
 
@@ -88,10 +89,6 @@ function form_submit(s) {
     });
 }
 
-
-// $('div#dd.wrapper-dropdown-3').hover(function () {
-//     // alert("salam");
-// })
 
 
 

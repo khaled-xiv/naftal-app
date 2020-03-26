@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Center;
 use App\Component;
 use App\Req_inter;
 use Carbon\Carbon;
@@ -25,9 +26,28 @@ class Req_interController extends Controller
 
     public function index()
     {
-        $openned_reqs=Req_inter::where('valide', 0)->get();
-        $closed_reqs=Req_inter::where('valide', 1)->get();
-        $received_reqs=Req_inter::where('need_district', 1)->get();
+        $openned_reqs = DB::table('equipments')
+            ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+            ->where('valide', 0)
+            ->where('equipments.center_id',Auth::user()->center->id)
+            ->select('req_inters.*','equipments.code')
+            ->get();
+
+        $closed_reqs=DB::table('equipments')
+            ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+            ->where('valide', 1)
+            ->where('equipments.center_id',Auth::user()->center->id)
+            ->select('req_inters.*','equipments.code')
+            ->get();
+        $received_reqs=DB::table('equipments')
+            ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+            ->where('need_district', 1)
+            ->select('req_inters.*','equipments.code','equipments.center_id')
+            ->get();
+        foreach ( $received_reqs as $received_req){
+            $id=$received_req->center_id;
+            $received_req->center  =Center::findOrFail($id)->code;
+        }
 
         return view('req_inter.index',compact('openned_reqs','closed_reqs','received_reqs'));
     }
