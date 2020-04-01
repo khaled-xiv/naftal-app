@@ -1,9 +1,5 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['verify'=>true]);
 
 Route::get('/logout', function () {
@@ -11,7 +7,8 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 
-//Route::get('/home', 'HomeController@index')->name('home') ;
+Route::get('/', 'HomeController@index')->name('home') ;
+Route::post('/sendEmail', 'HomeController@sendEmail') ;
 
 Route::group(['middleware'=>'role:chief_district,chief_center,technician,admin'],function() {
     Route::post('/account/removeAddress', 'AccountController@removeAddress');

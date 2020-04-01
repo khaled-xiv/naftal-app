@@ -187,6 +187,9 @@
     ul.office-details li i {
         width: 25px;
     }
+    #contact-left {
+        text-align: center;
+    }
 }
 
 
@@ -253,16 +256,16 @@
     .content-box-md {
         padding: 80px 0;
     }
-    .about-item {
-        padding: 55px 30px;
-        margin-bottom: 35px;
-    }
-    .about-item i {
-        font-size: 30px;
-    }
-    .about-item h3 {
-        font-size: 18px;
-    }
+    /*.about-item {*/
+    /*    padding: 55px 30px;*/
+    /*    margin-bottom: 35px;*/
+    /*}*/
+    /*.about-item i {*/
+    /*    font-size: 30px;*/
+    /*}*/
+    /*.about-item h3 {*/
+    /*    font-size: 18px;*/
+    /*}*/
     /* Team */
     #team-left .vertical-heading {
         min-height: 130px;

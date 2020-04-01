@@ -42,7 +42,244 @@
 </section>
 <!-- Home ends-->
 
-<!-- Contact -->
+<!-- About -->
+<section id="about">
+
+{{--    <!-- About 02 -->--}}
+    <div id="about-02">
+
+        <div class="content-box-md">
+
+            <div class="container">
+
+                <div class="owl-carousel owl-theme" id="team-members">
+
+                    @foreach($centers as $center)
+                    <div class="wow ">
+                        <!-- About item 01 -->
+                        <div class="about-item text-center" style="margin-right:10px ">
+                            <i class="fa fa-home"></i>
+                            <h3>{{$center->code}}</h3>
+                            <hr>
+                            <h4>{{$center->location}}</h4>
+                            <h4>{{$center->phone}}</h4>
+                            </div>
+
+                    </div>
+                    @endforeach
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{{--    <!-- About 02 Ends -->--}}
+
+</section>
+{{--<!-- About Ends -->--}}
+
+{{--<!-- Team -->--}}
+{{--<section id="team">--}}
+
+{{--    <div class="content-box-lg">--}}
+
+{{--        <div class="container">--}}
+
+{{--            <!-- Team Members -->--}}
+{{--            <div class="row">--}}
+
+{{--                <!-- Team Left Side -->--}}
+{{--                <div class="col-md-6 col-sm-6 wow slideInLeft" data-wow-duration="1s">--}}
+
+{{--                    <div id="team-left">--}}
+
+{{--                        <div class="vertical-heading">--}}
+{{--                            <h5>Who We Are</h5>--}}
+{{--                            <h2>Meet Our<br><strong>Talented</strong> Team</h2>--}}
+{{--                        </div>--}}
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, repellat, eos! Dignissimos expedita totam cum quidem autem alias dolorum error a quia optio eligendi, amet animi reprehenderit, quaerat.</p>--}}
+
+{{--                    </div>--}}
+
+{{--                </div>--}}
+
+{{--                <!-- Team Right Side -->--}}
+{{--                <div class="col-md-6 col-sm-6 wow slideInRight" data-wow-duration="1s">--}}
+
+{{--                    <div id="team-members" class="owl-carousel">--}}
+
+{{--                        <!-- Member 01 -->--}}
+{{--                        <div class="team-member">--}}
+{{--                            <img src="{{asset('img/team/team-1.jpg')}}" alt="team member" class="img-responsive">--}}
+{{--                            <div class="team-member-overlay">--}}
+{{--                                <div class="team-member-info text-center">--}}
+{{--                                    <h6>Kevin Greer</h6>--}}
+{{--                                    <p>Web Designer</p>--}}
+{{--                                    <ul class="social-list">--}}
+{{--                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                        <!-- Member 02 -->--}}
+{{--                        <div class="team-member">--}}
+{{--                            <img src="{{asset('img/team/team-2.jpg')}}" alt="team member" class="img-responsive">--}}
+{{--                            <div class="team-member-overlay">--}}
+{{--                                <div class="team-member-info text-center">--}}
+{{--                                    <h6>Christian Cilinis</h6>--}}
+{{--                                    <p>Web Developer</p>--}}
+{{--                                    <ul class="social-list">--}}
+{{--                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                        <!-- Member 03 -->--}}
+{{--                        <div class="team-member">--}}
+{{--                            <img src="{{asset('img/team/team-3.jpg')}}" alt="team member" class="img-responsive">--}}
+{{--                            <div class="team-member-overlay">--}}
+{{--                                <div class="team-member-info text-center">--}}
+{{--                                    <h6>Andrea Arkov</h6>--}}
+{{--                                    <p>Senior Developer</p>--}}
+{{--                                    <ul class="social-list">--}}
+{{--                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                        <!-- Member 04 -->--}}
+{{--                        <div class="team-member">--}}
+{{--                            <img src="img/team/team-4.jpg" alt="team member" class="img-responsive">--}}
+{{--                            <div class="team-member-overlay">--}}
+{{--                                <div class="team-member-info text-center">--}}
+{{--                                    <h6>Harold Houdini</h6>--}}
+{{--                                    <p>Art Director</p>--}}
+{{--                                    <ul class="social-list">--}}
+{{--                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                        <!-- Member 05 -->--}}
+{{--                        <div class="team-member">--}}
+{{--                            <img src="img/team/team-5.jpg" alt="team member" class="img-responsive">--}}
+{{--                            <div class="team-member-overlay">--}}
+{{--                                <div class="team-member-info text-center">--}}
+{{--                                    <h6>Angela Perry</h6>--}}
+{{--                                    <p>Manager</p>--}}
+{{--                                    <ul class="social-list">--}}
+{{--                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+
+{{--                        <!-- Member 06 -->--}}
+{{--                        <div class="team-member">--}}
+{{--                            <img src="img/team/team-6.jpg" alt="team member" class="img-responsive">--}}
+{{--                            <div class="team-member-overlay">--}}
+{{--                                <div class="team-member-info text-center">--}}
+{{--                                    <h6>Kara Kulis</h6>--}}
+{{--                                    <p>Marketing & Sales</p>--}}
+{{--                                    <ul class="social-list">--}}
+{{--                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+{{--                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+
+{{--                    </div>--}}
+
+{{--                </div>--}}
+
+{{--            </div>--}}
+
+{{--            <div id="progress-elements">--}}
+
+{{--                <!-- Progress Bars -->--}}
+{{--                <div class="row wow fadeInUp">--}}
+
+{{--                    <div class="col-md-6 col-sm-6">--}}
+
+{{--                        <!-- Skill 01 -->--}}
+{{--                        <div class="skill">--}}
+{{--                            <h4>Web Design</h4>--}}
+{{--                            <div class="progress">--}}
+{{--                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">--}}
+{{--                                    <span>95%</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                    </div>--}}
+{{--                    <div class="col-md-6 col-sm-6">--}}
+{{--                        <!-- Skill 02 -->--}}
+{{--                        <div class="skill">--}}
+{{--                            <h4>Photoshop/Illustration</h4>--}}
+{{--                            <div class="progress">--}}
+{{--                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">--}}
+{{--                                    <span>75%</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-6 col-sm-6">--}}
+{{--                        <!-- Skill 03 -->--}}
+{{--                        <div class="skill">--}}
+{{--                            <h4>Web Development</h4>--}}
+{{--                            <div class="progress">--}}
+{{--                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">--}}
+{{--                                    <span>75%</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-6 col-sm-6">--}}
+{{--                        <!-- Skill 04 -->--}}
+{{--                        <div class="skill">--}}
+{{--                            <h4>Digital Marketing</h4>--}}
+{{--                            <div class="progress">--}}
+{{--                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">--}}
+{{--                                    <span>90%</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+{{--                </div>--}}
+
+{{--            </div>--}}
+
+{{--        </div>--}}
+
+
+
+{{--    </div>--}}
+
+{{--</section>--}}
+{{--<!-- Team Ends -->--}}
+
+{{--<!-- Contact -->--}}
 <section id="contact">
 
     <div class="content-box-md">
@@ -51,7 +288,7 @@
 
             <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-12 col-sm-12">
 
 <!--                     Contact Left -->
                     <div id="contact-left">
@@ -104,49 +341,48 @@
                     </div>
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-12 col-sm-12">
 
 <!--                     Contact Right -->
                     <div class="contact-right">
 
-                        <form>
+                        {!! Form::open(['method'=>'POST', 'action'=> 'HomeController@sendEmail']) !!}
                             <h4>Send Message</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa repell.</p>
+                            <p>If you have any problem please contact us.</p>
 
                             <div class="row">
 
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required id="name" placeholder="Your Name">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" placeholder="Email Address">
+                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" required id="email" placeholder="Email Address">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="phone" placeholder="Phone No.">
+                                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="Phone No.">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                        <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" required id="subject" placeholder="Subject">
                                     </div>
                                 </div>
 
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="message" placeholder="Message"></textarea>
+                                <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" required placeholder="Message"></textarea>
                             </div>
 
-                            <div id="submit-btn">
-                                <a class="btn btn-general btn-yellow" href="#" title="Submit" role="button">Submit</a>
+                            <div id="submit-btn" class="text-right">
+                                <button class="btn btn-general btn-yellow" type="submit" href="" title="Submit" role="button">Submit</button>
                             </div>
 
-                        </form>
-
+                        {!! Form::close() !!}
                     </div>
 
                 </div>

@@ -22,6 +22,10 @@
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
 
+{{--Owl-carousel--}}
+<link href="{{asset('css/owl-carousel/owl.carousel.min.css')}}" rel="stylesheet">
+<link href="{{asset('css/owl-carousel/owl.theme.default.min.css')}}" rel="stylesheet">
+
 <!-- Custom Styles -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/style_1.css')}}" rel="stylesheet">
