@@ -26,6 +26,9 @@
 <link href="{{asset('css/owl-carousel/owl.carousel.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/owl-carousel/owl.theme.default.min.css')}}" rel="stylesheet">
 
+<!-- Responsive Tabs CSS -->
+<link rel="stylesheet" href="{{asset('css/responsive-tabs/responsive-tabs.min.css')}}">
+
 <!-- Custom Styles -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/style_1.css')}}" rel="stylesheet">
@@ -37,4 +40,4 @@
 <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap-select.min.js') }}"></script>
-
+<script src="{{ asset('js/sort-table.js') }}"></script>

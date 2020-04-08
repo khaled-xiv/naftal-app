@@ -22,12 +22,12 @@
                     </div>
 
                     <div class="table100">
-                        <table>
+                        <table class="js-sort-table">
                             <thead>
                             <tr class="table100-head">
-                                <th class="column1">Welcome</th>
+                                <th class="column1 ">Welcome</th>
                                 <th class="column2">Email</th>
-                                <th class="column3">Email verified at</th>
+                                <th class="column3 js-sort-date">Email verified at</th>
                                 <th class="column4">Phone</th>
                                 <th class="column5">Address</th>
                                 <th class="column6">Status</th>

@@ -1,4 +1,4 @@
-@extends('layouts.without_footer')
+-@extends('layouts.without_footer')
 @section('title', 'Equipments')
 @section('content')
     <!-- Equipments -->
@@ -43,7 +43,7 @@
 
                 <div class="tab-content" id="myTabContent">
                     <div id="pumps" class="tab-pane fade show active" role="tabpanel" aria-labelledby="pumps-tab">
-                        <table>
+                        <table class="js-sort-table">
                             <thead>
                             <tr class="table100-head">
                                 <th>code</th>
@@ -51,7 +51,7 @@
                                 <th>type</th>
                                 <th>model</th>
                                 <th>product</th>
-                                <th>rate</th>
+                                <th class="js-sort-number">rate</th>
                                 <th>state</th>
                             </tr>
                             </thead>
