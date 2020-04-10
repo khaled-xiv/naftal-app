@@ -9,18 +9,6 @@
         <div class="limiter">
             <div class="container-table100">
                 <div class="wrap-table100">
-                    <div class="pull-left">
-                        {!! Form::open(['method'=>'GET', 'action'=> ['Auth\RegisterController@showRegistrationForm']]) !!}
-
-                        <div class="row">
-                            <div id="submit-btn" class="pull-right" style="margin:10px 7px 7px 7px;">
-                                <button class="btn  btn-yellow" type="submit" role="button">Add User</button>
-                            </div>
-                        </div>
-
-                        {!! Form::close() !!}
-                    </div>
-
                     <div class="table100">
                         <table class="js-sort-table">
                             <thead>
@@ -60,6 +48,11 @@
         </div>
 
     </div>
+
+    <!--         add icon-->
+    <a href="/users/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
+        <i class="fa fa-plus"></i>
+    </a>
 </section>
 
 

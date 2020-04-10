@@ -10,7 +10,7 @@ $(window).on('load', function () { // makes sure that whole site is loaded
                 Team
 ============================================ */
 $(function () {
-    $("#team-members").owlCarousel({
+    $("#center-items").owlCarousel({
         items: 3,
         autoplay: true,
         smartSpeed: 700,

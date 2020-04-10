@@ -17,6 +17,9 @@
 <!--    Bootstrap-->
 <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>
 
+<!--    owl-carousel-->
+<script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}" ></script>
+
 <!-- Responsive Tabs JS -->
 <script src="{{asset('js/responsive-tabs/jquery.responsiveTabs.min.js')}}"></script>
 

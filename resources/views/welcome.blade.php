@@ -43,21 +43,21 @@
 <!-- Home ends-->
 
 <!-- About -->
-<section id="about">
+<section id="center">
 
 {{--    <!-- About 02 -->--}}
-    <div id="about-02">
+    <div id="center-01">
 
         <div class="content-box-md">
 
             <div class="container">
 
-                <div class="owl-carousel owl-theme" id="team-members">
+                <div class="owl-carousel owl-theme" id="center-items">
 
                     @foreach($centers as $center)
                     <div class="wow ">
                         <!-- About item 01 -->
-                        <div class="about-item text-center" style="margin-right:10px ">
+                        <div class="center-item text-center" style="margin-right:10px ">
                             <i class="fa fa-home"></i>
                             <h3>{{$center->code}}</h3>
                             <hr>
@@ -208,23 +208,5 @@
 <!-- Google Map Ends -->
 
 @stop
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

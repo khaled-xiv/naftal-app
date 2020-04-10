@@ -2,53 +2,54 @@
 @section('title', 'Request of intervention')
 @section('content')
 
-<!-- Services -->
-<section id="services">
-    <!-- Services 02 -->
-    <div id="services-02">
-        <div class="content-box-md">
-            <div id="services-tabs">
-                <ul class="text-center">
-                    <li><a href="#service-tab-1">Opened Request</a></li>
-                    <li><a href="#service-tab-2">Closed Request</a></li>
-                    @if(Auth()->user()->is_district_chief())
-                        <li><a href="#service-tab-3">Received Request</a></li>
-                    @endif
-                </ul>
+    <!-- Services -->
+    <section id="services">
+        <!-- Services 02 -->
+        <div id="services-02">
+            <div class="content-box-md">
+                <div id="services-tabs">
+                    <ul class="text-center">
+                        <li><a href="#service-tab-1">Opened Request</a></li>
+                        <li><a href="#service-tab-2">Closed Request</a></li>
+                        @if(Auth()->user()->is_district_chief())
+                            <li><a href="#service-tab-3">Received Request</a></li>
+                        @endif
+                    </ul>
 
-                <!-- Service Tab 01 -->
-                <div id="service-tab-1" class="service-tab">
-                    <div class="container">
-                        <div class="row">
-                            <table>
-                                <thead>
-                                <tr class="table100-head">
-                                    <th class="column1">Number</th>
-                                    <th class="column6">Equipment</th>
-                                    <th class="column4">Equipment code</th>
-                                    <th class="column2">Created at</th>
-                                    <th class="column3 ">Degree of urgency</th>
-                                    <th class="column5">Description</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($openned_reqs as $openned_req)
-                                    <tr class="clickable-row" data-href="request-of-intervention/{{$openned_req->id}}/edit">
-                                        <td class="column1">{{$openned_req->number}}</td>
-                                        <td class="column6">{{$openned_req->equipment_name}}</td>
-                                        <td class="column4">{{$openned_req->code}}</td>
-                                        <td class="column2">{{$openned_req->created_at}}</td>
-                                        <td class="column3 ">{{$openned_req->degree_urgency}}</td>
-                                        <td class="column5">{{$openned_req->description}}</td>
+                    <!-- Service Tab 01 -->
+                    <div id="service-tab-1" class="service-tab">
+                        <div class="container">
+                            <div class="row">
+
+                                <table>
+                                    <thead>
+                                    <tr class="table100-head">
+                                        <th class="column1">Number</th>
+                                        <th class="column6">Equipment</th>
+                                        <th class="column4">Equipment code</th>
+                                        <th class="column2">Created at</th>
+                                        <th class="column3 ">Degree of urgency</th>
+                                        <th class="column5">Description</th>
                                     </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($openned_reqs as $openned_req)
+                                        <tr class="clickable-row" data-href="request-of-intervention/{{$openned_req->id}}/edit">
+                                            <td class="column1">{{$openned_req->number}}</td>
+                                            <td class="column6">{{$openned_req->equipment_name}}</td>
+                                            <td class="column4">{{$openned_req->code}}</td>
+                                            <td class="column2">{{$openned_req->created_at}}</td>
+                                            <td class="column3 ">{{$openned_req->degree_urgency}}</td>
+                                            <td class="column5">{{$openned_req->description}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <!-- Service Tab 02 -->
-                <div id="service-tab-2" class="service-tab">
+                    <div id="service-tab-2" class="service-tab">
                         <div class="container">
                             <div class="row">
                                 <table>
@@ -78,10 +79,10 @@
                                 </table>
                             </div>
                         </div>
-                </div>
-                <!-- Service Tab 03 -->
-                <div id="service-tab-3" class="service-tab">
-                    <div class="container">
+                    </div>
+                    <!-- Service Tab 03 -->
+                    <div id="service-tab-3" class="service-tab">
+                        <div class="container">
                             <div class="row">
                                 <table>
                                     <thead>
@@ -110,27 +111,22 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
             <!-- Services 02 Ends -->
-    </div>
+        </div>
+    </section>
+    <!-- Services Ends -->
 
-    <!--         add icon-->
-    <a href="/request-of-intervention/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
-        <i class="fa fa-plus"></i>
-    </a>
-</section>
-<!-- Services Ends -->
+    <script>
 
-<script>
-
-    $(document).ready(function ($) {
-        $(".clickable-row").click(function () {
-            window.location = $(this).data("href");
+        $(document).ready(function ($) {
+            $(".clickable-row").click(function () {
+                window.location = $(this).data("href");
+            });
         });
-    });
-</script>
+    </script>
 @endSection
 
 
