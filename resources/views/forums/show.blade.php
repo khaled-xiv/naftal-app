@@ -31,7 +31,7 @@
 
                         <hr>
                         <!-- Post Content -->
-                        <div class="row">
+                        <div id="before-recommend" class="row">
                             <div class="col-1">
                                 <div>
                                     <div class="vote">
@@ -56,6 +56,10 @@
                                 @if(Auth::user() == $forum->user)
                                     <div class="pull-right">
                                         <button class="editFsAndAs-1" style="color: #069;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">Edit question</button>
+                                    </div>
+                                    <br>
+                                    <div class="pull-right">
+                                        <button onclick="getSimilar({{$forum->id}})" style="color: #069;text-decoration: underline;cursor: pointer;">Find me an Answer</button>
                                     </div>
                                 @endif
                             </div>
@@ -264,6 +268,26 @@
                             $("#1votesBoxA" + id).css("color", "black");
                         }
                     }
+                }
+            });
+        }
+
+        function getSimilar(id){
+            $.ajax({
+                type:'GET',
+                url:'http://127.0.0.1:8000/sim/forums/'+id+"/",
+                success:function(data) {
+                    if(data.length == 0)
+                        alert("we couldn't find answers to your question.");
+                    else {
+                        $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text("these forums could be helpful:"));
+                        for(i = 0; i < data.length; i++){
+                            $(".alert-dismissible").append($("<a href='#' style='display:block;'>").addClass("alert-link").text(data[i].title));
+                        }
+                    }
+                },
+                error: function(data) {
+                    alert("some error occurred while looking for an answer");
                 }
             });
         }
