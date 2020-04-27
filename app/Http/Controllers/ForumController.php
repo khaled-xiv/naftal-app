@@ -7,6 +7,7 @@ use App\Likable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use GuzzleHttp\Client;
 
 class ForumController extends Controller
 {
@@ -60,6 +61,11 @@ class ForumController extends Controller
         $forum->body = $request->body;
         $user = Auth::user();
         $user->forums()->save($forum);
+        $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
+        $client = new Client();
+        $client->request('POST', $url, [
+            'timeout' => 60,
+        ]);
         return redirect('/forums');
     }
 

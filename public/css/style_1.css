@@ -219,3 +219,9 @@
     transform: translateY(0);
     transition-delay: 0.9s
 }
+
+.alert-dismissible {
+    padding : 5px;
+    margin : 5px;
+    border-radius: 5px;
+}
