@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
 
+ini_set('max_execution_time', 100);
+
 class ForumController extends Controller
 {
 
@@ -64,7 +66,7 @@ class ForumController extends Controller
         $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
         $client = new Client();
         $client->request('POST', $url, [
-            'timeout' => 60,
+            'timeout' => 100,
         ]);
         return redirect('/forums');
     }

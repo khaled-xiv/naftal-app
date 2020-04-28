@@ -272,6 +272,7 @@
             });
         }
 
+		var done = false;
         function getSimilar(id){
             $.ajax({
                 type:'GET',
@@ -279,10 +280,11 @@
                 success:function(data) {
                     if(data.length == 0)
                         alert("we couldn't find answers to your question.");
-                    else {
+                    else if(!done){
+						done = true;
                         $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text("these forums could be helpful:"));
                         for(i = 0; i < data.length; i++){
-                            $(".alert-dismissible").append($("<a href='#' style='display:block;'>").addClass("alert-link").text(data[i].title));
+                            $(".alert-dismissible").append($("<a href='"+data[i].id+"' style='display:block;'>").addClass("alert-link").text(data[i].title));
                         }
                     }
                 },
