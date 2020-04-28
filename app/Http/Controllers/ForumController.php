@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Forum;
 use App\Likable;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
 
@@ -58,16 +60,26 @@ class ForumController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $tags = $request->tags;
+        $tags = explode(",", $tags);
+
         $forum = new Forum();
         $forum->title = $request->title;
         $forum->body = $request->body;
         $user = Auth::user();
         $user->forums()->save($forum);
-        $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
-        $client = new Client();
-        $client->request('POST', $url, [
-            'timeout' => 100,
-        ]);
+        foreach ($tags as $tag){
+            if($tag !== "") {
+                $tagObj = Tag::firstOrCreate(['content' => trim($tag)]);
+                DB::insert('insert into forum_tag (forum_id, tag_id) values (?, ?)', [$forum->id, $tagObj->id]);
+            }
+        }
+//        $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
+//        $client = new Client();
+//        $client->request('POST', $url, [
+//            'timeout' => 100,
+//        ]);
         return redirect('/forums');
     }
 

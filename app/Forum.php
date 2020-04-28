@@ -24,5 +24,9 @@ class Forum extends Model
         return $this->morphToMany('App\User', 'likable');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'forum_tag');
+    }
 
 }
