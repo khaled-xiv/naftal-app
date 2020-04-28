@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function sendEmail(Request $request)
     {
         $to_name = "hachemi abderrahmen";
-        $to_email = "a.hachemi@esi-sba.dz";
+        $to_email = "exemple@gmail.com";
         $data = array('name'=>$request['message'],'phone'=>$request['phone']);
         $subject=$request['subject'];
         $from_email=$request['email'];
