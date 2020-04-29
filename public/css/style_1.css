@@ -225,3 +225,6 @@
     margin : 5px;
     border-radius: 5px;
 }
+.position-fixed {
+    margin: 10px 20px;
+}

@@ -59,9 +59,11 @@
                     </div>
 
                     <!-- Sidebar Widgets Column -->
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-md-4 justify-content-center">
 
-                        @include('forums.sideBar')
+                        <div id="fix-div" class="position-fixed">
+                            @include('forums.sideBar')
+                        </div>
 
                     </div>
 
@@ -73,5 +75,26 @@
         </div>
         <!-- /.container -->
     </section>
+
+    <script>
+
+        $(document).ready(function($) {
+
+            let $window = $(window);
+            let $div = $('#fix-div');
+
+            function checkWidth() {
+                let window_size = $window.width();
+                if (window_size > 768) {
+                    $div.addClass('position-fixed');
+                }else{
+                    $div.removeClass('position-fixed');
+                }
+            }
+            checkWidth();
+            $(window).resize(checkWidth);
+        });
+
+    </script>
 
 @endsection
