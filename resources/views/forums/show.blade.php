@@ -55,11 +55,11 @@
                                 </p>
                                 @if(Auth::user() == $forum->user)
                                     <div class="pull-right">
-                                        <button class="editFsAndAs-1" style="color: #069;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">Edit question</button>
+                                        <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">Edit question</button>
                                     </div>
                                     <br>
                                     <div class="pull-right">
-                                        <button onclick="getSimilar({{$forum->id}})" style="color: #069;text-decoration: underline;cursor: pointer;">Find me an Answer</button>
+                                        <button class="link-button" onclick="getSimilar({{$forum->id}})">Find me an Answer</button>
                                     </div>
                                 @endif
                             </div>
@@ -118,7 +118,7 @@
                                                         </p>
                                                         @if(Auth::user() == $answer->user)
                                                         <div class="pull-right">
-                                                            <button class="editFsAndAs-1" style="color: #069;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button">Edit answer</button>
+                                                            <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button">Edit answer</button>
                                                         </div>
                                                         @endif
                                                     </div>

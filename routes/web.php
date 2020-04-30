@@ -51,3 +51,4 @@ Route::post('forums/{id}/upvote', 'ForumController@upvote');
 Route::post('forums/{id}/downvote', 'ForumController@downvote');
 Route::post('answers/{id}/upvote', 'AnswerController@upvote');
 Route::post('answers/{id}/downvote', 'AnswerController@downvote');
+Route::get('tags/{id}/search', 'TagController@search');

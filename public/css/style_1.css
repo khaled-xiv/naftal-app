@@ -228,3 +228,9 @@
 .position-fixed {
     margin: 10px 20px;
 }
+
+.link-button {
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}

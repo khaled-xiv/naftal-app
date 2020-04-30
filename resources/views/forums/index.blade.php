@@ -41,16 +41,6 @@
                         <hr>
                     @endforeach
 
-                    <!-- Pagination -->
-                    <ul class="pagination justify-content-center mb-4">
-                        <li class="page-item">
-                            <a class="page-link" href="#">&larr; Older</a>
-                        </li>
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">Newer &rarr;</a>
-                        </li>
-                    </ul>
-
                 </div>
 
                 <!-- Sidebar Widgets Column -->
@@ -66,7 +56,7 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="text-center">
+                <div class="text-center" style="margin-left : 15px;">
                     {{$forums->render()}}
                 </div>
             </div>

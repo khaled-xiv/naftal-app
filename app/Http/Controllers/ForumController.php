@@ -31,7 +31,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $forums = Forum::paginate(10);
+        $forums = Forum::orderBy('votes', 'desc')->paginate(5);
         return view('forums.index', compact('forums'));
     }
 

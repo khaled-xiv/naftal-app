@@ -1,3 +1,9 @@
+<?php
+use App\Tag;
+$tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->take(6)->get();
+$limit = count($tags);
+?>
+
 <div class="input-group mb-3">
     <input type="text" style="border-radius:5px 0px 0px 5px;" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="button-addon2">
     <div class="input-group-append">
@@ -7,33 +13,33 @@
 <br>
 <!-- Categories Widget -->
 <div class="card my-4">
-    <h5 class="card-header">Categories</h5>
+    <h5 class="card-header">Popular tags</h5>
     <div class="card-body">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6">
                 <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="#">Web Design</a>
-                    </li>
-                    <li>
-                        <a href="#">HTML</a>
-                    </li>
-                    <li>
-                        <a href="#">Freebies</a>
-                    </li>
+                    @for($i = 0; $i < 3; $i++)
+                        @if($i < $limit)
+                            <li>
+                                <form method="GET" action="/tags/{{$tags[$i]->id}}/search">
+                                    <button class="link-button" style="text-decoration: none;" type="submit">{{$tags[$i]->content}}</button>
+                                </form>
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6">
                 <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                        <a href="#">CSS</a>
-                    </li>
-                    <li>
-                        <a href="#">Tutorials</a>
-                    </li>
+                    @for($i = 3; $i < 6; $i++)
+                        @if($i < $limit)
+                            <li>
+                                <form method="GET" action="/tags/{{$tags[$i]->id}}/search">
+                                    <button class="link-button" style="text-decoration: none;" type="submit">{{$tags[$i]->content}}</button>
+                                </form>
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>
