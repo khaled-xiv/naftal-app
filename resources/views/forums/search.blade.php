@@ -18,11 +18,18 @@
                         <button class="btn btn-primary pull-right">Ask Question</button>
                         {!! Form::close() !!}
                         <br><hr>
-                        <h2 class="my-4">Forums tagged with
-                            <small> "{{$tag->content}}"</small>
+                        <h2 class="my-4">
+                            @if(isset($tag))
+                                Forums tagged with
+                                <small> "{{$tag->content}}"</small>
+                            @else
+                                Search results
+                            @endif
                         </h2>
-
                         <!-- Blog Post -->
+                        @if(count($forums) === 0)
+                            no results were found
+                        @else
                         @foreach($forums as $forum)
                             <div class="card mb-4">
                                 <div class="card-body">
@@ -39,7 +46,7 @@
                             </div>
                             <hr>
                         @endforeach
-
+                        @endif
                     </div>
 
                     <div class="col-md-4 justify-content-center">

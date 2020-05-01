@@ -1,15 +1,16 @@
 <?php
-use App\Tag;
-$tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->take(6)->get();
-$limit = count($tags);
+    use App\Tag;
+    $tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->take(6)->get();
+    $limit = count($tags);
 ?>
-
-<div class="input-group mb-3">
-    <input type="text" style="border-radius:5px 0px 0px 5px;" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="button-addon2">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+<form method="GET" action="/search/results">
+    <div class="input-group mb-3">
+        <input type="text" style="border-radius:5px 0px 0px 5px;" class="form-control" name="search_query" placeholder="Search..." aria-label="search" aria-describedby="button-addon2" required>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+        </div>
     </div>
-</div>
+</form>
 <br>
 <!-- Categories Widget -->
 <div class="card my-4">
