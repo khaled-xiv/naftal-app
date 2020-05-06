@@ -1,8 +1,11 @@
 @extends('layouts.without_footer')
-@section('title', 'Centers')
+@section('title', 'Users')
 @section('content')
-    <!-- Centers -->
-    <section id="center">
+    <!-- Users -->
+    <?php
+    echo "<body style='background-color:#f4f4f4'>";
+    ?>
+    <section id="users">
 
         <div id="center-01">
 
@@ -39,16 +42,21 @@
 
         </div>
 
-
+        <!--         add icon-->
+        <a href="/centers/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add Center" role="button">
+            <i class="fa fa-plus"></i>
+        </a>
     </section>
 
-    <!-- Centers Ends -->
-@endSection
-<script>
-    $(document).ready(function($) {
-            $(document).on("click", ".center-del", function () {
-                let Id = $(this).data('center-id');
-                $(".center-del-2 form").attr('action', '/centers/' + Id);
+
+    <script>
+        $(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
             });
-    });
-</script>
+        });
+    </script>
+
+    <!-- Users Ends -->
+@endSection
+

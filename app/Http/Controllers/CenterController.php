@@ -68,8 +68,7 @@ class CenterController extends Controller
      */
     public function show($id)
     {
-        $center = Center::where('id', $id)->first();
-        return view('centers.show', compact('center'));
+
     }
 
     /**
