@@ -13,7 +13,7 @@
                         <table class="js-sort-table">
                             <thead>
                             <tr class="table100-head">
-                                <th class="column1 ">Welcome</th>
+                                <th class="column1 ">Name</th>
                                 <th class="column2">Email</th>
                                 <th class="column3 js-sort-date">Email verified at</th>
                                 <th class="column4">Phone</th>
@@ -50,7 +50,7 @@
     </div>
 
     <!--         add icon-->
-    <a href="/users/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
+    <a href="/users/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
         <i class="fa fa-plus"></i>
     </a>
 </section>

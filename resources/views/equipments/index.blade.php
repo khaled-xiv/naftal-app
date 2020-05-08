@@ -1,8 +1,8 @@
--@extends('layouts.without_footer')
-@section('title', 'Equipments')
+@extends('layouts.without_footer')
+@section('title', 'Request of intervention')
 @section('content')
-    <!-- Equipments -->
 
+    <!-- Services -->
     <section id="services">
         <!-- Services 02 -->
         <div id="services-02">
@@ -183,27 +183,31 @@
         </div>
 
         <!--         add icon-->
-        <a href="/equipments/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
+        <a href="/equipments/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" role="button">
             <i class="fa fa-plus"></i>
         </a>
     </section>
+    <!-- Services Ends -->
 
-    <!-- Equipments Ends -->
 
-<script>
-    $(document).ready(function($) {
-        $(".clickable-row").click(function() {
-            window.location = $(this).data("href");
-        });
-        let equipment = $("ul li.active a").html();
-        $("button.btn-primary").html("add " + equipment);
-        document.cookie='equip =' + equipment;
-        $("li.equipment").click(function() {
-            let equipment = $("a", this).html();
+    <script>
+        $(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+            let equipment = $("ul li.active a").html();
+            $('#add-icon').attr('title',"Add "+equipment);
+            
             $("button.btn-primary").html("add " + equipment);
             document.cookie='equip =' + equipment;
-        });
+            $("li.equipment").click(function() {
+                let equipment = $("a", this).html();
+                $("button.btn-primary").html("add " + equipment);
+                document.cookie='equip =' + equipment;
+            });
 
-    });
-</script>
+        });
+    </script>
 @endSection
+
+
