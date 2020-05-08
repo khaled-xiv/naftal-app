@@ -234,3 +234,13 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+span.username {
+	color:#069;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+span.username:hover{
+	color: #f4c613;
+}

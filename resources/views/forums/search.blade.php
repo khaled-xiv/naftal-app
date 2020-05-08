@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="card-footer text-muted">
                                     Posted on {{$forum->created_at}} by
-                                    <a href="#">{{$forum->user->name}}</a>
+                                    <span class="username">{{$forum->user->name}}</span>
                                 </div>
                             </div>
                             <hr>
