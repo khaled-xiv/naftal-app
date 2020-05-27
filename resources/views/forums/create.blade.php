@@ -49,7 +49,7 @@
                                 @enderror
                             </div>
                             <div id="submit-btn" class="pull-right">
-                                <button class="btn btn-general btn-yellow" type="submit"  title="Submit" role="button">Ask question</button>
+                                <button class="btn btn-yellow" type="submit"  title="Submit" role="button">Ask question</button>
                             </div>
 
                         {!! Form::close() !!}

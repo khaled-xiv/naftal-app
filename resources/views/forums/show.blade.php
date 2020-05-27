@@ -25,7 +25,7 @@
                         <h2 class="mt-4">{{$forum->title}}</h2>
                         <!-- Author -->
                         by
-                        <a href="#">{{$forum->user->name}}</a>
+                        <span class="username">{{$forum->user->name}}</span>
                         <!-- Date/Time -->
                         <p class="text-muted">Posted on {{$forum->created_at}}</p>
 
@@ -112,7 +112,7 @@
                                                         <span class="text-muted pull-right">
                                                             <small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
                                                         </span>
-                                                        <strong style="color: #f4c613;">{{$answer->user->name}}</strong>
+                                                        <span class="username">{{$answer->user->name}}</span>
                                                         <p id="{{$answer->id}}">
                                                             {{$answer->body}}
                                                         </p>

@@ -28,14 +28,20 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h3 class="card-title">{{$forum->title}}</h3>
-                                <p class="card-text">{{$forum->body}}</p>
+                                <p class="card-text">
+								@if(strlen($forum->body) < 200)
+									{{$forum->body}}
+								@else()
+									{{substr($forum->body, 0, 200).'...'}}
+								@endif
+								</p>
                                 {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
                                     <button class="btn btn-primary">Read More &rarr;</button>
                                 {!! Form::close() !!}
                             </div>
                             <div class="card-footer text-muted">
                                 Posted on {{$forum->created_at}} by
-                                <a href="#">{{$forum->user->name}}</a>
+                                <span class="username">{{$forum->user->name}}</span>
                             </div>
                         </div>
                         <hr>

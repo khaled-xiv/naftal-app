@@ -71,8 +71,7 @@ class ForumController extends Controller
         $user->forums()->save($forum);
         foreach ($tags as $tag){
             if($tag !== "") {
-                $tagObj = Tag::firstOrCreate(['content' => trim($tag)]);
-                DB::insert('insert into forum_tag (forum_id, tag_id) values (?, ?)', [$forum->id, $tagObj->id]);
+                $forum->tags()->firstOrCreate(['content' => trim($tag)]);
             }
         }
 //        $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
@@ -135,6 +134,15 @@ class ForumController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request){
+        $query = $request->search_query;
+        $forums = Forum::query()
+            ->where('title', 'like', '%'.$query.'%')
+            ->orWhere('body', 'like', '%'.$query.'%')
+            ->orderBy('votes', 'desc')->paginate(8);
+        return view('forums.search',compact('forums'));
     }
 
     public function upvote($id){
