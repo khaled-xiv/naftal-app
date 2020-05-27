@@ -1,12 +1,17 @@
 <?php
 
 
+Route::redirect('/', Config::get('app.locale'));
+
+Route::group(['prefix' => '{language}'], function () {
+
 Auth::routes(['verify'=>true]);
 
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 });
+
 
 Route::get('/', 'HomeController@index')->name('home') ;
 Route::post('/sendEmail', 'HomeController@sendEmail') ;
@@ -52,3 +57,5 @@ Route::post('forums/{id}/downvote', 'ForumController@downvote');
 Route::post('answers/{id}/upvote', 'AnswerController@upvote');
 Route::post('answers/{id}/downvote', 'AnswerController@downvote');
 Route::get('tags/{id}/search', 'TagController@search');
+
+});

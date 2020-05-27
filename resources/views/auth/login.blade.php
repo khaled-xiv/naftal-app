@@ -12,14 +12,14 @@
 <div class="limiter" >
     <div class="container-login100">
         <div class="wrap-login100" >
-            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ route('login') }}">
+            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ route('login',app()->getLocale()) }}">
                 @csrf
                 <span class="login100-form-title">
-                        Sign In
+                        {{ __('Sign In') }}
                 </span>
                 <div class="wrap-input100" style="margin-bottom: 16px">
                     <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
-                           placeholder="Enter your email address" required>
+                           placeholder="{{ __('Enter your email address') }}" required>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="wrap-input100  input-group">
-                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="Enter your password" required>
+                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('Enter your password') }}" required>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -37,23 +37,33 @@
                 </div>
 
                 <div class="text-right" style="padding: 13px 0 23px 0 ">
+                    @if(Config::get('app.locale')=='en')
 						<span class="txt1">
-							Forgot
+							{{ __('Forgot') }}
 						</span>
 
-                    <a href="{{ route('password.request') }}" class="txt2">
-                        Email / Password?
-                    </a>
+                        <a href="{{ route('password.request',app()->getLocale()) }}" class="txt2">
+                            {{ __('Email / Password?') }}
+                        </a>
+                    @else
+                        <a href="{{ route('password.request',app()->getLocale()) }}" class="txt2">
+                            {{ __('Email / Password?') }}
+                        </a>
+                        <span class="txt1">
+							{{ __('Forgot') }}
+						</span>
+
+                    @endif
                 </div>
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Sign in
+                        {{ __('Sign In') }}
                     </button>
                 </div>
 
                 <div class="go_back">
-                    <a href="/" id="back"><i class="fa fa-arrow-left"> Go Back</i></a>
+                    <a href="/" id="back"><i class="fa fa-arrow-left"> {{ __('Go Back') }}</i></a>
 
                 </div>
 
