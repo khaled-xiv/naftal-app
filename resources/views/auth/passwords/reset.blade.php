@@ -12,12 +12,12 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 wrap-login100_2">
-            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST" action="{{ route('password.update') }}">
+            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST"  action= "{{ route('password.update',app()->getLocale()) }}">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <span class=" login100-form-title_1">
-                        Reset password
+                        {{__('Reset Password ')}}
                 </span>
 
                 <div class="wrap-input100"  style="margin-bottom: 16px">
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="go_back">
-                    <a href="{{route ('login')}}" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>
+{{--                    <a href="{{route ('login',app()->getLocale())}}" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>--}}
 
                 </div>
 

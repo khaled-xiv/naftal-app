@@ -114,11 +114,10 @@ class AccountController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$language,$id)
     {
-
-
         $input=$request->all();
+
         if ($input['name']!=null){
             $this->validate($request, [
                 'name' => ['required', 'string', 'max:255']
@@ -148,12 +147,11 @@ class AccountController extends Controller
                 'address' => [ 'string','max:255' ]
             ]);
         }
-
         $user=User::findOrfail($id);
         if (! empty($input['email']))$user->unverify();
         $input=array_filter($input);
         $user->update($input);
-        return redirect('/account');
+        return redirect(app()->getLocale().'/account');
     }
 
     /**

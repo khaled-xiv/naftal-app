@@ -37,13 +37,19 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+//    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
+
+    protected function redirectTo()
+    {
+        return "/".app()->getLocale();
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

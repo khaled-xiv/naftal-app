@@ -33,11 +33,18 @@ class RegisterController extends Controller
      *
      * @var string
      */
-//    protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/users/create';
+//    protected $redirectTo = RouteServiceProvider::BACK;
+
+//    protected $redirectTo = app()->getLocale();
+
+    protected function redirectTo()
+    {
+        return "/".app()->getLocale()."/users";
+    }
 
     public function showRegistrationForm()
     {
+
         $centers=Center::all()->pluck('code','id');
         $roles=Role::all()->pluck('name','id');
         return view('users.create',compact('roles', 'centers'));
@@ -100,6 +107,7 @@ class RegisterController extends Controller
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
     }
+
 
 
 

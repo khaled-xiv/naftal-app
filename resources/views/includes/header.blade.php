@@ -14,12 +14,19 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
                             <li><a class="btn btn-link" href=" {{ url('/')}}">{{ __('Home') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('equipments')}}">{{ __('Equipments') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('centers')}}">{{ __('Centers') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">{{ __('Interventions') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('users')}}">{{ __('Users') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('forums')}}">{{ __('Forums') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('/#contact')}}">{{ __('Contact') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/equipments')}}">{{ __('Equipments') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/centers')}}">{{ __('Centers') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/request-of-intervention')}}">{{ __('Interventions') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/users')}}">{{ __('Users') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('Forums') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/#contact')}}">{{ __('Contact') }}</a></li>
+                            @foreach (config('app.available_locales') as $locale)
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), $locale) }}"
+                                       @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                                </li>
+                            @endforeach
                             @guest
                             <li><a class="btn btn-link" href="{{ route('login',app()->getLocale())}}">{{ __('Sign In') }}</a></li>
                             @else
@@ -29,7 +36,7 @@
                                         {{Auth()->user()->name}}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{url('/account')}}"><i class="fa fa-fw fa-user ml-auto"></i> {{ __('Account') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                        <a class="dropdown-item" href="{{url(app()->getLocale().'/account')}}"><i class="fa fa-fw fa-user ml-auto"></i> {{ __('Account') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('logout',app()->getLocale())}}"><i class="fa fa-fw fa-power-off ml-auto"></i> {{ __('Log Out') }} &nbsp;&nbsp;  </a>
                                     </div>
@@ -47,13 +54,13 @@
 
                     <div id="mobile-nav-content">
                         <ul class="nav " style="display: flex;flex-direction: column;">
-                            <li><a class="btn btn-link" href=" {{ url('/')}}">{{ __('Home') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('equipments')}}">{{ __('Equipments') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('centers')}}">{{ __('Centers') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('request-of-intervention')}}">{{ __('Interventions') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('users')}}">{{ __('Users') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('forums')}}">{{ __('Forums') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url('/#contact')}}">{{ __('Contact') }}</a></li>
+                            <li><a class="btn btn-link" href=" {{ url(app()->getLocale().'/')}}">{{ __('Home') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/equipments')}}">{{ __('Equipments') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/centers')}}">{{ __('Centers') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/request-of-intervention')}}">{{ __('Interventions') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/users')}}">{{ __('Users') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('Forums') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/#contact')}}">{{ __('Contact') }}</a></li>
                             @guest
                                 <li><a class="btn btn-link" href="{{ route('login',app()->getLocale())}}">{{ __('Sign In') }}</a></li>
                             @else
@@ -62,7 +69,7 @@
                                         {{Auth()->user()->name}}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{url('/account')}}"><i class="fa fa-fw fa-user ml-auto"></i> {{ __('Account') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                        <a class="dropdown-item" href="{{url(app()->getLocale().'/account')}}"><i class="fa fa-fw fa-user ml-auto"></i> {{ __('Account') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('logout',app()->getLocale())}}"><i class="fa fa-fw fa-power-off ml-auto"></i> {{ __('Log Out') }} &nbsp;&nbsp;  </a>
                                     </div>

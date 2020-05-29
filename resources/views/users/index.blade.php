@@ -23,7 +23,7 @@
                             </thead>
                             <tbody>
                             @foreach($users as $user)
-                            <tr class="clickable-row" data-href="users/{{$user->id}}">
+                            <tr class="clickable-row" data-href="/{{app()->getLocale()}}/users/{{$user->id}}">
                                 <td class="column1">{{$user->name}}</td>
                                 <td class="column2">{{$user->email}}</td>
                                 <td class="column3">@if(!$user->email_verified_at) Not Verified @else {{$user->email_verified_at}} @endif</td>
@@ -50,7 +50,7 @@
     </div>
 
     <!--         add icon-->
-    <a href="/users/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
+    <a href="/{{app()->getLocale()}}/users/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
         <i class="fa fa-plus"></i>
     </a>
 </section>

@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ResetPassword;
+use App\Notifications\VerifyEmail;
 
 class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
 {
@@ -19,6 +21,19 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
     protected $fillable = [
         'name', 'email', 'password', 'role_id', 'center_id', 'is_active', 'phone', 'isVerified', 'address', 'email_verified_at'
     ];
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail());
+    }
+
+
+
 
     /**
      * The attributes that should be hidden for arrays.

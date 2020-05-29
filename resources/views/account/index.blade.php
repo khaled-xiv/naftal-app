@@ -14,8 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=>
-                ['AccountController@update',Auth()->user()->id]]) !!}
+                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=>['AccountController@update','language'=>app()->getLocale(),Auth()->user()->id]]) !!}
 
                 @csrf
                 {{ Form::hidden('field',null,['id'=>'field_hidden']) }}
@@ -97,7 +96,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['AccountController@close']]) !!}
+            {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['AccountController@close','language'=>app()->getLocale()]]) !!}
             @csrf
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
