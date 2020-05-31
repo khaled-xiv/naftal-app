@@ -48,14 +48,13 @@ class VerificationController extends Controller
 
     public function resend(Request $request)
     {
-//        return $request->all();
         if ($request->user()->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }
 
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with('resent', true);
+        return back()->with(['resent', true,'language'=>app()->getLocale(),'verify'=>__('verify')]);
     }
 
     public function verify(Request $request)
@@ -77,6 +76,13 @@ class VerificationController extends Controller
         }
 
         return redirect($this->redirectPath())->with('verified',true);
+    }
+
+    public function show(Request $request)
+    {
+        return $request->user()->hasVerifiedEmail()
+            ? redirect($this->redirectPath())
+            : view('auth.verify');
     }
 
 

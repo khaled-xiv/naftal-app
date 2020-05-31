@@ -31,7 +31,6 @@ class HomeController extends Controller
 
     public function sendEmail(Request $request,$locale)
     {
-        return "salam";
         $to_name = "hachemi abderrahmen";
         $to_email = "exemple@gmail.com";
         $data = array('name'=>$request['message'],'phone'=>$request['phone']);

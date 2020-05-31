@@ -14,7 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=>['AccountController@update','language'=>app()->getLocale(),Auth()->user()->id]]) !!}
+                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=>['AccountController@update','language'=>app()->getLocale(),'account'=>Auth()->user()]]) !!}
 
                 @csrf
                 {{ Form::hidden('field',null,['id'=>'field_hidden']) }}

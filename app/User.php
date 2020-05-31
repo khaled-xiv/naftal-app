@@ -33,8 +33,6 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
     }
 
 
-
-
     /**
      * The attributes that should be hidden for arrays.
      *

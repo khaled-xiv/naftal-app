@@ -12,12 +12,12 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 wrap-login100_2">
-            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST"  action= "{{ route('password.update',app()->getLocale()) }}">
+            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST"  action= "{{ route('password.update',['language'=>app()->getLocale(),'password'=>__('password'),'reset'=>__('reset')])}}">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <span class=" login100-form-title_1">
-                        {{__('Reset Password ')}}
+                        {{__('Reset Password')}}
                 </span>
 
                 <div class="wrap-input100"  style="margin-bottom: 16px">

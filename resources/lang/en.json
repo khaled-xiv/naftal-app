@@ -1,0 +1,10 @@
+{
+    "key": "test  en",
+    "create":"create",
+    "password": "password",
+    "reset": "reset",
+    "verify": "verify",
+    "resend": "resend",
+    "logout": "logout",
+    "account": "account"
+}

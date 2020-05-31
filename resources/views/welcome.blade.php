@@ -55,19 +55,19 @@
 
                 <div class="owl-carousel owl-theme" id="center-items">
 
-{{--                    @foreach($centers as $center)--}}
-{{--                    <div class="wow ">--}}
-{{--                        <!-- About item 01 -->--}}
-{{--                        <div class="center-item text-center" style="margin-right:10px ">--}}
-{{--                            <i class="fa fa-home"></i>--}}
-{{--                            <h3>{{$center->code}}</h3>--}}
-{{--                            <hr>--}}
-{{--                            <h4>{{$center->location}}</h4>--}}
-{{--                            <h4>{{$center->phone}}</h4>--}}
-{{--                            </div>--}}
+                    @foreach($centers as $center)
+                    <div class="wow ">
+                        <!-- About item 01 -->
+                        <div class="center-item text-center" style="margin-right:10px ">
+                            <i class="fa fa-home"></i>
+                            <h3>{{$center->code}}</h3>
+                            <hr>
+                            <h4>{{$center->location}}</h4>
+                            <h4>{{$center->phone}}</h4>
+                            </div>
 
-{{--                    </div>--}}
-{{--                    @endforeach--}}
+                    </div>
+                    @endforeach
 
                 </div>
 
@@ -148,8 +148,8 @@
 <!--                     Contact Right -->
                     <div class="contact-right">
 
-{{--                        {!! Form::open(['method'=>'POST', 'action'=> '/en/sendEmail']) !!}--}}
-                        <form action="/en/sendEmail" method="post">
+                        {!! Form::open(['method'=>'POST', 'action'=> ['HomeController@sendEmail','language'=>app()->getLocale()]]) !!}
+{{--                        <form action="{{app()->getLocale()}}/sendEmail" method="post">--}}
                             <h4>Send Message</h4>
                             <p>If you have any problem please contact us.</p>
 

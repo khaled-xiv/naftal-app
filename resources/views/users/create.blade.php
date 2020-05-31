@@ -15,7 +15,7 @@
 
                     <div class="contact-right">
 
-                        {!! Form::open(['method'=>'POST', 'action'=>[ 'Auth\RegisterController@register','language'=>app()->getLocale()]]) !!}
+                        {!! Form::open(['method'=>'POST', 'action'=>[ 'Auth\RegisterController@register','language'=>app()->getLocale(),'users'=>__('users'),'create'=>__('create')]]) !!}
                             @csrf
                         <input type="hidden" name="languge" value="{{ app()->getLocale() }}">
                             <h4>Add User</h4>

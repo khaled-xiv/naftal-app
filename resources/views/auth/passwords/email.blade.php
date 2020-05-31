@@ -16,7 +16,7 @@
                 @csrf
                 <input type="hidden" name="language" value="{{ app()->getLocale() }}">
                 <span class="login100-form-title_1" >
-                        Recover password
+                        {{__('Reset Password')}}
                 </span>
 
                 @if (session('status'))
@@ -37,7 +37,7 @@
                 @endif
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Recover Password
+                        {{__('Reset')}}
                     </button>
                 </div>
 

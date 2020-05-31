@@ -39,12 +39,11 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-        return "/".app()->getLocale()."/users";
+        return "/".app()->getLocale().'/'.__('users');
     }
 
     public function showRegistrationForm()
     {
-
         $centers=Center::all()->pluck('code','id');
         $roles=Role::all()->pluck('name','id');
         return view('users.create',compact('roles', 'centers'));

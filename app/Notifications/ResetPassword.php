@@ -51,9 +51,9 @@ class ResetPassword extends ResetPasswordNotification
         $locale = app()->getLocale();
         return (new MailMessage)
             ->subject(__('Reset Password Notification'))
-            ->line('Hey this email was sent to you because you requested a password change for your order.')
-            ->action('Reset Password', url($locale . '/password/reset', $this->token))
-            ->line(' if you did not request a password change, please ignore this email.');
+            ->line(__('You are receiving this email because we received a password reset request for your account.'))
+            ->action(__('Reset Password'), url($locale . '/'.__('password').'/'.__('reset'), $this->token))
+            ->line(__('If you did not request a password reset, no further action is required.'));
     }
 
 

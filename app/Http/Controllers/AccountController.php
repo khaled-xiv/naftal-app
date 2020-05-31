@@ -114,7 +114,7 @@ class AccountController extends Controller
     }
 
 
-    public function update(Request $request,$language,$id)
+    public function update(Request $request,$id,$language)
     {
         $input=$request->all();
 
@@ -147,7 +147,9 @@ class AccountController extends Controller
                 'address' => [ 'string','max:255' ]
             ]);
         }
-        $user=User::findOrfail($id);
+
+        return $user=User::findOrfail($id);
+
         if (! empty($input['email']))$user->unverify();
         $input=array_filter($input);
         $user->update($input);

@@ -50,7 +50,7 @@
     </div>
 
     <!--         add icon-->
-    <a href="/{{app()->getLocale()}}/users/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
+    <a href="{{url(app()->getLocale().'/'. __('users').'/'.__('create'))}}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
         <i class="fa fa-plus"></i>
     </a>
 </section>

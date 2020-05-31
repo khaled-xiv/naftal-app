@@ -12,7 +12,8 @@
 <div class="limiter" >
     <div class="container-login100">
         <div class="wrap-login100" >
-            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ route('login',app()->getLocale()) }}">
+            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ url(app()->getLocale().'/'.__('login')) }}">
+{{--            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="">--}}
                 @csrf
                 <span class="login100-form-title">
                         {{ __('Sign In') }}
@@ -42,11 +43,11 @@
 							{{ __('Forgot') }}
 						</span>
 
-                        <a href="{{ route('password.request',app()->getLocale()) }}" class="txt2">
+                        <a href="{{ route('password.request',['language'=>app()->getLocale(),'password'=>__('password'),'reset'=>__('reset')]) }}" class="txt2">
                             {{ __('Email / Password?') }}
                         </a>
                     @else
-                        <a href="{{ route('password.request',app()->getLocale()) }}" class="txt2">
+                        <a href="{{ route('password.request',['language'=>app()->getLocale(),'password'=>__('password'),'reset'=>__('reset')]) }}" class="txt2">
                             {{ __('Email / Password?') }}
                         </a>
                         <span class="txt1">
