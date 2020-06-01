@@ -54,7 +54,7 @@ class VerificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with(['resent', true,'language'=>app()->getLocale(),'verify'=>__('verify')]);
+        return back()->with(['resent'=>true,'language'=>app()->getLocale(),'verify'=>__('verify')]);
     }
 
     public function verify(Request $request)

@@ -55,10 +55,11 @@ Route::group(['prefix' => '{language}','where' => ['language' => '[a-zA-Z]{2}']]
         ->where(['verify'=>Lang::get('routes.verify')]);
     Route::post('email/{resend}', 'Auth\VerificationController@resend')->name('verification.resend')
         ->where(['resend'=>Lang::get('routes.resend')]);
-    //account route
-//    Route::get('/{account}', 'AccountController@index')->name('account.show')
-//        ->where(['account'=>Lang::get('routes.account')]);
-    Route::resource('account', 'AccountController');
+    //account routes
+    Route::get('/{account}', 'AccountController@index')->name('account.show')
+        ->where(['account'=>Lang::get('routes.account')]);
+    Route::patch('/account/update/{id}', 'AccountController@update')->name('account.update')
+        ->where(['account'=>Lang::get('routes.account')]);
 
     Route::post('/account/removeAddress', 'AccountController@removeAddress');
     Route::post('/account/removePhone', 'AccountController@removePhone');
@@ -83,6 +84,8 @@ Route::group(['prefix' => '{language}','where' => ['language' => '[a-zA-Z]{2}']]
 
 
 
+
+});
 //    Route::resource('centers', 'CenterController');
 //    Route::resource('equipments', 'EquipmentController');
 //    Route::resource('components', 'ComponentController');
@@ -94,7 +97,5 @@ Route::group(['prefix' => '{language}','where' => ['language' => '[a-zA-Z]{2}']]
 //    Route::post('answers/{id}/downvote', 'AnswerController@downvote');
 //    Route::get('tags/{id}/search', 'TagController@search');
 //    Route::get('search/results', 'ForumController@search');
-
-});
 
 

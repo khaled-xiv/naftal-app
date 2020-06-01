@@ -11,5 +11,6 @@ return  array(
     'resend'=>'renvoyer',
     'logout'=>'se_déconnecter',
     'account'=>'mon_compte',
+    "update"=> "modifier"
 )
 ?>

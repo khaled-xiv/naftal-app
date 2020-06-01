@@ -89,32 +89,32 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function removeAddress(Request $request)
+    public function removeAddress(Request $request,$language)
     {
         $user=User::findOrfail(Auth::user()->id);
         $user->address=null;
         $user->update();
-        return redirect('/account');
+        return redirect(app()->getLocale().'/'.__('account'));
     }
-    public function removePhone(Request $request)
+    public function removePhone(Request $request,$language)
     {
         $user=User::findOrfail(Auth::user()->id);
         $user->phone=null;
         $user->isVerified=0;
         $user->update();
-        return redirect('/account');
+        return redirect(app()->getLocale().'/'.__('account'));
     }
 
-    public function close(Request $request)
+    public function close(Request $request,$language)
     {
         $user=User::findOrfail(Auth::user()->id);
         $user->is_active=0;
         $user->update();
-        return redirect('/logout');
+        return redirect(app()->getLocale().'/'.__('logout'));
     }
 
 
-    public function update(Request $request,$id,$language)
+    public function update(Request $request,$language,$id)
     {
         $input=$request->all();
 
@@ -123,7 +123,6 @@ class AccountController extends Controller
                 'name' => ['required', 'string', 'max:255']
             ]);
         }
-
         if ($input['email']!=null){
             $this->validate($request, [
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
@@ -139,21 +138,17 @@ class AccountController extends Controller
             $this->validate($request, [
                 'phone' => ['required', 'numeric','digits:10','unique:users']
             ]);
-
         }
-
         if ($input['address']!=null){
             $this->validate($request, [
                 'address' => [ 'string','max:255' ]
             ]);
         }
-
-        return $user=User::findOrfail($id);
-
+        $user=User::findOrfail($id);
         if (! empty($input['email']))$user->unverify();
         $input=array_filter($input);
         $user->update($input);
-        return redirect(app()->getLocale().'/account');
+        return redirect(app()->getLocale().'/'.__('account'));
     }
 
     /**

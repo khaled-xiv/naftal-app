@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'Verify email ')
+@section('title', __('Verify Email Address'))
 @section('content')
 
 <section id="testimonials">
@@ -16,7 +16,7 @@
 
                     @if (session('resent'))
                     <div class="alert alert-success" role="alert">
-                        <h4>{{__('A fresh verification link has been sent to your email address.')}}</h4>
+                        <h5>{{__('A fresh verification link has been sent to your email address.')}}</h5>
                     </div>
                     @endif
 

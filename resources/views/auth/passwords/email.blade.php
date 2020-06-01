@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('includes.head')
-    <title>Recover password</title>
+    <title>{{__('Reset Password')}}</title>
     <!-- Custom Styles -->
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
 </head>
@@ -26,7 +26,7 @@
                 @else
 
                 <div class="wrap-input100" style="margin-bottom: 16px" >
-                    <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Email Address" required>
+                    <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{__('email address')}}" required>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

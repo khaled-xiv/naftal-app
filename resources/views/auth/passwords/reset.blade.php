@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('includes.head')
-    <title>Reset password</title>
+    <title>{{__('Reset Password')}}</title>
     <!-- Custom Styles -->
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
 </head>
@@ -21,7 +21,7 @@
                 </span>
 
                 <div class="wrap-input100"  style="margin-bottom: 16px">
-                    <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ $email ?? old('email') }}" placeholder="E-Mail Address" required autocomplete="email" autofocus>
+                    <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ $email ?? old('email') }}" placeholder="{{__('email address')}}" required autocomplete="email" autofocus>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="wrap-input100" style="margin-bottom: 16px">
-                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password"  placeholder="Password"  name="password" required autocomplete="new-password">
+                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password"  placeholder="{{__('Password')}}"  name="password" required autocomplete="new-password">
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="wrap-input100" style="margin-bottom: 16px">
-                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password"  placeholder="Confirm Password"  name="password_confirmation" required autocomplete="new-password">
+                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password"  placeholder="{{__('Confirm Password')}}"  name="password_confirmation" required autocomplete="new-password">
                 </div>
 
                 <div class="container-login100-form-btn">

@@ -1,5 +1,4 @@
 {
-    "key": "tester fr",
     "home": "acceuil",
     "equipments": "equipements",
     "centers": "centres",
@@ -24,7 +23,21 @@
     "resend":"renvoyer",
     "logout": "se_déconnecter",
     "account": "mon_compte",
-
+    "update": "modifier",
+    "email address": "Adresse électronique",
+    "Account Settings": "Paramètres du compte",
+    "Phone": "Téléphone",
+    "Address": "Adresse",
+    "Update": "Modifier",
+    "Close": "Fermer",
+    "Are you sure you want to close your": "Voulez-vous vraiment fermer votre",
+    "account1": "compte",
+    "Cancel": "Annuler",
+    "Add": "Ajouter",
+    "Remove": "Supprimer",
+    "Deactivate Your Account": "Désactiver votre compte",
+    "If you want to close your account just click to the button bellow": "Si vous souhaitez fermer votre compte, cliquez simplement sur le bouton ci-dessous",
+    "Note that your account still be closed untill you logged in next time": "Notez que votre compte sera toujours fermé jusqu'à votre prochaine connexion",
 
     "A fresh verification link has been sent to your email address.": "Un nouveau lien de vérification a été envoyé à votre adresse email.",
     "All rights reserved.": "Tous droits réservés.",

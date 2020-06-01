@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('includes.head')
-    <title>Sign In</title>
+    <title>{{ __('Sign In') }}</title>
     <!-- Custom Styles -->
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
 </head>
@@ -13,14 +13,13 @@
     <div class="container-login100">
         <div class="wrap-login100" >
             <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ url(app()->getLocale().'/'.__('login')) }}">
-{{--            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="">--}}
                 @csrf
                 <span class="login100-form-title">
                         {{ __('Sign In') }}
                 </span>
                 <div class="wrap-input100" style="margin-bottom: 16px">
                     <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
-                           placeholder="{{ __('Enter your email address') }}" required>
+                           placeholder="{{ __('email address') }}" required>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -29,7 +28,7 @@
                 </div>
 
                 <div class="wrap-input100  input-group">
-                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('Enter your password') }}" required>
+                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="{{ __('Password') }}" required>
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,7 +63,7 @@
                 </div>
 
                 <div class="go_back">
-                    <a href="/" id="back"><i class="fa fa-arrow-left"> {{ __('Go Back') }}</i></a>
+                    <a href="{{'/'.app()->getLocale()}}" id="back"><i class="fa fa-arrow-left"> {{ __('Go Back') }}</i></a>
 
                 </div>
 

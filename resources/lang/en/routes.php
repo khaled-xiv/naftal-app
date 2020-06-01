@@ -10,7 +10,8 @@ return  array(
     'verify'=>'verify',
     'resend'=>'resend',
     'logout'=>'logout',
-    'account'=>'account'
+    'account'=>'account',
+    "update"=>"update",
 )
 
 ?>
