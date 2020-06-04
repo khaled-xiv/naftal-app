@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'Create request of intervention')
+@section('title', __('request-of-inter'))
 @section('content')
     <!-- Add Request -->
     <br>
@@ -15,7 +15,7 @@
 
                         <div class="contact-right">
 
-                            {!! Form::open(['method'=>'POST', 'action'=> 'Req_interController@store']) !!}
+                            {!! Form::open(['method'=>'POST', 'action'=> ['Req_interController@store','language'=>app()->getLocale(),'request'=>__('request-of-intervention')]]) !!}
                             @csrf
                             <h4>Create Request of Intervention</h4>
                             <br>

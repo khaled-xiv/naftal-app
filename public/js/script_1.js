@@ -59,35 +59,67 @@ $(".credential .credential-detail").hover(function () {
 
 });
 
-
-
 $(".credential .credential-detail").mouseleave(function () {
     $(".credential .edit").css("visibility", "hidden");
     $(".credential .credential-detail").css("backgroundColor", "transparent");
     $(".credential .credential-detail").css("textDecoration", "none");
 });
 
-function fill_field(s){
+function fill_field(s,lang){
+    if (lang=='en'){
         if (s.includes('+')){
             s=s.substr(0, s.indexOf('+'));
-            $('#form-alert-header').text('Add '+s);
+            $('#form-alert-header').text('Add Your '+s);
         }else if (s.includes('+close')){
             s=s.substr(0, s.indexOf('+'));
             $('#close_hidden').val(s);
-            $('#form-alert-header').text('Enter Your'+s);
-        }
-        else{
+            $('#form-alert-header').text('Enter Your '+s);
+        } else{
             $('#form-alert-header').text('Change Your '+s);
         }
-
-        console.log(s);
-        $('#field_hidden').val(s);
-        console.log('sala'+s);
-        $('.modal-body form .hide-form').css('display','none');
-        $('.modal-body form  #'+s).parents(':eq(1)').show();
-        if(s=='password'){
-            $('.modal-body form  #password-confirm').parents(':eq(1)').show();
+    }else {
+        if (s.includes('+')){
+            s=s.substr(0, s.indexOf('+'));
+            switch (s) {
+                case 'address':{
+                    $('#form-alert-header').text('Ajoutez votre adresse');break;
+                }
+                case 'phone':{
+                    $('#form-alert-header').text('Ajoutez votre téléphone');break;
+                }
+            }
+        }else if (s.includes('+close')){
+            s=s.substr(0, s.indexOf('+'));
+            $('#close_hidden').val(s);
+            $('#form-alert-header').text('Entez votre nom');
         }
+        else{
+            switch (s) {
+                case 'name':{
+                    $('#form-alert-header').text('Changez votre nom');break;
+                }
+                case 'email':{
+                    $('#form-alert-header').text('Changez votre adresse eléctronique');break;
+                }
+                case 'password':{
+                    $('#form-alert-header').text('Changez votre mot de passe');break;
+                }
+                case 'address':{
+                    $('#form-alert-header').text('Changez votre adresse');break;
+                }
+                case 'phone':{
+                    $('#form-alert-header').text('Changez votre téléphone');break;
+                }
+            }
+        }
+    }
+
+    $('#field_hidden').val(s);
+    $('.modal-body form .hide-form').css('display','none');
+    $('.modal-body form  #'+s).parents(':eq(1)').show();
+    if(s=='password'){
+        $('.modal-body form  #password-confirm').parents(':eq(1)').show();
+    }
 }
 
 function fill_field1(s){
@@ -100,10 +132,8 @@ function fill_field1(s){
         }else {
             $('#form-alert-header').text('Change  '+s);
         }
-
     }
 
-    console.log(s);
     $('#field_hidden').val(s);
     $('.modal-body form .hide-form').css('display','none');
     $('.modal-body form  #'+s).parents(':eq(1)').show();
@@ -115,7 +145,6 @@ function fill_field1(s){
 $('.modal-body form .hide-form').css('display','none');
 
 function form_submit(s) {
-    console.log(s)
     document.getElementById(s).submit(function () {
     });
 }

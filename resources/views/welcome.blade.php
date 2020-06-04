@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Home')
+@section('title', __('Home'))
 @section('content')
 <!-- Home -->
 <section id="home">

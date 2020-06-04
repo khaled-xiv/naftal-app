@@ -13,10 +13,10 @@
                 <div class="container ">
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
-                            <li><a class="btn btn-link" href="{{url(Config::get('app.locale_prefix').'/')}}">{{ __('home') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale())}}">{{ __('home') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/equipments')}}">{{ __('equipments') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/centers')}}">{{ __('centers') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/request-of-intervention')}}">{{ __('interventions') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('request-of-intervention'))}}">{{ __('interventions') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'. __('users'))}}">{{ __('users') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/#contact')}}">{{ __('contact') }}</a></li>
@@ -27,6 +27,7 @@
                                        @if (app()->getLocale() == $locale) style=" font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
                                 </li>
                             @endforeach
+
                             @guest
                                 <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('login'))}}">{{ __('Sign In') }}</a></li>
                             @else
@@ -54,10 +55,10 @@
 
                     <div id="mobile-nav-content">
                         <ul class="nav " style="display: flex;flex-direction: column;">
-                            <li><a class="btn btn-link" href="{{url(Config::get('app.locale_prefix').'/')}}">{{ __('home') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale())}}">{{ __('home') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/equipments')}}">{{ __('equipments') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/centers')}}">{{ __('centers') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/request-of-intervention')}}">{{ __('interventions') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('request-of-intervention'))}}">{{ __('interventions') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'. __('users'))}}">{{ __('users') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/#contact')}}">{{ __('contact') }}</a></li>

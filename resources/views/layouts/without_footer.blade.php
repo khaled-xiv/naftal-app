@@ -3,7 +3,7 @@
 <head>
     @include('includes.head')
     <title>@yield('title')</title>
-{{--    <link href="{{asset('css/main.css')}}" rel="stylesheet">--}}
+    <link href="{{asset('css/main.css')}}" rel="stylesheet">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="65">
 

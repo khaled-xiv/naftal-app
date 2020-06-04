@@ -12,6 +12,7 @@ return  array(
     'logout'=>'logout',
     'account'=>'account',
     "update"=>"update",
+    "request"=>"request-of-intervention"
 )
 
 ?>

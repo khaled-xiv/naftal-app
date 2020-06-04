@@ -3,9 +3,12 @@
 Route::redirect('/', app()->getLocale());
 
 Route::get('/{fr}/changeLang',function (){
+
+    return url()->previous();
+//     return \Illuminate\Support\Facades\Route::currentRouteName();
     App::setLocale(Request::segment(1));
     Config::set('app.locale_prefix', Request::segment(1));
-    return redirect('/'.app()->getLocale());
+    return redirect(url()->previous());
 });
 
 if (in_array(Request::segment(1), Config::get('app.alt_langs'))) {
@@ -16,8 +19,6 @@ if (in_array(Request::segment(1), Config::get('app.alt_langs'))) {
 foreach(Lang::get('routes') as $k => $v) {
     Route::pattern($k, $v);
 }
-
-
 
 Route::group(['prefix' => '{language}','where' => ['language' => '[a-zA-Z]{2}']],function (){
     //home route
@@ -60,12 +61,9 @@ Route::group(['prefix' => '{language}','where' => ['language' => '[a-zA-Z]{2}']]
         ->where(['account'=>Lang::get('routes.account')]);
     Route::patch('/account/update/{id}', 'AccountController@update')->name('account.update')
         ->where(['account'=>Lang::get('routes.account')]);
-
     Route::post('/account/removeAddress', 'AccountController@removeAddress');
     Route::post('/account/removePhone', 'AccountController@removePhone');
     Route::post('/account/close', 'AccountController@close');
-
-//
 
     Route::group(['middleware'=>'role:admin,chief_district'],function() {
         Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
@@ -73,9 +71,16 @@ Route::group(['prefix' => '{language}','where' => ['language' => '[a-zA-Z]{2}']]
         Route::post('/users/close/{id}', 'UsersController@close');
         Route::get('/{users}/', 'UsersController@index')->where('users', Lang::get('routes.users'));
     });
-//
+//    Request of intervention routes
 //    Route::group(['middleware'=>'role:chief_district,chief_center'],function() {
-//        Route::resource('/request-of-intervention', 'Req_interController');
+
+
+    Route::get('/{request}', 'Req_interController@index')
+        ->where('request', Lang::get('routes.request'));
+    Route::get('/{request}/{create}', 'Req_interController@create')
+        ->where(['request', Lang::get('routes.request'),'create', Lang::get('routes.create')]);
+    Route::post('/{request}', 'Req_interController@store')
+        ->where(['request', Lang::get('routes.request'),'create', Lang::get('routes.create')]);
 //        Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter');
 //        Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
 //        Route::post('/getequipment', 'Req_interController@getEquipment');

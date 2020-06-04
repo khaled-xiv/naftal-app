@@ -121,7 +121,7 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('name')">
+                                      onclick="fill_field('name','{{app()->getLocale()}}')">
                                     {{Auth()->user()->name}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>
@@ -134,7 +134,7 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('email')">
+                                      onclick="fill_field('email','{{app()->getLocale()}}')">
                                 {{Auth()->user()->email}}
                                 <span class="edit"><i class="fa fa-pencil "></i> </span>
                             </span>
@@ -147,7 +147,7 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('password')">
+                                      onclick="fill_field('password','{{app()->getLocale()}}')">
                                 ••••••••
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
@@ -164,14 +164,14 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('phone')"
+                                      onclick="fill_field('phone','{{app()->getLocale()}}')"
                                       style="@if(Auth()->user()->phone==null) display:none @endif">
                                     {{Auth()->user()->phone}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;&nbsp;
                                 @if(Auth()->user()->phone==null)
                                 <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field('phone+add')">{{__('Add')}} {{__('Phone')}}
+                                        onclick="fill_field('phone+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Phone')}}
                                 </button>
                                 @else
                                 {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>
@@ -198,14 +198,14 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field('address')"
+                                      onclick="fill_field('address','{{app()->getLocale()}}')"
                                       style="@if(Auth()->user()->address==null) display:none @endif">
                                     {{Auth()->user()->address}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;
                                 @if(Auth()->user()->address==null)
                                 <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field('address+add')">{{__('Add')}} {{__('Address')}}
+                                        onclick="fill_field('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}
                                 </button>
                                 @else
                                 {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>

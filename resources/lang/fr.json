@@ -1,5 +1,5 @@
 {
-    "home": "acceuil",
+    "Home": "Acceuil",
     "equipments": "equipements",
     "centers": "centres",
     "interventions": "demande D'inter",
@@ -22,7 +22,7 @@
     "verify":"vérifier",
     "resend":"renvoyer",
     "logout": "se_déconnecter",
-    "account": "mon_compte",
+    "account": "mon-compte",
     "update": "modifier",
     "email address": "Adresse électronique",
     "Account Settings": "Paramètres du compte",
@@ -38,6 +38,11 @@
     "Deactivate Your Account": "Désactiver votre compte",
     "If you want to close your account just click to the button bellow": "Si vous souhaitez fermer votre compte, cliquez simplement sur le bouton ci-dessous",
     "Note that your account still be closed untill you logged in next time": "Notez que votre compte sera toujours fermé jusqu'à votre prochaine connexion",
+    "request-of-intervention":"demande-d'intervention",
+    "request-of-inter": "Demande D'intervention",
+    "Opened Request": "Demande Ouverte",
+    "Closed Request": "Demande Fermee",
+    "Received Request": "Demande Reçue",
 
     "A fresh verification link has been sent to your email address.": "Un nouveau lien de vérification a été envoyé à votre adresse email.",
     "All rights reserved.": "Tous droits réservés.",
