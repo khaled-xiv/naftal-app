@@ -10,6 +10,10 @@ return  array(
     'logout'=>'se-déconnecter',
     'account'=>'mon-compte',
     "update"=> "modifier",
-    "request"=>"demande-d'intervention"
+    "request"=>"demande-d'intervention",
+    "password-request"=>"mot-de-passe/réinitialiser",
+    "password-reset"=>"mot-de-passe/réinitialiser/{token}",
+    "user-create"=>"utilisateurs/ajouter",
+    "users"=>"utilisateurs",
 )
 ?>

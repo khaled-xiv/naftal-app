@@ -29,7 +29,7 @@ class ResetPasswordController extends Controller
      */
     protected function redirectTo()
     {
-        return "/".app()->getLocale();
+        return "/";
     }
 
 

@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'Users')
+@section('title', ucwords(__('users')))
 @section('content')
 <!-- Users -->
 <section id="users">
@@ -50,7 +50,7 @@
     </div>
 
     <!--         add icon-->
-    <a href="{{url(app()->getLocale().'/'. __('users').'/'.__('create'))}}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
+    <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.user-create') }}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
         <i class="fa fa-plus"></i>
     </a>
 </section>

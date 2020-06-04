@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\AppServiceProvider;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -37,7 +38,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-//    protected $redirectTo = '/';
+    protected $redirectTo ='/';
 
     /**
      * Create a new controller instance.
@@ -45,25 +46,9 @@ class LoginController extends Controller
      * @return void
      */
 
-
-    protected function redirectTo()
-    {
-        return "/".app()->getLocale();
-    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return $this->loggedOut($request) ?: redirect('/');
     }
 
 

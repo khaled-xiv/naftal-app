@@ -1,6 +1,5 @@
 <?php
 return  array(
-    'routekey' => 'test',
     'login' => 'login',
     'home' => 'home',
     'users'=>'users',
@@ -12,7 +11,11 @@ return  array(
     'logout'=>'logout',
     'account'=>'account',
     "update"=>"update",
-    "request"=>"request-of-intervention"
+    "request"=>"request-of-intervention",
+    "password-request"=>"password/reset",
+    "password-reset"=>"password/reset/{token}",
+    "user-create"=>"users/create",
+    "users"=>"users",
 )
 
 ?>

@@ -12,10 +12,10 @@
 <div class="limiter" >
     <div class="container-login100">
         <div class="wrap-login100" >
-            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ url(app()->getLocale().'/'.__('login')) }}">
+            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.login') }}">
                 @csrf
                 <span class="login100-form-title">
-                        {{ __('Sign In') }}
+                        @lang('Sign In')
                 </span>
                 <div class="wrap-input100" style="margin-bottom: 16px">
                     <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" autocomplete="email"
@@ -42,11 +42,11 @@
 							{{ __('Forgot') }}
 						</span>
 
-                        <a href="{{ route('password.request',['language'=>app()->getLocale(),'password'=>__('password'),'reset'=>__('reset')]) }}" class="txt2">
+                        <a href="{{LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.password-request')}}" class="txt2">
                             {{ __('Email / Password?') }}
                         </a>
                     @else
-                        <a href="{{ route('password.request',['language'=>app()->getLocale(),'password'=>__('password'),'reset'=>__('reset')]) }}" class="txt2">
+                        <a href="{{LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.password-request')}}" class="txt2">
                             {{ __('Email / Password?') }}
                         </a>
                         <span class="txt1">

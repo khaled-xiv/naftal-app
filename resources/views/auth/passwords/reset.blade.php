@@ -12,7 +12,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 wrap-login100_2">
-            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST"  action= "{{ route('password.update',['language'=>app()->getLocale(),'password'=>__('password'),'reset'=>__('reset')])}}">
+            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST"  action= "{{ LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.password-request') }}">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
 
