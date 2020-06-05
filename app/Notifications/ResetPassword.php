@@ -52,7 +52,7 @@ class ResetPassword extends ResetPasswordNotification
         return (new MailMessage)
             ->subject(__('Reset Password Notification'))
             ->line(__('You are receiving this email because we received a password reset request for your account.'))
-            ->action(__('Reset Password'), url($locale . '/'.__('password').'/'.__('reset'), $this->token))
+            ->action(__('Reset Password'), url($locale . '/'.__('password').'/'.__('reset'), [$this->token,encrypt($notifiable->email)]))
             ->line(__('If you did not request a password reset, no further action is required.'));
     }
 

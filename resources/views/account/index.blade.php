@@ -14,7 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=>['AccountController@update','id'=>Auth()->user(),'language'=>app()->getLocale()]]) !!}
+                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=>['AccountController@update',encrypt(Auth()->user()->id)]]) !!}
                 @csrf
                 {{ Form::hidden('field',null,['id'=>'field_hidden']) }}
                 <h4 ></h4>
@@ -89,7 +89,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['AccountController@close','language'=>app()->getLocale()]]) !!}
+            {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['AccountController@close']]) !!}
             @csrf
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
@@ -174,8 +174,7 @@
                                         onclick="fill_field('phone+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Phone')}}
                                 </button>
                                 @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>
-                                ['AccountController@removePhone','language'=>app()->getLocale()]]) !!}
+                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removePhone']) !!}
 
                                 @csrf
                                 <span>
@@ -208,8 +207,7 @@
                                         onclick="fill_field('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}
                                 </button>
                                 @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>
-                                ['AccountController@removeAddress','language'=>app()->getLocale()]]) !!}
+                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removeAddress']) !!}
 
                                 @csrf
                                 <span>

@@ -12,7 +12,7 @@
 <div class="limiter" >
     <div class="container-login100">
         <div class="wrap-login100" >
-            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.login') }}">
+            <form class="login100-form" style="padding:178px 55px 0 55px" method="POST" action="{{ route('login') }}">
                 @csrf
                 <span class="login100-form-title">
                         @lang('Sign In')
@@ -42,11 +42,11 @@
 							{{ __('Forgot') }}
 						</span>
 
-                        <a href="{{LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.password-request')}}" class="txt2">
+                        <a href="{{route('password.request')}}" class="txt2">
                             {{ __('Email / Password?') }}
                         </a>
                     @else
-                        <a href="{{LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.password-request')}}" class="txt2">
+                        <a href="{{route('password.request')}}" class="txt2">
                             {{ __('Email / Password?') }}
                         </a>
                         <span class="txt1">
@@ -63,10 +63,8 @@
                 </div>
 
                 <div class="go_back">
-                    <a href="{{'/'.app()->getLocale()}}" id="back"><i class="fa fa-arrow-left"> {{ __('Go Back') }}</i></a>
-
+                    <a href="{{route('home')}}" id="back"><i class="fa fa-arrow-left"> {{ __('Go Back') }}</i></a>
                 </div>
-
 
             </form>
         </div>

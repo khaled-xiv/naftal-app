@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Redirect;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class EnsureEmailIsVerified
 {
@@ -22,7 +23,7 @@ class EnsureEmailIsVerified
                 ! $request->user()->hasVerifiedEmail())) {
             return $request->expectsJson()
                 ? abort(403, 'Your email address is not verified.')
-                : Redirect::route($redirectToRoute ?: 'verification.notice',['language'=>app()->getLocale(),'verify'=>__('verify')]);
+                : \redirect( LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.verification-notice'));
         }
 
         return $next($request);

@@ -88,12 +88,7 @@ function fill_field(s,lang){
                     $('#form-alert-header').text('Ajoutez votre téléphone');break;
                 }
             }
-        }else if (s.includes('+close')){
-            s=s.substr(0, s.indexOf('+'));
-            $('#close_hidden').val(s);
-            $('#form-alert-header').text('Entez votre nom');
-        }
-        else{
+        } else{
             switch (s) {
                 case 'name':{
                     $('#form-alert-header').text('Changez votre nom');break;
@@ -122,15 +117,61 @@ function fill_field(s,lang){
     }
 }
 
-function fill_field1(s){
-    if (s.includes('+')){
-        s=s.substr(0, s.indexOf('+'));
-        $('#form-alert-header').text('Add '+s);
-    }else{
-        if(s.includes('_')){
-            $('#form-alert-header').text('Change  '+s.substr(0, s.indexOf('_')));
+function fill_field1(s,lang){
+    if (lang=='en'){
+        if (s.includes('+')){
+            s=s.substr(0, s.indexOf('+'));
+            $('#form-alert-header').text('Add '+s);
+        }else{
+            if(s.includes('_')){
+                $('#form-alert-header').text('Change  '+s.substr(0, s.indexOf('_')));
+            }else {
+                $('#form-alert-header').text('Change  '+s);
+            }
+        }
+    }else {
+        if (s.includes('+')){
+            s=s.substr(0, s.indexOf('+'));
+            switch (s) {
+                case 'address':{
+                    $('#form-alert-header').text('Ajoutez  adresse');break;
+                }
+                case 'phone':{
+                    $('#form-alert-header').text('Ajoutez  téléphone');break;
+                }
+            }
         }else {
-            $('#form-alert-header').text('Change  '+s);
+            if(s.includes('_')){
+                switch (s.substr(0, s.indexOf('_'))) {
+                    case 'center': {
+                        $('#form-alert-header').text('Changez le centre');
+                        break;
+                    }
+                    case 'role': {
+                        $('#form-alert-header').text('Changez le role');
+                        break;
+                    }
+                }
+            }else {
+                switch (s) {
+                    case 'name':{
+                        $('#form-alert-header').text('Changez le nom');break;
+                    }
+                    case 'email':{
+                        $('#form-alert-header').text("Changez l'adresse eléctronique");break;
+                    }
+                    case 'password':{
+                        $('#form-alert-header').text('Changez le mot de passe');break;
+                    }
+                    case 'address':{
+                        $('#form-alert-header').text("Changez l'adresse");break;
+                    }
+                    case 'phone':{
+                        $('#form-alert-header').text('Changez le téléphone');break;
+                    }
+                }
+            }
+
         }
     }
 

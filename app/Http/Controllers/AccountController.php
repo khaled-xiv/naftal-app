@@ -89,33 +89,34 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function removeAddress(Request $request,$language)
+    public function removeAddress(Request $request)
     {
         $user=User::findOrfail(Auth::user()->id);
         $user->address=null;
         $user->update();
-        return redirect(app()->getLocale().'/'.__('account'));
+        return redirect()->route('account.show');
     }
-    public function removePhone(Request $request,$language)
+    public function removePhone(Request $request)
     {
         $user=User::findOrfail(Auth::user()->id);
         $user->phone=null;
         $user->isVerified=0;
         $user->update();
-        return redirect(app()->getLocale().'/'.__('account'));
+        return redirect()->route('account.show');
     }
 
-    public function close(Request $request,$language)
+    public function close(Request $request)
     {
         $user=User::findOrfail(Auth::user()->id);
         $user->is_active=0;
         $user->update();
-        return redirect(app()->getLocale().'/'.__('logout'));
+        return redirect()->route('logout');
     }
 
 
-    public function update(Request $request,$language,$id)
+    public function update(Request $request,$id)
     {
+        $id =decrypt($id);
         $input=$request->all();
 
         if ($input['name']!=null){
@@ -148,7 +149,7 @@ class AccountController extends Controller
         if (! empty($input['email']))$user->unverify();
         $input=array_filter($input);
         $user->update($input);
-        return redirect(app()->getLocale().'/'.__('account'));
+        return redirect()->route('account.show');
     }
 
     /**

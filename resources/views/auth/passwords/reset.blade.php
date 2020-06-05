@@ -12,7 +12,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 wrap-login100_2">
-            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST"  action= "{{ LaravelLocalization::getURLFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.password-request') }}">
+            <form class="login100-form" style="padding: 135px 55px 0 55px" method="POST"  action= "{{route('password.update') }}">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
 
@@ -21,7 +21,7 @@
                 </span>
 
                 <div class="wrap-input100"  style="margin-bottom: 16px">
-                    <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ $email ?? old('email') }}" placeholder="{{__('email address')}}" required autocomplete="email" autofocus>
+                    <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ $email ?? old('email') }}" placeholder="{{__('email address')}}" required autocomplete="email" readonly>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,15 +45,13 @@
 
                 <div class="container-login100-form-btn">
                     <button type="submit" class="login100-form-btn">
-                        Reset Password
+                        {{__('Reset')}}
                     </button>
                 </div>
 
                 <div class="go_back">
-{{--                    <a href="{{route ('login',app()->getLocale())}}" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>--}}
-
+                    <a href="{{route('login')}}" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>
                 </div>
-
 
             </form>
         </div>

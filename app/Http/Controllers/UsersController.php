@@ -58,7 +58,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user=User::findOrfail($id);
+        $user=User::findOrfail(decrypt($id));
         $centers=Center::all()->pluck('code','id');
         $roles=Role::all()->pluck('name','id');
         return view('users.edit',compact('user','centers','roles'));
@@ -85,31 +85,35 @@ class UsersController extends Controller
 
     public function close(Request $request,$id)
     {
+        $id =decrypt($id);
         $user=User::findOrfail($id);
         $user->is_active=0;
         $user->update();
-        return redirect('/users');
+        return redirect()->route('users.show');
     }
 
     public function removeAddress(Request $request,$id)
     {
+        $id =decrypt($id);
         $user=User::findOrfail($id);
         $user->address=null;
         $user->update();
-        return redirect('/users/'.$id);
+        return redirect()->route('users.edit',encrypt($user->id));
     }
     public function removePhone(Request $request,$id)
     {
+        $id =decrypt($id);
         $user=User::findOrfail($id);
         $user->phone=null;
         $user->isVerified=0;
         $user->update();
-        return redirect('/users/'.$id);
+        return redirect()->route('users.edit',encrypt($user->id));
     }
 
     public function update(Request $request, $id)
     {
 
+        $id =decrypt($id);
         $input=$request->all();
         if ($input['name']!=null){
             $this->validate($request, [
@@ -145,7 +149,7 @@ class UsersController extends Controller
         if (! empty($input['email']))$user->unverify();
         $input=array_filter($input);
         $user->update($input);
-        return redirect('/users/'.$id);
+        return redirect()->route('users.edit',encrypt($user->id));
     }
 
     /**

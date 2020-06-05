@@ -12,7 +12,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 wrap-login100_1" >
-            <form class="login100-form" style="padding: 130px 55px 0 55px" method="POST" action="{{ route('password.email',app()->getLocale()) }}">
+            <form class="login100-form" style="padding: 130px 55px 0 55px" method="POST" action="{{ route('password.email') }}">
                 @csrf
                 <input type="hidden" name="language" value="{{ app()->getLocale() }}">
                 <span class="login100-form-title_1" >
@@ -42,9 +42,8 @@
                 </div>
 
                 <div class="go_back">
-{{--                    <a href="{{route ('login',app()->getLocale())}}" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>--}}
+                    <a href="{{route('login')}}" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>
                 </div>
-
 
             </form>
         </div>

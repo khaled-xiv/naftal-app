@@ -1,21 +1,23 @@
 <?php
 return  array(
     'login' => 'login',
-    'home' => 'home',
-    'users'=>'users',
-    'create'=>'create',
-    'reset'=>'reset',
-    'password'=>'password',
-    'verify'=>'verify',
-    'resend'=>'resend',
     'logout'=>'logout',
-    'account'=>'account',
-    "update"=>"update",
-    "request"=>"request-of-intervention",
     "password-request"=>"password/reset",
-    "password-reset"=>"password/reset/{token}",
-    "user-create"=>"users/create",
+    "password-reset"=>"password/reset/{token}/{email}",
+    "verification-notice"=>"email/verify",
+    "verification-resend"=>"email/resend",
+    "verification-verify"=>"email/verify/{id}/{hash}",
+
+    'account'=>'account',
+    'account-update'=>'account/update/{id}',
+
     "users"=>"users",
+    "user-create"=>"users/create",
+    "user-show"=>"users/{id}",
+    "user-update"=>"users/update/{id}",
+
+
+    "request"=>"request-of-intervention",
 )
 
 ?>

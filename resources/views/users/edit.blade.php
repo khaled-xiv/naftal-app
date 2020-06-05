@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'User Settings')
+@section('title', __('User Settings'))
 @section('content')
 <!-- Edit User -->
 <!-- Modal -->
@@ -14,7 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=> ['UsersController@update','language'=>app()->getLocale(),$user->id]]) !!}
+                {!! Form::open(['method'=>'PATCH', 'id'=>'submit_modal','action'=> ['UsersController@update',encrypt($user->id)]]) !!}
 
                 @csrf
                 {{ Form::hidden('field',null,['id'=>'field_hidden']) }}
@@ -23,69 +23,69 @@
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group ">
-                            {!! Form::label('name', 'Name:',['class'=>'label_padding']) !!}
+                            {!! Form::label('Name', __('Name').':',['class'=>'label_padding']) !!}
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                    name="name" value='' required
-                                   placeholder="Name">
+                                   placeholder="{{__("Name")}}">
                         </div>
                     </div>
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
-                            {!! Form::label('email', 'Email:',['class'=>'label_padding']) !!}
+                            {!! Form::label('email', __("email address").':',['class'=>'label_padding']) !!}
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                    name="email" value="" required autocomplete="email"
-                                   placeholder="Email Address">
+                                   placeholder="{{__("email address")}}">
                         </div>
                     </div>
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
-                            {!! Form::label('password', 'Password:',['class'=>'label_padding']) !!}
+                            {!! Form::label('password',  __('Password').':',['class'=>'label_padding']) !!}
                             <input id="password" type="password"
                                    class="form-control @error('password') is-invalid @enderror" name="password" required
-                                   autocomplete="new-password" placeholder="Password">
+                                   autocomplete="new-password" placeholder="{{__('Password')}}">
                         </div>
                     </div>
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
-                            {!! Form::label('password-confirm', 'Password-confirm:',['class'=>'label_padding']) !!}
+                            {!! Form::label('password-confirm', __('Confirm Password').':',['class'=>'label_padding']) !!}
                             <input id="password-confirm" type="password" class="form-control"
-                                   name="password_confirmation" required autocomplete="new-password"
-                                   placeholder="Confirm Password">
+                                   name="password_confirmation"  autocomplete="new-password"
+                                   placeholder="{{__('Confirm Password')}}">
                         </div>
                     </div>
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
-                            {!! Form::label('phone', 'Phone:',['class'=>'label_padding']) !!}
+                            {!! Form::label('phone',  __('Phone').':',['class'=>'label_padding']) !!}
                             <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
                                    name="phone" value='' required autocomplete="phone"
-                                   placeholder="Phone Number">
+                                   placeholder="{{__('Phone')}}">
                         </div>
                     </div>
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
-                            {!! Form::label('center_id', 'Center:',['class'=>'label_padding']) !!}
-                            {!! Form::select('center_id', $centers , null, ['class'=>'form-control','id'=>'center_id','placeholder'=>'select a center'])!!}
+                            {!! Form::label('center_id', __('center').':',['class'=>'label_padding']) !!}
+                            {!! Form::select('center_id', $centers , null, ['class'=>'form-control','id'=>'center_id','placeholder'=>__('select a center')])!!}
                         </div>
                     </div>
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
                             {!! Form::label('role_id', 'Role:',['class'=>'label_padding']) !!}
-                            {!! Form::select('role_id', $roles , null, ['class'=>'form-control','id'=>'role_id','placeholder'=>'select a role'])!!}
+                            {!! Form::select('role_id', $roles , null, ['class'=>'form-control','id'=>'role_id','placeholder'=>__('select a role')])!!}
                         </div>
                     </div>
 
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
-                            {!! Form::label('address', 'Address:',['class'=>'label_padding']) !!}
+                            {!! Form::label('address', __('Address').':',['class'=>'label_padding']) !!}
                             <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-                                   name="address" value='' required autocomplete="address"
-                                   placeholder="Address">
+                                   name="address" value=''  autocomplete="address"
+                                   placeholder="{{__('Address')}}">
                         </div>
                     </div>
 
@@ -93,8 +93,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-yellow"onclick="form_submit('submit_modal')">Update</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="submit" class="btn btn-yellow"onclick="form_submit('submit_modal')">{{__('Update')}}</button>
             </div>
             {!! Form::close() !!}
         </div>
@@ -105,16 +105,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="DeleteEquipment">Are you sure you want to close this <br>account ?</h5>
+                <h5 class="modal-title" id="DeleteEquipment">{{__('Are you sure you want to close this')}} <br>{{__('account1')}} ?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-footer">
-                {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['UsersController@close',$user->id]]) !!}
+                {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['UsersController@close',encrypt($user->id)]]) !!}
                 @csrf
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-danger">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
+                <button type="submit" class="btn btn-danger">{{__('Close')}}</button>
                 {!! Form::close() !!}
             </div>
 
@@ -137,16 +137,16 @@
                     @endif
                 </div>
                 <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12">
-                    <h3>Account</h3>
+                    <h3>{{__('Account+')}}</h3>
 
                     <div class="account-settings ">
                         <div class="credential row">
                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Name</label>
+                                <label>{{__('Name')}}</label>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('name')">
+                                      onclick="fill_field1('name','{{app()->getLocale()}}')">
                                     {{$user->name}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>
@@ -159,7 +159,7 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('email')">
+                                      onclick="fill_field1('email','{{app()->getLocale()}}')">
                                 {{$user->email}}
                                 <span class="edit"><i class="fa fa-pencil "></i> </span>
                             </span>
@@ -168,11 +168,11 @@
 
                         <div class="credential row">
                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Password</label>
+                                <label>{{__('Password')}}</label>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('password')">
+                                      onclick="fill_field1('password','{{app()->getLocale()}}')">
                                 ••••••••
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
@@ -182,11 +182,11 @@
 
                         <div class="credential row">
                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Center</label>
+                                <label>{{__('Center')}}</label>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('center_id')">
+                                      onclick="fill_field1('center_id','{{app()->getLocale()}}')">
                                 {{$user->center->code}}
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
@@ -199,7 +199,7 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('role_id')">
+                                      onclick="fill_field1('role_id','{{app()->getLocale()}}')">
                                 {{$user->role->name}}
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
@@ -208,28 +208,29 @@
 
                     </div>
 
-                    <h3>Phone</h3>
+                    <br>
+                    <h3>{{__('Phone')}}</h3>
 
                     <div class="account-settings ">
                         <div class="credential row">
                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Phone</label>
+                                <label>{{__('Phone')}}</label>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('phone')" style="@if($user->phone==null) display:none @endif">
+                                      onclick="fill_field1('phone','{{app()->getLocale()}}')" style="@if($user->phone==null) display:none @endif">
                                     {{$user->phone}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;&nbsp;
                                 @if($user->phone==null)
                                 <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field1('phone+add')">Add Phone</button>
+                                        onclick="fill_field1('phone+add')">{{__('Add')}} {{__('Phone')}}</button>
                                 @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removePhone',$user->id]]) !!}
+                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removePhone',encrypt($user->id)]]) !!}
 
                                 @csrf
                                 <span>
-                                        {!! Form::submit('Remove', ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
+                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
                                 {!! Form::close() !!}
                                     </span>
 
@@ -238,29 +239,29 @@
                             </div>
                         </div>
                     </div>
-
-                    <h3>Address</h3>
+                    <br>
+                    <h3>{{__('Address')}}</h3>
 
                     <div class="account-settings ">
                         <div class="credential row">
                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Address</label>
+                                <label>{{__('Address')}}</label>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail"  data-toggle="modal" data-target="#exampleModalCenter"
-                                      onclick="fill_field1('address')" style="@if($user->address==null) display:none @endif">
+                                      onclick="fill_field1('address','{{app()->getLocale()}}')" style="@if($user->address==null) display:none @endif">
                                     {{$user->address}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;
                                 @if($user->address==null)
                                 <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field1('address+add')">Add Address</button>
+                                        onclick="fill_field1('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}</button>
                                 @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removeAddress',$user->id]]) !!}
+                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removeAddress',encrypt($user->id)]]) !!}
 
                                 @csrf
                                 <span>
-                                        {!! Form::submit('Remove', ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
+                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
                                 {!! Form::close() !!}
                                     </span>
 
@@ -270,21 +271,20 @@
                         </div>
                     </div>
 
-                    <h3>Deactivate Account</h3>
+                    <h3>{{__('Deactivate Account')}}</h3>
 
                     <div class="account-settings ">
                         <div class="credential row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label id="delete-message">If you want to close the account this click to the button
-                                    bellow <br>
-                                    Note that the account still be closed untill next logged in
+                                <label id="delete-message">{{__('If you want to close the account this click to the button bellow')}} <br>
+                                    {{__('Note that the account still be closed untill next logged in')}}
                                 </label>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <span>
 
                                     <button class="btn  btn-danger" style="margin-left: 40px ;"
-                                            data-toggle="modal" data-target="#exampleModal">Close</button>
+                                            data-toggle="modal" data-target="#exampleModal">{{__('Close')}}</button>
                                 </span>
 
                             </div>

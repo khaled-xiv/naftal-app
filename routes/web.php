@@ -4,72 +4,60 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','localize','setLang']], function()
 {
 
-    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+
+    //    Home route
     Route::get('/', 'HomeController@index')->name('home');
-    //contact route
+
+    //    contact route
     Route::post('/sendEmail', 'HomeController@sendEmail') ;
 
-
-    //login routes
-    Route::get(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@showLoginForm');
-    Route::post(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@login');
+    //    login routes
+    Route::get(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@login')->name('login');
     Route::get(LaravelLocalization::transRoute('routes.logout'), function () {
         Auth::logout();
-        return redirect("/".app()->getLocale());
-    });
-    //registration routes
+        return redirect("/");
+    })->name('logout');
+
+    //  registration routes
     Route::group(['middleware'=>'role:admin'],function(){
         Route::get(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@showRegistrationForm')->name('register');
-        Route::post(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@register');
+        Route::post(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@register')->name('register');
     });
-//    //reset password routes
+
+    //    reset password routes
     Route::get(LaravelLocalization::transRoute('routes.password-request'), 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
     Route::get(LaravelLocalization::transRoute('routes.password-reset'), 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post(LaravelLocalization::transRoute('routes.password-request'), 'Auth\ResetPasswordController@reset')->name('password.update');
-
     Route::get('/password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
     Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 
+    //    verification routes
+    Route::get(LaravelLocalization::transRoute('routes.verification-notice'), 'Auth\VerificationController@show')->name('verification.notice');
+    Route::get(LaravelLocalization::transRoute('routes.verification-verify'), 'Auth\VerificationController@verify')->name('verification.verify');
+    Route::post(LaravelLocalization::transRoute('routes.verification-resend'), 'Auth\VerificationController@resend')->name('verification.resend');
 
-//    Route::post('/password/reset/', 'Auth\ResetPasswordController@reset')->name('password.reset');
-
-    //verification routes
-    Route::get('/email/{verify}', 'Auth\VerificationController@show')->name('verification.notice')
-        ->where(['verify'=>Lang::get('routes.verify')]);
-    Route::get('email/{verify}/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify')
-        ->where(['verify'=>Lang::get('routes.verify')]);
-    Route::post('email/{resend}', 'Auth\VerificationController@resend')->name('verification.resend')
-        ->where(['resend'=>Lang::get('routes.resend')]);
-
-
-    Route::get('/{account}', 'AccountController@index')->name('account.show')
-        ->where(['account'=>Lang::get('routes.account')]);
-    Route::patch('/account/update/{id}', 'AccountController@update')->name('account.update')
-        ->where(['account'=>Lang::get('routes.account')]);
+    //    Account routes
+    Route::get(LaravelLocalization::transRoute('routes.account'), 'AccountController@index')->name('account.show');
+    Route::patch(LaravelLocalization::transRoute('routes.account-update'), 'AccountController@update')->name('account.update');
     Route::post('/account/removeAddress', 'AccountController@removeAddress');
     Route::post('/account/removePhone', 'AccountController@removePhone');
     Route::post('/account/close', 'AccountController@close');
 
     //  User routes
     Route::group(['middleware'=>'role:admin,chief_district'],function() {
+        Route::get(LaravelLocalization::transRoute('routes.users'), 'UsersController@index')->name('users.show');
+        Route::get(LaravelLocalization::transRoute('routes.user-show'), 'UsersController@show')->name('users.edit');
+        Route::patch(LaravelLocalization::transRoute('routes.user-update'), 'UsersController@update')->name('user.update');
         Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
         Route::post('/users/removePhone/{id}', 'UsersController@removePhone');
         Route::post('/users/close/{id}', 'UsersController@close');
-        Route::get(LaravelLocalization::transRoute('routes.users'), 'UsersController@index');
     });
 
 
 });
 
 
-    //account routes
-//    Route::get('/{account}', 'AccountController@index')->name('account.show')
-//        ->where(['account'=>Lang::get('routes.account')]);
-//    Route::patch('/account/update/{id}', 'AccountController@update')->name('account.update')
-//        ->where(['account'=>Lang::get('routes.account')]);
-//    Route::post('/account/removeAddress', 'AccountController@removeAddress');
-//    Route::post('/account/removePhone', 'AccountController@removePhone');
-//    Route::post('/account/close', 'AccountController@close');
 
 
 //    Request of intervention routes
