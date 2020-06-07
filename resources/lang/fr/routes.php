@@ -16,8 +16,9 @@ return  array(
     "user-show"=>"utilisateurs/{id}",
     "user-update"=>"utilisateurs/modifier/{id}",
 
-<<<<<<< HEAD
-    "request"=>"demande-d'intervention",
+    "request"=>"demande-d-intervention",
+    "request-create"=>"demande-d-intervention/ajouter",
+    "request-edit"=>"demande-d-intervention/{id}/modifier",
 
 
     "centers"=>"centres",
@@ -28,10 +29,6 @@ return  array(
     "equipment-create"=>"equipements/ajouter",
     "equipment-edit"=>"equipements/{id}/modifier",
 
-=======
-    "request"=>"demande-d-intervention",
-    "request-create"=>"demande-d-intervention/ajouter",
-    "request-edit"=>"demande-d-intervention/{id}/modifier",
->>>>>>> 0c345f01196d54be65e0b16911a5c497d5ae818a
+
 )
 ?>

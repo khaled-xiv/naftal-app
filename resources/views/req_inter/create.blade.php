@@ -15,7 +15,7 @@
 
                         <div class="contact-right">
 
-                            {!! Form::open(['method'=>'POST', 'action'=> ['Req_interController@store','language'=>app()->getLocale(),'request'=>__('request-of-intervention')]]) !!}
+                            {!! Form::open(['method'=>'POST', 'action'=> ['Req_interController@store']]) !!}
                             @csrf
                             <h4>Create Request of Intervention</h4>
                             <br>
