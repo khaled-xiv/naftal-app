@@ -18,6 +18,8 @@ return  array(
 
 
     "request"=>"request-of-intervention",
+    "request-create"=>"request-of-intervention/create",
+    "request-edit"=>"request-of-intervention/{id}/edit",
 )
 
 ?>

@@ -33,7 +33,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($openned_reqs as $openned_req)
-                                    <tr class="clickable-row" data-href="request-of-intervention/{{$openned_req->id}}/edit">
+                                    <tr class="clickable-row" data-href="{{route('request.edit',encrypt($openned_req->id))}}">
                                         <td class="column1">{{$openned_req->number}}</td>
                                         <td class="column6">{{$openned_req->equipment_name}}</td>
                                         <td class="column4">{{$openned_req->code}}</td>
@@ -64,8 +64,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($closed_reqs as $closed_req)
-                                    <tr class="clickable-row"
-                                        data-href="request-of-intervention/{{$closed_req->id}}/edit">
+                                    <tr class="clickable-row" data-href="{{route('request.edit',encrypt($closed_req->id))}}">
                                         <td class="column1">{{$closed_req->number}}</td>
                                         <td class="column6">{{$closed_req->equipment_name}}</td>
                                         <td class="column4">{{$closed_req->code}}</td>
@@ -97,8 +96,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($received_reqs as $received_req)
-                                    <tr class="clickable-row"
-                                        data-href="request-of-intervention/{{$received_req->id}}/edit">
+                                    <tr class="clickable-row" data-href="{{route('request.edit',encrypt($received_req->id))}}">
                                         <td class="column1">{{$received_req->number}}</td>
                                         <td class="column6">{{$received_req->equipment_name}}</td>
                                         <td class="column4">{{$received_req->code}}</td>
@@ -119,7 +117,7 @@
     </div>
 
     <!--         add icon-->
-    <a href="{{url(app()->getLocale().'/'.__('request-of-intervention').'/'.__('create'))}}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
+    <a href="{{route('request.create')}}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
         <i class="fa fa-plus"></i>
     </a>
 </section>

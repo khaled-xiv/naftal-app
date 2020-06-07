@@ -174,6 +174,7 @@ class Req_interController extends Controller
      */
     public function edit($id)
     {
+        return "salam";
         $req_inter=Req_inter::findOrFail($id)->equipment_id;
         $comps=Component::where('equipment_id',$req_inter)
             ->pluck('designation','id');

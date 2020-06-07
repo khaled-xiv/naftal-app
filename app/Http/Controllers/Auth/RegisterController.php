@@ -37,10 +37,6 @@ class RegisterController extends Controller
 
 //    protected $redirectTo = app()->getLocale();
 
-    protected function redirectTo()
-    {
-        return "/".app()->getLocale().'/'.__('users');
-    }
 
     public function showRegistrationForm()
     {
@@ -104,8 +100,10 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            ?: redirect()->route('users.show')->with('status',__('An item was successfully added'));
     }
+
+
 
 
 

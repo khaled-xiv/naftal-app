@@ -31,7 +31,7 @@ class VerificationController extends Controller
      */
     protected function redirectTo()
     {
-        return "/".app()->getLocale();
+        return route('home') ;
     }
 
     /**
@@ -52,9 +52,16 @@ class VerificationController extends Controller
             return redirect($this->redirectPath());
         }
 
+        $host_name = 'www.google.com';
+        $port_no = '80';
+
+        $st = (bool)@fsockopen($host_name, $port_no, $err_no, $err_str, 10);
+
+        if(! $st) return back()->with('error',__('Please check your internet connection'));
+
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with(['resent'=>true,'language'=>app()->getLocale(),'verify'=>__('verify')]);
+        return back()->with(['resent'=>true]);
     }
 
     public function verify(Request $request)

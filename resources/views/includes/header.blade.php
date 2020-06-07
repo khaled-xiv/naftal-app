@@ -16,19 +16,11 @@
                             <li><a class="btn btn-link" href="{{route('home')}}">{{ __('home') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/equipments')}}">{{ __('equipments') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/centers')}}">{{ __('centers') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('request-of-intervention'))}}">{{ __('interventions') }}</a></li>
+                            <li><a class="btn btn-link" href="{{route('requests.show')}}">{{ __('interventions') }}</a></li>
                             <li><a class="btn btn-link" href="{{route('users.show')}}">{{ __('users') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/#contact')}}">{{ __('contact') }}</a></li>
-                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                <li class="nav-item">
-                                    <a class="nav-link btn btn-link" rel="alternate" hreflang="{{ $localeCode }}"
-                                       @if (app()->getLocale() == $localeCode) style=" font-weight: bold; text-decoration: underline" @endif
-                                       href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                        {{ $properties['native'] }}
-                                    </a>
-                                </li>
-                            @endforeach
+
                             @guest
                                 <li><a class="btn btn-link" href="{{route('login')}}">{{ __('Sign In') }}</a></li>
                             @else
@@ -43,6 +35,16 @@
                                     </div>
                                 </li>
                             @endguest
+                            <li class="nav-item ">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    @if($localeCode !=app()->getLocale())
+                                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
+                                           href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                            <img src="{{asset('flags/'.$localeCode.'.png')}}" style="height: 20px ;width: 20px" alt="{{$localeCode}}">
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </li>
                         </ul>
                     </div>
                 </div>

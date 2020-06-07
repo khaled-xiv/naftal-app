@@ -16,6 +16,8 @@ return  array(
     "user-show"=>"utilisateurs/{id}",
     "user-update"=>"utilisateurs/modifier/{id}",
 
-    "request"=>"demande-d'intervention",
+    "request"=>"demande-d-intervention",
+    "request-create"=>"demande-d-intervention/ajouter",
+    "request-edit"=>"demande-d-intervention/{id}/modifier",
 )
 ?>

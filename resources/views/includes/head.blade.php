@@ -19,6 +19,9 @@
 <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet" >
 <link href="{{ asset('css/bootstrap/bootstrap-select.css') }}" rel="stylesheet" >
 
+{{--toastr--}}
+<link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet" >
+
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
 
@@ -40,4 +43,8 @@
 <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap-select.min.js') }}"></script>
-<script src="{{ asset('js/sort-table.js') }}"></script>
+
+{{--toastr--}}
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+{{--<script src="{{ asset('js/sort-table.js') }}"></script>--}}
+
