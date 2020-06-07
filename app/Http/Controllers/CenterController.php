@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 use Illuminate\Http\Request;
 use App\Center;
 use Illuminate\Support\Facades\Validator;
@@ -57,7 +59,7 @@ class CenterController extends Controller
                 ->withInput();
         }
         Center::create($request->all());
-        return redirect('/centers');
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers'));
     }
 
     /**
@@ -101,7 +103,7 @@ class CenterController extends Controller
                 ->withInput();
         }
         Center::findOrFail($id)->update($request->all());
-        return redirect('/centers');
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers'));
     }
 
     /**
@@ -113,6 +115,6 @@ class CenterController extends Controller
     public function destroy($id)
     {
         Center::findOrFail($id)->delete();
-        return redirect('/centers');
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers'));
     }
 }

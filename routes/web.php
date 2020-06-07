@@ -55,9 +55,34 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     });
 
 
+    //Route::resource('centers', 'CenterController');
+    Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
+    Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create');
+    Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit');
+    Route::post('centers', 'CenterController@store');
+    Route::delete('centers/{id}', 'CenterController@destroy');
+    Route::put('centers/{id}', 'CenterController@update');
+
+    //Route::resource('equipments', 'EquipmentController');
+    Route::get(LaravelLocalization::transRoute('routes.equipments'), 'EquipmentController@index');
+    Route::get(LaravelLocalization::transRoute('routes.equipment-create'), 'EquipmentController@create');
+    Route::get(LaravelLocalization::transRoute('routes.equipment-edit'), 'EquipmentController@edit');
+    Route::post('equipments', 'EquipmentController@store');
+    Route::delete('equipments/{id}', 'EquipmentController@destroy');
+    Route::put('equipments/{id}', 'EquipmentController@update');
+
+    Route::resource('components', 'ComponentController');
+    Route::resource('forums', 'ForumController');
+    Route::resource('answers', 'AnswerController');
+    Route::post('forums/{id}/upvote', 'ForumController@upvote');
+    Route::post('forums/{id}/downvote', 'ForumController@downvote');
+    Route::post('answers/{id}/upvote', 'AnswerController@upvote');
+    Route::post('answers/{id}/downvote', 'AnswerController@downvote');
+    Route::get('tags/{id}/search', 'TagController@search');
+    Route::get('search/results', 'ForumController@search');
+
+
 });
-
-
 
 
 //    Request of intervention routes
@@ -80,16 +105,3 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 
 //});
-//    Route::resource('centers', 'CenterController');
-//    Route::resource('equipments', 'EquipmentController');
-//    Route::resource('components', 'ComponentController');
-//    Route::resource('forums', 'ForumController');
-//    Route::resource('answers', 'AnswerController');
-//    Route::post('forums/{id}/upvote', 'ForumController@upvote');
-//    Route::post('forums/{id}/downvote', 'ForumController@downvote');
-//    Route::post('answers/{id}/upvote', 'AnswerController@upvote');
-//    Route::post('answers/{id}/downvote', 'AnswerController@downvote');
-//    Route::get('tags/{id}/search', 'TagController@search');
-//    Route::get('search/results', 'ForumController@search');
-
-

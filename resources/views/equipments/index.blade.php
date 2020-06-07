@@ -35,7 +35,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($pumps as $pump)
-                                        <tr class="clickable-row" data-href="equipments/{{$pump->equipment->id}}/edit">
+                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $pump->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
                                             <td>{{$pump->equipment->code}}</td>
                                             <td>{{$pump->equipment->mark}}</td>
                                             <td>{{$pump->equipment->type}}</td>
@@ -69,7 +69,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($tanks as $tank)
-                                        <tr class="clickable-row" data-href="equipments/{{$tank->equipment->id}}/edit">
+                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $tank->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
                                             <td>{{$tank->equipment->code}}</td>
                                             <td>{{$tank->equipment->mark}}</td>
                                             <td>{{$tank->equipment->model}}</td>
@@ -103,7 +103,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($loadingArms as $loadingArm)
-                                        <tr class="clickable-row" data-href="equipments/{{$loadingArm->equipment->id}}/edit">
+                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $loadingArm->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
                                             <td>{{$loadingArm->equipment->code}}</td>
                                             <td>{{$loadingArm->equipment->mark}}</td>
                                             <td>{{$loadingArm->equipment->type}}</td>
@@ -133,7 +133,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($generators as $generator)
-                                        <tr class="clickable-row" data-href="equipments/{{$generator->equipment->id}}/edit">
+                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $generator->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
                                             <td>{{$generator->equipment->code}}</td>
                                             <td>{{$generator->equipment->mark}}</td>
                                             <td>{{$generator->equipment->type}}</td>
@@ -162,7 +162,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($fuelMeters as $fuelMeter)
-                                        <tr class="clickable-row" data-href="equipments/{{$fuelMeter->equipment->id}}/edit">
+                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $fuemMeter->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
                                             <td>{{$fuelMeter->equipment->code}}</td>
                                             <td>{{$fuelMeter->equipment->mark}}</td>
                                             <td>{{$fuelMeter->equipment->type}}</td>
@@ -183,7 +183,7 @@
         </div>
 
         <!--         add icon-->
-        <a href="/equipments/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" role="button">
+        <a href="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-create')}}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" role="button">
             <i class="fa fa-plus"></i>
         </a>
     </section>
@@ -197,7 +197,7 @@
             });
             let equipment = $("ul li.active a").html();
             $('#add-icon').attr('title',"Add "+equipment);
-            
+
             $("button.btn-primary").html("add " + equipment);
             document.cookie='equip =' + equipment;
             $("li.equipment").click(function() {

@@ -14,8 +14,8 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
                             <li><a class="btn btn-link" href="{{route('home')}}">{{ __('home') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/equipments')}}">{{ __('equipments') }}</a></li>
-                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/centers')}}">{{ __('centers') }}</a></li>
+                            <li><a class="btn btn-link" href="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipments')}}">{{ __('equipments') }}</a></li>
+                            <li><a class="btn btn-link" href="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers')}}">{{ __('centers') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('request-of-intervention'))}}">{{ __('interventions') }}</a></li>
                             <li><a class="btn btn-link" href="{{route('users.show')}}">{{ __('users') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>

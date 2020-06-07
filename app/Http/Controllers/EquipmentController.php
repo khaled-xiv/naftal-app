@@ -14,6 +14,7 @@ use App\Tank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class EquipmentController extends Controller
 {
@@ -117,7 +118,7 @@ class EquipmentController extends Controller
                 $temp->fuel_meter()->save($secEq);
                 break;
         }
-        return redirect('/equipments');
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipments'));
     }
 
     /**
@@ -185,7 +186,7 @@ class EquipmentController extends Controller
         else if($request->has('generator')) Generator::where('equipment_id', $id)->update($request->generator);
         else if($request->has('fuel_meter')) FuelMeter::where('equipment_id', $id)->update($request->fuel_meter);
 
-        return redirect('/equipments');
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipments'));
     }
 
     /**
@@ -197,6 +198,6 @@ class EquipmentController extends Controller
     public function destroy($id)
     {
         Equipment::findOrFail($id)->delete();
-        return redirect('/equipments');
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipments'));
     }
 }

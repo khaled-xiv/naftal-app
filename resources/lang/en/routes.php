@@ -18,6 +18,17 @@ return  array(
 
 
     "request"=>"request-of-intervention",
+
+
+    "centers"=>"centers",
+    "center-create"=>"centers/create",
+    "center-edit"=>"centers/{id}/edit",
+
+    "equipments"=>"equipments",
+    "equipment-create"=>"equipments/create",
+    "equipment-edit"=>"equipments/{id}/edit",
+
+
 )
 
 ?>

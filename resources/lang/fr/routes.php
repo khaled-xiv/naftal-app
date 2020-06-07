@@ -17,5 +17,15 @@ return  array(
     "user-update"=>"utilisateurs/modifier/{id}",
 
     "request"=>"demande-d'intervention",
+
+
+    "centers"=>"centres",
+    "center-create"=>"centres/ajouter",
+    "center-edit"=>"centres/{id}/modifier",
+
+    "equipments"=>"equipements",
+    "equipment-create"=>"equipements/ajouter",
+    "equipment-edit"=>"equipements/{id}/modifier",
+
 )
 ?>

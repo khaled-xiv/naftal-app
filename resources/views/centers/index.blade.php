@@ -36,14 +36,14 @@
             </div>
 
             <!--         add icon-->
-            <a href="/centers/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
+            <a href="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.center-create')}}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="home" role="button">
                 <i class="fa fa-plus"></i>
             </a>
 
         </div>
 
         <!--         add icon-->
-        <a href="/centers/create" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add Center" role="button">
+        <a href="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.center-create')}}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add Center" role="button">
             <i class="fa fa-plus"></i>
         </a>
     </section>
