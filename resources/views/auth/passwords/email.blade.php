@@ -5,6 +5,10 @@
     <title>{{__('Reset Password')}}</title>
     <!-- Custom Styles -->
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
+
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet" >
+
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 </head>
 <body>
 
@@ -19,12 +23,6 @@
                         {{__('Reset Password')}}
                 </span>
 
-                @if (session('status'))
-                <div class="alert alert-success " role="alert">
-                    {{ session('status') }}
-                </div>
-                @else
-
                 <div class="wrap-input100" style="margin-bottom: 16px" >
                     <input class="input100 form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{__('email address')}}" required>
                     @error('email')
@@ -34,7 +32,6 @@
                     @enderror
                 </div>
 
-                @endif
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
                         {{__('Reset')}}
@@ -50,5 +47,18 @@
     </div>
 </div>
 
+<script src="{{ asset('js/toastr.min.js') }}"></script>
 </body>
+<script !src="">
+    @if (Session::has('status'))
+        toastr.success("{{Session::get('status')}}");
+    @endif
+    @if (Session::has('error'))
+        toastr.error("{{Session::get('error')}}");
+    @endif
+
+
+
+</script>
+
 </html>

@@ -4,12 +4,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','localize','setLang']], function()
 {
 
-
     //    Home route
     Route::get('/', 'HomeController@index')->name('home');
 
     //    contact route
-    Route::post('/sendEmail', 'HomeController@sendEmail') ;
+    Route::post('/sendEmail', 'HomeController@sendEmail')->name('send-email') ;
 
     //    login routes
     Route::get(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@showLoginForm')->name('login');
@@ -54,6 +53,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::post('/users/close/{id}', 'UsersController@close');
     });
 
+<<<<<<< HEAD
 
     //Route::resource('centers', 'CenterController');
     Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
@@ -86,22 +86,23 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 
 //    Request of intervention routes
+=======
+    //  Request of intervention routes
+>>>>>>> 0c345f01196d54be65e0b16911a5c497d5ae818a
 //    Route::group(['middleware'=>'role:chief_district,chief_center'],function() {
 
+    Route::get(LaravelLocalization::transRoute('routes.request'), 'Req_interController@index')->name('requests.show');
+    Route::get(LaravelLocalization::transRoute('routes.request-create'), 'Req_interController@create')->name('request.create');
+    Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')->name('request.edit');
+    Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')->name('request.store');
 
-//    Route::get('/{request}', 'Req_interController@index')
-//        ->where('request', Lang::get('routes.request'));
-//    Route::get('/{request}/{create}', 'Req_interController@create')
-//        ->where(['request', Lang::get('routes.request'),'create', Lang::get('routes.create')]);
-//    Route::post('/{request}', 'Req_interController@store')
-//        ->where(['request', Lang::get('routes.request'),'create', Lang::get('routes.create')]);
-//        Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter');
-//        Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
-//        Route::post('/getequipment', 'Req_interController@getEquipment');
-//        Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');
+        Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter');
+        Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
+        Route::post('/getequipment', 'Req_interController@getEquipment');
+        Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');
 //    });
 
 
-
+});
 
 //});

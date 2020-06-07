@@ -148,8 +148,7 @@
 <!--                     Contact Right -->
                     <div class="contact-right">
 
-                        {!! Form::open(['method'=>'POST', 'action'=> ['HomeController@sendEmail','language'=>app()->getLocale()]]) !!}
-{{--                        <form action="{{app()->getLocale()}}/sendEmail" method="post">--}}
+                        {!! Form::open(['method'=>'POST', 'action'=> ['HomeController@sendEmail']]) !!}
                             <h4>Send Message</h4>
                             <p>If you have any problem please contact us.</p>
 
@@ -185,8 +184,7 @@
                                 <button class="btn btn-general btn-yellow" type="submit" href="" title="Submit" role="button">Submit</button>
                             </div>
 
-{{--                        {!! Form::close() !!}--}}
-                        </form>
+                        {!! Form::close() !!}
                     </div>
 
                 </div>
@@ -209,6 +207,33 @@
 <!--    </div>-->
 <!--</section>-->
 <!-- Google Map Ends -->
+
+<script>
+
+    @if (Session::has('status'))
+        toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "500",
+        "hideDuration": "300",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideDown",
+        "hideMethod": "slideUp"
+    }
+
+    toastr.success("{{Session::get('status')}}");
+    $('.toast-message').css('text-align','center');
+    @endif
+
+</script>
 
 @stop
 

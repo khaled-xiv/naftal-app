@@ -29,7 +29,7 @@ class HomeController extends Controller
         return view('welcome',compact('centers'));
     }
 
-    public function sendEmail(Request $request,$locale)
+    public function sendEmail(Request $request)
     {
         $to_name = "hachemi abderrahmen";
         $to_email = "exemple@gmail.com";
@@ -42,6 +42,6 @@ class HomeController extends Controller
                 ->subject($subject);
             $message->from($from_email,$from_name);
         });
-        return redirect('/#contact');
+        return redirect('/#contact')->with('status',__('Your request has been submitted and is being processed'));
     }
 }

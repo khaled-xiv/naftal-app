@@ -14,11 +14,6 @@
 
                     <h2>Verify Your<br><strong>Email</strong> Address</h2>
 
-                    @if (session('resent'))
-                    <div class="alert alert-success" role="alert">
-                        <h5>{{__('A fresh verification link has been sent to your email address.')}}</h5>
-                    </div>
-                    @endif
 
                     <h4>{{__('Before proceeding, please check your email for a verification link.')}}</h4>
 
@@ -38,5 +33,17 @@
     </div>
 
 </section>
+
+<script>
+
+    @if (Session::has('resent'))
+    toastr.success("{{__('A fresh verification link has been sent to your email address.')}}");
+    @endif
+    @if (Session::has('error'))
+    toastr.error("{{Session::get('error')}}");
+    @endif
+
+
+</script>
 
 @endsection

@@ -18,6 +18,7 @@ return  array(
 
 
     "request"=>"request-of-intervention",
+<<<<<<< HEAD
 
 
     "centers"=>"centers",
@@ -29,6 +30,10 @@ return  array(
     "equipment-edit"=>"equipments/{id}/edit",
 
 
+=======
+    "request-create"=>"request-of-intervention/create",
+    "request-edit"=>"request-of-intervention/{id}/edit",
+>>>>>>> 0c345f01196d54be65e0b16911a5c497d5ae818a
 )
 
 ?>

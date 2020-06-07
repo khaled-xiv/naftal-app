@@ -13,12 +13,12 @@
                         <table class="js-sort-table">
                             <thead>
                             <tr class="table100-head">
-                                <th class="column1 ">Name</th>
-                                <th class="column2">Email</th>
-                                <th class="column3 js-sort-date">Email verified at</th>
-                                <th class="column4">Phone</th>
-                                <th class="column5">Address</th>
-                                <th class="column6">Status</th>
+                                <th class="column1 ">{{ucwords(__('Name'))}}</th>
+                                <th class="column2">{{ucwords(__('email address'))}}</th>
+                                <th class="column3 js-sort-date">{{ucwords(__('Email verified at'))}}</th>
+                                <th class="column4">{{ucwords(__('Phone'))}}</th>
+                                <th class="column5">{{ucwords(__('Address'))}}</th>
+                                <th class="column6">{{ucwords(__('status'))}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,27 +41,50 @@
         </div>
 
 
-        <div class="row">
+
             <div class="text-center">
                 {{$users->render()}}
             </div>
-        </div>
 
     </div>
 
     <!--         add icon-->
-    <a href="{{route('register') }}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="Add User" role="button">
+    <a href="{{route('register') }}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="{{__('add user')}}" role="button">
         <i class="fa fa-plus"></i>
     </a>
 </section>
 
-
 <script>
+
+
     $(document).ready(function($) {
         $(".clickable-row").click(function() {
             window.location = $(this).data("href");
         });
     });
+        @if (Session::has('status'))
+            toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-full-width",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "500",
+            "hideDuration": "300",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "slideDown",
+            "hideMethod": "slideUp"
+        }
+
+        toastr.success("{{Session::get('status')}}");
+        $('.toast-message').css('text-align','center');
+        @endif
+
 </script>
 
 <!-- Users Ends -->

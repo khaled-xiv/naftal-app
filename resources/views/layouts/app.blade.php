@@ -60,4 +60,5 @@
     <!--    Custom Script-->
     <script src="{{ asset('js/script.js') }}" defer></script>
 
+
 </html>
