@@ -29,6 +29,14 @@ return  array(
     "equipment-create"=>"equipements/ajouter",
     "equipment-edit"=>"equipements/{id}/modifier",
 
+    "component-edit"=>"composants/{id}/modifier",
+
+    "forums"=>"forums",
+    "forum-show"=>"forums/{id}",
+    "forum-create"=>"forums/ajouter",
+
+    "search"=>"recherche/resultats",
+    "tag-search"=>"tags/{id}/recherche",
 
 )
 ?>

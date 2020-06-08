@@ -234,7 +234,7 @@
                     $("textarea#Modalbody").val($("#"+Id).html().trim());
                     target = '/answers/';
                 }
-                $(".editFsAndAs-2 form").attr('action', target + Id);
+                $(".editFsAndAs-2 form").attr('action', '/en' + target + Id);
             });
         });
 

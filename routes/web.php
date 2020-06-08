@@ -82,8 +82,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::delete('equipments/{id}', 'EquipmentController@destroy');
     Route::put('equipments/{id}', 'EquipmentController@update');
 
-    Route::resource('components', 'ComponentController');
-    Route::resource('forums', 'ForumController');
+    //Route::resource('components', 'ComponentController');
+    Route::get(LaravelLocalization::transRoute('routes.component-edit'), 'ComponentController@edit');
+    Route::post('components', 'ComponentController@store');
+    Route::delete('components/{id}', 'ComponentController@destroy');
+    Route::put('components/{id}', 'ComponentController@update');
+
+    //Route::resource('forums', 'ForumController');
+    Route::get(LaravelLocalization::transRoute('routes.forums'), 'ForumController@index');
+    Route::get(LaravelLocalization::transRoute('routes.forum-show'), 'ForumController@show');
+    Route::get(LaravelLocalization::transRoute('routes.forum-create'), 'ForumController@create');
+    Route::get(LaravelLocalization::transRoute('routes.forum-edit'), 'ForumController@edit');
+    Route::post('forums', 'ForumController@store');
+    Route::delete('forums/{id}', 'ForumController@destroy');
+    Route::put('forums/{id}', 'ForumController@update');
+
     Route::resource('answers', 'AnswerController');
     Route::post('forums/{id}/upvote', 'ForumController@upvote');
     Route::post('forums/{id}/downvote', 'ForumController@downvote');

@@ -3,6 +3,7 @@
     $tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->take(6)->get();
     $limit = count($tags);
 ?>
+{{--<form method="GET" action="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.search')}}">--}}
 <form method="GET" action="/search/results">
     <div class="input-group mb-3">
         <input type="text" style="border-radius:5px 0px 0px 5px;" class="form-control" name="search_query" placeholder="Search..." aria-label="search" aria-describedby="button-addon2" required>
@@ -35,6 +36,7 @@
                     @for($i = 3; $i < 6; $i++)
                         @if($i < $limit)
                             <li>
+{{--                                <form method="GET" action="{{str_replace('{id}', $tags[$i]->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.tag-search'))}}">--}}
                                 <form method="GET" action="/tags/{{$tags[$i]->id}}/search">
                                     <button class="link-button" style="text-decoration: none;" type="submit">{{$tags[$i]->content}}</button>
                                 </form>

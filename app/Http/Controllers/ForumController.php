@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 ini_set('max_execution_time', 100);
 
@@ -79,7 +80,7 @@ class ForumController extends Controller
 //        $client->request('POST', $url, [
 //            'timeout' => 100,
 //        ]);
-        return redirect('/forums');
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.forums'));
     }
 
     /**

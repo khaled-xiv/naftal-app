@@ -372,7 +372,7 @@
         $(document).ready(function($) {
             $(document).on("click", ".component-del", function () {
                 let Id = $(this).data('comp-id');
-                $(".component-del-2 form").attr('action', '/components/' + Id);
+                $(".component-del-2 form").attr('action', '/en/components/' + Id);
             });
         });
     </script>

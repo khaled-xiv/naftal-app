@@ -7,6 +7,7 @@ use App\Equipment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ComponentController extends Controller
 {
@@ -114,7 +115,7 @@ class ComponentController extends Controller
         $component = Component::findOrFail($id);
         $component->update($request->all());
         $equip = $component->equipment->id;
-        return redirect('/equipments/'.$equip.'/edit');
+        return redirect(str_replace('{id}', $equip, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit')));
     }
 
     /**
