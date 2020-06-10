@@ -3,7 +3,7 @@
 ?>
 
 @extends('layouts.without_footer')
-@section('title', 'Add a '.substr($temp, 0, -1))
+@section('title', __('Add')." ".$temp)
 @section('content')
     <!-- Add Equipment -->
     <br>
@@ -20,7 +20,7 @@
                         <div class="contact-right">
                             {!! Form::open(['method'=>'POST', 'action'=> 'EquipmentController@store']) !!}
                             @csrf
-                            <h4>Add {{substr($temp, 0, -1)}}</h4>
+                            <h4>{{ __('Add')." ".$temp }} </h4>
                             <br>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -51,8 +51,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('mark', 'Mark:',['class'=>'label_padding']) !!}
-                                        <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="Mark">
+                                        {!! Form::label('mark', ucfirst(__('mark')).":",['class'=>'label_padding']) !!}
+                                        <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="{{ ucfirst(__('mark')) }}">
 
                                         @error('mark')
                                         <span class="invalid-feedback" role="alert">
@@ -63,8 +63,8 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('model', 'Model:',['class'=>'label_padding']) !!}
-                                        <input id="model" type="text" class="form-control" name="model" value="{{ old('model') }}" required autocomplete="model" placeholder="Model">
+                                        {!! Form::label('model', ucfirst(__('model')).":",['class'=>'label_padding']) !!}
+                                        <input id="model" type="text" class="form-control" name="model" value="{{ old('model') }}" required autocomplete="model" placeholder="{{ ucfirst(__('model')) }}">
                                         @error('model')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -76,13 +76,13 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('state', 'State:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('state', ucfirst(__('state')).":",['class'=>'label_padding']) !!}
                                         {!! Form::select('state',  ['ON' => 'Active', 'OFF' => 'Not Active'], 'ON', ['class'=>'form-control'])!!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('centers', 'Centers:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('centers', __('Centers').":", ['class'=>'label_padding']) !!}
                                         {!! Form::select('centers', $centers , null, ['class'=>'form-control'])!!}
                                     </div>
                                 </div>
@@ -92,8 +92,8 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
-                                                <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" required autocomplete="product" placeholder="Product">
+                                                {!! Form::label('product', ucfirst(__('product')).":",['class'=>'label_padding']) !!}
+                                                <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" required autocomplete="product" placeholder="{{ucfirst(__('product'))}}">
                                                 @error('product')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -103,8 +103,8 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('rate', 'Rate:',['class'=>'label_padding']) !!}
-                                                <input id="rate" type="number" class="form-control" name="rate" value="{{ old('rate') }}" required autocomplete="rate" placeholder="Rate">
+                                                {!! Form::label('rate', ucfirst(__('rate')).":",['class'=>'label_padding']) !!}
+                                                <input id="rate" type="number" class="form-control" name="rate" value="{{ old('rate') }}" required autocomplete="rate" placeholder="{{ ucfirst(__('rate')) }}">
                                                 @error('rate')
                                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -117,8 +117,8 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
-                                            <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" required autocomplete="product" placeholder="Product">
+                                            {!! Form::label('product', ucfirst(__('product')).":",['class'=>'label_padding']) !!}
+                                            <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" required autocomplete="product" placeholder="{{ucfirst(__('product'))}}">
                                             @error('product')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -128,8 +128,8 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            {!! Form::label('capacity', 'Capacity:',['class'=>'label_padding']) !!}
-                                            <input id="capacity" type="number" class="form-control" name="capacity" value="{{ old('capacity') }}" required autocomplete="capacity" placeholder="Capacity">
+                                            {!! Form::label('capacity', ucfirst(__('capacity')).":",['class'=>'label_padding']) !!}
+                                            <input id="capacity" type="number" class="form-control" name="capacity" value="{{ old('capacity') }}" required autocomplete="capacity" placeholder="{{ ucfirst(__('capacity')) }}">
                                             @error('capacity')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -141,8 +141,8 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            {!! Form::label('height', 'Height:',['class'=>'label_padding']) !!}
-                                            <input id="height" type="number" class="form-control @error('height') is-invalid @enderror" name="height" value="{{ old('height') }}" required autocomplete="height" placeholder="Height">
+                                            {!! Form::label('height', ucfirst(__('height')).":",['class'=>'label_padding']) !!}
+                                            <input id="height" type="number" class="form-control @error('height') is-invalid @enderror" name="height" value="{{ old('height') }}" required autocomplete="height" placeholder="{{ ucfirst(__('height')) }}">
                                             @error('height')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -152,8 +152,8 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            {!! Form::label('diameter', 'Diameter:',['class'=>'label_padding']) !!}
-                                            <input id="diameter" type="number" class="form-control" name="diameter" value="{{ old('diameter') }}" required autocomplete="diameter" placeholder="Diameter">
+                                            {!! Form::label('diameter', ucfirst(__('diameter')).":",['class'=>'label_padding']) !!}
+                                            <input id="diameter" type="number" class="form-control" name="diameter" value="{{ old('diameter') }}" required autocomplete="diameter" placeholder="{{ucfirst(__('diameter'))}}">
                                             @error('diameter')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -166,8 +166,8 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('category', 'Category:',['class'=>'label_padding']) !!}
-                                                <input id="category" type="text" class="form-control" name="category" value="{{ old('category') }}" required autocomplete="category" placeholder="Category">
+                                                {!! Form::label('category', ucfirst(__('category')).":",['class'=>'label_padding']) !!}
+                                                <input id="category" type="text" class="form-control" name="category" value="{{ old('category') }}" required autocomplete="category" placeholder="{{ ucfirst(__('category')) }}">
                                                 @error('category')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -182,7 +182,7 @@
                             @endif
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">Add {{substr($temp, 0, -1)}}</button>
+                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{__('Add')}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}

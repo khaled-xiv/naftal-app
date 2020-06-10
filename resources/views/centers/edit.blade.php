@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'edit center')
+@section('title', __('Edit Center'))
 @section('content')
     <!-- Edit Center -->
     <br>
@@ -17,7 +17,7 @@
 
                             {!! Form::model($center, ['method'=>'PUT', 'action'=> ['CenterController@update', $center->id]]) !!}
                             @csrf
-                            <h4>Edit Center</h4>
+                            <h4>{{__('Edit Center')}}</h4>
                             <br>
 
 
@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('storage_capacity', 'Storage capacity:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('storage_capacity', __('Storage capacity').":",['class'=>'label_padding']) !!}
                                         {!! Form::number('storage_capacity', old('storage_capacity'), ['class'=> $errors->get('storage_capacity') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('storage_capacity')
                                         <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('phone', 'Phone number:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('phone', __('Phone number').":",['class'=>'label_padding']) !!}
                                         {!! Form::text('phone', old('phone'), ['class'=> $errors->get('phone') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">
@@ -72,8 +72,8 @@
                             </div>
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
-                                    <button role="button" class="btn  btn-danger" data-toggle="modal" data-target="#DeleteCenterModal">Delete Center</button>
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">Edit Center</button>
+                                    <button role="button" class="btn  btn-danger" data-toggle="modal" data-target="#DeleteCenterModal">{{ __('Delete Center') }}</button>
+                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{ __('Edit Center') }}</button>
                                 </div>
                             </div>
 
@@ -93,7 +93,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="DeleteCenter">Are you sure you want to delete this center?</h5>
+                        <h5 class="modal-title" id="DeleteCenter">{{ __('Are you sure you want to delete this center?') }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -101,8 +101,8 @@
                     {!! Form::open(['method'=>'DELETE', 'action'=> ['CenterController@destroy', $center->id]]) !!}
                     @csrf
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Delete center</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                        <button type="submit" class="btn btn-danger">{{ __('Delete Center') }}</button>
                     </div>
                     {!! Form::close() !!}
                 </div>

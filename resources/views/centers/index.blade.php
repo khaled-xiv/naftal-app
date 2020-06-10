@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'Users')
+@section('title', __('Centers'))
 @section('content')
     <!-- Users -->
     <?php

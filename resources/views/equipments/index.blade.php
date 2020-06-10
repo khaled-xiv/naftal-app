@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'Request of intervention')
+@section('title', __('Equipments'))
 @section('content')
 
     <!-- Services -->
@@ -10,11 +10,11 @@
 
                 <div id="services-tabs">
                     <ul class="text-center">
-                        <li class="equipment active"><a href="#service-tab-1">Pumps</a></li>
-                        <li class="equipment"><a href="#service-tab-2">Tanks</a></li>
-                        <li class="equipment"><a href="#service-tab-3">Loading Arms</a></li>
-                        <li class="equipment"><a href="#service-tab-4">Generators</a></li>
-                        <li class="equipment"><a href="#service-tab-5">Fuel Meters</a></li>
+                        <li class="equipment active"><a href="#service-tab-1">{{ __('Pumps') }}</a></li>
+                        <li class="equipment"><a href="#service-tab-2">{{ __('Tanks') }}</a></li>
+                        <li class="equipment"><a href="#service-tab-3">{{ __('Loading Arms') }}</a></li>
+                        <li class="equipment"><a href="#service-tab-4">{{ __('Generators') }}</a></li>
+                        <li class="equipment"><a href="#service-tab-5">{{ __('Fuel Meters') }}</a></li>
                     </ul>
 
                     <!-- Service Tab 01 -->
@@ -25,12 +25,12 @@
                                     <thead>
                                     <tr class="table100-head">
                                         <th>code</th>
-                                        <th>mark</th>
+                                        <th>{{ __('mark') }}</th>
                                         <th>type</th>
-                                        <th>model</th>
-                                        <th>product</th>
-                                        <th class="js-sort-number">rate</th>
-                                        <th>state</th>
+                                        <th>{{ __('model') }}</th>
+                                        <th>{{ __('product') }}</th>
+                                        <th class="js-sort-number">{{ __('rate') }}</th>
+                                        <th>{{ __('state') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -57,14 +57,14 @@
                                     <thead>
                                     <tr class="table100-head">
                                         <th>code</th>
-                                        <th>mark</th>
+                                        <th>{{ __('mark') }}</th>
                                         <th>type</th>
-                                        <th>model</th>
-                                        <th>product</th>
-                                        <th>height</th>
-                                        <th>diameter</th>
-                                        <th>capacity</th>
-                                        <th>state</th>
+                                        <th>{{ __('model') }}</th>
+                                        <th>{{ __('product') }}</th>
+                                        <th>{{ __('height') }}</th>
+                                        <th>{{ __('diameter') }}</th>
+                                        <th>{{ __('capacity') }}</th>
+                                        <th>{{ __('state') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -93,12 +93,12 @@
                                     <thead>
                                     <tr class="table100-head">
                                         <th>code</th>
-                                        <th>mark</th>
+                                        <th>{{ __('mark') }}</th>
                                         <th>type</th>
-                                        <th>model</th>
-                                        <th>product</th>
-                                        <th>rate</th>
-                                        <th>state</th>
+                                        <th>{{ __('model') }}</th>
+                                        <th>{{ __('produit') }}</th>
+                                        <th>{{ __('rate') }}</th>
+                                        <th>{{ __('state') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -125,10 +125,10 @@
                                     <thead>
                                     <tr class="table100-head">
                                         <th>code</th>
-                                        <th>mark</th>
+                                        <th>{{ __('mark') }}</th>
                                         <th>type</th>
-                                        <th>model</th>
-                                        <th>state</th>
+                                        <th>{{ __('model') }}</th>
+                                        <th>{{ __('state') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -153,11 +153,11 @@
                                     <thead>
                                     <tr class="table100-head">
                                         <th>code</th>
-                                        <th>mark</th>
+                                        <th>{{ __('mark') }}</th>
                                         <th>type</th>
-                                        <th>model</th>
-                                        <th>category</th>
-                                        <th>state</th>
+                                        <th>{{ __('model') }}</th>
+                                        <th>{{ __('category') }}</th>
+                                        <th>{{ __('state') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -196,16 +196,15 @@
                 window.location = $(this).data("href");
             });
             let equipment = $("ul li.active a").html();
-            $('#add-icon').attr('title',"Add "+equipment);
+            //$('#add-icon').attr('title',"Add "+equipment);
 
-            $("button.btn-primary").html("add " + equipment);
+            //$("button.btn-primary").html("add " + equipment);
             document.cookie='equip =' + equipment;
             $("li.equipment").click(function() {
                 let equipment = $("a", this).html();
-                $("button.btn-primary").html("add " + equipment);
+                //$("button.btn-primary").html("add " + equipment);
                 document.cookie='equip =' + equipment;
             });
-
         });
     </script>
 @endSection

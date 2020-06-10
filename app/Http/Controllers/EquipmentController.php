@@ -88,19 +88,19 @@ class EquipmentController extends Controller
         $temp = Equipment::latest()->first();
 
         switch($_COOKIE['equip']){
-            case 'Pumps':
+            case 'Pumps' or 'Pompes':
                 $secEq = new Pump();
                 $secEq->rate = $request->rate;
                 $secEq->product = $request->product;
                 $temp->pump()->save($secEq);
                 break;
-            case 'Loading Arms':
+            case 'Loading Arms' or 'Bras de Chargement':
                 $secEq = new LoadingArm();
                 $secEq->rate = $request->rate;
                 $secEq->product = $request->product;
                 $temp->loading_arm()->save($secEq);
                 break;
-            case 'Tanks':
+            case 'Tanks' or 'Bacs':
                 $secEq = new Tank();
                 $secEq->product = $request->product;
                 $secEq->height = $request->height;
@@ -108,11 +108,11 @@ class EquipmentController extends Controller
                 $secEq->capacity = $request->capacity;
                 $temp->tank()->save($secEq);
                 break;
-            case 'Generators':
+            case 'Generators' or 'Groupes Electroniques':
                 $secEq = new Generator();
                 $temp->generator()->save($secEq);
                 break;
-            case 'Fuel Meters':
+            case 'Fuel Meters' or 'Compteurs':
                 $secEq = new FuelMeter();
                 $secEq->category = $request->category;
                 $temp->fuel_meter()->save($secEq);
@@ -141,19 +141,19 @@ class EquipmentController extends Controller
     public function edit($id)
     {
         switch($_COOKIE['equip']){
-            case 'Pumps':
+            case 'Pumps' or 'Pompes':
                 $equipment = Equipment::with('pump')->find($id);
                 break;
-            case 'Tanks':
+            case 'Tanks' or 'Bacs':
                 $equipment = Equipment::with('tank')->find($id);
                 break;
-            case 'Loading Arms':
+            case 'Loading Arms' or 'Bras de Chargement':
                 $equipment = Equipment::with('loading_arm')->find($id);
                 break;
-            case 'Generators':
+            case 'Generators' or 'Groupes Electroniques':
                 $equipment = Equipment::with('generator')->find($id);
                 break;
-            case 'Fuel Meters':
+            case 'Fuel Meters' or 'Compteurs':
                 $equipment = Equipment::with('fuel_meter')->find($id);
                 break;
         }

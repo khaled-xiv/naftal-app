@@ -1,5 +1,5 @@
 @extends('layouts.without_footer')
-@section('title', 'Add center')
+@section('title', __('Add Center'))
 @section('content')
     <!-- Add Center -->
     <br>
@@ -17,7 +17,7 @@
 
                             {!! Form::open(['method'=>'POST', 'action'=> 'CenterController@store']) !!}
                             @csrf
-                            <h4>Add Center</h4>
+                            <h4>{{ __('Add Center') }}</h4>
                             <br>
 
 
@@ -50,8 +50,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('storage_capacity', 'Storage capacity:',['class'=>'label_padding']) !!}
-                                        <input id="storage_capacity" type="number" class="form-control @error('number') is-invalid @enderror" name="storage_capacity" value="{{ old('storage_capacity') }}" required autocomplete="new-password" placeholder="Storage Capacity">
+                                        {!! Form::label('storage_capacity', __('Storage capacity').":",['class'=>'label_padding']) !!}
+                                        <input id="storage_capacity" type="number" class="form-control @error('number') is-invalid @enderror" name="storage_capacity" value="{{ old('storage_capacity') }}" required autocomplete="new-password" placeholder="{{ __('Storage capacity') }}">
                                         @error('storage_capacity')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -61,8 +61,8 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('phone', 'Phone number:',['class'=>'label_padding']) !!}
-                                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" placeholder="Phone Number">
+                                        {!! Form::label('phone', __('Phone number').":",['class'=>'label_padding']) !!}
+                                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" placeholder="{{ __('Phone number') }}">
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">Add Center</button>
+                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{ __('Add Center') }}</button>
                                 </div>
                             </div>
 
