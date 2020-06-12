@@ -32,7 +32,7 @@ return  array(
     "component-edit"=>"components/{id}/edit",
 
     "forums"=>"forums",
-    "forum-show"=>"forums/{id}",
+    "forum-show"=>"forum/{id}",
     "forum-create"=>"forums/create",
 
     "search"=>"search/results",

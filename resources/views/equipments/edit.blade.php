@@ -1,9 +1,14 @@
 <?php
-    $temp = $_COOKIE['equip'];
+    $temp = __('Equipments');
+    if(isset($_COOKIE['equip']))
+        $temp = $_COOKIE['equip'];
+    if(substr($temp, -1) === 's')
+        $temp = substr($temp, 0, -1);
+
 ?>
 
 @extends('layouts.without_footer')
-@section('title', 'Edit '.substr($temp, 0, -1))
+@section('title', __('Edit')." ".$temp)
 @section('content')
     <!-- Edit Equipment -->
 
@@ -17,7 +22,7 @@
 
                 <div class="row" style="display:{!! $errors->hasBag('components') ? 'inline;' : 'none;' !!}">
                     <div class="alert alert-danger" role = "alert">
-                        component not added, make sure that the reference is unique.
+                        {{__('component not added, make sure that the reference is unique.')}}
                     </div>
                 </div>
 
@@ -28,7 +33,7 @@
                         <div class="contact-right">
                             {!! Form::model($equipment, ['method'=>'PUT', 'action'=> ['EquipmentController@update', $equipment->id]]) !!}
                             @csrf
-                            <h4>Edit {{substr($temp, 0, -1)}}</h4>
+                            <h4>{{ __('Edit')." ".$temp }}</h4>
                             <br><br>
 
 
@@ -60,7 +65,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('mark', 'Mark:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('mark', ucfirst(__('mark')).":",['class'=>'label_padding']) !!}
                                         {!! Form::text('mark', old('mark'), ['class'=> $errors->get('mark') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('mark')
                                         <span class="invalid-feedback" role="alert">
@@ -71,7 +76,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('model', 'Model:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('model', ucfirst(__('model')).":",['class'=>'label_padding']) !!}
                                         {!! Form::text('model', old('model'), ['class'=> $errors->get('model') ? 'form-control is-invalid' : 'form-control']) !!}
                                         @error('model')
                                         <span class="invalid-feedback" role="alert">
@@ -81,16 +86,16 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($temp != 'Generators')
-                                @if($temp == 'Pumps' || $temp == 'Loading Arms')
+                            @if($temp != 'Generators' && $temp != 'Groupes Electroniques')
+                                @if($temp == 'Pumps' || $temp == 'Loading Arms' || $temp == 'Pompes' || $temp == 'Bras de Chargement')
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
-                                                {!! Form::text(($temp == 'Pumps') ? 'pump[product]' : 'loading_arm[product]',
-                                                               ($temp == 'Pumps') ? old('pump[product]') : old('loading_arm[product]'),
-                                                               ['class'=> (($temp == 'Pumps') && $errors->get('pump[product]')) ||
-                                                                (($temp == 'Loading Arms') && $errors->get('loading_arm[product]'))
+                                                {!! Form::label('product', ucfirst(__('product')).":",['class'=>'label_padding']) !!}
+                                                {!! Form::text(($temp == __('Pumps')) ? 'pump[product]' : 'loading_arm[product]',
+                                                               ($temp == __('Pumps')) ? old('pump[product]') : old('loading_arm[product]'),
+                                                               ['class'=> (($temp == __('Pumps')) && $errors->get('pump[product]')) ||
+                                                                (($temp == __('Loading Arms')) && $errors->get('loading_arm[product]'))
                                                                ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('pump[product]' || 'loading_arm[product]')
                                                 <span class="invalid-feedback" role="alert">
@@ -101,11 +106,11 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('rate', 'Rate:',['class'=>'label_padding']) !!}
-                                                {!! Form::number(($temp == 'Pumps') ? 'pump[rate]' : 'loading_arm[rate]',
-                                                                ($temp == 'Pumps') ? old('pump[rate]') : old('loading_arm[rate]'),
-                                                                ['class'=> (($temp == 'Pumps') && $errors->get('pump[rate]')) ||
-                                                                (($temp == 'Loading Arms') && $errors->get('loading_arm[rate]'))
+                                                {!! Form::label('rate', ucfirst(__('rate')).":",['class'=>'label_padding']) !!}
+                                                {!! Form::number(($temp == __('Pumps')) ? 'pump[rate]' : 'loading_arm[rate]',
+                                                                ($temp == __('Pumps')) ? old('pump[rate]') : old('loading_arm[rate]'),
+                                                                ['class'=> (($temp == __('Pumps')) && $errors->get('pump[rate]')) ||
+                                                                (($temp == __('Loading Arms')) && $errors->get('loading_arm[rate]'))
                                                                ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('pump[rate]' || 'loading_arm[rate]')
                                                 <span class="invalid-feedback" role="alert">
@@ -115,11 +120,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif($temp == 'Tanks')
+                                @elseif($temp == 'Tanks' || $temp == 'Bacs')
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('product', 'Product:',['class'=>'label_padding']) !!}
+                                                {!! Form::label('product', ucfirst(__('product')).":",['class'=>'label_padding']) !!}
                                                 {!! Form::text('tank[product]', old('tank[product]'), ['class'=> $errors->get('tank[product]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[product]')
                                                 <span class="invalid-feedback" role="alert">
@@ -130,7 +135,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('capacity', 'Capacity:',['class'=>'label_padding']) !!}
+                                                {!! Form::label('capacity', ucfirst(__('capacity')).":",['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[capacity]', old('tank[capacity]'), ['class'=> $errors->get('tank[capacity]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[capacity]')
                                                 <span class="invalid-feedback" role="alert">
@@ -143,7 +148,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('height', 'Height:',['class'=>'label_padding']) !!}
+                                                {!! Form::label('height', ucfirst(__('height')).":",['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[height]', old('tank[height]'), ['class'=> $errors->get('tank[height]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[height]')
                                                 <span class="invalid-feedback" role="alert">
@@ -154,7 +159,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('diameter', 'Diameter:',['class'=>'label_padding']) !!}
+                                                {!! Form::label('diameter', ucfirst(__('diameter')).":",['class'=>'label_padding']) !!}
                                                 {!! Form::number('tank[diameter]', old('tank[diameter]'), ['class'=> $errors->get('tank[diameter]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('tank[diameter]')
                                                 <span class="invalid-feedback" role="alert">
@@ -168,7 +173,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                {!! Form::label('category', 'Category:',['class'=>'label_padding']) !!}
+                                                {!! Form::label('category', ucfirst(__('category')).":",['class'=>'label_padding']) !!}
                                                 {!! Form::text('fuel_meter[category]', old('fuel_meter[category]'), ['class'=> $errors->get('fuel_meter[category]') ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('fuel_meter[category]')
                                                 <span class="invalid-feedback" role="alert">
@@ -185,7 +190,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('state', 'State:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('state', ucfirst(__('state')).":",['class'=>'label_padding']) !!}
                                         {!! Form::select('state',  ['ON' => 'Active', 'OFF' => 'Not Active'], null, ['class'=>'form-control'])!!}
                                         @error('state')
                                         <span class="invalid-feedback" role="alert">
@@ -200,8 +205,8 @@
                             </div>
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
-                                    <button class="btn  btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">Delete {{substr($temp, 0, -1)}}</button>
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">Edit {{substr($temp, 0, -1)}}</button>
+                                    <button class="btn  btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">{{__('Delete')." ".$temp}}</button>
+                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{__('Edit')." ".$temp}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}
@@ -218,32 +223,32 @@
                     </div>
                     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
                         <div class="contact-right">
-                            <h4>Components:</h4>
+                            <h4>{{__('Components').":"}}</h4>
                             <hr>
                             @foreach($components as $component)
-                                    <div class="card border-dark mb-3" style="max-width: 23rem;">
+                                    <div class="card border-dark mb-3" style="max-width: 25rem;">
                                         <div class="card-header">
                                             <em>{{$component->designation}}</em>
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">
-                                                <b>mark:</b> {{$component->mark}}<br>
-                                                <b>reference:</b> {{$component->reference}}
+                                                <b>{{__('mark').":"}}</b> {{$component->mark}}<br>
+                                                <b>{{__('reference').":"}}</b> {{$component->reference}}
                                             </p>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                                     {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
-                                                        <button style="color: #069;text-decoration: underline;cursor: pointer;" type="submit" role="button">Edit Component</button>
+                                                        <button style="color: #069;text-decoration: underline;cursor: pointer;" type="submit" role="button">{{__('Edit')." ".ucfirst(__('component'))}}</button>
                                                     {!! Form::close() !!}
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                                        <button class="component-del" style="color: #ff3333;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">Delete Component</button>
+                                                        <button class="component-del" style="color: #ff3333;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">{{__('Delete')." ".ucfirst(__('component'))}}</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><hr>
                             @endforeach
-                                <button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" role="button">Add Component</button>
+                                <button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" role="button">{{__('Add')." ".ucfirst(__('component'))}}</button>
                         </div>
                     </div>
 
@@ -257,7 +262,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addComponent">Add new component</h5>
+                        <h5 class="modal-title" id="addComponent">{{__('Add')." ".__('new')." ".__('component')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -269,7 +274,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <input type="hidden" name="equipment" value="{{$equipment->id}}"/>
-                                    {!! Form::label('designation', 'Designation:',['class'=>'label_padding']) !!}
+                                    {!! Form::label('designation', ucfirst(__('designation')).":",['class'=>'label_padding']) !!}
                                     <input id="designation" type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" required autocomplete="designation" placeholder="Designation">
                                     @error('designation')
                                     <span class="invalid-feedback" role="alert">
@@ -280,8 +285,8 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    {!! Form::label('mark', 'Mark:',['class'=>'label_padding']) !!}
-                                    <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="Mark">
+                                    {!! Form::label('mark', ucfirst(__('mark')).":",['class'=>'label_padding']) !!}
+                                    <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="{{ucfirst(__('mark'))}}">
                                     @error('mark')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -293,8 +298,8 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    {!! Form::label('reference', 'Reference:',['class'=>'label_padding']) !!}
-                                    <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" value="{{ old('reference') }}" required autocomplete="reference" placeholder="Reference">
+                                    {!! Form::label('reference', ucfirst(__('reference')).":",['class'=>'label_padding']) !!}
+                                    <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" value="{{ old('reference') }}" required autocomplete="reference" placeholder="{{ucfirst(__('reference'))}}">
                                     @error('reference')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -304,7 +309,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    {!! Form::label('commissioned_on', 'Commissioned on:',['class'=>'label_padding']) !!}
+                                    {!! Form::label('commissioned_on', ucfirst(__('commissioned on')).":",['class'=>'label_padding']) !!}
                                     <input id="commissioned_on" type="date" class="form-control" name="commissioned_on" required autocomplete="commissioned_on">
                                     @error('commissioned_on')
                                     <span class="invalid-feedback" role="alert">
@@ -316,8 +321,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-yellow">Add this component</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                        <button type="submit" class="btn btn-yellow">{{__('Add')." ".__('component')}}</button>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -329,7 +334,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="DeleteEquipment">Are you sure you want to delete this equipment?</h5>
+                        <h5 class="modal-title" id="DeleteEquipment">{{__('Are you sure you want to delete this equipment?')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -337,8 +342,8 @@
                     {!! Form::open(['method'=>'DELETE', 'action'=> ['EquipmentController@destroy', $equipment->id]]) !!}
                     @csrf
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Delete equipment</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                        <button type="submit" class="btn btn-danger">{{__('Delete')." ".__('equipment')}}</button>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -350,7 +355,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content component-del-2">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="DeleteComponent">Are you sure you want to delete this component?</h5>
+                        <h5 class="modal-title" id="DeleteComponent">{{__('Are you sure you want to delete this component?')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -359,8 +364,8 @@
                         @csrf
                         <input type="hidden" name="_method" value="DELETE"/>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Delete component</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__("Close")}}</button>
+                            <button type="submit" class="btn btn-danger">{{__('Delete')." ".__('component')}}</button>
                         </div>
                     </form>
                 </div>
