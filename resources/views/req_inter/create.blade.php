@@ -90,7 +90,7 @@
                                     <div class="form-group" id="equipment_id_code" style="display: none">
                                         {!! Form::label('equipment_id', 'Select the equipment code:',['class'=>'label_padding']) !!}
                                         {!! Form::select('equipment_id',[], null,
-                                        ['class'=>'form-control','id'=>'equipment_id'])!!}
+                                        ['class'=>'form-control', 'onclick="change_code()"', 'id'=>'equipment_id'])!!}
                                         @error('equipment_id')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -146,7 +146,7 @@
         function change_code() {
             $.ajax({
                 type: 'post',
-                url: '/getequipment',
+                url: '/{{app()->getLocale()}}/getequipment',
                 data: {name: $("select[name='equipment']").val(), _token: '{{csrf_token()}}'},
                 success: function (data) {
                     $("#equipment_id_code").show();

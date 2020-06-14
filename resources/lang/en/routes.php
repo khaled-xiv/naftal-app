@@ -32,8 +32,9 @@ return  array(
     "component-edit"=>"components/{id}/edit",
 
     "forums"=>"forums",
-    "forum-show"=>"forums/{id}",
     "forum-create"=>"forums/create",
+    "forum-show"=>"forums/{id}",
+
 
     "search"=>"search/results",
     "tag-search"=>"tags/{id}/search",

@@ -59,6 +59,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get(LaravelLocalization::transRoute('routes.request-create'), 'Req_interController@create')->name('request.create');
     Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')->name('request.edit');
     Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')->name('request.store');
+    Route::Put('/request-of-intervention/{id}', 'Req_interController@update');
 
     Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter');
     Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
@@ -88,10 +89,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::delete('components/{id}', 'ComponentController@destroy');
     Route::put('components/{id}', 'ComponentController@update');
 
-    //Route::resource('forums', 'ForumController');
+//    Route::resource('forums', 'ForumController');
     Route::get(LaravelLocalization::transRoute('routes.forums'), 'ForumController@index');
     Route::get(LaravelLocalization::transRoute('routes.forum-show'), 'ForumController@show');
-    Route::get(LaravelLocalization::transRoute('routes.forum-create'), 'ForumController@create');
+    Route::get(LaravelLocalization::transRoute('routes.forum-create'), 'ForumController@create')->name('forums');
     Route::get(LaravelLocalization::transRoute('routes.forum-edit'), 'ForumController@edit');
     Route::post('forums', 'ForumController@store');
     Route::delete('forums/{id}', 'ForumController@destroy');
@@ -106,4 +107,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('search/results', 'ForumController@search');
 
 });
+
 
