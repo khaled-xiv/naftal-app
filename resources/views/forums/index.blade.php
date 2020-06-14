@@ -15,8 +15,9 @@
                 <!-- Blog Entries Column -->
                 <div class="col-md-8">
 
-                    {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@create']]) !!}
+                    {!! Form::open(['method'=>'GET', 'action'=>'ForumController@create']) !!}
                         <button class="btn btn-primary pull-right">Ask Question</button>
+{{--                        <a class="btn btn-primary pull-right" href="{{route('forums')}}">Ask Question</a>--}}
                     {!! Form::close() !!}
                     <br><hr>
                     <h2 class="my-4">Most upvoted Questions

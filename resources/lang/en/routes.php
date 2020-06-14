@@ -35,6 +35,7 @@ return  array(
     "forum-show"=>"forum/{id}",
     "forum-create"=>"forums/create",
 
+
     "search"=>"search/results",
     "tag-search"=>"tags/{id}/search",
 

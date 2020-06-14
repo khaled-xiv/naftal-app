@@ -152,7 +152,7 @@ class Req_interController extends Controller
             'description' => $request['description'],
             'created_at' => $request['created_at']
         ]);
-        return  redirect('/request-of-intervention/create');
+        return  redirect()->route('requests.show');
     }
 
     /**
@@ -174,7 +174,7 @@ class Req_interController extends Controller
      */
     public function edit($id)
     {
-        return "salam";
+        $id=decrypt($id);
         $req_inter=Req_inter::findOrFail($id)->equipment_id;
         $comps=Component::where('equipment_id',$req_inter)
             ->pluck('designation','id');
@@ -232,8 +232,16 @@ class Req_interController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validator($request->all())->validate();
+        $id=decrypt($id);
+        $request->validate([
+            'number' => [ 'required','string', 'max:255','unique:req_inters,number,'.$id],
+            'degree_urgency' => ['required'],
+            'equipment_id' => ['required'],
+            'equipment' => ['required','string']
+        ]);
         $openned_req=Req_inter::findOrFail($id);
+        $openned_req->update($request->all());
+        return  redirect()->route('request.edit',encrypt($id));
     }
 
     public function update_after_inter(Request $request,$id)

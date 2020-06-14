@@ -11,7 +11,7 @@
 
                         <div class="contact-right">
 
-                            {!! Form::model($openned_req,['method'=>'PUT','id'=>'edit_form', 'action'=> ['Req_interController@update',$openned_req->id]]) !!}
+                            {!! Form::model($openned_req,['method'=>'PUT','id'=>'edit_form', 'action'=> ['Req_interController@update',encrypt($openned_req->id)]]) !!}
                             @csrf
                             <h4>Edit Request of Intervention</h4>
                             <br>
@@ -83,15 +83,15 @@
                                     <div class="form-group" id="equipment_id_code" >
                                         {!! Form::label('equipment_id', 'Select the equipment code:',['class'=>'label_padding']) !!}
                                         @if($openned_req['equipment_name']=='Pumps')
-                                        {!! Form::select('equipment_id',$pumps, null,['class'=>'form-control','id'=>'equipment_id'])!!}
+                                        {!! Form::select('equipment_id',$pumps, null,['class'=>'form-control','onclick="change_code()"','id'=>'equipment_id'])!!}
                                         @elseif($openned_req['equipment_name']=='Generators')
-                                            {!! Form::select('equipment_id',$generators, null,['class'=>'form-control','id'=>'equipment_id'])!!}
+                                            {!! Form::select('equipment_id',$generators, null,['class'=>'form-control','onclick="change_code()"','id'=>'equipment_id'])!!}
                                         @elseif($openned_req['equipment_name']=='Tanks')
-                                            {!! Form::select('equipment_id',$tanks, null,['class'=>'form-control','id'=>'equipment_id'])!!}
+                                            {!! Form::select('equipment_id',$tanks, null,['class'=>'form-control','onclick="change_code()"','id'=>'equipment_id'])!!}
                                         @elseif($openned_req['equipment_name']=='Loding arms')
-                                            {!! Form::select('equipment_id',$loadingArms, null,['class'=>'form-control','id'=>'equipment_id'])!!}
+                                            {!! Form::select('equipment_id',$loadingArms, null,['class'=>'form-control','onclick="change_code()"','id'=>'equipment_id'])!!}
                                         @elseif($openned_req['equipment_name']=='Fuel meters')
-                                            {!! Form::select('equipment_id',$fuelMeters, null,['class'=>'form-control','id'=>'equipment_id'])!!}
+                                            {!! Form::select('equipment_id',$fuelMeters, null,['class'=>'form-control','onclick="change_code()"','id'=>'equipment_id'])!!}
                                         @endif
                                         @error('equipment_id')
                                         <span class="invalid-feedback" role="alert">
@@ -292,11 +292,11 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-                    {!! Form::open(['method'=>'delete','id'=>'delete_modal','action'=>['Req_interController@destroy',$openned_req->id]]) !!}
-                    @csrf
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    {!! Form::close() !!}
+{{--                    {!! Form::open(['method'=>'delete','id'=>'delete_modal','action'=>['Req_interController@destroy',$openned_req->id]]) !!}--}}
+{{--                    @csrf--}}
+{{--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--}}
+{{--                    <button type="submit" class="btn btn-danger">Delete</button>--}}
+{{--                    {!! Form::close() !!}--}}
                 </div>
 
             </div>
@@ -343,7 +343,7 @@
     function change_code() {
         $.ajax({
             type:'post',
-            url:'/getequipment',
+            url:'/{{app()->getLocale()}}/getequipment',
             data: { name:$("select[name='equipment']").val(), _token: '{{csrf_token()}}' },
             success:function(data){
                 $("#equipment_id_code").show();
