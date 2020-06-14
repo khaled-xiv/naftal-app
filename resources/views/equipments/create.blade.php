@@ -1,5 +1,9 @@
 <?php
-    $temp = $_COOKIE['equip'];
+    $temp = __('Equipments');
+    if(isset($_COOKIE['equip']))
+        $temp = $_COOKIE['equip'];
+    if(substr($temp, -1) === 's')
+        $temp = substr($temp, 0, -1);
 ?>
 
 @extends('layouts.without_footer')
@@ -87,8 +91,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($temp != 'Generators')
-                                @if($temp == 'Pumps' || $temp == 'Loading Arms')
+                            @if($temp != 'Generators' && $temp != 'Groupes Electroniques')
+                                @if($temp == 'Pumps' || $temp == 'Loading Arms' || $temp == 'Pompes' || $temp == 'Bras de Chargement')
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
@@ -113,7 +117,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif($temp == 'Tanks')
+                                @elseif($temp == 'Tanks' || $temp == 'Bacs')
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
@@ -182,7 +186,7 @@
                             @endif
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{__('Add')}}</button>
+                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{__('Add')." ".$temp}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}

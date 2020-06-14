@@ -32,8 +32,8 @@ return  array(
     "component-edit"=>"components/{id}/edit",
 
     "forums"=>"forums",
+    "forum-show"=>"forum/{id}",
     "forum-create"=>"forums/create",
-    "forum-show"=>"forums/{id}",
 
 
     "search"=>"search/results",

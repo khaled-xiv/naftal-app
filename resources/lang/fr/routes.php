@@ -33,8 +33,8 @@ return  array(
 
 
     "forums"=>"forums",
+    "forum-show"=>"forum/{id}",
     "forum-create"=>"forums/ajouter",
-    "forum-show"=>"forums/{id}",
 
 
     "search"=>"recherche/resultats",
