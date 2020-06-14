@@ -4,6 +4,8 @@
         $temp = $_COOKIE['equip'];
     if(substr($temp, -1) === 's')
         $temp = substr($temp, 0, -1);
+    if($temp === "Groupes Electronique")
+        $temp = "Groupe Electronique";
 
 ?>
 
@@ -226,7 +228,7 @@
                             <h4>{{__('Components').":"}}</h4>
                             <hr>
                             @foreach($components as $component)
-                                    <div class="card border-dark mb-3" style="max-width: 25rem;">
+                                    <div class="card border-dark mb-3" style="max-width: 26rem;">
                                         <div class="card-header">
                                             <em>{{$component->designation}}</em>
                                         </div>

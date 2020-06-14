@@ -13,7 +13,7 @@
 
                 <div class="row" style="display:{!! $errors->hasBag('update') ? 'inline;' : 'none;' !!}">
                     <div class="alert alert-danger" role = "alert">
-                        could not complete your request, make sure your input is valid.
+                        {{ __('Could not complete your request, make sure your input is valid.') }}
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                         by
                         <span class="username">{{$forum->user->name}}</span>
                         <!-- Date/Time -->
-                        <p class="text-muted">Posted on {{$forum->created_at}}</p>
+                        <p class="text-muted">{{ __('Posted on')." ".$forum->created_at }}</p>
 
                         <hr>
                         <!-- Post Content -->
@@ -55,11 +55,11 @@
                                 </p>
                                 @if(Auth::user() == $forum->user)
                                     <div class="pull-right">
-                                        <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">Edit question</button>
+                                        <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">{{ __('Edit')." question" }}</button>
                                     </div>
                                     <br>
                                     <div class="pull-right">
-                                        <button class="link-button" onclick="getSimilar({{$forum->id}})">Find me an Answer</button>
+                                        <button class="link-button" onclick="getSimilar({{$forum->id}})">{{ __('Find me an answer') }}</button>
                                     </div>
                                 @endif
                             </div>
@@ -75,17 +75,17 @@
                                     {!! Form::open(['method'=>'POST', 'action'=> 'AnswerController@store']) !!}
                                         <input type="hidden" name="forum" value="{{$forum->id}}"/>
                                         <div class="row">
-                                            <textarea id="body" name="body" style="margin: 5px 20px; padding: 5px 20px; border-radius: 5px;" class="form-control" value="{{ old('body') }}" required placeholder="You can answer here..." rows="5"></textarea>
+                                            <textarea id="body" name="body" style="margin: 5px 20px; padding: 5px 20px; border-radius: 5px;" class="form-control" value="{{ old('body') }}" required placeholder="{{ __('You can answer here...') }}" rows="5"></textarea>
                                         </div>
                                         <div class="row pull-right">
-                                            <button style="margin: 5px 20px;" class="btn btn-outline-primary" type="submit">Submit answer</button>
+                                            <button style="margin: 5px 20px;" class="btn btn-outline-primary" type="submit">{{ __('Submit answer') }}</button>
                                         </div>
                                     {!! Form::close() !!}
                                     <div class="clearfix"></div>
                                     <hr>
                                     <ul class="media-list">
                                         <div class="answers">
-                                            {{$number = $forum->answers->count()}} @if($number != 1) Answers @else Answer @endif
+                                            {{$number = $forum->answers->count()}} @if($number != 1) {{ ucfirst(__('answer'))."s" }} @else {{ ucfirst(__('answer')) }} @endif
                                         </div>
                                         @foreach($forum->answers as $answer)
                                         <li class="media">
@@ -118,7 +118,7 @@
                                                         </p>
                                                         @if(Auth::user() == $answer->user)
                                                         <div class="pull-right">
-                                                            <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button">Edit answer</button>
+                                                            <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button"> {{__('Edit')." ".__('answer')}}</button>
                                                         </div>
                                                         @endif
                                                     </div>
@@ -169,16 +169,16 @@
                         <input type="hidden" name="_method" value="PUT"/>
                         <div class="modal-body">
                             <div class="form-group forum-title">
-                                {!! Form::label('title', 'Title:',['class'=>'label_padding']) !!}
+                                {!! Form::label('title', __('title').":",['class'=>'label_padding']) !!}
                                 <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required>
-                                @error('designation')
+                                @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                {!! Form::label('body', 'Content:',['class'=>'label_padding']) !!}
+                                {!! Form::label('body', __('content').":",['class'=>'label_padding']) !!}
                                 <textarea id="Modalbody" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required rows="5"></textarea>
                                 @error('body')
                                 <span class="invalid-feedback" role="alert">
@@ -188,8 +188,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Edit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ __('Edit') }}</button>
                         </div>
                     </form>
                 </div>

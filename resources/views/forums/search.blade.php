@@ -15,20 +15,20 @@
                     <div class="col-md-8">
 
                         {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@create']]) !!}
-                        <button class="btn btn-primary pull-right">Ask Question</button>
+                        <button class="btn btn-primary pull-right">{{__('Ask a')." question"}}</button>
                         {!! Form::close() !!}
                         <br><hr>
                         <h2 class="my-4">
                             @if(isset($tag))
-                                Forums tagged with
+                                {{ __('Forums tagged with') }}
                                 <small> "{{$tag->content}}"</small>
                             @else
-                                Search results
+                                {{ __('Search results') }}
                             @endif
                         </h2>
                         <!-- Blog Post -->
                         @if(count($forums) === 0)
-                            no results were found
+                            {{ __('No results were found') }}
                         @else
                         @foreach($forums as $forum)
                             <div class="card mb-4">
@@ -36,11 +36,11 @@
                                     <h3 class="card-title">{{$forum->title}}</h3>
                                     <p class="card-text">{{$forum->body}}</p>
                                     {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
-                                    <button class="btn btn-primary">Read More &rarr;</button>
+                                    <button class="btn btn-primary">{{ __('Read more') }} &rarr;</button>
                                     {!! Form::close() !!}
                                 </div>
                                 <div class="card-footer text-muted">
-                                    Posted on {{$forum->created_at}} by
+                                    {{ __('Posted on')." ".$forum->created_at." ".__('by')}}
                                     <span class="username">{{$forum->user->name}}</span>
                                 </div>
                             </div>
