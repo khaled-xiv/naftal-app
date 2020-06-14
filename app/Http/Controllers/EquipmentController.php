@@ -88,19 +88,22 @@ class EquipmentController extends Controller
         $temp = Equipment::latest()->first();
 
         switch($_COOKIE['equip']){
-            case 'Pumps' or 'Pompes':
+            case 'Pumps':
+            case 'Pompes':
                 $secEq = new Pump();
                 $secEq->rate = $request->rate;
                 $secEq->product = $request->product;
                 $temp->pump()->save($secEq);
                 break;
-            case 'Loading Arms' or 'Bras de Chargement':
+            case 'Loading Arms':
+            case 'Bras de Chargement':
                 $secEq = new LoadingArm();
                 $secEq->rate = $request->rate;
                 $secEq->product = $request->product;
                 $temp->loading_arm()->save($secEq);
                 break;
-            case 'Tanks' or 'Bacs':
+            case 'Tanks':
+            case 'Bacs':
                 $secEq = new Tank();
                 $secEq->product = $request->product;
                 $secEq->height = $request->height;
@@ -108,11 +111,13 @@ class EquipmentController extends Controller
                 $secEq->capacity = $request->capacity;
                 $temp->tank()->save($secEq);
                 break;
-            case 'Generators' or 'Groupes Electroniques':
+            case 'Generators':
+            case 'Groupes Electroniques':
                 $secEq = new Generator();
                 $temp->generator()->save($secEq);
                 break;
-            case 'Fuel Meters' or 'Compteurs':
+            case 'Fuel Meters':
+            case 'Compteurs':
                 $secEq = new FuelMeter();
                 $secEq->category = $request->category;
                 $temp->fuel_meter()->save($secEq);
