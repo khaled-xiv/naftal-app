@@ -88,16 +88,16 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($temp != 'Generators' && $temp != 'Groupes Electroniques')
-                                @if($temp == 'Pumps' || $temp == 'Loading Arms' || $temp == 'Pompes' || $temp == 'Bras de Chargement')
+                            @if($temp != 'Generator' && $temp != 'Groupe Electronique')
+                                @if($temp == 'Pump' || $temp == 'Loading Arm' || $temp == 'Pompe' || $temp == 'Bras de Chargement')
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('product', ucfirst(__('product')).":",['class'=>'label_padding']) !!}
-                                                {!! Form::text(($temp == __('Pumps')) ? 'pump[product]' : 'loading_arm[product]',
-                                                               ($temp == __('Pumps')) ? old('pump[product]') : old('loading_arm[product]'),
-                                                               ['class'=> (($temp == __('Pumps')) && $errors->get('pump[product]')) ||
-                                                                (($temp == __('Loading Arms')) && $errors->get('loading_arm[product]'))
+                                                {!! Form::text(($temp == 'Pump' || $temp == 'Pompe') ? 'pump[product]' : 'loading_arm[product]',
+                                                               ($temp == 'Pump' || $temp == 'Pompe') ? old('pump[product]') : old('loading_arm[product]'),
+                                                               ['class'=> (($temp == 'Pump' || $temp == 'Pompe') && $errors->get('pump[product]')) ||
+                                                                (($temp == 'Loading Arm' || $temp == 'Bras de Chargement') && $errors->get('loading_arm[product]'))
                                                                ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('pump[product]' || 'loading_arm[product]')
                                                 <span class="invalid-feedback" role="alert">
@@ -109,10 +109,10 @@
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 {!! Form::label('rate', ucfirst(__('rate')).":",['class'=>'label_padding']) !!}
-                                                {!! Form::number(($temp == __('Pumps')) ? 'pump[rate]' : 'loading_arm[rate]',
-                                                                ($temp == __('Pumps')) ? old('pump[rate]') : old('loading_arm[rate]'),
-                                                                ['class'=> (($temp == __('Pumps')) && $errors->get('pump[rate]')) ||
-                                                                (($temp == __('Loading Arms')) && $errors->get('loading_arm[rate]'))
+                                                {!! Form::number(($temp == 'Pump' || $temp == 'Pompe') ? 'pump[rate]' : 'loading_arm[rate]',
+                                                                ($temp == 'Pump' || $temp == 'Pompe') ? old('pump[rate]') : old('loading_arm[rate]'),
+                                                                ['class'=> (($temp == 'Pump' || $temp == 'Pompe') && $errors->get('pump[rate]')) ||
+                                                                (($temp == 'Loading Arm' || $temp == 'Bras de Chargement') && $errors->get('loading_arm[rate]'))
                                                                ? 'form-control is-invalid' : 'form-control']) !!}
                                                 @error('pump[rate]' || 'loading_arm[rate]')
                                                 <span class="invalid-feedback" role="alert">
@@ -122,7 +122,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif($temp == 'Tanks' || $temp == 'Bacs')
+                                @elseif($temp == 'Tank' || $temp == 'Bac')
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
