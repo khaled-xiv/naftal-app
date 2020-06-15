@@ -74,7 +74,7 @@
                                     <div class="form-group">
                                         {!! Form::label('equipment', 'Select an equipment:',['class'=>'label_padding']) !!}
                                         {!! Form::select('equipment', $equips , null,
-                                        ['class'=>'form-control','onchange="change_code()"','placeholder'=>'Select an equipment'])!!}
+                                        ['class'=>'form-control','onchange="change_code()"','placeholder'=>__('Select an equipment')])!!}
                                         @error('equipment')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

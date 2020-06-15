@@ -119,7 +119,7 @@ class Req_interController extends Controller
      */
     public function create()
     {
-        $equips=['Pumps'=>'Pumps','Tanks'=>'Tanks','Loding arms'=>'Loding arms','Generators'=>'Generators','Fuel meters'=>'Fuel meters'];
+        $equips=['Pumps'=>__('Pumps'),'Tanks'=>__('Tanks'),'Loding arms'=>__('Loding arms'),'Generators'=>__('Generators'),'Fuel meters'=>__('Fuel meters')];
 
         return view('req_inter.create', compact('equips'));
     }
