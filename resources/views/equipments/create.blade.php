@@ -93,8 +93,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($temp != 'Generators' && $temp != 'Groupes Electroniques')
-                                @if($temp == 'Pumps' || $temp == 'Loading Arms' || $temp == 'Pompes' || $temp == 'Bras de Chargement')
+                            @if($temp != 'Generator' && $temp != 'Groupe Electronique')
+                                @if($temp == 'Pump' || $temp == 'Loading Arm' || $temp == 'Pompe' || $temp == 'Bras de Chargement')
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
@@ -119,7 +119,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif($temp == 'Tanks' || $temp == 'Bacs')
+                                @elseif($temp == 'Tank' || $temp == 'Bac')
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">

@@ -146,19 +146,24 @@ class EquipmentController extends Controller
     public function edit($id)
     {
         switch($_COOKIE['equip']){
-            case 'Pumps' or 'Pompes':
+            case 'Pumps':
+            case 'Pompes':
                 $equipment = Equipment::with('pump')->find($id);
                 break;
-            case 'Tanks' or 'Bacs':
+            case 'Tanks':
+            case 'Bacs':
                 $equipment = Equipment::with('tank')->find($id);
                 break;
-            case 'Loading Arms' or 'Bras de Chargement':
+            case 'Loading Arms':
+            case 'Bras de Chargement':
                 $equipment = Equipment::with('loading_arm')->find($id);
                 break;
-            case 'Generators' or 'Groupes Electroniques':
+            case 'Generators':
+            case 'Groupes Electroniques':
                 $equipment = Equipment::with('generator')->find($id);
                 break;
-            case 'Fuel Meters' or 'Compteurs':
+            case 'Fuel Meters':
+            case 'Compteurs':
                 $equipment = Equipment::with('fuel_meter')->find($id);
                 break;
         }
