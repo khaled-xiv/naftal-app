@@ -162,7 +162,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($fuelMeters as $fuelMeter)
-                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $fuemMeter->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
+                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $fuelMeter->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
                                             <td>{{$fuelMeter->equipment->code}}</td>
                                             <td>{{$fuelMeter->equipment->mark}}</td>
                                             <td>{{$fuelMeter->equipment->type}}</td>
