@@ -4,6 +4,8 @@
         $temp = $_COOKIE['equip'];
     if(substr($temp, -1) === 's')
         $temp = substr($temp, 0, -1);
+    if($temp === "Groupes Electronique")
+        $temp = "Groupe Electronique";
 ?>
 
 @extends('layouts.without_footer')

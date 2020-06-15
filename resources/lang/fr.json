@@ -152,5 +152,26 @@
     "Edit": "Modifier",
     "Delete": "Supprimer",
     "component not added, make sure that the reference is unique.": "composant non ajouté, vérifiez que la référence est unique.",
-    "new": "nouveau"
-}
+    "new": "nouveau",
+    "Ask a": "Poser une",
+    "Most upvoted questions": "Questions les plus votées",
+    "Read more": "voir question",
+    "Posted on": "Publiée le",
+    "by": "par",
+    "Search": "Rechercher",
+    "Popular tags": "Tags populaires",
+    "title": "titre",
+    "Specify a title to your problem...": "Donnez un titre descriptif...",
+    "content": "contenu",
+    "Type your problem here...": "Décrivez votre problème ici...",
+    "Enter a few tags here...": "Spécifiez des tags significatifs ici...",
+    "Ask question": "Poser question",
+    "Forums tagged with": "Forums taggés avec",
+    "Search results": "Résultats de la recheche",
+    "No results were found": "Pas de résultats..",
+    "Could not complete your request, make sure your input is valid.": "Impossible de compléter votre demande, assurez-vous que votre entrée est valide.",
+    "Find me an answer": "Me proposer des réponses",
+    "You can answer here...": "Vous pouvez répondre ici...",
+    "Submit answer": "Répondre",
+    "answer": "réponse"
+    }

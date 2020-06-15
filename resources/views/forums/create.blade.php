@@ -19,11 +19,11 @@
 
                             {!! Form::open(['method'=>'POST', 'action'=> 'ForumController@store']) !!}
                             @csrf
-                            <h4>Ask a Question</h4>
+                            <h4>{{__('Ask a')." question"}}</h4>
                             <br>
                             <div class="form-group">
-                                {!! Form::label('title', 'Title:',['class'=>'label_padding']) !!}
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" placeholder="Specify a title to your problem...">
+                                {!! Form::label('title', ucfirst(__('titre')).":",['class'=>'label_padding']) !!}
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" placeholder="{{ __('Specify a title to your problem...') }}">
                                 @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -31,8 +31,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                {!! Form::label('body', 'Content:',['class'=>'label_padding']) !!}
-                                <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required placeholder="Type your problem here..."></textarea>
+                                {!! Form::label('body', ucfirst(__('content')).":",['class'=>'label_padding']) !!}
+                                <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" value="{{ old('body') }}" required placeholder="{{ __('Type your problem here...') }}"></textarea>
                                 @error('body')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -40,8 +40,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                {!! Form::label('tags', 'Tags:',['class'=>'label_padding']) !!}
-                                <input type = "text" id="content" class="form-control @error('tags') is-invalid @enderror" name="tags" value="{{ old('tags') }}" placeholder="Enter a few tags here...">
+                                {!! Form::label('tags', ucfirst(__('tags')).":",['class'=>'label_padding']) !!}
+                                <input type = "text" id="content" class="form-control @error('tags') is-invalid @enderror" name="tags" value="{{ old('tags') }}" placeholder="{{ __('Enter a few tags here...') }}">
                                 @error('tags')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
                                 @enderror
                             </div>
                             <div id="submit-btn" class="pull-right">
-                                <button class="btn btn-yellow" type="submit"  title="Submit" role="button">Ask question</button>
+                                <button class="btn btn-yellow" type="submit"  title="Submit" role="button">{{ __('Ask question') }}</button>
                             </div>
 
                         {!! Form::close() !!}

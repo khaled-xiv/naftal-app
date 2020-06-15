@@ -16,11 +16,11 @@
                 <div class="col-md-8">
 
                     {!! Form::open(['method'=>'GET', 'action'=>'ForumController@create']) !!}
-                        <button class="btn btn-primary pull-right">Ask Question</button>
+                        <button class="btn btn-primary pull-right">{{__('Ask a')." question"}}</button>
 {{--                        <a class="btn btn-primary pull-right" href="{{route('forums')}}">Ask Question</a>--}}
                     {!! Form::close() !!}
                     <br><hr>
-                    <h2 class="my-4">Most upvoted Questions
+                    <h2 class="my-4">{{ __('Most upvoted questions') }}
                         <small>Secondary Text</small>
                     </h2>
 
@@ -37,11 +37,11 @@
 								@endif
 								</p>
                                 {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
-                                    <button class="btn btn-primary">Read More &rarr;</button>
+                                    <button class="btn btn-primary">{{ __('Read more') }} &rarr;</button>
                                 {!! Form::close() !!}
                             </div>
                             <div class="card-footer text-muted">
-                                Posted on {{$forum->created_at}} by
+                                {{ __('Posted on')." ".$forum->created_at." ".__('by')}}
                                 <span class="username">{{$forum->user->name}}</span>
                             </div>
                         </div>
