@@ -239,7 +239,7 @@
         });
 
         function updateVotes(type, up, id){
-            let forumOrAnswer = (type === 1) ? '/forums/' : '/answers/';
+            let forumOrAnswer = (type === 1) ? '/en/forums/' : '/en/answers/';
             let upOrDown = (up === 1) ? '/upvote':'/downvote';
             $.ajax({
                 type:'POST',
@@ -251,7 +251,7 @@
                 },
                 url:forumOrAnswer + id + upOrDown,
                 success:function(data) {
-                    if(forumOrAnswer === '/forums/') {
+                    if(forumOrAnswer === '/en/forums/') {
                         $("#votesBoxF" + id).html(data.msg);
                         if(up === 1)
                             if($("#1votesBoxF" + id).css("color") === "rgb(244, 198, 19)")

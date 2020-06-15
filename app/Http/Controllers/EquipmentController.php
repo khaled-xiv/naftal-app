@@ -145,6 +145,15 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
+		if(!isset($_COOKIE['equip'])){
+			$pumps = Pump::all();
+			$tanks = Tank::all();
+			$loadingArms = LoadingArm::all();
+			$generators = Generator::all();
+			$fuelMeters = FuelMeter::all();
+
+			return view('equipments.index', compact('pumps', 'tanks', 'loadingArms', 'generators', 'fuelMeters'));
+		}
         switch($_COOKIE['equip']){
             case 'Pumps':
             case 'Pompes':

@@ -184,11 +184,23 @@
                                                 @enderror
                                             </div>
                                         </div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												{!! Form::label('state', ucfirst(__('state')).":",['class'=>'label_padding']) !!}
+												{!! Form::select('state',  ['ON' => 'Active', 'OFF' => 'Not Active'], null, ['class'=>'form-control'])!!}
+												@error('state')
+												<span class="invalid-feedback" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
+											</div>
+										</div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                         </div>
                                     </div>
                                 @endif
                             @endif
+							@if($temp != 'Fuel Meter' && $temp != 'Compteur')
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -200,11 +212,11 @@
                                             </span>
                                         @enderror
                                     </div>
-
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                 </div>
                             </div>
+							@endif
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
                                     <button class="btn  btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">{{__('Delete')." ".$temp}}</button>
