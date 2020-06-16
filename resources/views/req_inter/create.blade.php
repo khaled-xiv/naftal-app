@@ -17,17 +17,17 @@
 
                             {!! Form::open(['method'=>'POST', 'action'=> ['Req_interController@store']]) !!}
                             @csrf
-                            <h4>Create Request of Intervention</h4>
+                            <h4>{{__('Create request of intervention')}}</h4>
                             <br>
 
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('number', 'Request number:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('number', __('Request number').':',['class'=>'label_padding']) !!}
                                         <input id="number" type="text"
                                                class="form-control @error('number') is-invalid @enderror" name="number"
                                                value="{{ old('number') }}" required autocomplete="number"
-                                               placeholder="Enter the request number">
+                                               placeholder="{{__('Request number')}}">
                                         @error('number')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('degree_urgency', 'Degree of urgency:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('degree_urgency', __('Degree of urgency').':',['class'=>'label_padding']) !!}
                                         {!! Form::select('degree_urgency', array('1'=>'1','2'=>'2','3'=>'3') , null,
                                         ['class'=>'form-control'])!!}
                                         @error('degree_urgency')
@@ -57,7 +57,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('created_at', 'Date of creation:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('created_at', __('Date of creation').':',['class'=>'label_padding']) !!}
                                         <input id="created_at" type="datetime-local"
                                                class="form-control @error('created_at')  is-invalid @enderror"
                                                name="created_at"
@@ -72,7 +72,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('equipment', 'Select an equipment:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('equipment', __('Select an equipment').':',['class'=>'label_padding']) !!}
                                         {!! Form::select('equipment', $equips , null,
                                         ['class'=>'form-control','onchange="change_code()"','placeholder'=>__('Select an equipment')])!!}
                                         @error('equipment')
@@ -88,7 +88,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group" id="equipment_id_code" style="display: none">
-                                        {!! Form::label('equipment_id', 'Select the equipment code:',['class'=>'label_padding']) !!}
+                                        {!! Form::label('equipment_id', __('Select the equipment code').':',['class'=>'label_padding']) !!}
                                         {!! Form::select('equipment_id',[], null,
                                         ['class'=>'form-control', 'onclick="change_code()"', 'id'=>'equipment_id'])!!}
                                         @error('equipment_id')
@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 {!! Form::label('description', 'Description:',['class'=>'label_padding']) !!}
                                 <textarea class="form-control" id="description" required name="description"
-                                          placeholder="Enter a description"></textarea>
+                                          placeholder="{{__('Enter a description')}}"></textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -115,7 +115,7 @@
                                 <div id="submit-btn" class="ml-auto">
                                     <button class="btn btn-general btn-yellow" type="submit" title="Submit"
                                             role="button">
-                                        Create
+                                        {{__('Create')}}
                                     </button>
                                 </div>
                             </div>

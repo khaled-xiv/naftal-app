@@ -60,8 +60,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')->name('request.edit');
     Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')->name('request.store');
     Route::Put('/request-of-intervention/{id}', 'Req_interController@update');
+    Route::Delete('/request-of-intervention/{id}/delete', 'Req_interController@destroy');
 
-    Route::Put('/request-of-intervention/{request_of_intervention}', 'Req_interController@update_after_inter');
+    Route::Put('/request-of-interventions/{request_of_intervention}', 'Req_interController@update_after_inter');
     Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
     Route::post('/getequipment', 'Req_interController@getEquipment');
     Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');

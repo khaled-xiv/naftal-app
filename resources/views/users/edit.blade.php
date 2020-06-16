@@ -200,7 +200,7 @@
                             <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('role_id','{{app()->getLocale()}}')">
-                                {{$user->role->name}}
+                                {{__($user->role->name)}}
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
                             </div>

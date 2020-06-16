@@ -54,7 +54,7 @@ class Req_interController extends Controller
 
     public function getSelectedComps(Request $request)
     {
-        $selected_comp=Req_inter::findOrFail($request['id'])->components()->get();
+        $selected_comp=Req_inter::findOrFail(decrypt($request['id']))->components()->get();
         $temp=[];
         foreach ($selected_comp as $c){
             array_push($temp,  $c->pivot->component_id);
@@ -143,6 +143,7 @@ class Req_interController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validator($request->all())->validate();
         Req_inter::create([
             'number' => $request['number'],
@@ -152,7 +153,7 @@ class Req_interController extends Controller
             'description' => $request['description'],
             'created_at' => $request['created_at']
         ]);
-        return  redirect()->route('requests.show');
+        return  redirect()->route('requests.show')->with('status',__('An item was successfully added'));
     }
 
     /**
@@ -219,7 +220,7 @@ class Req_interController extends Controller
         if ($openned_req['intervention_date'])$openned_req['intervention_date']=Carbon::parse($openned_req['intervention_date'])->format('Y-m-d\TH:i');
         if ($openned_req['intervention_date_2'])$openned_req['intervention_date_2']=Carbon::parse($openned_req['intervention_date_2'])->format('Y-m-d\TH:i');
         $openned_req['equipment']=$openned_req['equipment_name'];
-        $equips=['Pumps'=>'Pumps','Tanks'=>'Tanks','Loding arms'=>'Loding arms','Generators'=>'Generators','Fuel meters'=>'Fuel meters'];
+        $equips=['Pumps'=>__('Pumps'),'Tanks'=>__('Tanks'),'Loding arms'=>__('Loding arms'),'Generators'=>__('Generators'),'Fuel meters'=>__('Fuel meters')];
         return view('req_inter.edit',compact('openned_req','equips','comps','fuelMeters','pumps','loadingArms','tanks','generators'));
     }
 
@@ -237,7 +238,8 @@ class Req_interController extends Controller
             'number' => [ 'required','string', 'max:255','unique:req_inters,number,'.$id],
             'degree_urgency' => ['required'],
             'equipment_id' => ['required'],
-            'equipment' => ['required','string']
+            'equipment' => ['required','string'],
+            'description' => ['required','string']
         ]);
         $openned_req=Req_inter::findOrFail($id);
         $openned_req->update($request->all());
@@ -246,7 +248,11 @@ class Req_interController extends Controller
 
     public function update_after_inter(Request $request,$id)
     {
-
+        $id=decrypt($id);
+        $request->validate([
+            'intervention_date' => ['required'],
+            'description_2' => ['required'],
+        ]);
         $openned_req=Req_inter::findOrFail($id);
         $data=$request->all();
         unset($data['component_id']);
@@ -256,11 +262,17 @@ class Req_interController extends Controller
         if($comps) $comps = array_map('intval', $comps);
         $openned_req->components()->sync($comps);
         $openned_req->update($data);
-        return  redirect('request-of-intervention/'.$id.'/edit');
+        return  redirect()->route('request.edit',encrypt($id));
     }
 
     public function update_discrict_inter(Request $request,$id)
     {
+        return $request->all();
+        $id=decrypt($id);
+        $request->validate([
+            'intervention_date_2' => ['required'],
+            'description_3' => ['required'],
+        ]);
         $openned_req=Req_inter::findOrFail($id);
         $data=$request->all();
         unset($data['component_id']);
@@ -268,7 +280,7 @@ class Req_interController extends Controller
         if($comps) $comps = array_map('intval', $comps);
         $openned_req->components()->sync($comps);
         $openned_req->update($data);
-        return  redirect('request-of-intervention/'.$id.'/edit');
+        return  redirect()->route('request.edit',encrypt($id));
     }
 
     /**
@@ -279,7 +291,8 @@ class Req_interController extends Controller
      */
     public function destroy($id)
     {
+        $id=decrypt($id);
         Req_inter::findOrFail($id)->delete();
-        return  redirect('/request-of-intervention');
+        return  redirect()->route('requests.show')->with('status',__('An item was successfully deleted'));
     }
 }

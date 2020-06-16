@@ -75,11 +75,11 @@ class ForumController extends Controller
                 $forum->tags()->firstOrCreate(['content' => trim($tag)]);
             }
         }
-//        $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
-//        $client = new Client();
-//        $client->request('POST', $url, [
-//            'timeout' => 100,
-//        ]);
+        $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
+        $client = new Client();
+        $client->request('POST', $url, [
+            'timeout' => 100,
+        ]);
         return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.forums'));
     }
 

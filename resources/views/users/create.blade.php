@@ -70,7 +70,7 @@
                                     <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('role_id', 'Role:',['class'=>'label_padding']) !!}
-                                            {!! Form::select('role_id', $roles , null, ['class'=>'form-control','placeholder'=>__('Select a role')])!!}
+                                            {!! Form::select('role_id', $roles , null, ['class'=>"form-control" ,"required"=>"required",'placeholder'=>__('Select a role')])!!}
 
                                             @error('role_id')
                                             <span class="invalid-feedback" role="alert">
@@ -83,7 +83,7 @@
                                     <div class="col-md-6 col-sm-12">
                                         <div class="form-group">
                                             {!! Form::label('center_id', __('Center').':',['class'=>'label_padding']) !!}
-                                            {!! Form::select('center_id', $centers , null, ['class'=>'form-control','placeholder'=>__('Select a center')])!!}
+                                            {!! Form::select('center_id', $centers , null, ['class'=>'form-control',"required"=>"required",'placeholder'=>__('Select a center')])!!}
                                             @error('center_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
