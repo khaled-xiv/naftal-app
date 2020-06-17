@@ -129,13 +129,6 @@
 
             <br><br>
             <div class="row  col-md-12 col-sm-12 col-xs-12 align-items-start ">
-                <div class="col-lg-7 offset-lg-1 col-md-8">
-                    @if($errors->any())
-                        <div class="alert alert-danger ">
-                            <h4>{{$errors->first()}}</h4>
-                        </div>
-                    @endif
-                </div>
                 <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12">
                     <h3>{{__('Account+')}}</h3>
 
@@ -301,5 +294,31 @@
 
 </section>
 <!-- Edit User Ends -->
+
+<script !src="">
+
+    @if($errors->any())
+        toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "500",
+        "hideDuration": "300",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideDown",
+        "hideMethod": "slideUp"
+    }
+
+    toastr.error("{{$errors->first()}}");
+    $('.toast-message').css('text-align','center');
+    @endif
+</script>
 
 @endSection

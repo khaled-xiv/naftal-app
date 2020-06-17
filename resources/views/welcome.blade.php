@@ -108,7 +108,7 @@
                                 <div class="col-md-6">
 
                                     <div class="office">
-                                        <h4>United States</h4>
+                                        <h4>Tiaret</h4>
                                         <ul class="office-details">
                                             <li><i class="fa fa-mobile"></i><span>+(55) 879 58 87 46</span></li>
                                             <li><i class="fa fa-envelope"></i><span>support@solo.com</span></li>
@@ -120,7 +120,7 @@
                                 <div class="col-md-6">
 
                                     <div class="office">
-                                        <h4>Australia</h4>
+                                        <h4>Alger</h4>
                                         <ul class="office-details">
                                             <li><i class="fa fa-mobile"></i><span>+(88) 457 87 74 87</span></li>
                                             <li><i class="fa fa-envelope"></i><span>support@solo.com</span></li>
