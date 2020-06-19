@@ -44,7 +44,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::post('/account/close', 'AccountController@close');
 
     //  User routes
-    Route::group(['middleware'=>'role:admin,chief_district'],function() {
+    Route::group(['middleware'=>'role:admin,district chief'],function() {
         Route::get(LaravelLocalization::transRoute('routes.users'), 'UsersController@index')->name('users.show');
         Route::get(LaravelLocalization::transRoute('routes.user-show'), 'UsersController@show')->name('users.edit');
         Route::patch(LaravelLocalization::transRoute('routes.user-update'), 'UsersController@update')->name('user.update');
@@ -53,10 +53,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::post('/users/close/{id}', 'UsersController@close');
     });
 
-    //    Route::group(['middleware'=>'role:chief_district,chief_center'],function() {
+    Route::group(['middleware'=>'role:center chief'],function() {
+        Route::get(LaravelLocalization::transRoute('routes.request-create'), 'Req_interController@create')->name('request.create');
+    });
 
     Route::get(LaravelLocalization::transRoute('routes.request'), 'Req_interController@index')->name('requests.show');
-    Route::get(LaravelLocalization::transRoute('routes.request-create'), 'Req_interController@create')->name('request.create');
     Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')->name('request.edit');
     Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')->name('request.store');
     Route::Put('/request-of-intervention/{id}', 'Req_interController@update');
