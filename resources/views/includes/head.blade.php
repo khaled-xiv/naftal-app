@@ -35,6 +35,7 @@
 <!-- Custom Styles -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/style_1.css')}}" rel="stylesheet">
+<link href="{{asset('css/app.css')}}" rel="stylesheet">
 
 <!-- Responsive  Css -->
 <link href="{{asset('css/responsive.css')}}" rel="stylesheet">

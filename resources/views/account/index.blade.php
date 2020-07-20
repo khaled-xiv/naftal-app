@@ -104,146 +104,176 @@
     <div class="content-box-md">
         <div class="container">
             <br><br>
-            <div class="row  col-md-12 col-sm-12 col-xs-12 align-items-start ">
-                <div class="col-lg-7 offset-lg-1 col-md-8">
-                    @if($errors->any())
-                        <div class="alert alert-danger ">
-                            <h4>{{$errors->first()}}</h4>
-                        </div>
-                    @endif
-                </div>
-                <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12">
-                    <h3>{{__('Account')}}</h3>
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Name')}}</label>
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12 " align="center" >
+                    <div class="row"><br><br></div>
+
+                        <div class="picture" >
+                            <form enctype="multipart/form-data" action="upload-image" id="upload-form" method="post">
+                                @csrf
+                                <input id="upload" style="display: none" accept="image/x-png,image/gif,image/jpeg" name="photo" type="file"/>
+                            </form>
+                            @if(is_null(Auth()->user()->photo))
+                            <i class="fa fa-upload" id="upload-icon"></i>
+
+                            @else
+                            <img src="{{asset('img/users/'.Auth()->user()->photo)}}" alt="Upload photo" class="img-thumbnail img-responsive">
+
+                            <div class="team-member-overlay" id="upload_link">
+                                <div class="team-member-info text-center">
+                                    <ul class="img-icons">
+                                        <li><a href="#" ><i id="edit-icon" class="fa fa-pencil"></i></a></li>
+                                        <li><a href="remove-image" ><i class="fa fa-trash"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            @endif
+
+                        </div>
+
+                </div>
+                <div class="col-md-9 col-sm-12 col-xs-12 align-items-start ">
+                    <div class="col-lg-7 offset-lg-1 col-md-8">
+                        @if($errors->any())
+                            <div class="alert alert-danger ">
+                                <h4>{{$errors->first()}}</h4>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12">
+                        <h3>{{__('Account')}}</h3>
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Name')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field('name','{{app()->getLocale()}}')">
                                     {{Auth()->user()->name}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field('email','{{app()->getLocale()}}')">
                                 {{Auth()->user()->email}}
                                 <span class="edit"><i class="fa fa-pencil "></i> </span>
                             </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Password')}}</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Password')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field('password','{{app()->getLocale()}}')">
                                 ••••••••
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <h3>{{__('Phone')}}</h3>
+                        <br>
+                        <h3>{{__('Phone')}}</h3>
 
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Phone')}}</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Phone')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field('phone','{{app()->getLocale()}}')"
                                       style="@if(Auth()->user()->phone==null) display:none @endif">
                                     {{Auth()->user()->phone}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;&nbsp;
-                                @if(Auth()->user()->phone==null)
-                                <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field('phone+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Phone')}}
-                                </button>
-                                @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removePhone']) !!}
+                                    @if(Auth()->user()->phone==null)
+                                        <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
+                                                onclick="fill_field('phone+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Phone')}}
+                                        </button>
+                                    @else
+                                        {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removePhone']) !!}
 
-                                @csrf
-                                <span>
+                                        @csrf
+                                        <span>
                                         {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
-                                {!! Form::close() !!}
+                                            {!! Form::close() !!}
                                     </span>
 
-                                @endif
+                                    @endif
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <h3>{{__('Address')}}</h3>
+                        <h3>{{__('Address')}}</h3>
 
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Address')}}</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Address')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field('address','{{app()->getLocale()}}')"
                                       style="@if(Auth()->user()->address==null) display:none @endif">
                                     {{Auth()->user()->address}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;
-                                @if(Auth()->user()->address==null)
-                                <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}
-                                </button>
-                                @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removeAddress']) !!}
+                                    @if(Auth()->user()->address==null)
+                                        <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
+                                                onclick="fill_field('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}
+                                        </button>
+                                    @else
+                                        {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removeAddress']) !!}
 
-                                @csrf
-                                <span>
+                                        @csrf
+                                        <span>
                                         {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
-                                {!! Form::close() !!}
+                                            {!! Form::close() !!}
                                     </span>
 
-                                @endif
-                            </div>
+                                    @endif
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
 
-                    <br>
-                    <h3>{{__('Deactivate Your Account')}}</h3>
+                        <br>
+                        <h3>{{__('Deactivate Your Account')}}</h3>
 
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label id="delete-message">{{__('If you want to close your account just click to the button bellow')}} <br>
-                                    {{__('Note that your account still be closed untill you logged in next time')}}
-                                </label>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label id="delete-message">{{__('If you want to close your account just click to the button bellow')}} <br>
+                                        {{__('Note that your account still be closed untill you logged in next time')}}
+                                    </label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
                                 <span>
                                     <button class="btn  btn-danger" style="margin-left: 40px ;"
                                             data-toggle="modal" data-target="#exampleModal">{{__('Close')}}</button>
                                 </span>
 
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
+
 
         </div>
 
@@ -251,6 +281,35 @@
 
 </section>
 <!-- account Ends -->
+
+<script>
+    $(function(){
+        $("#upload-icon").on('click', function(e){
+            e.preventDefault();
+
+            $("#upload:hidden").trigger('click');
+            $("#upload").change(
+                function (e) {
+                    console.log($('#upload'));
+                    $('#upload-form').submit()
+                }
+                );
+        });
+
+    });
+    $("#edit-icon").on('click', function(e){
+        // e.preventDefault();
+
+        $("#upload:hidden").trigger('click');
+        $("#upload").change(
+            function (e) {
+                console.log($('#upload'));
+                $('#upload-form').submit()
+            }
+        );
+    });
+
+</script>
 
 
 @endSection

@@ -7,9 +7,9 @@ use App\Likable;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
+//use Illuminate\Support\Facades\Http;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 ini_set('max_execution_time', 100);
@@ -75,11 +75,14 @@ class ForumController extends Controller
                 $forum->tags()->firstOrCreate(['content' => trim($tag)]);
             }
         }
-        $url = 'http://127.0.0.1:8000/sim/forums/'.$forum->id.'/embeddings/';
+        $url = 'http://host.docker.internal:8000/sim/forums/'.$forum->id.'/embeddings/';
         $client = new Client();
-        $client->request('POST', $url, [
-            'timeout' => 100,
-        ]);
+
+        $res = $client->post($url, []);
+
+//        $client->request('POST', $url, [
+//            'timeout' => 200,
+//        ]);
         return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.forums'));
     }
 

@@ -13,14 +13,13 @@ window.Vue = require('vue');
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ * Eg. ./components/imageUploader.vue -> <example-component></example-component>
  */
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('vue-bootstrap4-table', require('./components/App.vue').default);
+Vue.component('app', require('./components/App.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,63 +28,5 @@ Vue.component('vue-bootstrap4-table', require('./components/App.vue').default);
  */
 
 const app = new Vue({
-    el: "#app",
-    data: {
-        data: {
-            rows: [],
-            columns: [{
-                label: "id",
-                name: "id",
-                filter: {
-                    type: "simple",
-                    placeholder: "id"
-                },
-                sort: true,
-                uniqueId: true
-            },
-                {
-                    label: "title",
-                    name: "title",
-                    filter: {
-                        type: "simple",
-                        placeholder: "title"
-                    },
-                    sort: true
-                },
-                {
-                    label: "url",
-                    name: "url",
-                    filter: {
-                        type: "simple",
-                        placeholder: "Enter url"
-                    }
-                }
-            ]
-        },
-        config: {
-            pagination: true,
-            num_of_visible_page: 7,
-            per_page: 10,
-            checkbox_rows: true
-        }
-    },
-    methods: {
-        toggle: function(todo) {
-            todo.done = !todo.done
-        }
-    },
-
-    mounted() {
-        let self = this;
-        axios.get('https://jsonplaceholder.typicode.com/photos')
-            .then(function(response) {
-                // handle success
-                self.data.rows = response.data.slice(0,100);
-                // console.log(response);
-            })
-            .catch(function(error) {
-                // handle error
-                console.log(error);
-            });
-    },
+        el:'#app'
 })

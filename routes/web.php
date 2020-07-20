@@ -1,8 +1,19 @@
 <?php
 
+use GuzzleHttp\Client;
+
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','localize','setLang']], function()
 {
+
+    Route::get('open', function(){
+        $url = 'https://www.google.com/';
+         $client = new Client();
+         $result= $client->request('get', $url, [
+            'timeout' => 200,
+         ]);
+         return "";
+    });
 
     //    Home route
     Route::get('/', 'HomeController@index')->name('home');
@@ -42,6 +53,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::post('/account/removeAddress', 'AccountController@removeAddress');
     Route::post('/account/removePhone', 'AccountController@removePhone');
     Route::post('/account/close', 'AccountController@close');
+    Route::post('/upload-image', 'AccountController@upladeImage');
+    Route::get('/remove-image', 'AccountController@removeImage');
 
     //  User routes
     Route::group(['middleware'=>'role:admin,district chief'],function() {

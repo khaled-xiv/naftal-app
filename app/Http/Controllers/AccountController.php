@@ -28,66 +28,48 @@ class AccountController extends Controller
         $this->middleware(['auth','verified']);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('account.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+
+    public function upladeImage(Request $request)
     {
-        //
+        $rules = [
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+        $Validator = Validator::make($request->all() , $rules);
+        if ($Validator->fails()) {
+            return redirect()->route('account.show')
+                ->withErrors($Validator)
+                ->withInput();
+        }
+        $user=User::findOrfail(Auth::user()->id);
+        if(!is_null($user->photo)){
+            unlink(public_path().'/img/users/'. $user->photo);
+        }
+        $image = $request->file('photo');
+        $ext = $image->getClientOriginalExtension();
+        $name = $user->email.'.'.$ext ;
+        $image->move('img/users',$name);
+
+        $user->update(['photo'=>$name]);
+        return redirect()->route('account.show');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function removeImage()
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $user=User::findOrfail(Auth::user()->id);
+        if(!is_null($user->photo)){
+            unlink(public_path().'/img/users/'. $user->photo);
+        }
+        $user->photo=null;
+        $user->save();
+        return redirect()->route('account.show');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     public function removeAddress(Request $request)
     {
@@ -152,14 +134,4 @@ class AccountController extends Controller
         return redirect()->route('account.show');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
