@@ -19,8 +19,12 @@
 <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet" >
 <link href="{{ asset('css/bootstrap/bootstrap-select.css') }}" rel="stylesheet" >
 
-{{--toastr--}}
-<link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet" >
+{{--jquery dataTable --}}
+<link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" >
+
+{{--material design lite --}}
+<link rel="stylesheet" href="{{asset('css/material.min.css')}}">
+
 
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
@@ -35,17 +39,17 @@
 <!-- Custom Styles -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/style_1.css')}}" rel="stylesheet">
-<link href="{{asset('css/app.css')}}" rel="stylesheet">
 
 <!-- Responsive  Css -->
 <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
 
 {{--jquery--}}
 <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/sort-table.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap-select.min.js') }}"></script>
 
-{{--toastr--}}
-<script src="{{ asset('js/toastr.min.js') }}"></script>
-{{--<script src="{{ asset('js/sort-table.js') }}"></script>--}}
+{{--material design lite --}}
+<script src="{{asset('js/material.min.js')}}"></script>
 

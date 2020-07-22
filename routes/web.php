@@ -17,6 +17,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     //    Home route
     Route::get('/', 'HomeController@index')->name('home');
+//    Route::get('/', function (){
+//        return view('table');
+//    })->name('home');
 
     //    contact route
     Route::post('/sendEmail', 'HomeController@sendEmail')->name('send-email') ;
