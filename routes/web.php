@@ -18,7 +18,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     //    Home route
     Route::get('/', 'HomeController@index')->name('home');
 //    Route::get('/', function (){
-//        return view('table');
+//        return view('home');
 //    })->name('home');
 
     //    contact route

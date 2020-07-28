@@ -1,4 +1,4 @@
-@extends('layouts.without_footer')
+@extends('layouts.base')
 @section('title', __('request-of-inter'))
 @section('content')
 

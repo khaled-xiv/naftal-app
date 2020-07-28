@@ -1,4 +1,4 @@
-@extends('layouts.without_footer')
+@extends('layouts.base')
 @section('title', 'Edit request of intervention')
 @section('content')
     <!-- Add Request -->

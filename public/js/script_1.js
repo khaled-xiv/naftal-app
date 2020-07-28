@@ -16,6 +16,28 @@ $(function () {
 
 });
 
+
+$(function () {
+    $('#fa-search').click((e)=>{
+        e.preventDefault();
+        $('#nav-search').addClass('nav-search');
+        $('#nav-search').slideToggle();
+
+    })
+})
+
+/* =========================================
+               Responsive Tabs
+============================================ */
+    $(function () {
+
+        $("#services-tabs").responsiveTabs({
+            animation: 'slide'
+        });
+
+    });
+
+
 /* =========================================
                 Team
 ============================================ */

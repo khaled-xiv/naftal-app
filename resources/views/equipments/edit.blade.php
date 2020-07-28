@@ -9,7 +9,7 @@
 
 ?>
 
-@extends('layouts.without_footer')
+@extends('layouts.base')
 @section('title', __('Edit')." ".$temp)
 @section('content')
     <!-- Edit Equipment -->

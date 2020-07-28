@@ -1,4 +1,4 @@
-@extends('layouts.without_footer')
+@extends('layouts.base')
 @section('title', ucwords(__('users')))
 @section('content')
     <!-- Users -->

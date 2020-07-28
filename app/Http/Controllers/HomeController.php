@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $centers=Center::all();
-        return view('welcome',compact('centers'));
+        return view('home',compact('centers'));
     }
 
     public function sendEmail(Request $request)

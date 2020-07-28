@@ -8,7 +8,7 @@
         $temp = "Groupe Electronique";
 ?>
 
-@extends('layouts.without_footer')
+@extends('layouts.base')
 @section('title', __('Add')." ".$temp)
 @section('content')
     <!-- Add Equipment -->

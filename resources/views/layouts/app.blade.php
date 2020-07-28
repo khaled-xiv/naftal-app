@@ -54,11 +54,24 @@
     <!--    Easing-->
     <script src="{{asset('js/easing/jquery.easing.1.3.min.js')}}"></script>
 
+    <!-- Responsive Tabs JS -->
+    <script src="{{asset('js/responsive-tabs/jquery.responsiveTabs.min.js')}}"></script>
+
     <!-- WOW JS -->
     <script src="{{asset('js/wow/wow.min.js')}}"></script>
 
     <!--    Custom Script-->
     <script src="{{ asset('js/script.js') }}" defer></script>
+
+    <script>
+        $(function () {
+
+            $("#services-tabs").responsiveTabs({
+                animation: 'slide'
+            });
+
+        });
+    </script>
 
 
 </html>

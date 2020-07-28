@@ -7,7 +7,7 @@ $(window).on('load', function () { // makes sure that whole site is loaded
 });
 
 /* =========================================
-                Team
+                Center
 ============================================ */
 $(function () {
     $("#center-items").owlCarousel({
@@ -35,7 +35,43 @@ $(function () {
     });
 });
 
+/* =========================================
+                Responsive Tabs
+============================================ */
+$(function () {
 
+    $("#services-tabs").responsiveTabs({
+        animation: 'slide'
+    });
+
+});
+
+/* =========================================
+                Team
+============================================ */
+
+$(function () {
+    $("#team-members").owlCarousel({
+        items: 2,
+        autoplay: true,
+        smartSpeed: 700,
+        loop: true,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: false,
+        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+        responsive: {
+            // breakpoint from 0 up
+            0: {
+                items: 1
+            },
+            // breakpoint from 480 up
+            480: {
+                items: 2
+            }
+        }
+    });
+});
 
 
 /* =========================================
@@ -99,6 +135,18 @@ $(function () {
     });
 
 });
+
+/* =========================================
+               Responsive Tabs
+============================================ */
+$(function () {
+
+    $("#services-tabs").responsiveTabs({
+        animation: 'slide'
+    });
+
+});
+
 
 /* =========================================
               Mobile Menu

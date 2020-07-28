@@ -25,7 +25,6 @@
 {{--material design lite --}}
 <link rel="stylesheet" href="{{asset('css/material.min.css')}}">
 
-
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
 
