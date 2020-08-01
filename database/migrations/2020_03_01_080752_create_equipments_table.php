@@ -15,13 +15,14 @@ class CreateEquipmentsTable extends Migration
     {
         Schema::create('equipments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('center_id');
-            $table->foreign('center_id')->references('id')->on('centers');
-            $table->string('code');
-            $table->string('mark');
-            $table->string('type');
             $table->string('model');
-            $table->string('state');
+            $table->integer('age');
+            $table->unsignedBigInteger('center_id')->nullable();
+            $table->foreign('center_id')->references('id')->on('centers');
+            $table->string('code')->nullable();
+            $table->string('mark')->nullable();
+            $table->string('type')->nullable();
+            $table->string('state')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

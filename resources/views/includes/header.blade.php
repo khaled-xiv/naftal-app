@@ -28,7 +28,7 @@
                             <li><a class="btn btn-link" href="" id="fa-search" ><i class="fa fa-search"style="font-size: 20px ;margin-right: 25px; color: rgba(206,206,206,0.33);"></i></a></li>
                             <li><a class="btn btn-link" ><i class="fa  fa-bell" style="font-size: 20px ;margin-right: 25px;color: rgba(206,206,206,0.33);"></i></a></li>
 
-                            <li><img src="{{asset('img/users/'.Auth()->user()->photo)}}" style="border-radius: 50%; width: 45px; height: 45px" alt=""></li>
+                            <li><img src="{{(Auth()->user()->photo) ? asset('img/users/'.Auth()->user()->photo):asset('img/users/profile-placeholder.jpg')}}" style="border-radius: 50%; width: 45px; height: 45px" alt=""></li>
                             <li class="nav-item dropdown">
 
 

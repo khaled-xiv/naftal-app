@@ -17,3 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::post('/upload-machines','DashboardController@uploadMachines');
+Route::post('/upload-telemetry','DashboardController@uploadTelemety');
+Route::post('/upload-failures','DashboardController@uploadFailures');
+Route::post('/upload-errors','DashboardController@uploadErrors');
+Route::post('/upload-maint','DashboardController@uploadMaint');
+

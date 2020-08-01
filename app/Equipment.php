@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Maatwebsite\Excel\Concerns\ToModel;
 
 class Equipment extends Model
 {
@@ -16,10 +17,11 @@ class Equipment extends Model
     protected $table = 'equipments';
 
     protected $fillable = [
-        'code', 'mark', 'type', 'model', 'state'
+        'code', 'mark', 'type', 'model', 'state','age','center_id'
     ];
 
     protected $softCascade = ['pump', 'loading_arm', 'tank', 'fuel_meter', 'generator', 'components'];
+
 
     public function center(){
 

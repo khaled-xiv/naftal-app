@@ -5,21 +5,8 @@ use GuzzleHttp\Client;
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','localize','setLang']], function()
 {
-
-    Route::get('open', function(){
-        $url = 'https://www.google.com/';
-         $client = new Client();
-         $result= $client->request('get', $url, [
-            'timeout' => 200,
-         ]);
-         return "";
-    });
-
     //    Home route
     Route::get('/', 'HomeController@index')->name('home');
-//    Route::get('/', function (){
-//        return view('home');
-//    })->name('home');
 
     //    contact route
     Route::post('/sendEmail', 'HomeController@sendEmail')->name('send-email') ;
@@ -123,6 +110,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::post('answers/{id}/downvote', 'AnswerController@downvote');
     Route::get('tags/{id}/search', 'TagController@search');
     Route::get('search/results', 'ForumController@search');
+
+//  Dashboard routes
+    Route::get('dashboard', 'DashboardController@index');
+    Route::get('dashboard/errors', 'DashboardController@getErrors');
+    Route::get('dashboard/maints', 'DashboardController@getmaints');
+    Route::get('dashboard/failures', 'DashboardController@getFailures');
 
 });
 
