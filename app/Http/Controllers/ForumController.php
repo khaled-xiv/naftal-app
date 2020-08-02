@@ -75,14 +75,14 @@ class ForumController extends Controller
                 $forum->tags()->firstOrCreate(['content' => trim($tag)]);
             }
         }
-        $url = 'http://host.docker.internal:8000/sim/forums/'.$forum->id.'/embeddings/';
+        $url = 'http://localhost:8000/sim/forums/'.$forum->id.'/embeddings/';
         $client = new Client();
 
-        $res = $client->post($url, []);
+        // $res = $client->post($url, []);
 
-//        $client->request('POST', $url, [
-//            'timeout' => 200,
-//        ]);
+       $client->request('POST', $url, [
+           'timeout' => 200,
+       ]);
         return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.forums'));
     }
 

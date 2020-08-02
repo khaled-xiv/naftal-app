@@ -291,13 +291,16 @@
 
 		var done = false;
         function getSimilar(id){
+			console.log(11111);
             $.ajax({
                 type:'GET',
                 url:'http://127.0.0.1:8000/sim/forums/'+id+"/",
                 success:function(data) {
+					console.log(33333);
                     if(data.length == 0)
                         alert("we couldn't find answers to your question.");
                     else if(!done){
+						console.log(22222);
 						done = true;
                         $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text("these forums could be helpful:"));
                         for(i = 0; i < data.length; i++){
@@ -306,7 +309,10 @@
                     }
                 },
                 error: function(data) {
-                    alert("some error occurred while looking for an answer");
+					if(data.status == 409)
+						alert("working on it, this may take some time");
+					else
+						alert("some error occurred while looking for an answer");
                 }
             });
         }
