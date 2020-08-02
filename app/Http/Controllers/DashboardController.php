@@ -2,21 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
+use App\Center;
 use App\Equipment;
 use App\Error;
 use App\Failure;
+use App\Forum;
 use App\Maintenance;
 use App\Telemetry;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index');
+        $count['centers']=Center::all()->count();
+        $count['equipments']=Equipment::all()->count();
+        $count['users']=User::all()->count();
+        $count['posts']=Forum::all()->count();
+        $count['comments']=Answer::all()->count();
+        return view('dashboard.index',compact('count'));
     }
     public function getErrors()
     {

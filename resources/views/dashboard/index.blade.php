@@ -6,6 +6,45 @@
 
         <div class="content-box-md">
             <div class="container">
+
+
+                <div id="stats-items" class="row wow fadeInUp owl-carousel owl-theme" data-wow-duration="2s">
+
+                    <div class="stats-item text-center">
+                        <i class="fa fa-building-o"></i>
+                        <h3 class="counter">{{$count['centers']}}</h3>
+                        <p>Centers</p>
+                    </div>
+
+                    <div class="stats-item text-center">
+                        <i class="fa fa-gears"></i>
+                        <h3 class="counter">{{$count['equipments']}}</h3>
+                        <p>Equipments</p>
+                    </div>
+
+                    <div class="stats-item text-center">
+                        <i class="fa fa-users"></i>
+                        <h3 class="counter">{{$count['users']}}</h3>
+                        <p>New Users</p>
+                    </div>
+
+                    <div class="stats-item text-center">
+                        <i class="fa fa-newspaper-o"></i>
+                        <h3 class="counter">{{$count['posts']}}</h3>
+                        <p>New posts</p>
+                    </div>
+
+                    <div class="stats-item text-center">
+                        <i class="fa fa-comments"></i>
+                        <h3 class="counter">{{$count['comments']}}</h3>
+                        <p>New comments</p>
+                    </div>
+
+                </div>
+                <!-- Stats Ends -->
+                <div class="row">
+                    <br/>
+                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default contact-right">
@@ -25,7 +64,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="ro">
+                <div class="row">
+                    <br>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default contact-right">
                             <div class="panel-heading"><b>Failures history</b></div>
@@ -35,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+                <script src="{{asset('js/chart/Chart.min.js')}}"></script>
                 <script>
                     var url = "{{url('dashboard/errors')}}";
                     var error_codes = new Array();
@@ -54,10 +96,15 @@
                                 data: {
                                     labels:error_codes,
                                     datasets: [{
-                                        label: 'number of this errors occured',
+                                        label: "total number of errors occured",
                                         data: counts,
-                                        borderWidth: 1
-                                    }]
+                                        borderWidth: 1,
+                                        barPercentage: 0.5,
+                                        barThickness: 6,
+                                        maxBarThickness: 8,
+                                        minBarLength: 2,
+                                        backgroundColor: ["#4e73df",'#1cc88a','#36b9cc','rgb(255, 99, 132)'],
+                                    }],
                                 },
                                 options: {
                                     scales: {
@@ -94,33 +141,18 @@
                             });
                             var ctx = document.getElementById("maints").getContext('2d');
                             var myChart = new Chart(ctx, {
-                                type: 'bar',
+                                type: 'doughnut',
                                 data: {
                                     labels:comps,
                                     datasets: [{
                                         label: 'number of maintenances',
                                         data: counts2,
-                                        borderWidth: 1
+                                        borderWidth: 1,
+                                        backgroundColor: ["#4e73df",'#1cc88a','#36b9cc','rgb(255, 99, 132)'],
                                     }]
                                 },
                                 options: {
-                                    scales: {
-                                        xAxes: [{
-                                            scaleLabel: {
-                                                display: true,
-                                                labelString: 'Components'
-                                            }
-                                        }],
-                                        yAxes: [{
-                                            ticks: {
-                                                beginAtZero:true
-                                            },
-                                            scaleLabel: {
-                                                display: true,
-                                                labelString: 'Count'
-                                            }
-                                        }]
-                                    }
+
                                 }
                             });
                         });

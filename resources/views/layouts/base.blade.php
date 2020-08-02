@@ -20,9 +20,14 @@
 <!--    owl-carousel-->
 <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}" ></script>
 
+<!-- Waypoints -->
+<script src="{{asset('js/waypoints/jquery.waypoints.min.js')}}"></script>
+
 <!-- Responsive Tabs JS -->
 <script src="{{asset('js/responsive-tabs/jquery.responsiveTabs.min.js')}}"></script>
 
+<!-- Counter -->
+<script src="{{asset('js/counter/jquery.counterup.min.js')}}"></script>
 
 <!--    Custom Script-->
 <script src="{{ asset('js/script_1.js') }}" defer></script>

@@ -270,7 +270,7 @@
 
                         <!-- Member 01 -->
                         <div class="team-member">
-                            <img src="img/team/team-1.jpg" alt="team member" class="img-responsive">
+                            <img src="{{asset('img/team/team-1.jpg')}}" alt="team member" class="img-responsive">
                             <div class="team-member-overlay">
                                 <div class="team-member-info text-center">
                                     <h6>Kevin Greer</h6>
@@ -286,7 +286,7 @@
                         </div>
                         <!-- Member 02 -->
                         <div class="team-member">
-                            <img src="img/team/team-2.jpg" alt="team member" class="img-responsive">
+                            <img src="{{asset('img/team/team-2.jpg')}}" alt="team member" class="img-responsive">
                             <div class="team-member-overlay">
                                 <div class="team-member-info text-center">
                                     <h6>Christian Cilinis</h6>
@@ -413,7 +413,6 @@
         </div>
 
     </div>
-    {{--    <!-- About 02 Ends -->--}}
 
 </section>
 {{--<!-- About Ends -->--}}
@@ -668,13 +667,13 @@
 <!-- Contact Ends -->
 
 <!-- Google Map -->
-{{--<section id="google-map">--}}
-{{--    <div class="container-fluid">--}}
-{{--        <div class="row">--}}
-{{--            <div id="map"></div>--}}
-{{--        </div>--}}
-{{--    </div>-->--}}
-{{--</section>--}}
+<section id="google-map">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="map"></div>
+        </div>
+    </div>
+</section>
 <!-- Google Map Ends -->
 
 <!-- Footer  -->
@@ -704,21 +703,21 @@
 <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}" ></script>
 
 
-{{--<script>--}}
-{{--    // Initialize and add the map--}}
-{{--    function initMap() {--}}
-{{--        // The location of Uluru--}}
-{{--        var uluru = {lat: 35.367355, lng: 1.322032};--}}
-{{--        // The map, centered at Uluru--}}
-{{--        var map = new google.maps.Map(--}}
-{{--            document.getElementById('map'), {zoom: 10, center: uluru});--}}
-{{--        // The marker, positioned at Uluru--}}
-{{--        var marker = new google.maps.Marker({position: uluru, map: map});--}}
-{{--    }--}}
-{{--</script>--}}
-{{--<script async defer--}}
-{{--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9EdV2JfPG1Vfviw9gf_HlblIUfs7Ie2E&callback=initMap">--}}
-{{--</script>--}}
+<script>
+    // Initialize and add the map
+    function initMap() {
+        // The location of Uluru
+        var uluru = {lat: 35.367355, lng: 1.322032};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 10, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5thfF3yalaB_eqFj6SVd488_jmQMLkyI=initMap">
+</script>
 
 <!--    Easing-->
 <script src="{{asset('js/easing/jquery.easing.1.3.min.js')}}"></script>

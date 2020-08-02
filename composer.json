@@ -16,7 +16,6 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.1",
         "laravelcollective/html": "^6.0",
-        "laraveldaily/laravel-charts": "^0.1.23",
         "mcamara/laravel-localization": "^1.5"
     },
     "require-dev": {

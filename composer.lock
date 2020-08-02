@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3a1fc13b329409e797d3008ad1ab17b",
+    "content-hash": "3e6d09cb68812eac3608bb42bb9d3067",
     "packages": [
         {
             "name": "askedio/laravel-soft-cascade",
@@ -908,46 +908,6 @@
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
             "time": "2019-10-02T00:37:39+00:00"
-        },
-        {
-            "name": "laraveldaily/laravel-charts",
-            "version": "0.1.23",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LaravelDaily/laravel-charts.git",
-                "reference": "f76508cea225a5cecd2003cc6d62392f5bfa06dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LaravelDaily/laravel-charts/zipball/f76508cea225a5cecd2003cc6d62392f5bfa06dd",
-                "reference": "f76508cea225a5cecd2003cc6d62392f5bfa06dd",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "LaravelDaily\\LaravelCharts\\LaravelChartsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LaravelDaily\\LaravelCharts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Povilas Korop",
-                    "email": "povilas@laraveldaily.com"
-                }
-            ],
-            "description": "Create charts and reports from Laravel",
-            "time": "2020-07-21T13:23:26+00:00"
         },
         {
             "name": "league/commonmark",
