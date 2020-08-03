@@ -20,7 +20,8 @@
 <link href="{{ asset('css/bootstrap/bootstrap-select.css') }}" rel="stylesheet" >
 
 {{--jquery dataTable --}}
-<link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" >
+<link href="{{ asset('css/dataTables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" >
+<link href="{{ asset('css/dataTables/bootstrap.css') }}" rel="stylesheet" >
 
 {{--material design lite --}}
 <link rel="stylesheet" href="{{asset('css/material.min.css')}}">
@@ -44,8 +45,7 @@
 
 {{--jquery--}}
 <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/sort-table.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap-select.min.js') }}"></script>
 

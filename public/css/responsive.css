@@ -12,7 +12,7 @@
     cursor: pointer;
     z-index: 2;
     position: absolute;
-    top: -15px;
+    top: 0px;
     right: 12px;
      /*hide mobile nav open btn */
     display: none;

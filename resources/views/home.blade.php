@@ -21,10 +21,6 @@
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet" >
-    <link href="{{ asset('css/bootstrap/bootstrap-select.css') }}" rel="stylesheet" >
-
-    {{--material design lite --}}
-    <link rel="stylesheet" href="{{asset('css/material.min.css')}}">
 
     <!-- Animate Css -->
     <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
@@ -51,7 +47,7 @@
 </div>
 <!-- Header -->
 <header>
-    <nav class="navbar navbar-expand-lg  fixed-top  white-nav-top">
+    <nav class="navbar navbar-expand-lg  fixed-top ">
         <div class="container-fluid">
             <div class="site-nav-wrapper ml-auto">
 
@@ -69,7 +65,7 @@
                             <li><a class="btn btn-link smooth-scroll" href="#team">{{ __('team') }}</a></li>
                             <li><a class="btn btn-link smooth-scroll" href="#center">{{ __('centers') }}</a></li>
                             <li><a class="btn btn-link smooth-scroll" href="#services">{{ __('services') }}</a></li>
-                            <li><a class="btn btn-link smooth-scroll" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
                             <li><a class="btn btn-link smooth-scroll" href="#contact">{{ __('contact') }}</a></li>
 
                             @guest
@@ -91,38 +87,35 @@
                 </div>
 
                 <!-- Mobile Menu -->
-                                <div id="mobile-nav">
-                                    <!-- Mobile Menu Close Button -->
-                                    <span id="mobile-nav-close-btn" style="margin-bottom: 0px">&times;</span>
-
-                                    <div id="mobile-nav-content">
-                                        <ul class="nav " style="display: flex;flex-direction: column;">
-                                            <li><a class="btn btn-link smooth-scroll" href="#home">{{ __('home') }}</a></li>
-                                            <li><a class="btn btn-link smooth-scroll" href="#about">{{ __('about') }}</a></li>
-                                            <li><a class="btn btn-link smooth-scroll" href="#team">{{ __('team') }}</a></li>
-                                            <li><a class="btn btn-link smooth-scroll" href="#center">{{ __('centers') }}</a></li>
-                                            <li><a class="btn btn-link smooth-scroll" href="#services">{{ __('services') }}</a></li>
-                                            <li><a class="btn btn-link smooth-scroll" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
-                                            <li><a class="btn btn-link smooth-scroll" href="#contact">{{ __('contact') }}</a></li>
-
-                                            @guest
-                                                <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('login'))}}">{{ __('Sign In') }}</a></li>
-                                            @else
-                                                <li class="nav-item dropdown">
-                                                    <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                        {{Auth()->user()->name}}
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
-                                                        <a class="dropdown-item" href="{{route('account.show',['language'=>app()->getLocale(),'account'=>__('account')])}}"><i class="fa fa-fw fa-user ml-auto"></i> {{ __('Account') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="{{url(app()->getLocale().'/#contact')}}"><i class="fa fa-fw fa-power-off ml-auto"></i> {{ __('Log Out') }} &nbsp;&nbsp;  </a>
-                                                    </div>
-                                                </li>
-                                            @endguest
-                                        </ul>
+                <div id="mobile-nav">
+                    <!-- Mobile Menu Close Button -->
+                    <span id="mobile-nav-close-btn" style="margin-bottom: 0px">&times;</span>
+                    <div id="mobile-nav-content">
+                        <ul class="nav " style="display: flex;flex-direction: column;">
+                            <li><a class="btn btn-link smooth-scroll" href="#home">{{ __('home') }}</a></li>
+                            <li><a class="btn btn-link smooth-scroll" href="#about">{{ __('about') }}</a></li>
+                            <li><a class="btn btn-link smooth-scroll" href="#team">{{ __('team') }}</a></li>
+                            <li><a class="btn btn-link smooth-scroll" href="#center">{{ __('centers') }}</a></li>
+                            <li><a class="btn btn-link smooth-scroll" href="#services">{{ __('services') }}</a></li>
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
+                            <li><a class="btn btn-link smooth-scroll" href="#contact">{{ __('contact') }}</a></li>
+                            @guest
+                                <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('login'))}}">{{ __('Sign In') }}</a></li>
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        {{Auth()->user()->name}}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{route('account.show',['language'=>app()->getLocale(),'account'=>__('account')])}}"><i class="fa fa-fw fa-user ml-auto"></i> {{ __('Account') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{url(app()->getLocale().'/#contact')}}"><i class="fa fa-fw fa-power-off ml-auto"></i> {{ __('Log Out') }} &nbsp;&nbsp;  </a>
                                     </div>
-                                </div>
-
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -667,13 +660,13 @@
 <!-- Contact Ends -->
 
 <!-- Google Map -->
-<section id="google-map">
-    <div class="container-fluid">
-        <div class="row">
-            <div id="map"></div>
-        </div>
-    </div>
-</section>
+{{--<section id="google-map">--}}
+{{--    <div class="container-fluid">--}}
+{{--        <div class="row">--}}
+{{--            <div id="map"></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 <!-- Google Map Ends -->
 
 <!-- Footer  -->
@@ -691,10 +684,7 @@
 </body>
 
 {{--jquery--}}
-<script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-
-{{--material design lite --}}
-{{--<script src="{{asset('js/material.min.js')}}"></script>--}}
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 
 <!--    Bootstrap-->
 <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>
@@ -703,21 +693,21 @@
 <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}" ></script>
 
 
-<script>
-    // Initialize and add the map
-    function initMap() {
-        // The location of Uluru
-        var uluru = {lat: 35.367355, lng: 1.322032};
-        // The map, centered at Uluru
-        var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 10, center: uluru});
-        // The marker, positioned at Uluru
-        var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5thfF3yalaB_eqFj6SVd488_jmQMLkyI=initMap">
-</script>
+{{--<script>--}}
+{{--    // Initialize and add the map--}}
+{{--    function initMap() {--}}
+{{--        // The location of Uluru--}}
+{{--        var uluru = {lat: 35.367355, lng: 1.322032};--}}
+{{--        // The map, centered at Uluru--}}
+{{--        var map = new google.maps.Map(--}}
+{{--            document.getElementById('map'), {zoom: 10, center: uluru});--}}
+{{--        // The marker, positioned at Uluru--}}
+{{--        var marker = new google.maps.Marker({position: uluru, map: map});--}}
+{{--    }--}}
+{{--</script>--}}
+{{--<script async defer--}}
+{{--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5thfF3yalaB_eqFj6SVd488_jmQMLkyI=initMap">--}}
+{{--</script>--}}
 
 <!--    Easing-->
 <script src="{{asset('js/easing/jquery.easing.1.3.min.js')}}"></script>

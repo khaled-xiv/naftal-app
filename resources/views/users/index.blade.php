@@ -4,47 +4,58 @@
     <!-- Users -->
     <section id="users">
 
+        <style>
+
+            #example{
+                border-radius: 20px;
+            }
+            #example thead{
+                background-color: #36304a;
+            }
+            #example thead tr th{
+                color: white;
+                font-size: 15px;
+            }
+            #example tbody tr {
+                text-align: center;
+            }
+            tr {
+                height: 50px;
+                font-size: 15px;
+            }
+
+        </style>
+
         <div class="content-box-md">
-
-            <div class="limiter">
-                <div class="container-table100">
-                    <div class="wrap-table100">
-                        <div class="table100">
-                            <table id="dataTable">
-                                <thead>
-                                <tr class="table100-head">
-                                    <th class="column1 ">{{ucwords(__('Name'))}}</th>
-                                    <th class="column2">{{ucwords(__('email address'))}}</th>
-                                    <th class="column3 js-sort-date">{{ucwords(__('Email verified at'))}}</th>
-                                    <th class="column4">{{ucwords(__('Phone'))}}</th>
-                                    <th class="column5">{{ucwords(__('Address'))}}</th>
-                                    <th class="column6">{{ucwords(__('status'))}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($users as $user)
-                                    <tr class="clickable-row" data-href="{{ route('users.edit',encrypt($user->id))}}">
-                                        <td class="column1">{{$user->name}}</td>
-                                        <td class="column2">{{$user->email}}</td>
-                                        <td class="column3">@if(!$user->email_verified_at) Not Verified @else {{$user->email_verified_at}} @endif</td>
-                                        <td class="column4">@if ($user->phone){{$user->phone}} @else &nbsp; @endif</td>
-                                        <td class="column5">@if ($user->address){{$user->address}} @else &nbsp; @endif</td>
-                                        <td class="column6">@if($user->is_active==1) Active @else Closed @endif</td>
-                                    </tr>
-                                @endforeach
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="row contact-right">
+                    <table id="example" class="table  table-striped display">
+                        <thead>
+                        <tr class="text-center">
+                            <th>{{ucwords(__('Name'))}}</th>
+                            <th>{{ucwords(__('email address'))}}</th>
+                            <th>{{ucwords(__('Email verified at'))}}</th>
+                            <th>{{ucwords(__('Phone'))}}</th>
+                            <th>{{ucwords(__('Address'))}}</th>
+                            <th>{{ucwords(__('status'))}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($users as $user)
+                            <tr class="clickable-row" data-href="{{ route('users.edit',encrypt($user->id))}}">
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>@if(!$user->email_verified_at) Not Verified @else {{$user->email_verified_at}} @endif</td>
+                                <td>@if ($user->phone){{$user->phone}} @else &nbsp; @endif</td>
+                                <td>@if ($user->address){{$user->address}} @else &nbsp; @endif</td>
+                                <td>@if($user->is_active==1) Active @else Closed @endif</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-
-
-            <div class="text-center">
-                {{$users->render()}}
-            </div>
 
         </div>
 
@@ -53,8 +64,19 @@
             <i class="fa fa-plus"></i>
         </a>
     </section>
-
+    {{--dataTables--}}
+    <script src="{{ asset('js/dataTables/jquery-3.2.1.slim.min.js') }}" defer></script>
+    <script src="{{ asset('js/dataTables/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('js/dataTables/dataTables.bootstrap4.min.js') }}" defer></script>
     <script>
+
+        $(document).ready(function() {
+            $('#example').DataTable({
+                responsive:{
+                    details:false
+                }
+            });
+        } );
         $(document).ready(function($) {
             $(".clickable-row").click(function() {
                 window.location = $(this).data("href");
