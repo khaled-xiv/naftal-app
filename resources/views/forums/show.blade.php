@@ -22,7 +22,7 @@
                     <!-- Post Content Column -->
                     <div class="col-md-8">
                         <!-- Title -->
-                        <h2 class="mt-4">{{$forum->title}}</h2>
+                        <h3>{{$forum->title}}</h3>
                         <!-- Author -->
                         by
                         <span class="username">{{$forum->user->name}}</span>
@@ -88,8 +88,7 @@
                                             {{$number = $forum->answers->count()}} @if($number != 1) {{ ucfirst(__('answer'))."s" }} @else {{ ucfirst(__('answer')) }} @endif
                                         </div>
                                         @foreach($forum->answers as $answer)
-                                        <li class="media">
-                                            <div class="media-body">
+                                            <div class="answer-box">
                                                 <div class="row">
                                                     <div class="col-1">
                                                         <div>
@@ -124,7 +123,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -255,34 +253,34 @@
                         $("#votesBoxF" + id).html(data.msg);
                         if(up === 1)
                             if($("#1votesBoxF" + id).css("color") === "rgb(244, 198, 19)")
-                                $("#1votesBoxF" + id).css("color", "black");
+                                $("#1votesBoxF" + id).css("color", "#555");
                             else {
                                 $("#1votesBoxF" + id).css("color", "#f4c613");
-                                $("#2votesBoxF" + id).css("color", "black");
+                                $("#2votesBoxF" + id).css("color", "#555");
                             }
                         else
                             if($("#2votesBoxF" + id).css("color") === "rgb(0, 123, 255)")
-                                $("#2votesBoxF" + id).css("color", "black");
+                                $("#2votesBoxF" + id).css("color", "#555");
                             else {
                                 $("#2votesBoxF" + id).css("color", "#007bff");
-                                $("#1votesBoxF" + id).css("color", "black");
+                                $("#1votesBoxF" + id).css("color", "#555");
                             }
                     }
                     else {
                         $("#votesBoxA" + id).html(data.msg);
                         if(up === 1)
                             if($("#1votesBoxA" + id).css("color") === "rgb(244, 198, 19)")
-                                $("#1votesBoxA" + id).css("color", "black");
+                                $("#1votesBoxA" + id).css("color", "#555");
                             else {
                                 $("#1votesBoxA" + id).css("color", "#f4c613");
-                                $("#2votesBoxA" + id).css("color", "black");
+                                $("#2votesBoxA" + id).css("color", "#555");
                             }
                         else
                         if($("#2votesBoxA" + id).css("color") === "rgb(0, 123, 255)")
-                            $("#2votesBoxA" + id).css("color", "black");
+                            $("#2votesBoxA" + id).css("color", "#555");
                         else {
                             $("#2votesBoxA" + id).css("color", "#007bff");
-                            $("#1votesBoxA" + id).css("color", "black");
+                            $("#1votesBoxA" + id).css("color", "#555");
                         }
                     }
                 }
@@ -291,16 +289,13 @@
 
 		var done = false;
         function getSimilar(id){
-			console.log(11111);
             $.ajax({
                 type:'GET',
                 url:'http://127.0.0.1:8000/sim/forums/'+id+"/",
                 success:function(data) {
-					console.log(33333);
                     if(data.length == 0)
                         alert("we couldn't find answers to your question.");
                     else if(!done){
-						console.log(22222);
 						done = true;
                         $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text("these forums could be helpful:"));
                         for(i = 0; i < data.length; i++){
