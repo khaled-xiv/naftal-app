@@ -11,7 +11,9 @@
                         <div class="card_body">
                             <div class="row d-flex">
                                 <div class="col-sm-4">
+                                    {!! Form::open(['method'=>'GET', 'route' =>'register' ]) !!}
                                     <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
+                                    {!! Form::close() !!}
                                 </div>
                                 <div class="col-sm-8  add_flex">
                                     <div class="form-group searchInput">
