@@ -17,7 +17,9 @@
 		<div class="toggle-side-nav">
 			<div><i id="toggle-side-nav-btn" onclick="hideSideNav()" class="fa fa-bars"></i></div>
 		</div>
-		@yield('content')
+		<div>
+			@yield('content')
+		</div>
 	</div>
 </div>
 </body>

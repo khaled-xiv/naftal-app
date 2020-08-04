@@ -20,9 +20,7 @@
 {{--                        <a class="btn btn-primary pull-right" href="{{route('forums')}}">Ask Question</a>--}}
                     {!! Form::close() !!}
                     <br><br><hr>
-                    <h2 class="forum-index-title">{{ __('Most upvoted questions') }}
-                        <small>Secondary Text</small>
-                    </h2>
+                    <h2 class="forum-index-title">{{ __('Most upvoted questions') }}</h2>
 
                     <!-- Blog Post -->
 					<div class="forums-holder">
