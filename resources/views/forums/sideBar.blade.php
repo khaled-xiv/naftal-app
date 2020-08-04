@@ -14,7 +14,7 @@
 </form>
 <br>
 <!-- Categories Widget -->
-<div class="card my-4">
+<div class="card">
     <h5 class="card-header">{{ __('Popular tags') }}</h5>
     <div class="card-body">
         <div class="row">

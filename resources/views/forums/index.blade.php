@@ -19,35 +19,36 @@
                         <button class="btn btn-primary pull-right">{{__('Ask a')." question"}}</button>
 {{--                        <a class="btn btn-primary pull-right" href="{{route('forums')}}">Ask Question</a>--}}
                     {!! Form::close() !!}
-                    <br><hr>
-                    <h2 class="my-4">{{ __('Most upvoted questions') }}
+                    <br><br><hr>
+                    <h2 class="forum-index-title">{{ __('Most upvoted questions') }}
                         <small>Secondary Text</small>
                     </h2>
 
                     <!-- Blog Post -->
+					<div class="forums-holder">
                     @foreach($forums as $forum)
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="card-title">{{$forum->title}}</h3>
-                                <p class="card-text">
+                        <div class="forum-box">
+                            <div class="forum-box-body">
+                                <h3 class="forum-box-title">									
+								{!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
+                                    <button>{{$forum->title}}</button>
+                                {!! Form::close() !!}
+								</h3>
+                                <p class="forum-box-body">
 								@if(strlen($forum->body) < 200)
 									{{$forum->body}}
 								@else()
 									{{substr($forum->body, 0, 200).'...'}}
 								@endif
 								</p>
-                                {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
-                                    <button class="btn btn-primary">{{ __('Read more') }} &rarr;</button>
-                                {!! Form::close() !!}
                             </div>
-                            <div class="card-footer text-muted">
+                            <div class="forum-box-footer">
                                 {{ __('Posted on')." ".$forum->created_at." ".__('by')}}
-                                <span class="username">{{$forum->user->name}}</span>
+                                &nbsp;<span class="username">{{$forum->user->name}}</span>
                             </div>
                         </div>
-                        <hr>
                     @endforeach
-
+					</div>
                 </div>
 
                 <!-- Sidebar Widgets Column -->
