@@ -662,16 +662,6 @@ ul.navbar-nav>li>img
     letter-spacing: 1px;
 }
 
-
-.nav-search {
-    background-color: transparent !important;;
-    margin-left: 0px !important;;
-    width: 500px !important;;
-    -webkit-transition: width 0.4s ease-in-out !important;;
-    transition: width 0.4s ease-in-out !important;;
-}
-
-
 ul.navbar-nav>li>a:hover,
 ul.navbar-nav>li>a:focus{
     background: none;

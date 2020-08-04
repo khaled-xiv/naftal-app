@@ -20,11 +20,10 @@
 <link href="{{ asset('css/bootstrap/bootstrap-select.css') }}" rel="stylesheet" >
 
 {{--jquery dataTable --}}
-<link href="{{ asset('css/dataTables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" >
-<link href="{{ asset('css/dataTables/bootstrap.css') }}" rel="stylesheet" >
+<link href="{{ asset('css/dataTables/jquery.dataTables.min.css') }}" rel="stylesheet" >
 
 {{--material design lite --}}
-<link rel="stylesheet" href="{{asset('css/material.min.css')}}">
+{{--<link rel="stylesheet" href="{{asset('css/material.min.css')}}">--}}
 
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
@@ -39,16 +38,19 @@
 <!-- Custom Styles -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/style_1.css')}}" rel="stylesheet">
+<link href="{{asset('css/style4.css')}}" rel="stylesheet">
 
 <!-- Responsive  Css -->
 <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
 
 {{--jquery--}}
-<script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
+
+{{--dataTables--}}
+<script src="{{ asset('js/dataTables/jquery.dataTables.min.js') }}" defer></script>
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap-select.min.js') }}"></script>
 
 {{--material design lite --}}
-<script src="{{asset('js/material.min.js')}}"></script>
+{{--<script src="{{asset('js/material.min.js')}}"></script>--}}
 

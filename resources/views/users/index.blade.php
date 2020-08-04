@@ -4,105 +4,98 @@
     <!-- Users -->
     <section id="users">
 
-        <style>
-
-            #example{
-                border-radius: 20px;
-            }
-            #example thead{
-                background-color: #36304a;
-            }
-            #example thead tr th{
-                color: white;
-                font-size: 15px;
-            }
-            #example tbody tr {
-                text-align: center;
-            }
-            tr {
-                height: 50px;
-                font-size: 15px;
-            }
-
-        </style>
-
         <div class="content-box-md">
-            <div class="container">
-                <div class="row contact-right">
-                    <table id="example" class="table  table-striped display">
-                        <thead>
-                        <tr class="text-center">
-                            <th>{{ucwords(__('Name'))}}</th>
-                            <th>{{ucwords(__('email address'))}}</th>
-                            <th>{{ucwords(__('Email verified at'))}}</th>
-                            <th>{{ucwords(__('Phone'))}}</th>
-                            <th>{{ucwords(__('Address'))}}</th>
-                            <th>{{ucwords(__('status'))}}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($users as $user)
-                            <tr class="clickable-row" data-href="{{ route('users.edit',encrypt($user->id))}}">
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>@if(!$user->email_verified_at) Not Verified @else {{$user->email_verified_at}} @endif</td>
-                                <td>@if ($user->phone){{$user->phone}} @else &nbsp; @endif</td>
-                                <td>@if ($user->address){{$user->address}} @else &nbsp; @endif</td>
-                                <td>@if($user->is_active==1) Active @else Closed @endif</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+            <div class="container p-30">
+                <div class="row">
+                    <div class="col-md-12 main-datatable">
+                        <div class="card_body">
+                            <div class="row d-flex">
+                                <div class="col-sm-4">
+                                    <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
+                                </div>
+                                <div class="col-sm-8  add_flex">
+                                    <div class="form-group searchInput">
+                                        <label for="filterbox">{{__('Search')}}:</label>
+                                        <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="overflow-x">
+                                <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                    <thead>
+                                    <tr>
+                                        <th style="min-width:50px;">{{ucwords(__('Name'))}}</th>
+                                        <th style="min-width:150px;">{{ucwords(__('email address'))}}</th>
+                                        <th style="min-width:150px;">{{ucwords(__('Email verified at'))}}</th>
+                                        <th style="min-width:100px;">{{ucwords(__('Phone'))}}</th>
+                                        <th style="min-width:150px;">{{ucwords(__('Address'))}}</th>
+                                        <th style="min-width:150px;">{{ucwords(__('status'))}}</th>
+                                        <th style="min-width:100px;">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($users as $user)
+
+                                        <tr>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td><span class="mode {{(!$user->email_verified_at)?'mode_process':'mode_done'}}"> @if(!$user->email_verified_at) Not Verified @else {{$user->email_verified_at}} @endif</span></td>
+                                            <td>@if ($user->phone){{$user->phone}} @else &nbsp; @endif</td>
+                                            <td>@if ($user->address){{$user->address}} @else &nbsp; @endif</td>
+                                            <td> <span class="mode {{($user->is_active==1)?'mode_on':'mode_off'}}">@if($user->is_active==1) Active @else Closed @endif</span> </td>
+                                            <td class="actions" style="height: 50px">
+                                                <span class="actionCust">
+                                                    <a href="{{ route('users.edit',encrypt($user->id))}}"><i class="fa fa-pencil-square-o"></i></a>
+                                                </span>
+                                                <span class="actionCust" >
+                                                    <a href="#"><i class="fa fa-trash"></i></a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-
         </div>
 
-        <!--         add icon-->
-        <a href="{{route('register') }}" id="add-icon" class="btn btn-sm btn-yellow btn-back-to-top smooth-scroll hidden-sm hidden-xs" title="{{__('add user')}}" role="button">
-            <i class="fa fa-plus"></i>
-        </a>
     </section>
-    {{--dataTables--}}
-    <script src="{{ asset('js/dataTables/jquery-3.2.1.slim.min.js') }}" defer></script>
-    <script src="{{ asset('js/dataTables/jquery.dataTables.min.js') }}" defer></script>
-    <script src="{{ asset('js/dataTables/dataTables.bootstrap4.min.js') }}" defer></script>
+
+
     <script>
 
         $(document).ready(function() {
-            $('#example').DataTable({
-                responsive:{
-                    details:false
-                }
+            var dataTable = $('#filtertable').DataTable({
+                @if(\Illuminate\Support\Facades\App::getLocale()=='fr')
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                },
+                @endif
+                "pageLength":5,
+                'aoColumnDefs':[{
+                    'bSortable':false,
+                    'aTargets':['nosort'],
+                }],
+                columnDefs:[
+                    {type:'date-dd-mm-yyyy',aTargets:[5]}
+                ],
+                "aoColumns":[
+                    null, null,null, null, null, null, null
+                ],
+                "bLengthChange":false,
+                "dom":'<"top">ct<"top"p><"clear">',
+
+            });
+            $("#filterbox").keyup(function(){
+                dataTable.search(this.value).draw();
             });
         } );
-        $(document).ready(function($) {
-            $(".clickable-row").click(function() {
-                window.location = $(this).data("href");
-            });
-        });
-        @if (Session::has('status'))
-            toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-full-width",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "500",
-            "hideDuration": "300",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "slideDown",
-            "hideMethod": "slideUp"
-        }
-        toastr.success("{{Session::get('status')}}");
-        $('.toast-message').css('text-align','center');
-        @endif
+
     </script>
 
     <!-- Users Ends -->

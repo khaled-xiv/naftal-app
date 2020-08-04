@@ -12,7 +12,7 @@
     cursor: pointer;
     z-index: 2;
     position: absolute;
-    top: 0px;
+    top: -23px;
     right: 12px;
      /*hide mobile nav open btn */
     display: none;
@@ -39,7 +39,7 @@
     font-weight: 400;
     cursor: pointer;
     position: absolute;
-    top: 7px;
+    top: -30px;
     right: 20px;
     -webkit-transition: .3s;
     transition: .3s;
