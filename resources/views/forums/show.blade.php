@@ -22,7 +22,7 @@
                     <!-- Post Content Column -->
                     <div class="col-md-8">
                         <!-- Title -->
-                        <h3>{{$forum->title}}</h3>
+                        <h3 class="forum-title">{{$forum->title}}</h3>
                         <!-- Author -->
                         by
                         <span class="username">{{$forum->user->name}}</span>
@@ -55,11 +55,8 @@
                                 </p>
                                 @if(Auth::user() == $forum->user)
                                     <div class="pull-right">
-                                        <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">{{ __('Edit')." question" }}</button>
-                                    </div>
-                                    <br>
-                                    <div class="pull-right">
-                                        <button class="link-button" onclick="getSimilar({{$forum->id}})">{{ __('Find me an answer') }}</button>
+                                        <button style="display: block;" class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">{{ __('Edit')." question" }}</button>
+										<button class="link-button" onclick="getSimilar({{$forum->id}})">{{ __('Find me an answer') }}</button>
                                     </div>
                                 @endif
                             </div>
@@ -83,7 +80,7 @@
                                     {!! Form::close() !!}
                                     <div class="clearfix"></div>
                                     <hr>
-                                    <ul class="media-list">
+                                    <div>
                                         <div class="answers">
                                             {{$number = $forum->answers->count()}} @if($number != 1) {{ ucfirst(__('answer'))."s" }} @else {{ ucfirst(__('answer')) }} @endif
                                         </div>
@@ -124,7 +121,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                    </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +218,7 @@
                 if(Id < 0){
                     $(".forum-title").show();
                     $("#EditFsAndAs").html("Edit Question");
-                    $("#title").val($("h2.mt-4").html().trim());
+                    $("#title").val($("h3.forum-title").html().trim());
                     $("textarea#Modalbody").val($("p.lead").html().trim());
                     Id = -Id;
                     target = '/forums/';

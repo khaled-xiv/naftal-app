@@ -182,7 +182,8 @@ section {
 }
 
 .content-box-md {
-    padding: 100px 0;
+    padding: 20px 0;
+	background: #f4f4f4;
 }
 
 .content-box-sm {

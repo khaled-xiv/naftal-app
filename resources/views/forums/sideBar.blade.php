@@ -14,45 +14,39 @@
 </form>
 <br>
 <!-- Categories Widget -->
-<div class="card">
-    <h5 class="card-header">{{ __('Popular tags') }}</h5>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-sm-6">
-                <ul class="list-unstyled mb-0">
-                    @for($i = 0; $i < 3; $i++)
-                        @if($i < $limit)
-                            <li>
-                                <form method="GET" action="/tags/{{$tags[$i]->id}}/search">
-                                    <button class="link-button" style="text-decoration: none;" type="submit">{{$tags[$i]->content}}</button>
-                                </form>
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
-            </div>
-            <div class="col-sm-6">
-                <ul class="list-unstyled mb-0">
-                    @for($i = 3; $i < 6; $i++)
-                        @if($i < $limit)
-                            <li>
-{{--                                <form method="GET" action="{{str_replace('{id}', $tags[$i]->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.tag-search'))}}">--}}
-                                <form method="GET" action="/tags/{{$tags[$i]->id}}/search">
-                                    <button class="link-button" style="text-decoration: none;" type="submit">{{$tags[$i]->content}}</button>
-                                </form>
-                            </li>
-                        @endif
-                    @endfor
-                </ul>
-            </div>
-        </div>
+<div class="widget-card">
+    <h5 class="widget-title">{{ __('Popular tags') }}</h5>
+    <div class="widget-body">
+        <ul class="list-unstyled">
+            @for($i = 0; $i < 3; $i++)
+                @if($i < $limit)
+                    <li>
+                        <form method="GET" action="/tags/{{$tags[$i]->id}}/search">
+                            <button class="tag-button link-button" style="text-decoration: none;" type="submit">{{$tags[$i]->content}}</button>
+                        </form>
+                    </li>
+                @endif
+            @endfor
+        </ul>
+        <ul class="list-unstyled">
+            @for($i = 3; $i < 6; $i++)
+                @if($i < $limit)
+                    <li>
+{{--                        <form method="GET" action="{{str_replace('{id}', $tags[$i]->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.tag-search'))}}">--}}
+                        <form method="GET" action="/tags/{{$tags[$i]->id}}/search">
+                            <button class="tag-button link-button" style="text-decoration: none;" type="submit">{{$tags[$i]->content}}</button>
+                        </form>
+                    </li>
+                @endif
+            @endfor
+        </ul>
     </div>
 </div>
 <br>
 <!-- Side Widget -->
-<div class="card my-4">
-    <h5 class="card-header">Side Widget</h5>
-    <div class="card-body">
+<div class="widget-card">
+    <h5 class="widget-title">Side Widget</h5>
+    <div class="widget-body">
         You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
     </div>
 </div>

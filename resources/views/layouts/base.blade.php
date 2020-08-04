@@ -9,8 +9,17 @@
 <!-- Header-->
 @include('includes.header')
 <!-- Header Ends-->
-@yield('content')
-
+<div class="big-container">
+	<div id="left-side">
+		@include('includes.side-nav')
+	</div>
+	<div id="right-side">
+		<div class="toggle-side-nav">
+			<div><i id="toggle-side-nav-btn" onclick="hideSideNav()" class="fa fa-bars"></i></div>
+		</div>
+		@yield('content')
+	</div>
+</div>
 </body>
 
 <!--    Bootstrap-->
@@ -30,5 +39,23 @@
 
 <!--    Custom Script-->
 <script src="{{ asset('js/script_1.js') }}" defer></script>
+
+<script>
+	var sideNavHidden = false;
+	function hideSideNav(){
+		let left = document.getElementById("left-side");
+		let right = document.getElementById("right-side");
+		if(!sideNavHidden){
+			right.style.width = "100%";
+			right.style.marginLeft = "0px";
+			left.style.width = "0";
+		}else{
+			right.style.width = "calc(100% - 250px)";
+			right.style.marginLeft = "250px";
+			left.style.width = "250px";
+		}
+		sideNavHidden = !sideNavHidden;
+	}
+</script>
 
 </html>
