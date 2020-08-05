@@ -44,6 +44,7 @@
 
 <script>
 	var sideNavHidden = false;
+
 	function hideSideNav(){
 		let left = document.getElementById("left-side");
 		let right = document.getElementById("right-side");

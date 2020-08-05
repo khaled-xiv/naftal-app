@@ -21,32 +21,63 @@
                     <div id="service-tab-1" class="service-tab">
                         <div class="container">
                             <div class="row">
-                                <table class="js-sort-table">
-                                    <thead>
-                                    <tr class="table100-head">
-                                        <th>code</th>
-                                        <th>{{ __('mark') }}</th>
-                                        <th>type</th>
-                                        <th>{{ __('model') }}</th>
-                                        <th>{{ __('product') }}</th>
-                                        <th class="js-sort-number">{{ __('rate') }}</th>
-                                        <th>{{ __('state') }}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($pumps as $pump)
-                                        <tr class="clickable-row" data-href="{{str_replace('{id}', $pump->equipment->id, LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipment-edit'))}}">
-                                            <td>{{$pump->equipment->code}}</td>
-                                            <td>{{$pump->equipment->mark}}</td>
-                                            <td>{{$pump->equipment->type}}</td>
-                                            <td>{{$pump->equipment->model}}</td>
-                                            <td>{{$pump->product}}</td>
-                                            <td>{{$pump->rate}}</td>
-                                            <td>{{$pump->equipment->state}}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                <div class="col-md-12 main-datatable">
+                                    <div class="card_body">
+                                        <div class="row d-flex">
+                                            <div class="col-sm-4">
+                                                {!! Form::open(['method'=>'GET', 'route' =>'request.create' ]) !!}
+                                                <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
+                                                {!! Form::close() !!}
+                                            </div>
+                                            <div class="col-sm-8  add_flex">
+                                                <div class="form-group searchInput">
+                                                    <label for="filterbox">{{__('Search')}}:</label>
+                                                    <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="overflow-x">
+                                            <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                                <thead>
+                                                <tr>
+                                                    <th style="min-width:50px;">code</th>
+                                                    <th style="min-width:100px;">{{ __('mark') }}</th>
+                                                    <th style="min-width:100px;">type</th>
+                                                    <th style="min-width:100px;">{{ __('model') }}</th>
+                                                    <th style="min-width:100px;">{{ __('product') }}</th>
+                                                    <th style="min-width:150px;">{{ __('rate') }}</th>
+                                                    <th style="min-width:150px;">{{ __('state') }}</th>
+                                                    <th style="min-width:100px;">Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($pumps as $pump)
+                                                    <tr>
+                                                        <td>{{$pump->equipment->code}}</td>
+                                                        <td>{{$pump->equipment->mark}}</td>
+                                                        <td>{{$pump->equipment->type}}</td>
+                                                        <td>{{$pump->equipment->model}}</td>
+                                                        <td>{{$pump->product}}</td>
+                                                        <td>{{$pump->rate}}</td>
+                                                        <td><span class="mode mode_on"> {{$pump->equipment->state}}</span> </td>
+                                                        <td class="actions" style="height: 50px">
+                                                        <span class="actionCust">
+                                                            <a href="{{str_replace('{id}', $pump->equipment->id,
+                                                                         LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
+                                                                          'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
+                                                        </span>
+                                                            <span class="actionCust" >
+                                                            <a href="#"><i class="fa fa-trash"></i></a>
+                                                        </span>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div><!-- Service Tab 02 -->
@@ -191,10 +222,35 @@
 
 
     <script>
-        $(document).ready(function($) {
-            $(".clickable-row").click(function() {
-                window.location = $(this).data("href");
+
+        $(document).ready(function() {
+            var dataTable = $('#filtertable').DataTable({
+                @if(\Illuminate\Support\Facades\App::getLocale()=='fr')
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                },
+                @endif
+                "pageLength":5,
+                'aoColumnDefs':[{
+                    'bSortable':false,
+                    'aTargets':['nosort'],
+                }],
+                columnDefs:[
+                    {type:'date-dd-mm-yyyy',aTargets:[5]}
+                ],
+                "aoColumns":[
+                    null, null,null, null, null, null, null
+                ],
+                "bLengthChange":false,
+                "dom":'<"top">ct<"top"p><"clear">',
+
             });
+            $("#filterbox").keyup(function(){
+                dataTable.search(this.value).draw();
+            });
+        } );
+
+        $(document).ready(function($) {
             let equipment = $("ul li.active a").html();
             //$('#add-icon').attr('title',"Add "+equipment);
 
