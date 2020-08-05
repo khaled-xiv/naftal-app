@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar navbar-expand-lg  fixed-top  white-nav-top">
         <div class="container-fluid">
-            <div class="site-nav-wrapper  site-nav-wrapper1 ml-auto">
+            <div class="site-nav-wrapper site-nav-wrapper1 ml-auto">
 
                 <div class="navbar-header">
                     <!-- Mobile Menu Open Button -->
