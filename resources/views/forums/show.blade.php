@@ -4,7 +4,7 @@
 
     <!-- Page Content -->
 
-    <section id="edit-equipment">
+    <section id="show-question">
 
         <div class="content-box-md">
 
@@ -21,113 +21,112 @@
 
                     <!-- Post Content Column -->
                     <div class="col-md-8">
+						<div class="contact-right" style="margin-top: 40px;">
                         <!-- Title -->
-                        <h3 class="forum-title">{{$forum->title}}</h3>
-                        <!-- Author -->
-                        by
-                        <span class="username">{{$forum->user->name}}</span>
-                        <!-- Date/Time -->
-                        <p class="text-muted">{{ __('Posted on')." ".$forum->created_at }}</p>
+						
+							<h3 class="forum-title">{{$forum->title}}</h3>
+							<!-- Author -->
+							by
+							<span class="username">{{$forum->user->name}}</span>
+							<!-- Date/Time -->
+							<p class="text-muted">{{ __('Posted on')." ".$forum->created_at }}</p>
 
-                        <hr>
-                        <!-- Post Content -->
-                        <div id="before-recommend" class="row">
-                            <div class="col-1">
-                                <div>
-                                    <div class="vote">
-                                        <button onclick="updateVotes(1, 1, {{$forum->id}})">
-                                            <i id="1votesBoxF{{$forum->id}}" @if(Auth::user()->liked_forums()->where([['likable_id','=',$forum->id],['up','=', 1]])->exists()) style="color : #f4c613;" @endif class="fa fa-2x fa-caret-up"></i>
-                                        </button>
-                                    </div>
-                                    <div id="votesBoxF{{$forum->id}}" class="vote">
-                                        {{$forum->votes}}
-                                    </div>
-                                    <div class="vote">
-                                        <button onclick="updateVotes(1, 2, {{$forum->id}})">
-                                            <i id="2votesBoxF{{$forum->id}}" @if(Auth::user()->liked_forums()->where([['likable_id','=',$forum->id],['up','=', 0]])->exists()) style="color : #007bff;" @endif class="fa fa-2x fa-caret-down"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-11">
-                                <p class="lead">
-                                    {{$forum->body}}
-                                </p>
-                                @if(Auth::user() == $forum->user)
-                                    <div class="pull-right">
-                                        <button style="display: block;" class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">{{ __('Edit')." question" }}</button>
-										<button class="link-button" onclick="getSimilar({{$forum->id}})">{{ __('Find me an answer') }}</button>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <hr>
+							<hr>
+							<!-- Post Content -->
+							<div id="before-recommend" class="row">
+								<div class="col-1">
+									<div>
+										<div class="vote">
+											<button onclick="updateVotes(1, 1, {{$forum->id}})">
+												<i id="1votesBoxF{{$forum->id}}" @if(Auth::user()->liked_forums()->where([['likable_id','=',$forum->id],['up','=', 1]])->exists()) style="color : #f4c613;" @endif class="fa fa-2x fa-caret-up"></i>
+											</button>
+										</div>
+										<div id="votesBoxF{{$forum->id}}" class="vote">
+											{{$forum->votes}}
+										</div>
+										<div class="vote">
+											<button onclick="updateVotes(1, 2, {{$forum->id}})">
+												<i id="2votesBoxF{{$forum->id}}" @if(Auth::user()->liked_forums()->where([['likable_id','=',$forum->id],['up','=', 0]])->exists()) style="color : #007bff;" @endif class="fa fa-2x fa-caret-down"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-11">
+									<p class="lead">
+										{{$forum->body}}
+									</p>
+									@if(Auth::user() == $forum->user)
+										<div class="pull-right">
+											<button style="display: block;" class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">{{ __('Edit')." question" }}</button>
+											<button class="link-button" onclick="getSimilar({{$forum->id}})">{{ __('Find me an answer') }}</button>
+										</div>
+									@endif
+								</div>
+							</div>
+							<hr>
 
-                        <!-- Answers -->
+							<!-- Answers -->
 
-                        <div class="comment-wrapper">
-                            <div class="panel panel-info">
-                                <div class="panel-body">
-                                    <!-- Answers Form -->
-                                    {!! Form::open(['method'=>'POST', 'action'=> 'AnswerController@store']) !!}
-                                        <input type="hidden" name="forum" value="{{$forum->id}}"/>
-                                        <div class="row">
-                                            <textarea id="body" name="body" style="margin: 5px 20px; padding: 5px 20px; border-radius: 5px;" class="form-control" value="{{ old('body') }}" required placeholder="{{ __('You can answer here...') }}" rows="5"></textarea>
-                                        </div>
-                                        <div class="row pull-right">
-                                            <button style="margin: 5px 20px;" class="btn btn-outline-primary" type="submit">{{ __('Submit answer') }}</button>
-                                        </div>
-                                    {!! Form::close() !!}
-                                    <div class="clearfix"></div>
-                                    <hr>
-                                    <div>
-                                        <div class="answers">
-                                            {{$number = $forum->answers->count()}} @if($number != 1) {{ ucfirst(__('answer'))."s" }} @else {{ ucfirst(__('answer')) }} @endif
-                                        </div>
-                                        @foreach($forum->answers as $answer)
-                                            <div class="answer-box">
-                                                <div class="row">
-                                                    <div class="col-1">
-                                                        <div>
-                                                            <div class="vote">
-                                                                <button onclick="updateVotes(2, 1, {{$answer->id}})">
-                                                                    <i id="1votesBoxA{{$answer->id}}" @if(Auth::user()->liked_answers()->where([['likable_id','=',$answer->id],['up','=', 1]])->exists()) style="color : #f4c613;" @endif class="fa fa-2x fa-caret-up"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div id="votesBoxA{{$answer->id}}" class="vote">
-                                                                {{$answer->votes}}
-                                                            </div>
-                                                            <div class="vote">
-                                                                <button onclick="updateVotes(2, 2, {{$answer->id}})">
-                                                                    <i id="2votesBoxA{{$answer->id}}" @if(Auth::user()->liked_answers()->where([['likable_id','=',$answer->id],['up','=', 0]])->exists()) style="color : #007bff;" @endif class="fa fa-2x fa-caret-down"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-11">
-                                                        <span class="text-muted pull-right">
-                                                            <small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
-                                                        </span>
-                                                        <span class="username">{{$answer->user->name}}</span>
-                                                        <p id="{{$answer->id}}">
-                                                            {{$answer->body}}
-                                                        </p>
-                                                        @if(Auth::user() == $answer->user)
-                                                        <div class="pull-right">
-                                                            <button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button"> {{__('Edit')." ".__('answer')}}</button>
-                                                        </div>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-
+							<div class="comment-wrapper">
+								<div class="panel panel-info">
+									<div class="panel-body">
+										<!-- Answers Form -->
+										{!! Form::open(['method'=>'POST', 'action'=> 'AnswerController@store']) !!}
+											<input type="hidden" name="forum" value="{{$forum->id}}"/>
+											<div class="row">
+												<textarea id="body" name="body" style="margin: 5px 20px; padding: 5px 20px; border-radius: 5px;" class="form-control" value="{{ old('body') }}" required placeholder="{{ __('You can answer here...') }}" rows="5"></textarea>
+											</div>
+											<div class="row pull-right">
+												<button style="margin: 5px 20px;" class="btn btn-outline-primary" type="submit">{{ __('Submit answer') }}</button>
+											</div>
+										{!! Form::close() !!}
+										<div class="clearfix"></div>
+										<hr>
+										<div>
+											<div class="answers">
+												{{$number = $forum->answers->count()}} @if($number != 1) {{ ucfirst(__('answer'))."s" }} @else {{ ucfirst(__('answer')) }} @endif
+											</div>
+											@foreach($forum->answers as $answer)
+												<div class="answer-box">
+													<div class="row">
+														<div class="col-1">
+															<div>
+																<div class="vote">
+																	<button onclick="updateVotes(2, 1, {{$answer->id}})">
+																		<i id="1votesBoxA{{$answer->id}}" @if(Auth::user()->liked_answers()->where([['likable_id','=',$answer->id],['up','=', 1]])->exists()) style="color : #f4c613;" @endif class="fa fa-2x fa-caret-up"></i>
+																	</button>
+																</div>
+																<div id="votesBoxA{{$answer->id}}" class="vote">
+																	{{$answer->votes}}
+																</div>
+																<div class="vote">
+																	<button onclick="updateVotes(2, 2, {{$answer->id}})">
+																		<i id="2votesBoxA{{$answer->id}}" @if(Auth::user()->liked_answers()->where([['likable_id','=',$answer->id],['up','=', 0]])->exists()) style="color : #007bff;" @endif class="fa fa-2x fa-caret-down"></i>
+																	</button>
+																</div>
+															</div>
+														</div>
+														<div class="col-11">
+															<span class="text-muted pull-right">
+																<small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
+															</span>
+															<span class="username">{{$answer->user->name}}</span>
+															<p id="{{$answer->id}}">
+																{{$answer->body}}
+															</p>
+															@if(Auth::user() == $answer->user)
+															<div class="pull-right">
+																<button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button"> {{__('Edit')." ".__('answer')}}</button>
+															</div>
+															@endif
+														</div>
+													</div>
+												</div>
+											@endforeach
+										</div>
+									</div>
+								</div>
+							</div>
                         </div>
 
                     </div>

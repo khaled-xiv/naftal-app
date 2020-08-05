@@ -322,6 +322,13 @@ ul.img-icons li:nth-child(2) a:hover {
 	margin-top: 80px;
 }
 
+.forum-index-header {
+	margin-top: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .forum-index-title {
 	font-size: 30px;
 	color: rgba(0,0,0,.5);

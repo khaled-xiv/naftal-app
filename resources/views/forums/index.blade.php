@@ -15,12 +15,12 @@
                 <!-- Blog Entries Column -->
                 <div class="col-md-8">
 
-                    {!! Form::open(['method'=>'GET', 'action'=>'ForumController@create']) !!}
-                        <button class="btn btn-primary pull-right">{{__('Ask a')." question"}}</button>
-{{--                        <a class="btn btn-primary pull-right" href="{{route('forums')}}">Ask Question</a>--}}
-                    {!! Form::close() !!}
-                    <br><br><hr>
-                    <h2 class="forum-index-title">{{ __('Most upvoted questions') }}</h2>
+					<div class="forum-index-header">
+						<h2 class="forum-index-title">{{ __('Most upvoted questions') }}</h2>
+						{!! Form::open(['method'=>'GET', 'action'=>'ForumController@create']) !!}
+							<button class="btn btn-primary pull-right">{{__('Ask a')." question"}}</button>
+						{!! Form::close() !!}
+					</div>
 
                     <!-- Blog Post -->
 					<div class="forums-holder">

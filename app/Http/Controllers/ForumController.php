@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
-//use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 ini_set('max_execution_time', 100);
@@ -72,17 +72,29 @@ class ForumController extends Controller
         $user->forums()->save($forum);
         foreach ($tags as $tag){
             if($tag !== "") {
-                $forum->tags()->firstOrCreate(['content' => trim($tag)]);
+				$tag = trim($tag);
+				$tagObj = Tag::where('content', $tag)->first();
+				if($tagObj === null){
+					$forum->tags()->create(['content' => $tag]);
+				}else {
+					DB::table('forum_tag')->insert(
+						array(
+							'forum_id' => $forum->id,
+							'tag_id' => $tagObj->id
+						)
+					);
+				}
             }
         }
         $url = 'http://localhost:8000/sim/forums/'.$forum->id.'/embeddings/';
         $client = new Client();
 
         // $res = $client->post($url, []);
-
-       $client->request('POST', $url, [
-           'timeout' => 200,
-       ]);
+		try {
+			$client->request('POST', $url, [
+				'timeout' => 7
+			]);
+		} catch (\Exception $e) {}
         return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.forums'));
     }
 
