@@ -252,9 +252,9 @@
 
         $(document).ready(function($) {
             let equipment = $("ul li.active a").html();
-            //$('#add-icon').attr('title',"Add "+equipment);
+            $('#add-icon').attr('title',"Add "+equipment);
 
-            //$("button.btn-primary").html("add " + equipment);
+            $("button.btn-general").html("add " + equipment);
             document.cookie='equip =' + equipment;
             $("li.equipment").click(function() {
                 let equipment = $("a", this).html();

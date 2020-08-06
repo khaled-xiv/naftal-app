@@ -9,14 +9,12 @@
 <!-- Header-->
 @include('includes.header')
 <!-- Header Ends-->
-<div class="big-container">
+
+<div class="big-container ">
 	<div id="left-side">
 		@include('includes.side-nav')
 	</div>
 	<div id="right-side">
-		<div class="toggle-side-nav">
-			<div><i id="toggle-side-nav-btn" onclick="hideSideNav()" class="fa fa-bars"></i></div>
-		</div>
 		<div>
 			@yield('content')
 		</div>

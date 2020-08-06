@@ -16,9 +16,7 @@
                         <ul class="nav navbar-nav pull-right">
                             <!-- Logo -->
                             <li>
-                                <a class="navbar-brand smooth-scroll" style="position: absolute; left: 100px" href="#home">
-                                    <img src="img/logo/logo.png" alt="logo">
-                                </a>
+                                <i id="toggle-side-nav-btn" onclick="hideSideNav()"class="fa fa-bars"></i>
                             </li>
                             <li>
                                 <form action="">

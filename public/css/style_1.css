@@ -498,15 +498,32 @@ div.forum-box-footer:before {
 .big-container {
 	height: 100%;
 	background: #f4f4f4;
-	margin-top: 66px;
+	padding: 77px 0;
 	display: flex;
 }
 
+
+/*side navbar*/
+
+#toggle-side-nav-btn{
+    font-size: 30px;
+    color: #f4c613;
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+
+    margin-left: 35px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 12px;
+}
 #left-side {
 	width: 250px;
 	position: fixed;
 	z-index: 5;
-	box-shadow: 0 2px 1px 1px rgba(0,0,0,.2);
+    box-shadow: 0 2px 1px 1px rgba(0,0,0,.2);
 	transition-duration: .5s;
 }
 
@@ -517,7 +534,7 @@ div.forum-box-footer:before {
 	transition-duration: .5s;
 }
 
-#left-side .side-nav .side-nav-item {
+#left-side .side-nav .side-nav-item a {
 	width: 100%;
 	height: 50px;
 	padding-left: 20px;
@@ -531,6 +548,7 @@ div.forum-box-footer:before {
 	justify-content: left;
 	cursor: pointer;
 	transition-duration: .3s;
+    text-decoration: none;
 }
 
 #left-side .side-nav .side-nav-item i{
@@ -553,7 +571,7 @@ div.forum-box-footer:before {
 	/* right: 8%; */
 /* } */
 
-#left-side .side-nav .side-nav-item:hover {
+#left-side .side-nav .side-nav-item a:hover {
 	color: rgb(249,198,19);
 }
 
