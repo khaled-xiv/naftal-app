@@ -132,13 +132,43 @@ function fill_field(s,lang){
     if (lang=='en'){
         if (s.includes('+')){
             s=s.substr(0, s.indexOf('+'));
-            $('#form-alert-header').text('Add Your '+s);
+            switch (s) {
+                case 'fb_link':{
+                    $('#form-alert-header').text('add your facebook link');break;
+                }
+                case 'twitter_link':{
+                    $('#form-alert-header').text('add your twitter link');break;
+                }
+                case 'gmail_link':{
+                    $('#form-alert-header').text('add your gmail link');break;
+                }
+                default:{
+                    $('#form-alert-header').text('Add Your '+s); break;
+                }
+            }
+
+
         }else if (s.includes('+close')){
             s=s.substr(0, s.indexOf('+'));
             $('#close_hidden').val(s);
             $('#form-alert-header').text('Enter Your '+s);
         } else{
-            $('#form-alert-header').text('Change Your '+s);
+
+            switch (s) {
+                case 'fb_link':{
+                    $('#form-alert-header').text('Change Your facebook link');break;
+                }
+                case 'twitter_link':{
+                    $('#form-alert-header').text('Change Your twitter link');break;
+                }
+                case 'gmail_link':{
+                    $('#form-alert-header').text('Change Your gmail link');break;
+                }
+                default:{
+                    $('#form-alert-header').text('Change Your '+s); break;
+                }
+            }
+
         }
     }else {
         if (s.includes('+')){
@@ -149,6 +179,15 @@ function fill_field(s,lang){
                 }
                 case 'phone':{
                     $('#form-alert-header').text('Ajoutez votre téléphone');break;
+                }
+                case 'fb_link':{
+                    $('#form-alert-header').text('Ajoutez votre lien facebook');break;
+                }
+                case 'twitter_link':{
+                    $('#form-alert-header').text('Ajoutez votre lien twitter');break;
+                }
+                case 'gmail_link':{
+                    $('#form-alert-header').text('Ajoutez votre lien gmail');break;
                 }
             }
         } else{
@@ -167,6 +206,15 @@ function fill_field(s,lang){
                 }
                 case 'phone':{
                     $('#form-alert-header').text('Changez votre téléphone');break;
+                }
+                case 'fb_link':{
+                    $('#form-alert-header').text('Changez votre lien facebook');break;
+                }
+                case 'twitter_link':{
+                    $('#form-alert-header').text('Changez votre lien twitter');break;
+                }
+                case 'gmail_link':{
+                    $('#form-alert-header').text('Changez votre lien gmail');break;
                 }
             }
         }

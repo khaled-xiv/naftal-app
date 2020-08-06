@@ -43,6 +43,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::patch(LaravelLocalization::transRoute('routes.account-update'), 'AccountController@update')->name('account.update');
     Route::post('/account/removeAddress', 'AccountController@removeAddress');
     Route::post('/account/removePhone', 'AccountController@removePhone');
+    Route::post('/account/remove-fblink', 'AccountController@removeFbLink');
+    Route::post('/account/remove-twitterlink', 'AccountController@removeTwitterLink');
+    Route::post('/account/remove-gmaillink', 'AccountController@removeGmailLink');
     Route::post('/account/close', 'AccountController@close');
     Route::post('/upload-image', 'AccountController@upladeImage');
     Route::get('/remove-image', 'AccountController@removeImage');
@@ -75,8 +78,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     //Route::resource('centers', 'CenterController');
     Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
-    Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create');
-    Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit');
+    Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create')->name('center.create');
+    Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit');
     Route::post('centers', 'CenterController@store');
     Route::delete('centers/{id}', 'CenterController@destroy');
     Route::put('centers/{id}', 'CenterController@update');

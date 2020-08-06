@@ -55,9 +55,9 @@ section {
     font-family: 'Raleway', sans-serif;
     border-radius: 28px;
     font-size: 13px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     margin: 0 6px;
-    padding: 12px 46px 12px 46px;
+    padding: 8px 16px;
     -webkit-transition: all .5s;
     transition: all .5s;
 }
@@ -183,7 +183,7 @@ section {
 
 .content-box-md {
     padding: 20px 0;
-	background: #f4f4f4;
+	/*background: #f4f4f4;*/
 }
 
 .content-box-sm {

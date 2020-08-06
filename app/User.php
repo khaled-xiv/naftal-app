@@ -20,7 +20,8 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
      */
     protected $fillable = [
         'name', 'email', 'password', 'role_id', 'center_id', 'is_active',
-        'phone', 'isVerified', 'address', 'email_verified_at','photo'
+        'phone', 'isVerified', 'address', 'email_verified_at','photo',
+        'fb_link','twitter_link','gmail_link'
     ];
 
     public function sendPasswordResetNotification($token)

@@ -11,9 +11,11 @@
     color: #f4c613;
     cursor: pointer;
     z-index: 2;
-    position: absolute;
-    top: -23px;
     right: 12px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
      /*hide mobile nav open btn */
     display: none;
 }
@@ -39,7 +41,7 @@
     font-weight: 400;
     cursor: pointer;
     position: absolute;
-    top: -30px;
+    top: -20px;
     right: 20px;
     -webkit-transition: .3s;
     transition: .3s;
@@ -144,6 +146,13 @@
     .white-nav-top {
         padding: 19px 0px ;
     }
+    #left-side{
+        width: 0;
+    }
+    #right-side{
+        width: 100%;
+        margin-left: 0;
+    }
     /* show mobile nav open btn */
     #mobile-nav-open-btn {
         margin-right: 13px;
@@ -228,6 +237,13 @@
         padding: 19px 0;
     }
 
+    #left-side{
+        width: 0;
+    }
+    #right-side{
+        width: 100%;
+        margin-left: 0;
+    }
     /*profil photo*/
     .team-member{
         margin: 8px;

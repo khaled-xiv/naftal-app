@@ -78,6 +78,28 @@ class AccountController extends Controller
         $user->update();
         return redirect()->route('account.show');
     }
+
+    public function removeFbLink(Request $request)
+    {
+        $user=User::findOrfail(Auth::user()->id);
+        $user->fb_link=null;
+        $user->update();
+        return redirect()->route('account.show');
+    }
+    public function removeGmailLink(Request $request)
+    {
+        $user=User::findOrfail(Auth::user()->id);
+        $user->gmail_link=null;
+        $user->update();
+        return redirect()->route('account.show');
+    }
+    public function removeTwitterLink(Request $request)
+    {
+        $user=User::findOrfail(Auth::user()->id);
+        $user->twitter_link=null;
+        $user->update();
+        return redirect()->route('account.show');
+    }
     public function removePhone(Request $request)
     {
         $user=User::findOrfail(Auth::user()->id);

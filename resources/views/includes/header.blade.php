@@ -6,7 +6,8 @@
 
                 <div class="navbar-header">
                     <!-- Mobile Menu Open Button -->
-                    <span id="mobile-nav-open-btn">&#9776;</span>
+                    <i id="mobile-nav-open-btn" class="fa fa-bars"></i>
+{{--                    <span id="mobile-nav-open-btn">&#9776;</span>--}}
 
                 </div>
 

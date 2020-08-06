@@ -660,13 +660,13 @@
 <!-- Contact Ends -->
 
 <!-- Google Map -->
-{{--<section id="google-map">--}}
-{{--    <div class="container-fluid">--}}
-{{--        <div class="row">--}}
-{{--            <div id="map"></div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
+<section id="google-map">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="map"></div>
+        </div>
+    </div>
+</section>
 <!-- Google Map Ends -->
 
 <!-- Footer  -->
@@ -681,7 +681,6 @@
 </footer>
 <!-- Footer Ends -->
 
-</body>
 
 {{--jquery--}}
 <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -689,25 +688,13 @@
 <!--    Bootstrap-->
 <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}" defer></script>
 
+<script  async
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwsUAzVTx3UgIfh3Tgn5FtxoLrCaRawJU">
+
+</script>
+
 {{--    owl-carousel--}}
 <script src="{{ asset('js/owl-carousel/owl.carousel.min.js') }}" ></script>
-
-
-{{--<script>--}}
-{{--    // Initialize and add the map--}}
-{{--    function initMap() {--}}
-{{--        // The location of Uluru--}}
-{{--        var uluru = {lat: 35.367355, lng: 1.322032};--}}
-{{--        // The map, centered at Uluru--}}
-{{--        var map = new google.maps.Map(--}}
-{{--            document.getElementById('map'), {zoom: 10, center: uluru});--}}
-{{--        // The marker, positioned at Uluru--}}
-{{--        var marker = new google.maps.Marker({position: uluru, map: map});--}}
-{{--    }--}}
-{{--</script>--}}
-{{--<script async defer--}}
-{{--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5thfF3yalaB_eqFj6SVd488_jmQMLkyI=initMap">--}}
-{{--</script>--}}
 
 <!--    Easing-->
 <script src="{{asset('js/easing/jquery.easing.1.3.min.js')}}"></script>
@@ -720,5 +707,5 @@
 
 <!--    Custom Script-->
 <script src="{{ asset('js/script.js') }}" defer></script>
-
+</body>
 </html>

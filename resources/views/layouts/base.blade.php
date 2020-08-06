@@ -10,7 +10,7 @@
 @include('includes.header')
 <!-- Header Ends-->
 
-<div class="big-container ">
+<div class="big-container">
 	<div id="left-side">
 		@include('includes.side-nav')
 	</div>

@@ -12,7 +12,7 @@
     </div>
 
     <div class="side-nav-item">
-        <a href="{{url(app()->getLocale().'/centers')}}"><i class="fa fa-building-o"></i>
+        <a href="{{url(app()->getLocale().'/'.__('centers'))}}"><i class="fa fa-building-o"></i>
             {{ __('centers') }}
         </a>
     </div>

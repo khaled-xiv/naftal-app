@@ -18,7 +18,7 @@ class CenterController extends Controller
             'code' => ['required', 'string', 'max:255', Rule::unique('centers')->ignore($id)],
             'location' => ['required', 'string', 'max:255'],
             'storage_capacity' => ['required'],
-            'phone' => ['required', Rule::unique('centers')->ignore($id)],
+            'phone' => ['required','numeric','digits:10',  Rule::unique('centers')->ignore($id)],
         ]);
     }
 
@@ -81,7 +81,7 @@ class CenterController extends Controller
      */
     public function edit($id)
     {
-        $center = Center::findOrFail($id);
+        $center = Center::findOrFail(decrypt($id));
         return view('centers.edit', compact('center'));
     }
 
@@ -94,7 +94,6 @@ class CenterController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validator = $this->validator($request->all(), $id);
 
         if ($validator->fails()) {

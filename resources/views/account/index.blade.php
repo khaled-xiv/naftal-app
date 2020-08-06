@@ -35,6 +35,34 @@
                                    placeholder="{{__("email address")}}">
                         </div>
                     </div>
+
+                    <div class="col-md-12 col-sm-12 hide-form">
+                        <div class="form-group">
+                            {!! Form::label('fb_link', __("Facebook link").':',['class'=>'label_padding']) !!}
+                            <input id="fb_link" type="text" class="form-control @error('fb_link') is-invalid @enderror"
+                                   name="fb_link" required
+                                   placeholder="{{__("Facebook link")}}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 hide-form">
+                        <div class="form-group">
+                            {!! Form::label('twitter_link', __("Twitter link").':',['class'=>'label_padding']) !!}
+                            <input id="twitter_link" type="text" class="form-control @error('twitter_link') is-invalid @enderror"
+                                   name="twitter_link" required
+                                   placeholder="{{__("Twitter link")}}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 hide-form">
+                        <div class="form-group">
+                            {!! Form::label('gmail_link', __("Gmail link").':',['class'=>'label_padding']) !!}
+                            <input id="gmail_link" type="text" class="form-control @error('gmail_link') is-invalid @enderror"
+                                   name="gmail_link" required
+                                   placeholder="{{__("Gmail link")}}">
+                        </div>
+                    </div>
+
                     <div class="col-md-12 col-sm-12 hide-form">
                         <div class="form-group">
                             {!! Form::label('password', __('Password').':',['class'=>'label_padding']) !!}
@@ -198,7 +226,7 @@
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;&nbsp;
                                     @if(Auth()->user()->phone==null)
-                                        <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
+                                        <button class="btn  btn-primary btn-general" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
                                                 onclick="fill_field('phone+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Phone')}}
                                         </button>
                                     @else
@@ -206,7 +234,7 @@
 
                                         @csrf
                                         <span>
-                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
+                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger btn-general','style'=>'margin-left: 30px']) !!}
                                             {!! Form::close() !!}
                                     </span>
 
@@ -215,9 +243,9 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
 
                         <h3>{{__('Address')}}</h3>
-
                         <div class="account-settings ">
                             <div class="credential row">
                                 <div class="col-md-3 col-sm-3 col-xs-3">
@@ -231,7 +259,7 @@
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;
                                     @if(Auth()->user()->address==null)
-                                        <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
+                                        <button class="btn  btn-primary btn-general" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
                                                 onclick="fill_field('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}
                                         </button>
                                     @else
@@ -239,7 +267,7 @@
 
                                         @csrf
                                         <span>
-                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
+                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger btn-general','style'=>'margin-left: 30px']) !!}
                                             {!! Form::close() !!}
                                     </span>
 
@@ -248,6 +276,99 @@
 
                             </div>
                         </div>
+
+                        <br>
+                        <h3>{{__('Social media')}}</h3>
+
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <label>{{__('Facebook link')}}</label>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
+                                      onclick="fill_field('fb_link','{{app()->getLocale()}}')"
+                                      style="@if(Auth()->user()->fb_link==null) display:none @endif">
+                                    {{Auth()->user()->fb_link}}
+                                    <span class="edit"><i class="fa fa-pencil"></i>  </span>
+                                </span>&nbsp;&nbsp;
+                                    @if(Auth()->user()->fb_link==null)
+                                        <button class="btn  btn-primary btn-general" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
+                                                onclick="fill_field('fb_link+add','{{app()->getLocale()}}')">{{__('Add')}}
+                                        </button>
+                                    @else
+                                        {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removeFbLink']) !!}
+
+                                        @csrf
+                                        <span>
+                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger btn-general','style'=>'margin-left: 30px']) !!}
+                                            {!! Form::close() !!}
+                                        </span>
+
+                                    @endif
+                                </div>
+
+                            </div>
+
+                            <div class="credential row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <label>{{__('Twitter link')}}</label>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
+                                      onclick="fill_field('twitter_link','{{app()->getLocale()}}')"
+                                      style="@if(Auth()->user()->twitter_link==null) display:none @endif">
+                                    {{Auth()->user()->twitter_link}}
+                                    <span class="edit"><i class="fa fa-pencil"></i>  </span>
+                                </span>&nbsp;&nbsp;
+                                    @if(Auth()->user()->twitter_link==null)
+                                        <button class="btn  btn-primary btn-general" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
+                                                onclick="fill_field('twitter_link+add','{{app()->getLocale()}}')">{{__('Add')}}
+                                        </button>
+                                    @else
+                                        {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removeTwitterLink']) !!}
+
+                                        @csrf
+                                        <span>
+                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-general btn-danger','style'=>'margin-left: 30px']) !!}
+                                            {!! Form::close() !!}
+                                        </span>
+
+                                    @endif
+                                </div>
+
+                            </div>
+
+                            <div class="credential row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <label>{{__('Gmail link')}}</label>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
+                                      onclick="fill_field('gmail_link','{{app()->getLocale()}}')"
+                                      style="@if(Auth()->user()->gmail_link==null) display:none @endif">
+                                    {{Auth()->user()->gmail_link}}
+                                    <span class="edit"><i class="fa fa-pencil"></i>  </span>
+                                </span>&nbsp;&nbsp;
+                                    @if(Auth()->user()->gmail_link==null)
+                                        <button class="btn  btn-primary btn-general" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
+                                                onclick="fill_field('gmail_link+add','{{app()->getLocale()}}')">{{__('Add')}}
+                                        </button>
+                                    @else
+                                        {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removeGmailLink']) !!}
+
+                                        @csrf
+                                        <span>
+                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger btn-general','style'=>'margin-left: 30px']) !!}
+                                            {!! Form::close() !!}
+                                        </span>
+
+                                    @endif
+                                </div>
+
+                            </div>
+                        </div>
+
 
                         <br>
                         <h3>{{__('Deactivate Your Account')}}</h3>
@@ -261,7 +382,7 @@
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                 <span>
-                                    <button class="btn  btn-danger" style="margin-left: 40px ;"
+                                    <button class="btn  btn-danger btn-general" style="margin-left: 40px ;"
                                             data-toggle="modal" data-target="#exampleModal">{{__('Close')}}</button>
                                 </span>
 
