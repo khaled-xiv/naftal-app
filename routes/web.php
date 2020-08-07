@@ -55,9 +55,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::get(LaravelLocalization::transRoute('routes.users'), 'UsersController@index')->name('users.show');
         Route::get(LaravelLocalization::transRoute('routes.user-show'), 'UsersController@show')->name('users.edit');
         Route::patch(LaravelLocalization::transRoute('routes.user-update'), 'UsersController@update')->name('user.update');
-        Route::post('/users/removeAddress/{id}', 'UsersController@removeAddress');
-        Route::post('/users/removePhone/{id}', 'UsersController@removePhone');
         Route::post('/users/close/{id}', 'UsersController@close');
+        Route::post('/users/delete/{id}', 'UsersController@destroy');
     });
 
     Route::group(['middleware'=>'role:center chief'],function() {

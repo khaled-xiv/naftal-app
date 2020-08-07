@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', __('Account Settings'))
+@section('title', __('Account settings'))
 @section('content')
 <!-- Account -->
 <!-- Modal -->
@@ -8,7 +8,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="form-alert-header" style="text-transform:capitalize"></h5>
+                <h5 class="modal-title" id="form-alert-header" ></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -99,8 +99,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                <button class="btn  btn-yellow" type="submit"  title="Submit" role="button" onclick="form_submit('submit_modal')" >{{__('Update')}}</button>
+                <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button class="btn  btn-general btn-yellow" type="submit"  title="Submit" role="button" onclick="form_submit('submit_modal')" >{{__('Update')}}</button>
 
             </div>
                 {!! Form::close() !!}
@@ -120,8 +120,8 @@
             {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['AccountController@close']]) !!}
             @csrf
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
-                <button type="submit" class="btn btn-danger">{{__('Close')}}</button>
+                <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
+                <button type="submit" class="btn btn-general btn-danger">{{__('Close')}}</button>
             </div>
             {!! Form::close() !!}
         </div>
@@ -227,7 +227,7 @@
                                 </span>&nbsp;&nbsp;&nbsp;
                                     @if(Auth()->user()->phone==null)
                                         <button class="btn  btn-primary btn-general" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                                onclick="fill_field('phone+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Phone')}}
+                                                onclick="fill_field('phone+add','{{app()->getLocale()}}')">{{__('Add')}}
                                         </button>
                                     @else
                                         {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removePhone']) !!}
@@ -260,7 +260,7 @@
                                 </span>&nbsp;&nbsp;
                                     @if(Auth()->user()->address==null)
                                         <button class="btn  btn-primary btn-general" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                                onclick="fill_field('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}
+                                                onclick="fill_field('address+add','{{app()->getLocale()}}')">{{__('Add')}}
                                         </button>
                                     @else
                                         {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=>'AccountController@removeAddress']) !!}

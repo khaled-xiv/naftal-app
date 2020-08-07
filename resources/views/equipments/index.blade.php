@@ -61,14 +61,14 @@
                                                         <td>{{$pump->rate}}</td>
                                                         <td><span class="mode mode_on"> {{$pump->equipment->state}}</span> </td>
                                                         <td class="actions" style="height: 50px">
-                                                        <span class="actionCust">
-                                                            <a href="{{str_replace('{id}', $pump->equipment->id,
-                                                                         LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
-                                                                          'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
-                                                        </span>
-                                                            <span class="actionCust" >
-                                                            <a href="#"><i class="fa fa-trash"></i></a>
-                                                        </span>
+                                                            <span class="actionCust">
+                                                                <a href="{{str_replace('{id}', $pump->equipment->id,
+                                                                             LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
+                                                                              'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
+                                                            </span>
+                                                                <span class="actionCust" >
+                                                                <a href="#"><i class="fa fa-trash"></i></a>
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                     @endforeach

@@ -8,6 +8,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -29,33 +30,6 @@ class UsersController extends Controller
         return view('users.index',compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $user=User::findOrfail(decrypt($id));
@@ -64,24 +38,6 @@ class UsersController extends Controller
         return view('users.edit',compact('user','centers','roles'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     public function close(Request $request,$id)
     {
@@ -92,23 +48,6 @@ class UsersController extends Controller
         return redirect()->route('users.show');
     }
 
-    public function removeAddress(Request $request,$id)
-    {
-        $id =decrypt($id);
-        $user=User::findOrfail($id);
-        $user->address=null;
-        $user->update();
-        return redirect()->route('users.edit',encrypt($user->id));
-    }
-    public function removePhone(Request $request,$id)
-    {
-        $id =decrypt($id);
-        $user=User::findOrfail($id);
-        $user->phone=null;
-        $user->isVerified=0;
-        $user->update();
-        return redirect()->route('users.edit',encrypt($user->id));
-    }
 
     public function update(Request $request, $id)
     {
@@ -160,6 +99,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            User::findOrfail(decrypt($id))->delete();
+            return redirect()->route('users.show');
+        }catch (\Exception $exception){
+            return redirect()->route('users.show');
+        }
+
     }
 }

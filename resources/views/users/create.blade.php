@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', ucwords(__('add user')))
+@section('title', __('Add user'))
 @section('content')
 <!-- Add User -->
 <br>
@@ -18,7 +18,7 @@
                         {!! Form::open(['method'=>'POST', 'action'=>[ 'Auth\RegisterController@register']]) !!}
                             @csrf
                         <input type="hidden" name="languge" value="{{ app()->getLocale() }}">
-                            <h4>{{ucwords(__('add user'))}}</h4>
+                            <h4>{{__('Add user')}}</h4>
                             <br>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="row">
                                     <div id="submit-btn" class="ml-auto">
-                                        <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{__('Add user')}}</button>
+                                        <button class="btn  btn-general btn-yellow" type="submit"  title="{{__('add user')}}" role="button">{{__('add user')}}</button>
                                     </div>
                                 </div>
 

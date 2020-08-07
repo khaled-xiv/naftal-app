@@ -11,6 +11,7 @@ use App\Forum;
 use App\Maintenance;
 use App\Telemetry;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -60,6 +61,7 @@ class DashboardController extends Controller
     {
         try {
             $items=$request->all();
+            Log::info('before'.Carbon::now());
             foreach ($items as $item){
                 Equipment::create([
                     'model'=>$item['model'],
@@ -67,6 +69,7 @@ class DashboardController extends Controller
                     'age'=>$item['age'],
                 ]);
             }
+            Log::info('after'.Carbon::now());
             return response()->json(['status'=>'success'],200);
         }catch (\Exception $e){
             Log::info($e->getMessage());
@@ -77,31 +80,44 @@ class DashboardController extends Controller
 
     public function uploadTelemety(Request $request)
     {
-        $items=$request->all();
-        foreach ($items as $item){
-            Telemetry::create([
-                'equipment_id'=>$item['id'],
-                'volt'=>$item['volt'],
-                'rotate'=>$item['rotate'],
-                'pressure'=>$item['pressure'],
-                'vibration'=>$item['vibration'],
-                'dateTime'=>$item['dateTime'],
-            ]);
+        try {
+            $items=$request->all();
+            $data=[];
+            Log::info('telemetry-before'.Carbon::now());
+            foreach ($items as $item){
+                array_push( $data,array(
+                    'equipment_id'=>$item['id'],
+                    'volt'=>$item['volt'],
+                    'rotate'=>$item['rotate'],
+                    'pressure'=>$item['pressure'],
+                    'vibration'=>$item['vibration'],
+                    'dateTime'=>$item['dateTime'],
+                ));
+            }
+            DB::table('telemetries')->insert($data);
+            Log::info('telemetry-after'.Carbon::now());
+            return response()->json(['status'=>'success'],200);
+        }catch (\Exception $e){
+            Log::info($e->getMessage());
+            return response()->json(['status'=>$e->getMessage()],400);
         }
-        return response()->json('salam');
     }
 
     public function uploadFailures(Request $request)
     {
         try {
             $items=$request->all();
+            $data=[];
+            Log::info('failure-before'.Carbon::now());
             foreach ($items as $item){
-                Failure::create([
+                array_push( $data,array(
                     'equipment_id'=>$item['id'],
                     'comp'=>$item['comp'],
-                    'dateTime'=>$item['dateTime'],
-                ]);
+                    'dateTime'=>$item['dateTime']
+                ));
             }
+            DB::table('failures')->insert($data);
+            Log::info('failure-after'.Carbon::now());
             return response()->json(['status'=>'success'],200);
         }catch (\Exception $e){
             Log::info($e->getMessage());
@@ -113,13 +129,17 @@ class DashboardController extends Controller
     {
         try {
             $items=$request->all();
+            $data=[];
+            Log::info('errors-before'.Carbon::now());
             foreach ($items as $item){
-                Error::create([
+                array_push( $data,array(
                     'equipment_id'=>$item['id'],
                     'error_code'=>$item['error_code'],
-                    'dateTime'=>$item['dateTime'],
-                ]);
+                    'dateTime'=>$item['dateTime']
+                ));
             }
+            DB::table('errors')->insert($data);
+            Log::info('errors-after'.Carbon::now());
             return response()->json(['status'=>'success'],200);
         }catch (\Exception $e){
             Log::info($e->getMessage());

@@ -50,10 +50,33 @@
                                                     <a href="{{ route('users.edit',encrypt($user->id))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                 </span>
                                                 <span class="actionCust" >
-                                                    <a href="#"><i class="fa fa-trash"></i></a>
+                                                    <a ><i class="fa fa-trash"  data-toggle="modal" data-target="#{{$user->id}}"></i></a>
                                                 </span>
                                             </td>
+
                                         </tr>
+
+                                        <div class="modal fade" id="{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="DeleteEquipment" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="DeleteEquipment">{{__('Are you sure you want to delete this')}} <br>{{__('account1')}} ?</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        {!! Form::open(['method'=>'POST','action'=>['UsersController@destroy',encrypt($user->id)]]) !!}
+                                                        @csrf
+                                                        <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
+                                                        <button type="submit" class="btn btn-general btn-danger">{{__('Close')}}</button>
+                                                        {!! Form::close() !!}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     @endforeach
 
                                     </tbody>
@@ -68,10 +91,10 @@
 
     </section>
 
-
     <script>
 
         $(document).ready(function() {
+
             var dataTable = $('#filtertable').DataTable({
                 @if(App::getLocale()=='fr')
                 "language": {

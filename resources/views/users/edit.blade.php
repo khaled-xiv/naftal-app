@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', __('User Settings'))
+@section('title', __('User settings'))
 @section('content')
 <!-- Edit User -->
 <!-- Modal -->
@@ -8,7 +8,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="form-alert-header" style="text-transform:capitalize"></h5>
+                <h5 class="modal-title" id="form-alert-header"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -93,8 +93,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                <button type="submit" class="btn btn-yellow"onclick="form_submit('submit_modal')">{{__('Update')}}</button>
+                <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="submit" class="btn btn-general btn-yellow"onclick="form_submit('submit_modal')">{{__('Update')}}</button>
             </div>
             {!! Form::close() !!}
         </div>
@@ -113,8 +113,8 @@
             <div class="modal-footer">
                 {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['UsersController@close',encrypt($user->id)]]) !!}
                 @csrf
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
-                <button type="submit" class="btn btn-danger">{{__('Close')}}</button>
+                <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
+                <button type="submit" class="btn btn-general btn-danger">{{__('Close')}}</button>
                 {!! Form::close() !!}
             </div>
 
@@ -128,165 +128,170 @@
         <div class="container">
 
             <br><br>
-            <div class="row  col-md-12 col-sm-12 col-xs-12 align-items-start ">
-                <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12">
-                    <h3>{{__('Account+')}}</h3>
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12 " align="center" >
+                    <div class="row"><br><br></div>
 
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Name')}}</label>
+                    <div class="picture" >
+                        <form enctype="multipart/form-data" action="upload-image/{{$user->id}}" id="upload-form" method="post">
+                            @csrf
+                            <input id="upload" style="display: none" accept="image/x-png,image/gif,image/jpeg" name="photo" type="file"/>
+                        </form>
+                        @if(is_null($user->photo))
+                            <i class="fa fa-upload" id="upload-icon"></i>
+
+                        @else
+                            <img src="{{asset('img/users/'.$user->photo)}}" alt="Upload photo" class="img-thumbnail img-responsive">
+
+                            <div class="team-member-overlay" id="upload_link">
+                                <div class="team-member-info text-center">
+                                    <ul class="img-icons">
+                                        <li><a href="#" ><i id="edit-icon" class="fa fa-pencil"></i></a></li>
+                                        <li><a href="remove-image" ><i class="fa fa-trash"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                        @endif
+
+                    </div>
+
+                </div>
+                <div class="col-md-9 col-sm-12 col-xs-12 align-items-start ">
+                    <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12">
+                        <h3>{{__('Account+')}}</h3>
+
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Name')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('name','{{app()->getLocale()}}')">
                                     {{$user->name}}
                                     <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('email','{{app()->getLocale()}}')">
                                 {{$user->email}}
                                 <span class="edit"><i class="fa fa-pencil "></i> </span>
                             </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Password')}}</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Password')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('password','{{app()->getLocale()}}')">
                                 ••••••••
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="break"></div>
+                            <div class="break"></div>
 
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Center')}}</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Center')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('center_id','{{app()->getLocale()}}')">
                                 {{$user->center->code}}
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>Role</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>Role</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                 <span class="credential-detail" data-toggle="modal" data-target="#exampleModalCenter"
                                       onclick="fill_field1('role_id','{{app()->getLocale()}}')">
                                 {{__($user->role->name)}}
                                 <span class="edit"><i class="fa fa-pencil "></i></span>
                             </span>
+                                </div>
                             </div>
+
                         </div>
 
-                    </div>
+                        <br>
+                        <h3>{{__('Phone')}}</h3>
 
-                    <br>
-                    <h3>{{__('Phone')}}</h3>
-
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Phone')}}</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <span class="credential-detail " data-toggle="modal" data-target="#exampleModalCenter"
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Phone')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                <span class="credential-detail "
                                       onclick="fill_field1('phone','{{app()->getLocale()}}')" style="@if($user->phone==null) display:none @endif">
                                     {{$user->phone}}
-                                    <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;&nbsp;
-                                @if($user->phone==null)
-                                <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field1('phone+add')">{{__('Add')}} {{__('Phone')}}</button>
-                                @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removePhone',encrypt($user->id)]]) !!}
 
-                                @csrf
-                                <span>
-                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
-                                {!! Form::close() !!}
-                                    </span>
 
-                                @endif
-
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <h3>{{__('Address')}}</h3>
+                        <br>
+                        <h3>{{__('Address')}}</h3>
 
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <label>{{__('Address')}}</label>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <span class="credential-detail"  data-toggle="modal" data-target="#exampleModalCenter"
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <label>{{__('Address')}}</label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                <span class="credential-detail"
                                       onclick="fill_field1('address','{{app()->getLocale()}}')" style="@if($user->address==null) display:none @endif">
                                     {{$user->address}}
-                                    <span class="edit"><i class="fa fa-pencil "></i>  </span>
                                 </span>&nbsp;&nbsp;
-                                @if($user->address==null)
-                                <button class="btn  btn-primary" style="margin-left: 30px" data-toggle="modal" data-target="#exampleModalCenter"
-                                        onclick="fill_field1('address+add','{{app()->getLocale()}}')">{{__('Add')}} {{__('Address')}}</button>
-                                @else
-                                {!! Form::open(['method'=>'POST','id'=>'remove_form','action'=> ['UsersController@removeAddress',encrypt($user->id)]]) !!}
 
-                                @csrf
-                                <span>
-                                        {!! Form::submit(__('Remove'), ['class'=>'btn btn-danger','style'=>'margin-left: 30px']) !!}
-                                {!! Form::close() !!}
-                                    </span>
+                                </div>
 
-                                @endif
                             </div>
-
                         </div>
-                    </div>
 
-                    <h3>{{__('Deactivate Account')}}</h3>
+                        <br>
+                        <h3>{{__('Deactivate Account')}}</h3>
 
-                    <div class="account-settings ">
-                        <div class="credential row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label id="delete-message">{{__('If you want to close the account this click to the button bellow')}} <br>
-                                    {{__('Note that the account still be closed untill next logged in')}}
-                                </label>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="account-settings ">
+                            <div class="credential row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <label id="delete-message">{{__('If you want to close the account this click to the button bellow')}} <br>
+                                        {{__('Note that the account still be closed untill next logged in')}}
+                                    </label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
                                 <span>
 
-                                    <button class="btn  btn-danger" style="margin-left: 40px ;"
+                                    <button class="btn btn-general  btn-danger" style="margin-left: 40px ;"
                                             data-toggle="modal" data-target="#exampleModal">{{__('Close')}}</button>
                                 </span>
 
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
+
 
         </div>
 
@@ -295,30 +300,5 @@
 </section>
 <!-- Edit User Ends -->
 
-<script !src="">
-
-    @if($errors->any())
-        toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-top-full-width",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "500",
-        "hideDuration": "300",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "slideDown",
-        "hideMethod": "slideUp"
-    }
-
-    toastr.error("{{$errors->first()}}");
-    $('.toast-message').css('text-align','center');
-    @endif
-</script>
 
 @endSection
