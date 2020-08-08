@@ -1,12 +1,21 @@
 <?php
 
+use App\Events\StatusLiked;
 use GuzzleHttp\Client;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','localize','setLang']], function()
 {
     //    Home route
-    Route::get('/', 'HomeController@index')->name('home');
+//    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', function (){
+        return view('test');
+    })->name('home');
+
+    Route::get('test', function () {
+        event(new StatusLiked('Someone'));
+        return "Event has been sent!";
+    });
 
 
     //    contact route
@@ -85,7 +94,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     //Route::resource('equipments', 'EquipmentController');
     Route::get(LaravelLocalization::transRoute('routes.equipments'), 'EquipmentController@index');
-    Route::get(LaravelLocalization::transRoute('routes.equipment-create'), 'EquipmentController@create');
+    Route::get(LaravelLocalization::transRoute('routes.equipment-create'), 'EquipmentController@create')->name('equipment-create');
     Route::get(LaravelLocalization::transRoute('routes.equipment-edit'), 'EquipmentController@edit');
     Route::post('equipments', 'EquipmentController@store');
     Route::delete('equipments/{id}', 'EquipmentController@destroy');

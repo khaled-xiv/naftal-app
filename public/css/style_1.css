@@ -504,6 +504,14 @@ div.forum-box-footer:before {
 
 /*side navbar*/
 
+.horisontal-center{
+    margin-left: 35px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 #toggle-side-nav-btn{
     font-size: 30px;
     color: #f4c613;
@@ -553,6 +561,10 @@ div.forum-box-footer:before {
 #left-side .side-nav .side-nav-item i{
 	margin-right: 10px;
 	font-size: 1.2em;
+}
+
+#left-side .side-nav .side-nav-item a:active{
+    color:#f4c613 ;
 }
 
 /* #left-side .side-nav .side-nav-item:after { */

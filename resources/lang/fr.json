@@ -34,6 +34,7 @@
     "Address": "Adresse",
     "Update": "Modifier",
     "Close": "Fermer",
+    "Request of intervention": "Demande d'intervetion",
     "User settings": "Paramètres d'utilisateur",
     "Are you sure you want to close your": "Voulez-vous vraiment fermer votre",
     "Are you sure you want to close this": "Voulez-vous vraiment fermer ce",
@@ -52,6 +53,7 @@
     "Yes": "Oui",
     "No": "Non",
     "add user": "Ajouter",
+    "Dashboard": "Tableau de bord",
 
     "account1": "compte",
     "Cancel": "Annuler",

@@ -25,6 +25,8 @@
 {{--material design lite --}}
 {{--<link rel="stylesheet" href="{{asset('css/material.min.css')}}">--}}
 
+{{--<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-notifications.min.css')}}">--}}
+
 <!-- Animate Css -->
 <link href="{{asset('css/animate/animate.min.css')}}" rel="stylesheet">
 

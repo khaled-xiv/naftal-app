@@ -7,11 +7,9 @@
                 <div class="navbar-header">
                     <!-- Mobile Menu Open Button -->
                     <i id="mobile-nav-open-btn" class="fa fa-bars"></i>
-{{--                    <span id="mobile-nav-open-btn">&#9776;</span>--}}
 
                 </div>
 
-                {{--                <!-- Main Menu -->--}}
                 <div class="container ">
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
@@ -24,13 +22,15 @@
                                     <input type="text" class="form-control" style="display: none" id="nav-search"  name="search" placeholder="Search..">
                                 </form>
                             </li>
-                            <li><a class="btn btn-link" href="" id="fa-search" ><i class="fa fa-search"style="font-size: 20px ;margin-right: 25px; color: rgba(206,206,206,0.33);"></i></a></li>
+                            <li><a class="btn btn-link" href="" id="fa-search" ><i class="fa fa-search"style="font-size: 20px ;margin-right: 25px; color: #555;"></i></a></li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-bell" style="font-size: 20px ;color: rgba(206,206,206,0.33);"></i>
+                                <a class="nav-link text-light notif" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bell" style="font-size: 20px ;color:#555;"></i>
+                                    <span class="num">2</span>
                                 </a>
-                                <ul class="dropdown-menu">
+
+                                <ul class="dropdown-menu dropdown-menu-1">
                                     <li class="head text-light bg-dark">
                                         <div class="row">
                                             <div class="col-lg-12 col-sm-12 col-12">
@@ -40,19 +40,19 @@
                                         </div>
                                     </li>
                                     <li class="notification-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                                <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
-                                            </div>
-                                            <div class="col-lg-8 col-sm-8 col-8">
-                                                <strong class="text-info">David John</strong>
-                                                <div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                </div>
-                                                <small class="text-warning">27.11.2015, 15:00</small>
-                                            </div>
-                                        </div>
-                                    </li>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-sm-3 col-3 text-center">
+                                                            <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
+                                                        </div>
+                                                        <div class="col-lg-8 col-sm-8 col-8">
+                                                            <strong class="text-info">David John</strong>
+                                                            <div>
+                                                                Lorem ipsum dolor sit amet, consectetur
+                                                            </div>
+                                                            <small class="text-warning">27.11.2015, 15:00</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
                                     <li class="notification-box bg-gray">
                                         <div class="row">
                                             <div class="col-lg-3 col-sm-3 col-3 text-center">
@@ -68,19 +68,34 @@
                                         </div>
                                     </li>
                                     <li class="notification-box">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                                <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
-                                            </div>
-                                            <div class="col-lg-8 col-sm-8 col-8">
-                                                <strong class="text-info">David John</strong>
-                                                <div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                </div>
-                                                <small class="text-warning">27.11.2015, 15:00</small>
-                                            </div>
-                                        </div>
-                                    </li>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-sm-3 col-3 text-center">
+                                                            <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
+                                                        </div>
+                                                        <div class="col-lg-8 col-sm-8 col-8">
+                                                            <strong class="text-info">David John</strong>
+                                                            <div>
+                                                                Lorem ipsum dolor sit amet, consectetur
+                                                            </div>
+                                                            <small class="text-warning">27.11.2015, 15:00</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                    <li class="notification-box bg-gray">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-sm-3 col-3 text-center">
+                                                            <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
+                                                        </div>
+                                                        <div class="col-lg-8 col-sm-8 col-8">
+                                                            <strong class="text-info">David John</strong>
+                                                            <div>
+                                                                Lorem ipsum dolor sit amet, consectetur
+                                                            </div>
+                                                            <small class="text-warning">27.11.2015, 15:00</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
                                     <li class="footer bg-dark text-center">
                                         <a href="" class="text-light">View All</a>
                                     </li>
@@ -140,4 +155,3 @@
     </nav>
 </header>
 <!-- Header Ends -->
-

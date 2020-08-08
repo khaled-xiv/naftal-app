@@ -7,6 +7,7 @@ use App\Likable;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
@@ -88,13 +89,14 @@ class ForumController extends Controller
         }
         $url = 'http://localhost:8000/sim/forums/'.$forum->id.'/embeddings/';
         $client = new Client();
-
-        // $res = $client->post($url, []);
+        Log::info('salam');
 		try {
 			$client->request('POST', $url, [
 				'timeout' => 7
 			]);
-		} catch (\Exception $e) {}
+		} catch (\Exception $e) {
+		    Log::info($e->getMessage());
+        }
         return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.forums'));
     }
 

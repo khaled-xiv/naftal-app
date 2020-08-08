@@ -40,6 +40,43 @@
 <!--    Custom Script-->
 <script src="{{ asset('js/script_1.js') }}" defer></script>
 
+<script src="//js.pusher.com/3.1/pusher.min.js"></script>
+
+<script type="text/javascript">
+
+    var pusher = new Pusher('ca6a1e4c88c7b53d41e7', {
+        cluster: 'eu',
+        encrypted: true
+    });
+
+    // Subscribe to the channel we specified in our Laravel Event
+    var channel = pusher.subscribe('status-liked');
+
+    // Bind a function to a Event (the full Laravel class)
+    channel.bind('App\\Events\\StatusLiked', function(data) {
+        var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+        var newNotificationHtml = `
+          <li class="notification-box">
+             <div class="row">
+                <div class="col-lg-3 col-sm-3 col-3 text-center">
+                    <img src="https://api.adorable.io/avatars/71/\`+avatar+\`.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
+                </div>
+                <div class="col-lg-8 col-sm-8 col-8">
+                <strong class="text-info">David John</strong>
+                <div>
+                Lorem ipsum dolor sit amet, consectetur
+                </div>
+                <small class="text-warning">27.11.2015, 15:00</small>
+                </div>
+               </div>
+               </li>
+        `;
+        $(newNotificationHtml).insertAfter ($('ul.dropdown-menu-1 li.head'))
+        $('.num').html(15);
+    });
+
+</script>
+
 <script>
 	var sideNavHidden = false;
 

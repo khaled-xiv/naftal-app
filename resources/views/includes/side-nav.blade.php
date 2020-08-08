@@ -1,49 +1,49 @@
 <div class="side-nav">
 	<div class="side-nav-item">
         <a href="{{url(app()->getLocale())}}"><i class="fa fa-home"></i>
-            {{ __('home') }}
+            {{ ucwords(__('home')) }}
         </a>
     </div>
 
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/dashboard')}}"><i class="fa fa-dashboard"></i>
-            {{ __('dashboard') }}
+            {{__('Dashboard') }}
         </a>
     </div>
 
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/'.__('centers'))}}"><i class="fa fa-building-o"></i>
-            {{ __('centers') }}
+            {{ ucwords(__('centers')) }}
         </a>
     </div>
 
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/'. __('users'))}}"><i class="fa fa-users"></i>
-            {{ __('users') }}
+            {{ ucwords(__('users')) }}
         </a>
     </div>
 
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/'.__('equipments'))}}"><i class="fa fa-gears"></i>
-            {{ __('equipments') }}
+            {{ ucwords(__('equipments')) }}
         </a>
     </div>
 
     <div class="side-nav-item">
-        <a href="{{url(app()->getLocale().'/'.__('request-of-intervention'))}}"><i class="fa fa-home"></i>
-            {{ __('interventions') }}
+        <a  href="{{url(app()->getLocale().'/'.__('request-of-intervention'))}}"><i class="fa fa-home"></i>
+            {{ __('Request of intervention') }}
         </a>
     </div>
 
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/forums')}}"><i class="fa fa-newspaper-o"></i>
-            {{ __('forums') }}
+            {{ ucwords(__('forums')) }}
         </a>
     </div>
 
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/#contact')}}"><i class="fa fa-envelope-o"></i>
-            {{ __('contact') }}
+            {{ ucwords(__('contact')) }}
         </a>
     </div>
 

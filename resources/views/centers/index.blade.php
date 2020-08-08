@@ -6,6 +6,7 @@
             <div class="content-box-md">
                 <div class="container p-30">
                     <div class="row">
+
                         <div class="col-md-12 main-datatable">
                             <div class="card_body">
                                 <div class="row d-flex">
@@ -22,11 +23,11 @@
                                     </div>
                                 </div>
                                 <div class="overflow-x">
-                                    <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                    <table id="filtertable" class="table cust-datatable dataTable no-footer">
                                         <thead>
                                             <tr>
                                                 <th style="min-width:50px;">{{ucwords(__('code'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('location'))}}</th>
+                                                <th style="min-width:100px;">{{ucwords(__('location'))}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('phone'))}}</th>
                                                 <th style="min-width:100px;">Action</th>
                                             </tr>
@@ -54,6 +55,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
 
