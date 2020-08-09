@@ -41,21 +41,10 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
 
     }
 
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -76,6 +65,10 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         return $this->belongsTo("App\Center");
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notifiable::class);
+    }
     public function has_role($name)
     {
         if($this->role->name==$name && $this->is_active==1){

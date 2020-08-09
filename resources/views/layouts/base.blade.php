@@ -46,14 +46,21 @@
 
     var pusher = new Pusher('ca6a1e4c88c7b53d41e7', {
         cluster: 'eu',
-        encrypted: true
+        encrypted: true,
+        authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
+        auth: {
+            headers: {
+                'X-CSRF-Token':'{{csrf_token()}}',
+                Accept: 'application/json',
+            },
+        },
     });
 
     // Subscribe to the channel we specified in our Laravel Event
-    var channel = pusher.subscribe('status-liked');
+    var channel = pusher.subscribe('private-notifications.'+{{Auth::user()->id}});
 
     // Bind a function to a Event (the full Laravel class)
-    channel.bind('App\\Events\\StatusLiked', function(data) {
+    channel.bind('notify', function(data) {
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var newNotificationHtml = `
           <li class="notification-box">
@@ -71,29 +78,19 @@
                </div>
                </li>
         `;
-        $(newNotificationHtml).insertAfter ($('ul.dropdown-menu-1 li.head'))
+        $(newNotificationHtml).insertAfter ($('ul.dropdown-menu-1 li.head'));
+        $('#bell').addClass('bell-animations');
+        setTimeout(function () {
+            $('#bell').removeClass('bell-animations');
+        },2000)
         $('.num').html(15);
+        let src1 = '{{asset('audio/ring.mp3')}}';
+        var snd='<audio autoplay=true> <source src='+src1+'></audio>'
+        // let audio = new Audio(src);
+        // audio.play();
+        $('body').append(snd);
     });
 
-</script>
-
-<script>
-	var sideNavHidden = false;
-
-	function hideSideNav(){
-		let left = document.getElementById("left-side");
-		let right = document.getElementById("right-side");
-		if(!sideNavHidden){
-			right.style.width = "100%";
-			right.style.marginLeft = "0px";
-			left.style.width = "0";
-		}else{
-			right.style.width = "calc(100% - 250px)";
-			right.style.marginLeft = "250px";
-			left.style.width = "250px";
-		}
-		sideNavHidden = !sideNavHidden;
-	}
 </script>
 
 </html>

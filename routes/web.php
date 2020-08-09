@@ -1,19 +1,39 @@
 <?php
 
-use App\Events\StatusLiked;
+use App\Events\SendNotifications;
+use App\Notification;
 use GuzzleHttp\Client;
+use Pusher\Pusher;
+
+Route::post('broadcasting/auth',function (){
+    if (!Auth::check()) {
+
+        return redirect()->route('login');
+
+    }
+    $pusher = new Pusher(config('broadcasting.connections.pusher.key'),
+        config('broadcasting.connections.pusher.secret'),
+        config('broadcasting.connections.pusher.app_id'));
+
+    $auth=$pusher->socket_auth($_POST['channel_name'],$_POST['socket_id']);
+    return response($auth);
+    });
+
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','localize','setLang']], function()
 {
     //    Home route
-//    Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/', function (){
-        return view('test');
-    })->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('test', function () {
-        event(new StatusLiked('Someone'));
+        $notification=Notification::create([
+            'user_id'=>1,
+            'link'=>1,
+            'is_read'=>0,
+            'content'=>"hi",
+        ]);
+        event(new SendNotifications($notification));
         return "Event has been sent!";
     });
 

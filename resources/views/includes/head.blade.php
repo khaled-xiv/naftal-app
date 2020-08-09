@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="{{asset('css/responsive-tabs/responsive-tabs.min.css')}}">
 
 <!-- Custom Styles -->
+<link href="{{asset('css/toast/toastr.css')}}" rel="stylesheet">
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/style_1.css')}}" rel="stylesheet">
 <link href="{{asset('css/style4.css')}}" rel="stylesheet">
@@ -53,6 +54,6 @@
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap-select.min.js') }}"></script>
 
-{{--material design lite --}}
-{{--<script src="{{asset('js/material.min.js')}}"></script>--}}
+{{--toast js --}}
+<script src="{{asset('js/toast/toastr.min.js')}}"></script>
 

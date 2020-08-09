@@ -24,9 +24,9 @@
                             </li>
                             <li><a class="btn btn-link" href="" id="fa-search" ><i class="fa fa-search"style="font-size: 20px ;margin-right: 25px; color: #555;"></i></a></li>
 
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" id="notification-dropdown">
                                 <a class="nav-link text-light notif" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-bell" style="font-size: 20px ;color:#555;"></i>
+                                    <i id="bell" class="fa fa-bell"></i>
                                     <span class="num">2</span>
                                 </a>
 
