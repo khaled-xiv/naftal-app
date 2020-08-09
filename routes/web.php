@@ -25,6 +25,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 {
     //    Home route
     Route::get('/', 'HomeController@index')->name('home');
+//    Route::get('/', function (){
+//        return view('test');
+//    })->name('home');
 
     Route::get('test', function () {
         $notification=Notification::create([

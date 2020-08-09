@@ -39,12 +39,37 @@
 
 <script>
 
-    @if (Session::has('resent'))
 
-    toastr.success("{{__('A fresh verification link has been sent to your email address.')}}");
+    @if (Session::has('resent'))
+    $.toast({
+
+        text : "{{__('A fresh verification link has been sent to your email address.')}}",
+        showHideTransition : 'slide',
+        bgColor : 'green',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
+
     @endif
     @if (Session::has('error'))
-    toastr.error("{{Session::get('error')}}");
+    $.toast({
+
+        text : "{{Session::get('error')}}",
+        showHideTransition : 'slide',
+        bgColor : '#CA0B00',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
     @endif
 
 
