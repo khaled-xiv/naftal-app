@@ -5,13 +5,28 @@
     <title>{{__('Reset Password')}}</title>
     <!-- Custom Styles -->
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
-
-    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet" >
-
-    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <link href="{{asset('css/toast/jquery.toast.css')}}" rel="stylesheet">
 </head>
 <body>
-
+<style>
+    .jq-toast-single{
+        font-size: 20px;
+        line-height: 35px;
+    }
+    .close-jq-toast-single{
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    .jq-toast-wrap{
+        left: 0 !important;
+        top:0px;
+        width: 100%;
+        height: 60px;
+    }
+</style>
 
 <div class="limiter">
     <div class="container-login100">
@@ -47,18 +62,44 @@
     </div>
 </div>
 
-<script src="{{ asset('js/toastr.min.js') }}"></script>
-</body>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/toast/jquery.toast.min.js') }}"></script>
 <script !src="">
     @if (Session::has('status'))
-        toastr.success("{{Session::get('status')}}");
+    $.toast({
+
+        text : "{{Session::get('status')}}",
+        showHideTransition : 'slide',
+        bgColor : 'green',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
     @endif
     @if (Session::has('error'))
-        toastr.error("{{Session::get('error')}}");
+    $.toast({
+
+        text : "{{Session::get('error')}}",
+        showHideTransition : 'slide',
+        bgColor : '#CA0B00',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
     @endif
 
 
 
 </script>
+</body>
+
 
 </html>

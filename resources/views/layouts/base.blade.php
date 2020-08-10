@@ -86,8 +86,6 @@
         $('.num').html(15);
         let src1 = '{{asset('audio/ring.mp3')}}';
         var snd='<audio autoplay=true> <source src='+src1+'></audio>'
-        // let audio = new Audio(src);
-        // audio.play();
         $('body').append(snd);
     });
 
