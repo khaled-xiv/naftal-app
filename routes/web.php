@@ -3,6 +3,7 @@
 use App\Events\SendNotifications;
 use App\Notification;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 use Pusher\Pusher;
 
 Route::post('broadcasting/auth',function (){
@@ -25,9 +26,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 {
     //    Home route
     Route::get('/', 'HomeController@index')->name('home');
-//    Route::get('/', function (){
-//        return view('test');
-//    })->name('home');
+
+    //mark notification as read
+    Route::post('/mark-as-read',function (){
+        Notification::where('user_id',Auth()->user()->id)
+            ->where('is_read',0)->update(['is_read'=>1]);
+        return response()->json(['success'=>true],200);
+
+    });
 
     Route::get('test', function () {
         $notification=Notification::create([

@@ -25,6 +25,29 @@ body {
     color: #212226;
 }
 
+
+/*scroller*/
+
+html {
+    --scrollbarBG: #CFD8DC;
+    --thumbBG: #f4c613;
+}
+body::-webkit-scrollbar {
+    width: 11px;
+}
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 6px;
+    border: 1px solid var(--scrollbarBG);
+}
+
 h1,
 h2,
 h3,

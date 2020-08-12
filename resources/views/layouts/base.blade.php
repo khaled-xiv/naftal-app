@@ -63,7 +63,7 @@
     channel.bind('notify', function(data) {
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var newNotificationHtml = `
-          <li class="notification-box">
+          <li class="notification-box bg-gray">
              <div class="row">
                 <div class="col-lg-3 col-sm-3 col-3 text-center">
                     <img src="https://api.adorable.io/avatars/71/\`+avatar+\`.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
@@ -83,11 +83,24 @@
         setTimeout(function () {
             $('#bell').removeClass('bell-animations');
         },2000)
-        $('.num').html(15);
+        var count=$('span.num').text();
+        $('span.num').html(+count+1);
         let src1 = '{{asset('audio/ring.mp3')}}';
         var snd='<audio autoplay=true> <source src='+src1+'></audio>'
         $('body').append(snd);
     });
+
+    function markAsRead() {
+        $.ajax({
+            type: 'post',
+            url: '/{{app()->getLocale()}}/mark-as-read',
+            data: {_token: '{{csrf_token()}}'},
+            success: function (data) {
+                $('span.num').html(0);
+                $('.notification-box').removeClass('bg-gray');
+            }
+        })
+    }
 
 </script>
 
