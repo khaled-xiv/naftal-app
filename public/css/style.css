@@ -657,3 +657,19 @@ a.notif {
     -webkit-transform: translateY(-20px);
     transform: translateY(-20px);
 }
+
+/* =========================================
+                Slider Buttons
+============================================ */
+
+.owl-theme .owl-nav [class*=owl-] {
+    color: #212226;
+    font-size: 40px;
+    background: none;
+    margin: 0;
+}
+
+.owl-theme .owl-nav [class*=owl-]:hover {
+    background: none;
+    color: #212226;
+}

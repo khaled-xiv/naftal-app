@@ -139,17 +139,18 @@
         <div id="home-content-inner" class="text-center">
 
             <div id="home-heading">
-                <h1 id="home-heading-1">{{ __('Laravel') }}</h1><br>
+
+                <h1 id="home-heading-1">{{ __('digitize') }}</h1><br>
                 {{--                <h1 id="home-heading-1">Digital</h1><br>--}}
-                <h1 id="home-heading-2">Creative <span>Agency</span></h1>
+                <h1 id="home-heading-2">{{__('your')}} <span>{{__('maintenance')}}</span></h1>
             </div>
 
             <div id="home-text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam in nihil minima unde qui nihil minima.</p>
+                <p>{{__('Declare and follow the interventions in the field and plan them in a few clicks')}}.</p>
             </div>
 
             <div id="home-btn">
-                <a class="btn btn-general btn-home smooth-scroll" href="#about" title="Start Now" role="button">Start Now</a>
+                <a class="btn btn-general btn-home smooth-scroll" href="#about" title="Start Now" role="button">{{__('Start Now')}}</a>
             </div>
 
         </div>
