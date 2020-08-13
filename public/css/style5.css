@@ -734,7 +734,27 @@ ul.navbar-nav>li>a:focus{
     color: #f4c613;
     font-weight: 500;
 }
+/* =========================================
+                toast
+============================================ */
 
+.jq-toast-single{
+    font-size: 20px;
+    line-height: 35px;
+}
+.close-jq-toast-single{
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.jq-toast-wrap{
+    left: 0 !important;
+    top:0px;
+    width: 100%;
+    height: 60px;
+}
 
 /* =========================================
                 Animation

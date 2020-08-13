@@ -8,9 +8,7 @@ use Pusher\Pusher;
 
 Route::post('broadcasting/auth',function (){
     if (!Auth::check()) {
-
         return redirect()->route('login');
-
     }
     $pusher = new Pusher(config('broadcasting.connections.pusher.key'),
         config('broadcasting.connections.pusher.secret'),
@@ -46,23 +44,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         return "Event has been sent!";
     });
 
-
     //    contact route
     Route::post('/sendEmail', 'HomeController@sendEmail')->name('send-email') ;
 
     //    login routes
     Route::get(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@showLoginForm')->name('login');
     Route::post(LaravelLocalization::transRoute('routes.login'), 'Auth\LoginController@login')->name('login');
-    Route::get(LaravelLocalization::transRoute('routes.logout'), function () {
-        Auth::logout();
-        return redirect("/");
-    })->name('logout');
-
-    //  registration routes
-    Route::group(['middleware'=>'role:admin'],function(){
-        Route::get(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@showRegistrationForm')->name('register');
-        Route::post(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@register')->name('register');
-    });
+    Route::get(LaravelLocalization::transRoute('routes.logout'), 'Auth\LoginController@logout')->name('logout');
 
     //    reset password routes
     Route::get(LaravelLocalization::transRoute('routes.password-request'), 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -75,6 +63,23 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get(LaravelLocalization::transRoute('routes.verification-notice'), 'Auth\VerificationController@show')->name('verification.notice');
     Route::get(LaravelLocalization::transRoute('routes.verification-verify'), 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post(LaravelLocalization::transRoute('routes.verification-resend'), 'Auth\VerificationController@resend')->name('verification.resend');
+
+
+    //    Admin routes
+    Route::group(['middleware'=>'role:admin'],function(){
+        //  registration routes
+        Route::get(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@showRegistrationForm')->name('register');
+        Route::post(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@register')->name('register');
+
+
+        Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
+        Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create')->name('center.create');
+        Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit');
+        Route::post('centers', 'CenterController@store');
+        Route::delete('centers/{id}', 'CenterController@destroy');
+        Route::put('centers/{id}', 'CenterController@update');
+    });
+
 
     //    Account routes
     Route::get(LaravelLocalization::transRoute('routes.account'), 'AccountController@index')->name('account.show');
@@ -97,29 +102,20 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::post('/users/delete/{id}', 'UsersController@destroy');
     });
 
-    Route::group(['middleware'=>'role:center chief'],function() {
+    Route::group(['middleware'=>'role:center chief,district chief'],function() {
         Route::get(LaravelLocalization::transRoute('routes.request-create'), 'Req_interController@create')->name('request.create');
+        Route::get(LaravelLocalization::transRoute('routes.request'), 'Req_interController@index')->name('requests.show');
+        Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')->name('request.edit');
+        Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')->name('request.store');
+        Route::Put('/request-of-intervention/{id}', 'Req_interController@update');
+        Route::Delete('/request-of-intervention/{id}/delete', 'Req_interController@destroy');
+
+        Route::Put('/request-of-interventions/{request_of_intervention}', 'Req_interController@update_after_inter');
+        Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
+        Route::post('/getequipment', 'Req_interController@getEquipment');
+        Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');
     });
 
-    Route::get(LaravelLocalization::transRoute('routes.request'), 'Req_interController@index')->name('requests.show');
-    Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')->name('request.edit');
-    Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')->name('request.store');
-    Route::Put('/request-of-intervention/{id}', 'Req_interController@update');
-    Route::Delete('/request-of-intervention/{id}/delete', 'Req_interController@destroy');
-
-    Route::Put('/request-of-interventions/{request_of_intervention}', 'Req_interController@update_after_inter');
-    Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
-    Route::post('/getequipment', 'Req_interController@getEquipment');
-    Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');
-//    });
-
-    //Route::resource('centers', 'CenterController');
-    Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
-    Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create')->name('center.create');
-    Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit');
-    Route::post('centers', 'CenterController@store');
-    Route::delete('centers/{id}', 'CenterController@destroy');
-    Route::put('centers/{id}', 'CenterController@update');
 
     //Route::resource('equipments', 'EquipmentController');
     Route::get(LaravelLocalization::transRoute('routes.equipments'), 'EquipmentController@index');
