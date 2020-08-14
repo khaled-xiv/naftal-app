@@ -29,5 +29,25 @@
     "request-of-intervention":"request-of-intervention",
     "request-of-inter": "Request Of Intervention",
     "select a center": "Select a center",
-    "select a role": "Select a role"
+
+    "Essence Super": "Super essence",
+    "Essence super Sans plomb": "Premium unleaded gasoline",
+    "Gas oil": "Diesel fuel",
+
+    "Le traitement du gaz naturel ou gaz associés": "The treatment of natural gas or associated gas",
+    "Le raffinage du pétrole": "Petroleum refining",
+    "La liquéfaction du gaz naturel": "Liquefaction of natural gas",
+
+    "Lubrifiants Aviation": "Aviation lubricants",
+    "Huiles Moteurs": "Engine oils",
+    "Fluides Hydrauliques": "Hydraulic fluids",
+    "Carburants Aviation": "Aviation fuels",
+    "Huiles Turbines": "Turbine oils",
+    "Produits Spéciaux": "Special Products",
+    "Autres": "Others",
+
+    "Lubrifiants Marine": "Marine lubricants",
+    "Huiles Cylindres": "Cylinder oils",
+    "Huiles Engrenages": "Gear oils",
+    "Carburants Marine": "Marine fuels"
 }
