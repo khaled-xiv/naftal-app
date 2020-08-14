@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Center;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,7 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         $centers=Center::all();
-        return view('home',compact('centers'));
+        $users=User::whereIn('role_id',[2,3])->get();
+        return view('home',compact('centers','users'));
     }
 
     public function sendEmail(Request $request)
