@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>@yield('title')</title>
+    <title>{{__('Home')}}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +32,8 @@
     <!-- Responsive Tabs CSS -->
     <link rel="stylesheet" href="{{asset('css/responsive-tabs/responsive-tabs.min.css')}}">
 
+    {{--    toast --}}
+    <link href="{{asset('css/toast/jquery.toast.css')}}" rel="stylesheet">
     <!-- Custom Styles -->
     <link href="{{asset('css/style5.css')}}" rel="stylesheet">
 
@@ -53,10 +55,10 @@
 
                 <div class="navbar-header">
                     <!-- Mobile Menu Open Button -->
-                    <span id="mobile-nav-open-btn">&#9776;</span>
+                    <i id="mobile-nav-open-btn" class="fa fa-bars"></i>
                 </div>
 
-                {{--                <!-- Main Menu -->--}}
+                <!-- Main Menu -->
                 <div class="container ">
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
@@ -139,17 +141,18 @@
         <div id="home-content-inner" class="text-center">
 
             <div id="home-heading">
-                <h1 id="home-heading-1">{{ __('Laravel') }}</h1><br>
+
+                <h1 id="home-heading-1">{{ __('digitize') }}</h1><br>
                 {{--                <h1 id="home-heading-1">Digital</h1><br>--}}
-                <h1 id="home-heading-2">Creative <span>Agency</span></h1>
+                <h1 id="home-heading-2">{{__('your')}} <span>{{__('maintenance')}}</span></h1>
             </div>
 
             <div id="home-text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam in nihil minima unde qui nihil minima.</p>
+                <p>{{__('Declare and follow the interventions in the field and plan them in a few clicks')}}.</p>
             </div>
 
             <div id="home-btn">
-                <a class="btn btn-general btn-home smooth-scroll" href="#about" title="Start Now" role="button">Start Now</a>
+                <a class="btn btn-general btn-home smooth-scroll" href="#about" title="Start Now" role="button">{{__('Start Now')}}</a>
             </div>
 
         </div>
@@ -412,7 +415,6 @@
 
 <!-- Services -->
 <section id="services">
-
     <!-- Services 02 -->
     <div id="services-02">
 
@@ -609,7 +611,8 @@
                     <!--                     Contact Right -->
                     <div class="contact-right">
 
-                        {!! Form::open(['method'=>'POST', 'action'=> ['HomeController@sendEmail']]) !!}
+                        {!! Form::open(['method'=>'POST','id'=>'contact_form', 'action'=> ['HomeController@sendEmail']]) !!}
+
                         <h4>Send Message</h4>
                         <p>If you have any problem please contact us.</p>
 
@@ -642,9 +645,8 @@
                         </div>
 
                         <div id="submit-btn" class="text-right">
-                            <button class="btn btn-general btn-yellow" type="submit" href="" title="Submit" role="button">Submit</button>
+                            <button class="btn btn-general btn-yellow" id="btn-submit" type="submit" href="" title="Submit" role="button">Submit</button>
                         </div>
-
                         {!! Form::close() !!}
                     </div>
 
@@ -707,5 +709,63 @@
 
 <!--    Custom Script-->
 <script src="{{ asset('js/script.js') }}" defer></script>
+
+<script src="{{ asset('js/toast/jquery.toast.min.js') }}"></script>
+<script !src="">
+
+    // contact_form
+
+    $("#contact_form").submit(function(e) {
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(data)
+            {
+                if(data.success==true)
+                {
+                    $.toast({
+
+                        text : data.status,
+                        showHideTransition : 'slide',
+                        bgColor : 'green',
+                        textColor : '#eee',
+                        allowToastClose : true,
+                        hideAfter : 3000,
+                        stack : 5,
+                        textAlign : 'center',
+                        position : 'bottom-center',
+                        width:"100%"
+                    })
+                }else {
+                    $.toast({
+
+                        text : data.error,
+                        showHideTransition : 'slide',
+                        bgColor : '#CA0B00',
+                        textColor : '#eee',
+                        allowToastClose : true,
+                        hideAfter : 3000,
+                        stack : 5,
+                        textAlign : 'center',
+                        position : 'bottom-center',
+                        width:"100%"
+                    })
+                }
+                form.trigger('reset');
+
+            }
+        });
+
+    });
+
+
+</script>
 </body>
 </html>

@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="go_back">
-                    <a href="{{route('login')}}" id="back"><i class="fa fa-arrow-left">  Go Back</i></a>
+                    <a href="{{route('login')}}" id="back"><i class="fa fa-arrow-left"> {{__('Go back')}}</i></a>
                 </div>
 
             </form>

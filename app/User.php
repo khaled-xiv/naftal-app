@@ -67,8 +67,17 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
 
     public function notifications()
     {
-        return $this->hasMany(Notifiable::class);
+        return $this->hasMany(Notification::class)
+            ->orderBy('created_at','desc')
+            ->limit(10);
     }
+
+    public function unReadNotifications()
+    {
+        return $this->hasMany(Notification::class)
+            ->where('is_read',0);
+    }
+
     public function has_role($name)
     {
         if($this->role->name==$name && $this->is_active==1){

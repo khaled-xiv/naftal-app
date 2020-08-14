@@ -121,6 +121,22 @@
             });
         } );
 
+        @if (Session::has('status'))
+        $.toast({
+
+            text : "{{Session::get('status')}}",
+            showHideTransition : 'slide',
+            bgColor : 'green',
+            textColor : '#eee',
+            allowToastClose : true,
+            hideAfter : 3000,
+            stack : 5,
+            textAlign : 'center',
+            position : 'bottom-center',
+            width:"100%"
+        })
+        @endif
+
     </script>
 
     <!-- Users Ends -->

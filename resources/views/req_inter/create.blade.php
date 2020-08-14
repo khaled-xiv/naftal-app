@@ -150,7 +150,6 @@
                 data: {name: $("select[name='equipment']").val(), _token: '{{csrf_token()}}'},
                 success: function (data) {
                     $("#equipment_id_code").show();
-                    console.log(data.msg);
                     $("#equipment_id").children().remove();
                     for (var i = 0; i < data.msg.length; i++) {
                         $("#equipment_id").append('<option value=' + data.msg[i].equipment_id + ' >' + data.msg[i].code + '</option>');//.val(data.msg[i].equipment_id);
