@@ -21,7 +21,7 @@ class Req_interController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth','verified','role:district chief,center chief']);
     }
 
     public function index()

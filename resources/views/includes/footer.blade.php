@@ -13,7 +13,7 @@
                 @endforeach
             </span>
                 <span class="centerd">
-                    Copyright &copy; 2020 All Rights Reserved By
+                    {{__('Copyright')}} &copy; {{__('2020 All Rights Reserved By')}}
                 </span>
 
                    <span id="naftal_inc" >Naftal Inc.</span>

@@ -20,7 +20,7 @@ class UsersController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth','verified','role:admin,district chief,center chief']);
     }
 
 
