@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Illuminate\Support\Facades\DB;
 
 class ComponentController extends Controller
 {
@@ -66,8 +67,21 @@ class ComponentController extends Controller
         $component->mark = $request->mark;
         $component->reference = $request->reference;
         $component->commissioned_on = $request->commissioned_on;
+		
+		$names = DB::table('components')
+            ->select('generic_name')
+            ->groupBy('generic_name')
+            ->get()->toArray();
+		sort($names);
+		$tempComp = Component::where(['designation' => $component->designation, 'mark' => $component->mark])->first();
+		if($tempComp === null){
+			$index = sizeof($names) + 1;
+			$component->generic_name = 'comp'.$index;
+		}else {
+			$component->generic_name = $tempComp->generic_name;
+		}
+		$equipment->components()->save($component);
 
-        $equipment->components()->save($component);
         return redirect()->back();
     }
 

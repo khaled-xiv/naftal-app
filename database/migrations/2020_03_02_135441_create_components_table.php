@@ -18,9 +18,10 @@ class CreateComponentsTable extends Migration
             $table->unsignedBigInteger('equipment_id');
             $table->foreign('equipment_id')->references('id')->on('equipments')->onDelete('cascade')->onUpdate('cascade');
             $table->string('designation');
+			$table->string('generic_name');
             $table->string('mark');
             $table->string('reference');
-            $table->date('commissioned_on');
+            $table->dateTime('commissioned_on');
             $table->timestamps();
             $table->softDeletes();
         });

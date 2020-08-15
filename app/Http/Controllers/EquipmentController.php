@@ -29,6 +29,7 @@ class EquipmentController extends Controller
             'mark' => ['required', 'string', 'max:255'],
             'model' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
+			'comm_on' => ['required'],
         ]);
     }
 
@@ -83,6 +84,7 @@ class EquipmentController extends Controller
         $equipment->mark = $request->mark;
         $equipment->model = $request->model;
         $equipment->state = $request->state;
+        $equipment->commissioned_on = $request->comm_on;
 
         $center->equipments()->save($equipment);
         $temp = Equipment::latest()->first();

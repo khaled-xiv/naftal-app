@@ -40,6 +40,11 @@
     padding: 0px 25px 0px 10px;
     transition: all .6s ease;
 }
+
+.searchInput input:focus:placeholder-shown {
+    width: 100%;
+}
+
 .searchInput label {
     color: #767676;
     font-weight: normal;

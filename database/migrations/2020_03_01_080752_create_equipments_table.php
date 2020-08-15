@@ -16,7 +16,7 @@ class CreateEquipmentsTable extends Migration
         Schema::create('equipments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('model');
-            $table->integer('age');
+            $table->date('commissioned_on');
             $table->unsignedBigInteger('center_id')->nullable();
             $table->foreign('center_id')->references('id')->on('centers');
             $table->string('code')->nullable();

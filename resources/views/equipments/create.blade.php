@@ -102,8 +102,8 @@
                                                 <input id="product" type="text" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" required autocomplete="product" placeholder="{{ucfirst(__('product'))}}">
                                                 @error('product')
                                                 <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+													<strong>{{ $message }}</strong>
+												</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -113,8 +113,8 @@
                                                 <input id="rate" type="number" class="form-control" name="rate" value="{{ old('rate') }}" required autocomplete="rate" placeholder="{{ ucfirst(__('rate')) }}">
                                                 @error('rate')
                                                 <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+													<strong>{{ $message }}</strong>
+												</span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -182,9 +182,51 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                        </div>
+											<div class="form-group">
+												{!! Form::label('comm_on', ucfirst(__('commissioned on')).":",['class'=>'label_padding']) !!}
+												<input id="comm_on" type="datetime-local" class="form-control" name="comm_on" value="{{ old('comm_on') }}" required autocomplete="comm_on" placeholder="{{ ucfirst(__('commissioned on')) }}">
+												@error('comm_on')
+												<span class="invalid-feedback" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
+											</div>
+										</div>
                                     </div>
                                 @endif
+								@if($temp != 'Compteur' && $temp != 'Fuel Meter')
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												{!! Form::label('comm_on', ucfirst(__('commissioned on')).":",['class'=>'label_padding']) !!}
+												<input id="comm_on" type="datetime-local" class="form-control" name="comm_on" value="{{ old('comm_on') }}" required autocomplete="comm_on" placeholder="{{ ucfirst(__('commissioned on')) }}">
+												@error('category')
+												<span class="invalid-feedback" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+												@enderror
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+										</div>
+									</div>
+								@endif
+							@else
+								<div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            {!! Form::label('comm_on', ucfirst(__('commissioned on')).":",['class'=>'label_padding']) !!}
+                                            <input id="comm_on" type="datetime-local" class="form-control" name="comm_on" value="{{ old('comm_on') }}" required autocomplete="comm_on" placeholder="{{ ucfirst(__('commissioned on')) }}">
+                                            @error('category')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+											@enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    </div>
+                                </div>
                             @endif
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
