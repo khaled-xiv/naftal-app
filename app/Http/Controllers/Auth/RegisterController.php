@@ -15,29 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-//    protected $redirectTo = RouteServiceProvider::BACK;
-
-//    protected $redirectTo = app()->getLocale();
-
-
     public function showRegistrationForm()
     {
         $centers=Center::all()->pluck('code','id');
@@ -52,8 +30,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('chef_district');
-//        $this->middleware('guest');
+        $this->middleware(['auth','verified','role:admin']);
     }
 
     /**

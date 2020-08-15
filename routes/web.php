@@ -66,7 +66,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 
     //    Admin routes
-    Route::group(['middleware'=>'role:admin'],function(){
         //  registration routes
         Route::get(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@showRegistrationForm')->name('register');
         Route::post(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@register')->name('register');
@@ -78,7 +77,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::post('centers', 'CenterController@store');
         Route::delete('centers/{id}', 'CenterController@destroy');
         Route::put('centers/{id}', 'CenterController@update');
-    });
+
 
 
     //    Account routes

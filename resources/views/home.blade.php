@@ -520,9 +520,16 @@
                     <div id="contact-left">
 
                         <div class="vertical-heading">
-                            <h5>Who We Are</h5>
-                            <h2>Get<br>In <strong>Touch</strong></h2>
+                            @if(app()->getLocale()=="en")
+                                <h5>Who We Are</h5>
+                                <h2>Get<br>In <strong>Touch</strong></h2>
+                            @else
+                                <h5 style="left: -70px">Qui nous Sommes</h5>
+                                <h2>Avoir<br>En <strong>Contact</strong></h2>
+                            @endif
+
                         </div>
+                        <br>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias modi est itaque aliquam sit, minima esse nihil mollitia no.</p>
 
                         <div id="offices">
@@ -574,29 +581,29 @@
 
                         {!! Form::open(['method'=>'POST','id'=>'contact_form', 'action'=> ['HomeController@sendEmail']]) !!}
 
-                        <h4>Send Message</h4>
-                        <p>If you have any problem please contact us.</p>
+                        <h4>{{__('Send us message')}}</h4>
+                        <p>{{__('If you have any problem please contact us.')}}</p>
 
                         <div class="row">
 
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required id="name" placeholder="Your Name">
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required id="name" placeholder="{{__('Name')}}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" required id="email" placeholder="Email Address">
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" required id="email" placeholder="{{__('email address')}}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="Phone No.">
+                                    <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="{{('Phone')}}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" required id="subject" placeholder="Subject">
+                                    <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" required id="subject" placeholder="{{__('Subject')}}">
                                 </div>
                             </div>
 
@@ -606,7 +613,8 @@
                         </div>
 
                         <div id="submit-btn" class="text-right">
-                            <button class="btn btn-general btn-yellow" id="btn-submit" type="submit" href="" title="Submit" role="button">Submit</button>
+                            <button class="btn btn-general btn-yellow" id="btn-submit" type="submit" href="" title="Submit" role="button">
+                                {{__('Submit')}}</button>
                         </div>
                         {!! Form::close() !!}
                     </div>

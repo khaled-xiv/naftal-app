@@ -19,11 +19,11 @@ class AnswerController extends Controller
         ]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware(['auth','verified','role:admin,district chief,center chief,technician']);
+    }
+
     public function index()
     {
         //

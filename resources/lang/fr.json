@@ -36,6 +36,8 @@
     "status": "statut",
     "Account settings": "Paramètres du compte",
     "Phone": "Téléphone",
+    "Submit": "Soumettre",
+    "Subject": "objet",
     "Address": "Adresse",
     "Update": "Modifier",
     "Close": "Fermer",
@@ -65,7 +67,11 @@
     "Land fuels": "Carburants terre",
     "Naftal markets 5 types of earth fuels for gasoline and diesel engines": "Naftal commercialise 5 types de carburants terre pour les moteurs essence et diesel",
     "Normal essence": "Essence normale",
-    "Land fuels": "Carburants terre",
+
+    "Send us message": "Envoyez-nous un message",
+    "If you have any problem please contact us.": "Si vous rencontrez un problème, veuillez nous contacter.",
+    "Copyright": "Copyright",
+    "2020 All Rights Reserved By": "2020 Tous droits réservés par",
 
 
     "account1": "compte",
