@@ -621,6 +621,56 @@ div.forum-box-footer:before {
 	cursor: pointer;
 }
 
+.component-list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.component-list + button {
+	
+}
+
+.component-list .component-item {
+	margin-left: 10px;
+	width: 400px;
+}
+
+.comp-actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3px;
+}
+
+.comp-actions .component-edit {
+	color: #069;
+}
+
+.comp-actions .component-del {
+	color: #ff3333;
+}
+
+.comp-actions .component-del, .comp-actions .component-edit {
+	white-space: nowrap;
+	cursor: pointer;
+	background: #fcfcfc;
+	padding: 7px 5px;
+	transition-duration: .4s;
+	border: .4px solid #fcfcfc;
+	overflow: hidden;
+}
+
+.comp-actions .component-edit:hover {
+	background: rgba(0, 102, 153, .2);
+}
+
+.comp-actions .component-del:hover{
+	background: rgba(255, 51, 51, .2);
+}
+
+
 /*table*/
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting:before,

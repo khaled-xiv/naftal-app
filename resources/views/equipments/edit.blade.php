@@ -28,9 +28,9 @@
                     </div>
                 </div>
 
-                <div class="row" style="border: 1px solid red">
+                <div class="row">
 
-                    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
+                    <div class="col-lg-6 col-md-12">
 
                         <div class="contact-right">
                             {!! Form::model($equipment, ['method'=>'PUT', 'action'=> ['EquipmentController@update', $equipment->id]]) !!}
@@ -235,12 +235,13 @@
                         </div>
 
                     </div>
-                    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-10 offset-sm-1 col-xs-8 offset-xs-1">
+                    <div class="col-lg-6 col-md-12">
                         <div class="contact-right">
                             <h4>{{__('Components').":"}}</h4>
                             <hr>
+							<div class="component-list">
                             @foreach($components as $component)
-                                    <div class="card border-dark mb-3" style="max-width: 26rem;">
+                                    <div class="card border-dark mb-3 component-item">
                                         <div class="card-header">
                                             <em>{{$component->designation}}</em>
                                         </div>
@@ -249,20 +250,19 @@
                                                 <b>{{__('mark').":"}}</b> {{$component->mark}}<br>
                                                 <b>{{__('reference').":"}}</b> {{$component->reference}}
                                             </p>
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                                    {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
-                                                        <button style="color: #069;text-decoration: underline;cursor: pointer;" type="submit" role="button">{{__('Edit')." ".ucfirst(__('component'))}}</button>
-                                                    {!! Form::close() !!}
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                                        <button class="component-del" style="color: #ff3333;text-decoration: underline;cursor: pointer;" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">{{__('Delete')." ".ucfirst(__('component'))}}</button>
-                                                </div>
+                                            <div class="comp-actions">
+                                                {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
+                                                    <button class="component-edit" type="submit" role="button">{{__('Edit')." ".ucfirst(__('component'))}}</button>
+                                                {!! Form::close() !!}
+                                                <button class="component-del" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">{{__('Delete')." ".ucfirst(__('component'))}}</button>
                                             </div>
                                         </div>
-                                    </div><hr>
+                                    </div>
                             @endforeach
-                                <button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" role="button">{{__('Add')." ".ucfirst(__('component'))}}</button>
+							</div>
+							<div style="text-align: right;">
+								<button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" role="button">{{__('Add')." ".ucfirst(__('component'))}}</button>
+							</div>
                         </div>
                     </div>
 
