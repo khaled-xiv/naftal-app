@@ -369,8 +369,8 @@
 
             $("button.btn-general").html("add " + equipment);
             document.cookie='equip =' + equipment;
-            $("li.equipment").click(function() {
-                let equipment = $("a", this).html();
+            $("li.equipment > a").click(function() {
+                let equipment = $(this).html();
                 $("button.btn-general").html("add " + equipment);
                 document.cookie='equip =' + equipment;
             });

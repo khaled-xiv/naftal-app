@@ -4,15 +4,16 @@
     $limit = count($tags);
 ?>
 {{--<form method="GET" action="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.search')}}">--}}
-<form method="GET" action="/search/results">
-    <div class="input-group mb-3">
-        <input type="text" style="border-radius:5px 0px 0px 5px;" class="form-control" name="search_query" placeholder="{{__('Search')."..."}}" aria-label="search" aria-describedby="button-addon2" required>
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">{{ __('Search') }}</button>
-        </div>
-    </div>
+<form class="forum-search" method="GET" action="/search/results">
+    <input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
+	<input title="Search" value="" type="submit" class="search-button">
+</form>
+
+<form class="forum-search" method="post">
+  
 </form>
 <br>
+
 <!-- Categories Widget -->
 <div class="widget-card">
     <h5 class="widget-title">{{ __('Popular tags') }}</h5>

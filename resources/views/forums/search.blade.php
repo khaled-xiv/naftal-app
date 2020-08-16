@@ -13,39 +13,53 @@
                 <div class="row">
 
                     <div class="col-md-8">
-
-                        {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@create']]) !!}
-                        <button class="btn btn-primary pull-right">{{__('Ask a')." question"}}</button>
-                        {!! Form::close() !!}
-                        <br><hr>
-                        <h2 class="my-4">
-                            @if(isset($tag))
-                                {{ __('Forums tagged with') }}
-                                <small> "{{$tag->content}}"</small>
-                            @else
-                                {{ __('Search results') }}
-                            @endif
-                        </h2>
+						
+						<div class="forum-index-header">
+							<h2 class="forum-index-title">
+								@if(isset($tag))
+									{{ __('Forums tagged with') }}
+									<small> "{{$tag->content}}"</small>
+								@else
+									{{ __('Search results') }}
+								@endif
+							</h2>
+							{!! Form::open(['method'=>'GET', 'action'=>'ForumController@create']) !!}
+								<button class="btn btn-yellow btn-general pull-right">{{__('Ask a')." question"}}</button>
+							{!! Form::close() !!}
+						</div>
                         <!-- Blog Post -->
                         @if(count($forums) === 0)
                             {{ __('No results were found') }}
                         @else
-                        @foreach($forums as $forum)
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h3 class="card-title">{{$forum->title}}</h3>
-                                    <p class="card-text">{{$forum->body}}</p>
-                                    {!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
-                                    <button class="btn btn-primary">{{ __('Read more') }} &rarr;</button>
-                                    {!! Form::close() !!}
-                                </div>
-                                <div class="card-footer text-muted">
-                                    {{ __('Posted on')." ".$forum->created_at." ".__('by')}}
-                                    <span class="username">{{$forum->user->name}}</span>
-                                </div>
-                            </div>
-                            <hr>
-                        @endforeach
+						<div class="forums-holder">
+							@foreach($forums as $forum)
+								<div class="forum-box">
+									<div class="forum-box-body">
+										<h3 class="forum-box-title">
+										{!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
+											<button>{{$forum->title}}</button>
+										{!! Form::close() !!}
+										</h3>
+										<p class="forum-box-body">
+										@if(strlen($forum->body) < 200)
+											{{$forum->body}}
+										@else()
+											{{substr($forum->body, 0, 200).'...'}}
+										@endif
+										</p>
+									</div>
+									<div class="forum-box-footer">
+										<div>
+											{{ __('Posted on')." ".$forum->created_at." ".__('by')}}
+											&nbsp;<span class="username">{{$forum->user->name}}</span>
+										</div>
+										<div>
+											<span class="answer-count">{{ $forum->answers->count() }}</span>
+										</div>
+									</div>
+								</div>
+							@endforeach
+						</div>
                         @endif
                     </div>
 

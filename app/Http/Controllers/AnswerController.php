@@ -7,6 +7,8 @@ use App\Forum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Events\SendNotifications;
+use App\Notification;
 
 class AnswerController extends Controller
 {
@@ -51,7 +53,7 @@ class AnswerController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()
-                ->withErrors($validator, 'components')
+                ->withErrors($validator)
                 ->withInput();
         }
 
@@ -60,6 +62,14 @@ class AnswerController extends Controller
         $answer->forum_id = $request->forum;
         $user = Auth::user();
         $user->forums()->save($answer);
+		$forum = Forum::findOrFail($request->forum);
+		$notification=Notification::create([
+            'user_id' => $forum->user_id,
+            'link' => "naftal.dev/en/forum/".$forum->id,
+            'is_read' => 0,
+            'content' => "You have a new answer to your question \"".$forum->title."\"",
+        ]);
+        event(new SendNotifications($notification));
         return redirect()->back();
     }
 

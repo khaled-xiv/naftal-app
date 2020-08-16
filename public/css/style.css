@@ -101,6 +101,7 @@ section {
     padding: 8px 16px;
     -webkit-transition: all .5s;
     transition: all .5s;
+	white-space: nowrap;
 }
 
 .btn-home {
