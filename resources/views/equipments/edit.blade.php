@@ -30,7 +30,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12 mrgn-bottom">
 
                         <div class="contact-right">
                             {!! Form::model($equipment, ['method'=>'PUT', 'action'=> ['EquipmentController@update', $equipment->id]]) !!}
@@ -218,9 +218,9 @@
                             </div>
 							@endif
                             <div class="row">
-                                <div id="submit-btn" class="ml-auto">
-                                    <button class="btn  btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">{{__('Delete')." ".$temp}}</button>
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{__('Edit')." ".$temp}}</button>
+                                <div id="submit-btn" class="ml-auto edit-act">
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">{{__('Delete')." ".$temp}}</button>
+                                    <button class="btn btn-yellow" type="submit"  title="Submit" role="button">{{__('Edit')." ".$temp}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}

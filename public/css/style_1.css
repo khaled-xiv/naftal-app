@@ -341,7 +341,7 @@ ul.img-icons li:nth-child(2) a:hover {
 	height: 180px;
 	margin-bottom: 20px;
 	background: white;
-	padding: 5px 15px;
+	padding: 5px 15px 0px;
 	border-radius: 0 5px 5px 0;
 	transition-duration: .3s;
 	box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),
@@ -351,7 +351,7 @@ ul.img-icons li:nth-child(2) a:hover {
 
 .forum-box:hover {
 	box-shadow: 0 3px 5px rgba(0,0,0,.2);
-	padding: 5px 10px 5px 20px;
+	padding: 5px 10px 0px 20px;
 }
 
 .forum-box:before{
@@ -381,10 +381,28 @@ div.forum-box-footer {
 	height: 20%;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	font-weight: 500;
 	font-size: 12px;
 	color: #888;
 	padding-left: 5px;
+}
+
+div .forum-box-footer .answer-count {
+	position:relative;
+	left: -10px;
+	width: 40px;
+	height: 25px;
+	background: #fcfcfc;
+	display: inline-flex;
+	border: 1px #eee solid;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: center;
+}
+
+div .forum-box-footer .answer-count:hover {
+	background: #f9f9f9;
 }
 
 div.forum-box-footer:before {
@@ -649,7 +667,7 @@ div.forum-box-footer:before {
 }
 
 .comp-actions .component-del {
-	color: #ff3333;
+	color: #f44336;
 }
 
 .comp-actions .component-del, .comp-actions .component-edit {
@@ -658,18 +676,27 @@ div.forum-box-footer:before {
 	background: #fcfcfc;
 	padding: 7px 5px;
 	transition-duration: .4s;
-	border: .4px solid #fcfcfc;
+	font-weight: 500;
+	border: none;
+	border-radius: 4px;
 	overflow: hidden;
 }
 
 .comp-actions .component-edit:hover {
-	background: rgba(0, 102, 153, .2);
+	background: rgba(0, 102, 153, .08);
 }
 
 .comp-actions .component-del:hover{
-	background: rgba(255, 51, 51, .2);
+	background: rgba(244, 67, 54, .08);
 }
 
+div.mrgn-bottom {
+	margin-bottom: 10px;
+}
+
+div.edit-act > button {
+	margin-right: 15px;
+}
 
 /*table*/
 table.dataTable thead .sorting:after,

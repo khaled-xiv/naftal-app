@@ -18,7 +18,7 @@
 					<div class="forum-index-header">
 						<h2 class="forum-index-title">{{ __('Most upvoted questions') }}</h2>
 						{!! Form::open(['method'=>'GET', 'action'=>'ForumController@create']) !!}
-							<button class="btn btn-primary pull-right">{{__('Ask a')." question"}}</button>
+							<button class="btn btn-yellow btn-general pull-right">{{__('Ask a')." question"}}</button>
 						{!! Form::close() !!}
 					</div>
 
@@ -27,7 +27,7 @@
                     @foreach($forums as $forum)
                         <div class="forum-box">
                             <div class="forum-box-body">
-                                <h3 class="forum-box-title">									
+                                <h3 class="forum-box-title">
 								{!! Form::open(['method'=>'GET', 'action'=> ['ForumController@show', $forum->id]]) !!}
                                     <button>{{$forum->title}}</button>
                                 {!! Form::close() !!}
@@ -41,8 +41,13 @@
 								</p>
                             </div>
                             <div class="forum-box-footer">
-                                {{ __('Posted on')." ".$forum->created_at." ".__('by')}}
-                                &nbsp;<span class="username">{{$forum->user->name}}</span>
+								<div>
+									{{ __('Posted on')." ".$forum->created_at." ".__('by')}}
+									&nbsp;<span class="username">{{$forum->user->name}}</span>
+								</div>
+								<div>
+									<span class="answer-count">{{ $forum->answers->count() }}</span>
+								</div>
                             </div>
                         </div>
                     @endforeach
