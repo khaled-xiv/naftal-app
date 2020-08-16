@@ -66,7 +66,7 @@ class DashboardController extends Controller
                 Equipment::create([
                     'model'=>$item['model'],
                     'center_id'=>1,
-                    'age'=>$item['age'],
+                    'commissioned_on'=>Carbon::now()->subYear($item['age']) ,
                 ]);
             }
             Log::info('after'.Carbon::now());

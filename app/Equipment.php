@@ -17,7 +17,8 @@ class Equipment extends Model
     protected $table = 'equipments';
 
     protected $fillable = [
-        'code', 'mark', 'type', 'model', 'state','age','center_id'
+        'code', 'mark', 'type', 'model', 'state','center_id'
+        ,'commissioned_on'
     ];
 
     protected $softCascade = ['pump', 'loading_arm', 'tank', 'fuel_meter', 'generator', 'components'];
