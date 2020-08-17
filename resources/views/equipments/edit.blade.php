@@ -300,7 +300,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     {!! Form::label('mark', ucfirst(__('mark')).":",['class'=>'label_padding']) !!}
-                                    <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" value="{{ old('mark') }}" required autocomplete="mark" placeholder="{{ucfirst(__('mark'))}}">
+                                    <input id="mark" type="text" class="form-control @error('mark') is-invalid @enderror" name="mark" required autocomplete="mark" placeholder="{{ucfirst(__('mark'))}}">
                                     @error('mark')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
