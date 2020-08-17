@@ -342,6 +342,7 @@
 	?>
     <script>
         $(document).ready(function() {
+			tableList = [];
 			for(var i = 1; i <= 5; i++){
 				var list = [];
 				var size = 8;
@@ -369,8 +370,9 @@
 					"bLengthChange":false,
 					"dom":'<"top">ct<"top"p><"clear">',
 				});
-				$(".filterbox"+i).keyup(function(){
-					dataTable.search(this.value).draw();
+				tableList.push(dataTable);
+				$("#filterbox"+i).keyup(function(){
+					tableList[this.id.substr(9, 1) - 1].search(this.value).draw();
 				});
 			}
         });
