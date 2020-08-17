@@ -4,20 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Center;
 use App\Component;
+use App\Failure;
+use App\Maintenance;
 use App\Req_inter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class Req_interController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function __construct()
     {
@@ -42,12 +40,37 @@ class Req_interController extends Controller
         $received_reqs=DB::table('equipments')
             ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
             ->where('need_district', 1)
+            ->where('valide', 0)
             ->select('req_inters.*','equipments.code','equipments.center_id')
             ->get();
+
         foreach ( $received_reqs as $received_req){
             $id=$received_req->center_id;
             $received_req->center  =Center::findOrFail($id)->code;
         }
+
+        if(Auth()->user()->is_district_chief()){
+            $openned_reqs = DB::table('equipments')
+                ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+                ->where('valide', 0)
+                ->select('req_inters.*','equipments.code','equipments.center_id')
+                ->get();
+            foreach ( $openned_reqs as $openned_req){
+                $id=$openned_req->center_id;
+                $openned_req->center  =Center::findOrFail($id)->code;
+            }
+
+            $closed_reqs=DB::table('equipments')
+                ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+                ->where('valide', 1)
+                ->select('req_inters.*','equipments.code','equipments.center_id')
+                ->get();
+            foreach ( $closed_reqs as $closed_req){
+                $id=$closed_req->center_id;
+                $closed_req->center  =Center::findOrFail($id)->code;
+            }
+        }
+
 
         return view('req_inter.index',compact('openned_reqs','closed_reqs','received_reqs'));
     }
@@ -112,11 +135,7 @@ class Req_interController extends Controller
             }
         }
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $equips=['Pumps'=>__('Pumps'),'Tanks'=>__('Tanks'),'Loding arms'=>__('Loding arms'),'Generators'=>__('Generators'),'Fuel meters'=>__('Fuel meters')];
@@ -124,20 +143,14 @@ class Req_interController extends Controller
         return view('req_inter.create', compact('equips'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'number' => [ 'required','string', 'max:255','unique:req_inters'],
             'degree_urgency' => ['required'],
             'equipment_id' => ['required'],
-            'equipment' => ['required','string']
+            'equipment' => ['required','string'],
+            'error_code' => ['required','string']
         ]);
     }
 
@@ -150,29 +163,13 @@ class Req_interController extends Controller
             'equipment_id' => $request['equipment_id'],
             'equipment_name' => $request['equipment'],
             'degree_urgency' => $request['degree_urgency'],
+            'error_code' => $request['error_code'],
             'description' => $request['description'],
             'created_at' => $request['created_at']
         ]);
         return  redirect()->route('requests.show')->with('status',__('An item was successfully added'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $id=decrypt($id);
@@ -224,13 +221,6 @@ class Req_interController extends Controller
         return view('req_inter.edit',compact('openned_req','equips','comps','fuelMeters','pumps','loadingArms','tanks','generators'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $id=decrypt($id);
@@ -239,6 +229,7 @@ class Req_interController extends Controller
             'degree_urgency' => ['required'],
             'equipment_id' => ['required'],
             'equipment' => ['required','string'],
+            'error_code' => ['required','string'],
             'description' => ['required','string']
         ]);
         $openned_req=Req_inter::findOrFail($id);
@@ -256,18 +247,50 @@ class Req_interController extends Controller
         $openned_req=Req_inter::findOrFail($id);
         $data=$request->all();
         unset($data['component_id']);
-        if(!$request['need_district']) $openned_req->valide=1;
+
         if($request['need_district']) $openned_req->valide=0;
         $comps=$request['component_id'];
         if($comps) $comps = array_map('intval', $comps);
         $openned_req->components()->sync($comps);
         $openned_req->update($data);
+
+        if(!$request['need_district']){
+            $openned_req->valide=1;
+            $comps=$request['component_id'];
+            if($comps) $comps = array_map('intval', $comps);
+            try {
+                Failure::where('equipment_id',$openned_req->equipment_id)
+                    ->where('dateTime',$openned_req->created_at)
+                    ->delete();
+                Maintenance::where('equipment_id',$openned_req->equipment_id)
+                    ->where('dateTime',$openned_req->intervention_date)
+                    ->delete();
+            }catch (\Exception $e){
+
+            }
+            if($comps)
+            {
+                foreach ($comps as $comp){
+                    Failure::create([
+                        'equipment_id'=>$openned_req->equipment_id,
+                        'comp'=>Component::findOrfail($comp)->generic_name,
+                        'dateTime'=>$openned_req->created_at,
+                    ]);
+                    Maintenance::create([
+                        'equipment_id'=>$openned_req->equipment_id,
+                        'comp'=>Component::findOrfail($comp)->generic_name,
+                        'dateTime'=>$openned_req->intervention_date,
+
+                    ]);
+                }
+            }
+
+        }
         return  redirect()->route('request.edit',encrypt($id));
     }
 
     public function update_discrict_inter(Request $request,$id)
     {
-        return $request->all();
         $id=decrypt($id);
         $request->validate([
             'intervention_date_2' => ['required'],
@@ -278,17 +301,36 @@ class Req_interController extends Controller
         unset($data['component_id']);
         $comps=$request['component_id'];
         if($comps) $comps = array_map('intval', $comps);
+        try {
+            Failure::where('equipment_id',$openned_req->equipment_id)
+                ->where('dateTime',$openned_req->created_at)
+                ->delete();
+            Maintenance::where('equipment_id',$openned_req->equipment_id)
+                ->whereIn('dateTime',[$openned_req->intervention_date_2,$openned_req->intervention_date])
+                ->delete();
+        }catch (\Exception $e){}
+
         $openned_req->components()->sync($comps);
         $openned_req->update($data);
+        if($comps) {
+            foreach ($comps as $comp){
+                Failure::create([
+                    'equipment_id'=>$openned_req->equipment_id,
+                    'comp'=>Component::findOrfail($comp)->generic_name,
+                    'dateTime'=>$openned_req->created_at,
+
+                ]);
+                Maintenance::create([
+                    'equipment_id'=>$openned_req->equipment_id,
+                    'comp'=>Component::findOrfail($comp)->generic_name,
+                    'dateTime'=>$openned_req->intervention_date_2,
+
+                ]);
+            }
+        }
         return  redirect()->route('request.edit',encrypt($id));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $id=decrypt($id);

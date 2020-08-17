@@ -57,6 +57,20 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
+                                        {!! Form::label('error_code', __('Error code').':',['class'=>'label_padding']) !!}
+                                        {!! Form::select('error_code', array('electrique'=>'1','mecanique'=>'2','3'=>'3') , null,
+                                        ['class'=>'form-control'])!!}
+                                        @error('error_code')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
                                         {!! Form::label('created_at', __('Date of creation').':',['class'=>'label_padding']) !!}
                                         <input id="created_at" type="datetime-local"
                                                class="form-control @error('created_at')  is-invalid @enderror"
@@ -70,6 +84,10 @@
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div class="row">
+
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('equipment', __('Select an equipment').':',['class'=>'label_padding']) !!}
@@ -82,9 +100,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group" id="equipment_id_code" style="display: none">
@@ -102,8 +117,8 @@
 
                             <div class="form-group">
                                 {!! Form::label('description', 'Description:',['class'=>'label_padding']) !!}
-                                <textarea class="form-control" id="description" required name="description"
-                                          placeholder="{{__('Enter a description')}}"></textarea>
+                                <textarea class="form-control" id="description" required name="description" autocomplete="description"
+                                          placeholder="{{__('Enter a description')}}" ></textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

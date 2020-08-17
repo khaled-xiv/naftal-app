@@ -18,8 +18,6 @@ class CreateMaintenancesTable extends Migration
             $table->unsignedBigInteger('equipment_id');
             $table->foreign('equipment_id')->references('id')->on('equipments');
             $table->string('comp');
-//            $table->unsignedBigInteger('component_id');
-//            $table->foreign('component_id')->references('id')->on('components');
             $table->dateTime('dateTime');
             $table->timestamps();
         });

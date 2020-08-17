@@ -11,9 +11,9 @@
                 <ul class="text-center">
                     <li><a href="#openned_req">{{__('Opened Request')}}</a></li>
                     <li><a href="#closed_req">{{__('Closed Request')}}</a></li>
-{{--                    @if(Auth()->user()->is_district_chief())--}}
+                    @if(Auth()->user()->is_district_chief())
                         <li><a href="#received_req">{{__('Received Request')}}</a></li>
-{{--                    @endif--}}
+                    @endif
                 </ul>
 
                 <!-- Service Tab 01 -->
@@ -42,9 +42,14 @@
                                                 <th style="min-width:50px;">{{ucwords(__('Number'))}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('Equipment'))}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('Equipment code'))}}</th>
+                                                <th style="min-width:150px;">{{ucwords(__('Error code'))}}</th>
+                                                @if(!Auth()->user()->is_district_chief())
                                                 <th style="min-width:100px;">{{ucwords(__('Created at'))}}</th>
+                                                @endif
                                                 <th style="min-width:150px;">{{ucwords(__('Degree of urgency'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Description'))}}</th>
+                                                @if(Auth()->user()->is_district_chief())
+                                                    <th style="min-width:100px;">{{ucwords(__('Center'))}}</th>
+                                                @endif
                                                 <th style="min-width:100px;">Action</th>
                                             </tr>
                                             </thead>
@@ -56,9 +61,15 @@
                                                     <td>{{$openned_req->number}}</td>
                                                     <td>{{$openned_req->equipment_name}}</td>
                                                     <td>{{$openned_req->code}} </td>
+                                                    <td>{{$openned_req->error_code}} </td>
+                                                    @if(!Auth()->user()->is_district_chief())
                                                     <td>{{$openned_req->created_at}}</td>
+                                                    @endif
                                                     <td>{{$openned_req->degree_urgency}}</td>
-                                                    <td>{{$openned_req->description}} </td>
+                                                    @if(Auth()->user()->is_district_chief())
+                                                        <td>{{$openned_req->center}}</td>
+                                                    @endif
+
                                                     <td class="actions" style="height: 50px">
                                                         <span class="actionCust">
                                                             <a href="{{route('request.edit',encrypt($openned_req->id))}}"><i class="fa fa-pencil-square-o"></i></a>
@@ -93,7 +104,7 @@
                                         <div class="col-sm-8  add_flex">
                                             <div class="form-group searchInput">
                                                 <label for="filterbox">{{__('Search')}}:</label>
-                                                <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                <input type="search" class="form-control" id="filterbox2" placeholder=" ">
                                             </div>
                                         </div>
                                     </div>
@@ -104,9 +115,14 @@
                                                 <th style="min-width:50px;">{{ucwords(__('Number'))}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('Equipment'))}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('Equipment code'))}}</th>
-                                                <th style="min-width:100px;">{{ucwords(__('Created at'))}}</th>
+                                                <th style="min-width:150px;">{{ucwords(__('Error code'))}}</th>
+                                                @if(!Auth()->user()->is_district_chief())
+                                                    <th style="min-width:100px;">{{ucwords(__('Created at'))}}</th>
+                                                @endif
                                                 <th style="min-width:150px;">{{ucwords(__('Degree of urgency'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Description'))}}</th>
+                                                @if(Auth()->user()->is_district_chief())
+                                                    <th style="min-width:100px;">{{ucwords(__('Center'))}}</th>
+                                                @endif
                                                 <th style="min-width:100px;">Action</th>
                                             </tr>
                                             </thead>
@@ -118,12 +134,18 @@
                                                     <td>{{$closed_req->number}}</td>
                                                     <td>{{$closed_req->equipment_name}}</td>
                                                     <td>{{$closed_req->code}} </td>
-                                                    <td>{{$closed_req->created_at}}</td>
+                                                    <td>{{$closed_req->error_code}} </td>
+                                                    @if(!Auth()->user()->is_district_chief())
+                                                        <td>{{$closed_req->created_at}}</td>
+                                                    @endif
                                                     <td>{{$closed_req->degree_urgency}}</td>
-                                                    <td>{{$closed_req->description}} </td>
+                                                    @if(Auth()->user()->is_district_chief())
+                                                        <td>{{$closed_req->center}}</td>
+                                                    @endif
+
                                                     <td class="actions" style="height: 50px">
                                                         <span class="actionCust">
-                                                            <a href="{{route('request.edit',encrypt($openned_req->id))}}"><i class="fa fa-pencil-square-o"></i></a>
+                                                            <a href="{{route('request.edit',encrypt($closed_req->id))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                         </span>
                                                         <span class="actionCust" >
                                                             <a href="#"><i class="fa fa-trash"></i></a>
@@ -141,7 +163,7 @@
                     </div>
                 </div>
 
-{{--            @if(Auth()->user()->is_district_chief())--}}
+            @if(Auth()->user()->is_district_chief())
                 <!-- Service Tab 03 -->
                 <div id="received_req" class="service-tab">
                     <div class="container">
@@ -157,7 +179,7 @@
                                         <div class="col-sm-8  add_flex">
                                             <div class="form-group searchInput">
                                                 <label for="filterbox">{{__('Search')}}:</label>
-                                                <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                <input type="search" class="form-control" id="filterbox3" placeholder=" ">
                                             </div>
                                         </div>
                                     </div>
@@ -203,10 +225,9 @@
                         </div>
                     </div>
                 </div>
-{{--            @endif--}}
+            @endif
             </div>
         </div>
-            <!-- Services 02 Ends -->
     </div>
 
 </section>
@@ -261,7 +282,7 @@
             "dom":'<"top">ct<"top"p><"clear">',
 
         });
-        $("#filterbox").keyup(function(){
+        $("#filterbox2").keyup(function(){
             dataTable2.search(this.value).draw();
         });
 
@@ -286,10 +307,27 @@
             "dom":'<"top">ct<"top"p><"clear">',
 
         });
-        $("#filterbox").keyup(function(){
+        $("#filterbox3").keyup(function(){
             dataTable3.search(this.value).draw();
         });
     } );
+
+
+    @if (Session::has('status'))
+    $.toast({
+
+        text : "{{Session::get('status')}}",
+        showHideTransition : 'slide',
+        bgColor : 'green',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
+    @endif
 
 </script>
 @endSection

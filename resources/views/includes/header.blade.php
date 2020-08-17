@@ -22,12 +22,13 @@
                                     <input type="text" class="form-control" style="display: none" id="nav-search"  name="search" placeholder="Search..">
                                 </form>
                             </li>
-                            <li><a class="btn btn-link" href="" id="fa-search" ><i class="fa fa-search"style="font-size: 20px ;margin-right: 25px; color: #555;"></i></a></li>
 
                             <li class="nav-item dropdown" id="notification-dropdown">
                                 <a class="nav-link text-light notif" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i id="bell" class="fa fa-bell"></i>
+                                    @if (Auth()->user()->unReadNotifications()->count()!=0)
                                     <span class="num">{{Auth()->user()->unReadNotifications()->count()}}</span>
+                                    @endif
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-1 scrollar" id="style-1">
                                     <li class="head text-light bg-dark">

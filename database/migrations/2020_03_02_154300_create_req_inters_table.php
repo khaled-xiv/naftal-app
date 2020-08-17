@@ -19,6 +19,7 @@ class CreateReqIntersTable extends Migration
             $table->foreign('equipment_id')->references('id')->on('equipments')->onUpdate('cascade');;
             $table->string('number')->unique();
             $table->string('equipment_name');
+            $table->string('error_code');
             $table->string('description');
             $table->enum('degree_urgency',array('1','2','3'));
             $table->timestamp('intervention_date')->nullable();
