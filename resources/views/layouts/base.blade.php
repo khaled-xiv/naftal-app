@@ -62,6 +62,8 @@
     // Bind a function to a Event (the full Laravel class)
     channel.bind('notify', function(data) {
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+        var notification=(data.notification);
+        console.log(notification);
         var newNotificationHtml = `
           <li class="notification-box bg-gray">
              <div class="row">
@@ -69,11 +71,12 @@
                     <img src="https://api.adorable.io/avatars/71/\`+avatar+\`.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
                 </div>
                 <div class="col-lg-8 col-sm-8 col-8">
-                <strong class="text-info">David John</strong>
+                <strong class="text-info">`+notification.sender+`</strong>
                 <div>
-                Lorem ipsum dolor sit amet, consectetur
+                `+notification.content+`
+                    <span> <a href="`+notification.link+`"> see more</a></span>
                 </div>
-                <small class="text-warning">27.11.2015, 15:00</small>
+                <small class="text-warning">`+notification.created_at+`</small>
                 </div>
                </div>
                </li>
@@ -85,6 +88,7 @@
         },2000)
         var count=$('span.num').text();
         $('span.num').html(+count+1);
+        $('span.num').show();
         let src1 = '{{asset('audio/ring.mp3')}}';
         var snd='<audio autoplay=true> <source src='+src1+'></audio>'
         $('body').append(snd);
@@ -96,10 +100,11 @@
             url: '/{{app()->getLocale()}}/mark-as-read',
             data: {_token: '{{csrf_token()}}'},
             success: function (data) {
-                $('span.num').html(0);
+                $('span.num').css('display','none');
                 $('.notification-box').removeClass('bg-gray');
             }
         })
+        $('span.num').html(+0);
     }
 
 </script>

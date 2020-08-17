@@ -26,9 +26,8 @@
                             <li class="nav-item dropdown" id="notification-dropdown">
                                 <a class="nav-link text-light notif" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i id="bell" class="fa fa-bell"></i>
-                                    @if (Auth()->user()->unReadNotifications()->count()!=0)
-                                    <span class="num">{{Auth()->user()->unReadNotifications()->count()}}</span>
-                                    @endif
+                                    <span class="num" @if (Auth()->user()->unReadNotifications()->count()==0) style="display: none" @endif>{{Auth()->user()->unReadNotifications()->count()}}</span>
+
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-1 scrollar" id="style-1">
                                     <li class="head text-light bg-dark">

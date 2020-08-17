@@ -37,6 +37,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         $notification=Notification::create([
             'user_id'=>1,
             'link'=>1,
+            'sender'=>'khaled',
             'is_read'=>0,
             'content'=>"hi",
         ]);

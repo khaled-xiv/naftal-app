@@ -161,13 +161,6 @@
 
                 </div>
                 <div class="col-md-9 col-sm-12 col-xs-12 align-items-start ">
-                    <div class="col-lg-7 offset-lg-1 col-md-8">
-                        @if($errors->any())
-                            <div class="alert alert-danger ">
-                                <h4>{{$errors->first()}}</h4>
-                            </div>
-                        @endif
-                    </div>
                     <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-xs-12">
                         <h3>{{__('Account')}}</h3>
                         <div class="account-settings ">
@@ -429,6 +422,22 @@
             }
         );
     });
+
+    @if($errors->any())
+    $.toast({
+
+        text : "{{$errors->first()}}",
+        showHideTransition : 'slide',
+        bgColor : '#CA0B00',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
+    @endif
 
 </script>
 
