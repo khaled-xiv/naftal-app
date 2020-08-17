@@ -49,6 +49,7 @@
                                                 <strong class="text-info">{{$notification->user->name}}</strong>
                                                 <div>
                                                     {{$notification->content}}
+													<span> <a href="{{$notification->link}}"> see more</a></span>
                                                 </div>
                                                 <small class="text-warning">{{$notification->created_at}}</small>
                                             </div>

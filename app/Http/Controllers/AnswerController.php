@@ -63,13 +63,15 @@ class AnswerController extends Controller
         $user = Auth::user();
         $user->forums()->save($answer);
 		$forum = Forum::findOrFail($request->forum);
-		$notification=Notification::create([
-            'user_id' => $forum->user_id,
-            'link' => "naftal.dev/en/forum/".$forum->id,
-            'is_read' => 0,
-            'content' => "You have a new answer to your question \"".$forum->title."\"",
-        ]);
-        event(new SendNotifications($notification));
+		if($forum->user_id !== $user->id){
+			$notification=Notification::create([
+				'user_id' => $forum->user_id,
+				'link' => "forum/".$forum->id,
+				'is_read' => 0,
+				'content' => "You have a new answer to your question \"".$forum->title."\"",
+			]);
+			event(new SendNotifications($notification));
+		}
         return redirect()->back();
     }
 

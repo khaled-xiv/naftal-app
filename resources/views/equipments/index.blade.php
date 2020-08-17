@@ -32,12 +32,12 @@
                                             <div class="col-sm-8  add_flex">
                                                 <div class="form-group searchInput">
                                                     <label for="filterbox">{{__('Search')}}:</label>
-                                                    <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                    <input type="search" class="form-control filterbox" id="filterbox" placeholder=" ">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="overflow-x">
-                                            <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                            <table style="width:100%;" id="filtertable" class="filtertable table cust-datatable dataTable no-footer">
                                                 <thead>
                                                 <tr>
                                                     <th style="min-width:50px;">code</th>
@@ -93,12 +93,12 @@
                                             <div class="col-sm-8  add_flex">
                                                 <div class="form-group searchInput">
                                                     <label for="filterbox">{{__('Search')}}:</label>
-                                                    <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                    <input type="search" class="form-control filterbox" id="filterbox" placeholder=" ">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="overflow-x">
-                                            <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                            <table style="width:100%;" id="filtertable" class="filtertable table cust-datatable dataTable no-footer">
                                                 <thead>
                                                 <tr>
                                                     <th style="min-width:50px;">code</th>
@@ -155,12 +155,12 @@
                                             <div class="col-sm-8  add_flex">
                                                 <div class="form-group searchInput">
                                                     <label for="filterbox">{{__('Search')}}:</label>
-                                                    <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                    <input type="search" class="form-control filterbox" id="filterbox" placeholder=" ">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="overflow-x">
-                                            <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                            <table style="width:100%;" id="filtertable" class="filtertable table cust-datatable dataTable no-footer">
                                                 <thead>
                                                 <tr>
                                                     <th style="min-width:50px;">code</th>
@@ -216,12 +216,12 @@
                                             <div class="col-sm-8  add_flex">
                                                 <div class="form-group searchInput">
                                                     <label for="filterbox">{{__('Search')}}:</label>
-                                                    <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                    <input type="search" class="form-control filterbox" id="filterbox" placeholder=" ">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="overflow-x">
-                                            <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                            <table style="width:100%;" id="filtertable" class="filtertable table cust-datatable dataTable no-footer">
                                                 <thead>
                                                 <tr>
                                                     <th style="min-width:50px;">code</th>
@@ -277,12 +277,12 @@
                                             <div class="col-sm-8  add_flex">
                                                 <div class="form-group searchInput">
                                                     <label for="filterbox">{{__('Search')}}:</label>
-                                                    <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                                                    <input type="search" class="form-control filterbox" id="filterbox" placeholder=" ">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="overflow-x">
-                                            <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                                            <table style="width:100%;" id="filtertable" class="filtertable table cust-datatable dataTable no-footer">
                                                 <thead>
                                                 <tr>
                                                     <th style="min-width:50px;">code</th>
@@ -337,7 +337,7 @@
     <script>
 
         $(document).ready(function() {
-            var dataTable = $('#filtertable').DataTable({
+            var dataTable = $('.filtertable').DataTable({
                 @if(\Illuminate\Support\Facades\App::getLocale()=='fr')
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
@@ -358,7 +358,7 @@
                 "dom":'<"top">ct<"top"p><"clear">',
 
             });
-            $("#filterbox").keyup(function(){
+            $(".filterbox").keyup(function(){
                 dataTable.search(this.value).draw();
             });
         } );
