@@ -10,10 +10,13 @@
                     <div class="col-md-12 main-datatable">
                         <div class="card_body">
                             <div class="row d-flex">
+
                                 <div class="col-sm-4">
+                                    @if(Auth()->user()->is_admin())
                                     {!! Form::open(['method'=>'GET', 'route' =>'register' ]) !!}
                                     <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
                                     {!! Form::close() !!}
+                                    @endif
                                 </div>
                                 <div class="col-sm-8  add_flex">
                                     <div class="form-group searchInput">
@@ -111,7 +114,7 @@
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                 },
                 @endif
-                "pageLength":5,
+                "pageLength":10,
                 'aoColumnDefs':[{
                     'bSortable':false,
                     'aTargets':['nosort'],

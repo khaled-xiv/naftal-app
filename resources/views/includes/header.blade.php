@@ -18,12 +18,11 @@
                             <li>
                                 <i id="toggle-side-nav-btn" onclick="hideSideNav()"class="fa fa-bars"></i>
                             </li>
-                            @endif
-                            <li>
-                                <form action="">
-                                    <input type="text" class="form-control" style="display: none" id="nav-search"  name="search" placeholder="Search..">
-                                </form>
-                            </li>
+                            @else
+                                <a href="{{url(app()->getLocale())}}">
+                                    <img id="toggle-side-nav-btn"  src="{{asset('flags/Logo_NAFTAL.svg')}}" style="left: 60px; height: 30px;height: 30px" alt="">
+                                </a>
+                                @endif
 
                             <li class="nav-item dropdown" id="notification-dropdown">
                                 <a class="nav-link text-light notif" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,7 +61,6 @@
                             <li><img src="{{(Auth()->user()->photo) ? asset('img/users/'.Auth()->user()->photo):asset('img/users/profile-placeholder.jpg')}}" style="border-radius: 50%; width: 45px; height: 45px" alt=""></li>
                             <li class="nav-item dropdown">
 
-
                                 <a class="nav-link dropdown-toggle center-block" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{Auth()->user()->name}}
                                 </a>
@@ -84,6 +82,25 @@
                     <span id="mobile-nav-close-btn" style="margin-bottom: 0px">&times;</span>
                     <div id="mobile-nav-content">
                         <ul class="nav " style="display: flex;flex-direction: column;">
+
+                            @if(Auth()->user()->is_technician())
+                                <li><a class="btn btn-link" href="{{url(app()->getLocale())}}">{{ __('home') }}</a></li>
+                            @guest
+                                    <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('login'))}}">{{ __('Sign In') }}</a></li>
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            {{Auth()->user()->name}}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{route('account.show',['language'=>app()->getLocale(),'account'=>__('account')])}}"><i class="fa fa-fw fa-user ml-auto"></i> {{ __('Account') }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{url(app()->getLocale().'/#contact')}}"><i class="fa fa-fw fa-power-off ml-auto"></i> {{ __('Log Out') }} &nbsp;&nbsp;  </a>
+                                        </div>
+                                    </li>
+                                @endguest
+                            @else
+
                             <li><a class="btn btn-link" href="{{url(app()->getLocale())}}">{{ __('home') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/equipments')}}">{{ __('equipments') }}</a></li>
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/centers')}}">{{ __('centers') }}</a></li>
@@ -105,6 +122,7 @@
                                     </div>
                                 </li>
                             @endguest
+                            @endif
                         </ul>
                     </div>
                 </div>
