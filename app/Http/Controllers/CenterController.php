@@ -24,7 +24,7 @@ class CenterController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','verified','role:admin,district chief,center chief']);
+        $this->middleware(['auth','verified']);
     }
 
     public function index()

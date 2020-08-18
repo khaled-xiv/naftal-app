@@ -25,9 +25,11 @@
                                     <div class="card_body">
                                         <div class="row d-flex">
                                             <div class="col-sm-4">
+                                                @if(!Auth::user()->is_center_chief())
                                                 {!! Form::open(['method'=>'GET', 'route' =>'equipment-create' ]) !!}
                                                 <button class="btn btn-general btn-yellow"></button>
                                                 {!! Form::close() !!}
+                                                @endif
                                             </div>
                                             <div class="col-sm-8  add_flex">
                                                 <div class="form-group searchInput">

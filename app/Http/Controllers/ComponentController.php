@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class ComponentController extends Controller
 {
-
+    
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
+    
     protected function validator(array $data, $id)
     {
         return Validator::make($data, [

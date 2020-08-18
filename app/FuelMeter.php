@@ -15,7 +15,7 @@ class FuelMeter extends Model
         'category'
     ];
 
-    protected function equipment(){
+    public function equipment(){
 
         return $this->belongsTo('App\Equipment');
 

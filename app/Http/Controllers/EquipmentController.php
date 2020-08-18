@@ -32,6 +32,11 @@ class EquipmentController extends Controller
 			'comm_on' => ['required'],
         ]);
     }
+    
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
 
     /**
      * Display a listing of the resource.
@@ -40,11 +45,30 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $pumps = Pump::all();
-        $tanks = Tank::all();
-        $loadingArms = LoadingArm::all();
-        $generators = Generator::all();
-        $fuelMeters = FuelMeter::all();
+        $user = Auth()->user();
+        if($user->is_center_chief()){
+            $pumps = Pump::with('equipment')->whereHas('equipment', function($q) use ($user){
+                $q->where('center_id','=',$user->center->id);
+            })->get();
+            $tanks = Tank::with('equipment')->whereHas('equipment', function($q) use ($user){
+                $q->where('center_id','=',$user->center->id);
+            })->get();
+            $loadingArms = LoadingArm::with('equipment')->whereHas('equipment', function($q) use ($user){
+                $q->where('center_id','=',$user->center->id);
+            })->get();
+            $generators = Generator::with('equipment')->whereHas('equipment', function($q) use ($user){
+                $q->where('center_id','=',$user->center->id);
+            })->get();
+            $fuelMeters = FuelMeter::with('equipment')->whereHas('equipment', function($q) use ($user){
+                $q->where('center_id','=',$user->center->id);
+            })->get();
+        }else{
+            $pumps = Pump::all();
+            $tanks = Tank::all();
+            $loadingArms = LoadingArm::all();
+            $generators = Generator::all();
+            $fuelMeters = FuelMeter::all();
+        }
 
         return view('equipments.index', compact('pumps', 'tanks', 'loadingArms', 'generators', 'fuelMeters'));
 

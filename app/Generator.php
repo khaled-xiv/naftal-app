@@ -11,7 +11,7 @@ class Generator extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
-    protected function equipment(){
+    public function equipment(){
 
         return $this->belongsTo('App\Equipment');
 

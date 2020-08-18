@@ -67,12 +67,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 
 
-    Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
-    Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create')->name('center.create');
-    Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit');
-    Route::post('centers', 'CenterController@store');
-    Route::delete('centers/{id}', 'CenterController@destroy');
-    Route::put('centers/{id}', 'CenterController@update');
+    Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index')->middleware('role:admin,district chief,center chief');
+    Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create')->name('center.create')->middleware('role:admin,district chief');
+    Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit')->middleware('role:admin,district chief');
+    Route::post('centers', 'CenterController@store')->middleware('role:admin,district chief');
+    Route::delete('centers/{id}', 'CenterController@destroy')->middleware('role:admin,district chief');
+    Route::put('centers/{id}', 'CenterController@update')->middleware('role:admin,district chief');
 
     //    Account routes
     Route::get(LaravelLocalization::transRoute('routes.account'), 'AccountController@index')
@@ -126,18 +126,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 
     //Route::resource('equipments', 'EquipmentController');
-    Route::get(LaravelLocalization::transRoute('routes.equipments'), 'EquipmentController@index');
-    Route::get(LaravelLocalization::transRoute('routes.equipment-create'), 'EquipmentController@create')->name('equipment-create');
-    Route::get(LaravelLocalization::transRoute('routes.equipment-edit'), 'EquipmentController@edit');
-    Route::post('equipments', 'EquipmentController@store');
-    Route::delete('equipments/{id}', 'EquipmentController@destroy');
-    Route::put('equipments/{id}', 'EquipmentController@update');
+    Route::get(LaravelLocalization::transRoute('routes.equipments'), 'EquipmentController@index')->middleware('role:admin,district chief,center chief');
+    Route::get(LaravelLocalization::transRoute('routes.equipment-create'), 'EquipmentController@create')->name('equipment-create')->middleware('role:admin,district chief');
+    Route::get(LaravelLocalization::transRoute('routes.equipment-edit'), 'EquipmentController@edit')->middleware('role:admin,district chief');
+    Route::post('equipments', 'EquipmentController@store')->middleware('role:admin,district chief');
+    Route::delete('equipments/{id}', 'EquipmentController@destroy')->middleware('role:admin,district chief');
+    Route::put('equipments/{id}', 'EquipmentController@update')->middleware('role:admin,district chief');
 
     //Route::resource('components', 'ComponentController');
-    Route::get(LaravelLocalization::transRoute('routes.component-edit'), 'ComponentController@edit');
-    Route::post('components', 'ComponentController@store');
-    Route::delete('components/{id}', 'ComponentController@destroy');
-    Route::put('components/{id}', 'ComponentController@update');
+    Route::get(LaravelLocalization::transRoute('routes.component-edit'), 'ComponentController@edit')->middleware('role:admin,district chief');
+    Route::post('components', 'ComponentController@store')->middleware('role:admin,district chief');
+    Route::delete('components/{id}', 'ComponentController@destroy')->middleware('role:admin,district chief');
+    Route::put('components/{id}', 'ComponentController@update')->middleware('role:admin,district chief');
 
 //    Route::resource('forums', 'ForumController');
     Route::get(LaravelLocalization::transRoute('routes.forums'), 'ForumController@index');

@@ -14,7 +14,7 @@ class Tank extends Model
         'product','height','diameter', 'capacity'
     ];
 
-    protected function equipment(){
+    public function equipment(){
 
         return $this->belongsTo('App\Equipment');
 
