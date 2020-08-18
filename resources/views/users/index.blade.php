@@ -30,7 +30,11 @@
                                         <th style="min-width:150px;">{{ucwords(__('email address'))}}</th>
                                         <th style="min-width:150px;">{{ucwords(__('Email verified at'))}}</th>
                                         <th style="min-width:100px;">{{ucwords(__('Phone'))}}</th>
-                                        <th style="min-width:150px;">{{ucwords(__('Address'))}}</th>
+                                        @if(Auth()->user()->is_center_chief())
+                                            <th style="min-width:150px;">{{ucwords(__('Address'))}}</th>
+                                        @else
+                                            <th style="min-width:150px;">{{ucwords(__('Center'))}}</th>
+                                        @endif
                                         <th style="min-width:150px;">{{ucwords(__('status'))}}</th>
                                         <th style="min-width:100px;">Action</th>
                                     </tr>
@@ -43,14 +47,19 @@
                                             <td>{{$user->email}}</td>
                                             <td><span class="mode {{(!$user->email_verified_at)?'mode_process':'mode_done'}}"> @if(!$user->email_verified_at) Not Verified @else {{$user->email_verified_at}} @endif</span></td>
                                             <td>@if ($user->phone){{$user->phone}} @else &nbsp; @endif</td>
-                                            <td>@if ($user->address){{$user->address}} @else &nbsp; @endif</td>
+                                            @if(Auth()->user()->is_center_chief())
+                                                <td>@if ($user->address){{$user->address}} @else &nbsp; @endif</td>
+                                            @else
+                                                <td>{{$user->center->code}}</td>
+                                            @endif
+
                                             <td> <span class="mode {{($user->is_active==1)?'mode_on':'mode_off'}}">@if($user->is_active==1) Active @else Closed @endif</span> </td>
                                             <td class="actions" style="height: 50px">
                                                 <span class="actionCust">
                                                     <a href="{{ route('users.edit',encrypt($user->id))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                 </span>
                                                 <span class="actionCust" >
-                                                    <a ><i class="fa fa-trash"  data-toggle="modal" data-target="#{{$user->id}}"></i></a>
+                                                    <a ><i class="fa fa-close"  data-toggle="modal" data-target="#{{$user->id}}"></i></a>
                                                 </span>
                                             </td>
 
@@ -60,13 +69,13 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="DeleteEquipment">{{__('Are you sure you want to delete this')}} <br>{{__('account1')}} ?</h5>
+                                                        <h5 class="modal-title" id="DeleteEquipment">{{__('Are you sure you want to close this')}} <br>{{__('account1')}} ?</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        {!! Form::open(['method'=>'POST','action'=>['UsersController@destroy',encrypt($user->id)]]) !!}
+                                                        {!! Form::open(['method'=>'POST','id'=>'delete_modal','action'=>['UsersController@close',encrypt($user->id)]]) !!}
                                                         @csrf
                                                         <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{__('Cancel')}}</button>
                                                         <button type="submit" class="btn btn-general btn-danger">{{__('Close')}}</button>
@@ -76,6 +85,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
 
                                     @endforeach
 

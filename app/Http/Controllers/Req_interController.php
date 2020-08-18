@@ -19,37 +19,27 @@ class Req_interController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','verified','role:district chief,center chief']);
+        $this->middleware(['auth','verified']);
     }
 
     public function index()
     {
-        $openned_reqs = DB::table('equipments')
-            ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
-            ->where('valide', 0)
-            ->where('equipments.center_id',Auth::user()->center->id)
-            ->select('req_inters.*','equipments.code')
-            ->get();
+        if(!Auth()->user()->is_district_chief() && !Auth()->user()->is_admin() ){
+            $openned_reqs = DB::table('equipments')
+                ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+                ->where('valide', 0)
+                ->where('equipments.center_id',Auth::user()->center->id)
+                ->select('req_inters.*','equipments.code')
+                ->get();
 
-        $closed_reqs=DB::table('equipments')
-            ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
-            ->where('valide', 1)
-            ->where('equipments.center_id',Auth::user()->center->id)
-            ->select('req_inters.*','equipments.code')
-            ->get();
-        $received_reqs=DB::table('equipments')
-            ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
-            ->where('need_district', 1)
-            ->where('valide', 0)
-            ->select('req_inters.*','equipments.code','equipments.center_id')
-            ->get();
-
-        foreach ( $received_reqs as $received_req){
-            $id=$received_req->center_id;
-            $received_req->center  =Center::findOrFail($id)->code;
-        }
-
-        if(Auth()->user()->is_district_chief()){
+            $closed_reqs=DB::table('equipments')
+                ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+                ->where('valide', 1)
+                ->where('equipments.center_id',Auth::user()->center->id)
+                ->select('req_inters.*','equipments.code')
+                ->get();
+        } else
+            {
             $openned_reqs = DB::table('equipments')
                 ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
                 ->where('valide', 0)
@@ -69,6 +59,17 @@ class Req_interController extends Controller
                 $id=$closed_req->center_id;
                 $closed_req->center  =Center::findOrFail($id)->code;
             }
+        }
+        $received_reqs=DB::table('equipments')
+            ->leftJoin('req_inters', 'equipments.id', '=', 'req_inters.equipment_id')
+            ->where('need_district', 1)
+            ->where('valide', 0)
+            ->select('req_inters.*','equipments.code','equipments.center_id')
+            ->get();
+
+        foreach ( $received_reqs as $received_req){
+            $id=$received_req->center_id;
+            $received_req->center  =Center::findOrFail($id)->code;
         }
 
 
@@ -234,7 +235,7 @@ class Req_interController extends Controller
         ]);
         $openned_req=Req_inter::findOrFail($id);
         $openned_req->update($request->all());
-        return  redirect()->route('request.edit',encrypt($id));
+        return  redirect()->route('request.edit',encrypt($id))->with('status',__('Your changes have been made'));
     }
 
     public function update_after_inter(Request $request,$id)
@@ -256,6 +257,7 @@ class Req_interController extends Controller
 
         if(!$request['need_district']){
             $openned_req->valide=1;
+            $openned_req->update($data);
             $comps=$request['component_id'];
             if($comps) $comps = array_map('intval', $comps);
             try {
@@ -286,7 +288,7 @@ class Req_interController extends Controller
             }
 
         }
-        return  redirect()->route('request.edit',encrypt($id));
+        return  redirect()->route('request.edit',encrypt($id))->with('status',__('Your changes have been made'));
     }
 
     public function update_discrict_inter(Request $request,$id)
@@ -328,7 +330,7 @@ class Req_interController extends Controller
                 ]);
             }
         }
-        return  redirect()->route('request.edit',encrypt($id));
+        return  redirect()->route('request.edit',encrypt($id))->with('status',__('Your changes have been made'));
     }
 
     public function destroy($id)

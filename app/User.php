@@ -93,6 +93,20 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
         }
         return false;
     }
+    public function is_technician()
+    {
+        if($this->role->name=='technician' && $this->is_active==1){
+            return true;
+        }
+        return false;
+    }
+    public function is_center_chief()
+    {
+        if($this->role->name=='center chief' && $this->is_active==1){
+            return true;
+        }
+        return false;
+    }
 
     public function is_admin()
     {

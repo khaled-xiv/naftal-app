@@ -211,7 +211,7 @@
 
                             {!! Form::close() !!}
 
-                            @if($openned_req->need_district && Auth()->user()->is_district_chief())
+                            @if($openned_req->need_district)
 
                             <hr>
 
@@ -369,6 +369,21 @@
         })
     }
 
+    @if (Session::has('status'))
+    $.toast({
+
+        text : "{{Session::get('status')}}",
+        showHideTransition : 'slide',
+        bgColor : 'green',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
+    @endif
 </script>
     <!--  Add Request Ends -->
 @endsection

@@ -11,11 +11,13 @@
         </a>
     </div>
 
+    @if(Auth()->user()->is_admin() || Auth()->user()->is_district_chief())
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/'.__('centers'))}}"><i class="fa fa-building-o"></i>
             {{ ucwords(__('centers')) }}
         </a>
     </div>
+    @endif
 
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/'. __('users'))}}"><i class="fa fa-users"></i>

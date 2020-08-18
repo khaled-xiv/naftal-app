@@ -301,4 +301,22 @@
 <!-- Edit User Ends -->
 
 
+<script>
+    @if($errors->any())
+    $.toast({
+
+        text : "{{$errors->first()}}",
+        showHideTransition : 'slide',
+        bgColor : '#CA0B00',
+        textColor : '#eee',
+        allowToastClose : true,
+        hideAfter : 3000,
+        stack : 5,
+        textAlign : 'center',
+        position : 'bottom-center',
+        width:"100%"
+    })
+    @endif
+</script>
+
 @endSection

@@ -12,21 +12,24 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function __construct()
     {
-        $this->middleware(['auth','verified','role:admin,district chief,center chief']);
+        $this->middleware(['auth','verified']);
     }
 
 
     public function index()
     {
-        $users=User::where('id', '!=', Auth::id())->paginate(10);
+        if(Auth()->user()->is_center_chief()){
+            $users=User::where('id', '!=', Auth::id())
+                ->where('id','!=',1)
+                ->where('center_id',Auth()->user()->center_id)
+                ->get();
+        }else {
+            $users=User::where('id', '!=', Auth::id())
+                ->where('id','!=',1)
+                ->get();
+        }
         return view('users.index',compact('users'));
     }
 
@@ -91,12 +94,6 @@ class UsersController extends Controller
         return redirect()->route('users.edit',encrypt($user->id));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try {

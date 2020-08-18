@@ -66,24 +66,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::post(LaravelLocalization::transRoute('routes.verification-resend'), 'Auth\VerificationController@resend')->name('verification.resend');
 
 
-    //    Admin routes
-        //  registration routes
-        Route::get(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@showRegistrationForm')->name('register');
-        Route::post(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@register')->name('register');
 
-
-        Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
-        Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create')->name('center.create');
-        Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit');
-        Route::post('centers', 'CenterController@store');
-        Route::delete('centers/{id}', 'CenterController@destroy');
-        Route::put('centers/{id}', 'CenterController@update');
-
-
+    Route::get(LaravelLocalization::transRoute('routes.centers'), 'CenterController@index');
+    Route::get(LaravelLocalization::transRoute('routes.center-create'), 'CenterController@create')->name('center.create');
+    Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit');
+    Route::post('centers', 'CenterController@store');
+    Route::delete('centers/{id}', 'CenterController@destroy');
+    Route::put('centers/{id}', 'CenterController@update');
 
     //    Account routes
-    Route::get(LaravelLocalization::transRoute('routes.account'), 'AccountController@index')->name('account.show');
-    Route::patch(LaravelLocalization::transRoute('routes.account-update'), 'AccountController@update')->name('account.update');
+    Route::get(LaravelLocalization::transRoute('routes.account'), 'AccountController@index')
+        ->name('account.show');
+    Route::patch(LaravelLocalization::transRoute('routes.account-update'), 'AccountController@update')
+        ->name('account.update');
     Route::post('/account/removeAddress', 'AccountController@removeAddress');
     Route::post('/account/removePhone', 'AccountController@removePhone');
     Route::post('/account/remove-fblink', 'AccountController@removeFbLink');
@@ -93,28 +88,41 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::post('/upload-image', 'AccountController@upladeImage');
     Route::get('/remove-image', 'AccountController@removeImage');
 
-    //  User routes
-    Route::group(['middleware'=>'role:admin,district chief'],function() {
-        Route::get(LaravelLocalization::transRoute('routes.users'), 'UsersController@index')->name('users.show');
-        Route::get(LaravelLocalization::transRoute('routes.user-show'), 'UsersController@show')->name('users.edit');
-        Route::patch(LaravelLocalization::transRoute('routes.user-update'), 'UsersController@update')->name('user.update');
-        Route::post('/users/close/{id}', 'UsersController@close');
-        Route::post('/users/delete/{id}', 'UsersController@destroy');
-    });
 
-    Route::group(['middleware'=>'role:center chief,district chief'],function() {
-        Route::get(LaravelLocalization::transRoute('routes.request-create'), 'Req_interController@create')->name('request.create');
-        Route::get(LaravelLocalization::transRoute('routes.request'), 'Req_interController@index')->name('requests.show');
-        Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')->name('request.edit');
-        Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')->name('request.store');
-        Route::Put('/request-of-intervention/{id}', 'Req_interController@update');
-        Route::Delete('/request-of-intervention/{id}/delete', 'Req_interController@destroy');
+    //  users routes
+    Route::get(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@showRegistrationForm')
+        ->name('register');
+    Route::post(LaravelLocalization::transRoute('routes.user-create'), 'Auth\RegisterController@register')
+        ->name('register');
+    Route::get(LaravelLocalization::transRoute('routes.users'), 'UsersController@index')
+        ->name('users.show')->middleware('role:admin,center chief,district chief');
+    Route::get(LaravelLocalization::transRoute('routes.user-show'), 'UsersController@show')
+        ->name('users.edit')->middleware('role:admin');
+    Route::patch(LaravelLocalization::transRoute('routes.user-update'), 'UsersController@update')
+        ->name('user.update')->middleware('role:admin');
+    Route::post('/users/close/{id}', 'UsersController@close')
+        ->middleware('role:admin');
 
-        Route::Put('/request-of-interventions/{request_of_intervention}', 'Req_interController@update_after_inter');
-        Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter');
-        Route::post('/getequipment', 'Req_interController@getEquipment');
-        Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');
-    });
+    // request of intervention routes
+    Route::get(LaravelLocalization::transRoute('routes.request'), 'Req_interController@index')
+        ->name('requests.show')->middleware('role:admin,center chief,district chief');
+    Route::get(LaravelLocalization::transRoute('routes.request-create'), 'Req_interController@create')
+        ->name('request.create')->middleware('role:center chief');
+    Route::get(LaravelLocalization::transRoute('routes.request-edit'), 'Req_interController@edit')
+        ->name('request.edit')->middleware('role:center chief,district chief');
+    Route::post(LaravelLocalization::transRoute('routes.request'), 'Req_interController@store')
+        ->name('request.store')->middleware('role:center chief');
+    Route::Put('/request-of-intervention/{id}', 'Req_interController@update')
+        ->middleware('role:center chief');
+    Route::Delete('/request-of-intervention/{id}/delete', 'Req_interController@destroy')
+        ->middleware('role:center chief');
+    Route::Put('/request-of-interventions/{request_of_intervention}', 'Req_interController@update_after_inter')
+        ->middleware('role:center chief');
+    Route::Put('/request-of-intervention-district/{request_of_intervention}', 'Req_interController@update_discrict_inter')
+        ->middleware('role:district chief');
+    Route::post('/getequipment', 'Req_interController@getEquipment');
+    Route::post('/getSelectedComps', 'Req_interController@getSelectedComps');
+
 
 
     //Route::resource('equipments', 'EquipmentController');

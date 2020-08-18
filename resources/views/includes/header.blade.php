@@ -14,9 +14,11 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav pull-right">
                             <!-- Logo -->
+                            @if(!Auth()->user()->is_technician())
                             <li>
                                 <i id="toggle-side-nav-btn" onclick="hideSideNav()"class="fa fa-bars"></i>
                             </li>
+                            @endif
                             <li>
                                 <form action="">
                                     <input type="text" class="form-control" style="display: none" id="nav-search"  name="search" placeholder="Search..">

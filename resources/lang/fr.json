@@ -161,6 +161,8 @@
     "Add user": "Ajouter un utilisateur",
     "Centers": "Centres",
     "Add Center": "Ajouter Centre",
+    "Number": "Nombre",
+
     "Edit Center": "Modifier Centre",
     "Delete Center": "Supprimer Centre",
     "Storage capacity": "Capacité de storage",
@@ -170,6 +172,12 @@
     "Are you sure you want to delete this equipment?": "Voulez-vous vraiment supprimer cet équipement?",
     "Are you sure you want to delete this component?": "Voulez-vous vraiment supprimer ce composant?",
     "Equipments": "Equipements",
+    "Equipment": "Equipement",
+    "Equipment code": "Code d'équipement",
+    "Error code": "Code d'érreur",
+    "Created at": "Créé à",
+    "Your changes have been made": "Vos modifications ont été apportées",
+
     "equipment": "équipement",
     "Components": "Composants",
     "component": "composant",

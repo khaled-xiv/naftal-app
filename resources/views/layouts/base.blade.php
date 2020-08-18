@@ -11,9 +11,11 @@
 <!-- Header Ends-->
 
 <div class="big-container">
+    @if(!Auth()->user()->is_technician())
 	<div id="left-side">
 		@include('includes.side-nav')
 	</div>
+    @endif
 	<div id="right-side">
 		<div>
 			@yield('content')

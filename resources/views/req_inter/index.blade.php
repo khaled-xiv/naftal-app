@@ -41,12 +41,12 @@
                                             <tr>
                                                 <th style="min-width:50px;">{{ucwords(__('Number'))}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('Equipment'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Equipment code'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Error code'))}}</th>
+                                                <th style="min-width:150px;">{{__('Equipment code')}}</th>
+                                                <th style="min-width:150px;">{{__('Error code')}}</th>
                                                 @if(!Auth()->user()->is_district_chief())
-                                                <th style="min-width:100px;">{{ucwords(__('Created at'))}}</th>
+                                                <th style="min-width:100px;">{{__('Created at')}}</th>
                                                 @endif
-                                                <th style="min-width:150px;">{{ucwords(__('Degree of urgency'))}}</th>
+                                                <th style="min-width:150px;">{{__('Degree of urgency')}}</th>
                                                 @if(Auth()->user()->is_district_chief())
                                                     <th style="min-width:100px;">{{ucwords(__('Center'))}}</th>
                                                 @endif
@@ -74,9 +74,7 @@
                                                         <span class="actionCust">
                                                             <a href="{{route('request.edit',encrypt($openned_req->id))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                         </span>
-                                                                <span class="actionCust" >
-                                                            <a href="#"><i class="fa fa-trash"></i></a>
-                                                        </span>
+
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -112,14 +110,14 @@
                                         <table style="width:100%;" id="filtertable2" class="table cust-datatable dataTable no-footer">
                                             <thead>
                                             <tr>
-                                                <th style="min-width:50px;">{{ucwords(__('Number'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Equipment'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Equipment code'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Error code'))}}</th>
+                                                <th style="min-width:50px;">{{__('Number')}}</th>
+                                                <th style="min-width:150px;">{{__('Equipment')}}</th>
+                                                <th style="min-width:150px;">{{__('Equipment code')}}</th>
+                                                <th style="min-width:150px;">{{__('Error code')}}</th>
                                                 @if(!Auth()->user()->is_district_chief())
-                                                    <th style="min-width:100px;">{{ucwords(__('Created at'))}}</th>
+                                                    <th style="min-width:100px;">{{__('Created at')}}</th>
                                                 @endif
-                                                <th style="min-width:150px;">{{ucwords(__('Degree of urgency'))}}</th>
+                                                <th style="min-width:150px;">{{__('Degree of urgency')}}</th>
                                                 @if(Auth()->user()->is_district_chief())
                                                     <th style="min-width:100px;">{{ucwords(__('Center'))}}</th>
                                                 @endif
@@ -146,9 +144,6 @@
                                                     <td class="actions" style="height: 50px">
                                                         <span class="actionCust">
                                                             <a href="{{route('request.edit',encrypt($closed_req->id))}}"><i class="fa fa-pencil-square-o"></i></a>
-                                                        </span>
-                                                        <span class="actionCust" >
-                                                            <a href="#"><i class="fa fa-trash"></i></a>
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -187,11 +182,11 @@
                                         <table style="width:100%;" id="filtertable3" class="table cust-datatable dataTable no-footer">
                                             <thead>
                                             <tr>
-                                                <th style="min-width:50px;">{{ucwords(__('Number'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Equipment'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Equipment code'))}}</th>
-                                                <th style="min-width:100px;">{{ucwords(__('Created at'))}}</th>
-                                                <th style="min-width:150px;">{{ucwords(__('Degree of urgency'))}}</th>
+                                                <th style="min-width:50px;">{{__('Number')}}</th>
+                                                <th style="min-width:150px;">{{__('Equipment')}}</th>
+                                                <th style="min-width:150px;">{{__('Equipment code')}}</th>
+                                                <th style="min-width:100px;">{{__('Created at')}}</th>
+                                                <th style="min-width:150px;">{{__('Degree of urgency')}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('Center'))}}</th>
                                                 <th style="min-width:100px;">Action</th>
                                             </tr>
@@ -209,9 +204,6 @@
                                                     <td class="actions" style="height: 50px">
                                                         <span class="actionCust">
                                                             <a href="{{route('request.edit',encrypt($openned_req->id))}}"><i class="fa fa-pencil-square-o"></i></a>
-                                                        </span>
-                                                        <span class="actionCust" >
-                                                            <a href="#"><i class="fa fa-trash"></i></a>
                                                         </span>
                                                     </td>
                                                 </tr>
