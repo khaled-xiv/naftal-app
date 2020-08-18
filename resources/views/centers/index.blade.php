@@ -75,7 +75,7 @@
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
                 },
                 @endif
-                "pageLength":5,
+                "pageLength":10,
                 'aoColumnDefs':[{
                     'bSortable':false,
                     'aTargets':['nosort'],

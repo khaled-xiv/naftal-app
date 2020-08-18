@@ -570,14 +570,6 @@ a.notif {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
-/*.dropdown-menu:before{*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    top: -20px;*/
-/*    right: 12px;*/
-/*    border:10px solid #212226;*/
-/*    border-color: transparent transparent #212226 transparent;*/
-/*}*/
 
 .head{
     padding:5px 15px;
@@ -595,22 +587,7 @@ a.notif {
 .bg-gray{
     background-color: #eee;
 }
-@media (max-width: 640px) {
-    .dropdown-menu{
-        top: 50px;
-        left: -16px;
-        width: 290px;
-    }
-    .nav{
-        display: block;
-    }
-    .nav .nav-item,.nav .nav-item a{
-        padding-left: 0px;
-    }
-    .message{
-        font-size: 13px;
-    }
-}
+
 
 /* =========================================
                 Stats
