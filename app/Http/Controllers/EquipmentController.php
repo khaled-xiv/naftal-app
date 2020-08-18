@@ -149,7 +149,8 @@ class EquipmentController extends Controller
                 $temp->fuel_meter()->save($secEq);
                 break;
         }
-        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipments'));
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.equipments'))
+            ->with('status',__('Equipment was successfully added'));
     }
 
     /**

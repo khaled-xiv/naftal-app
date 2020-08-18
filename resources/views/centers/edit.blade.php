@@ -71,9 +71,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div id="submit-btn" class="ml-auto">
-                                    <button role="button" class="btn  btn-danger" data-toggle="modal" data-target="#DeleteCenterModal">{{ __('Delete Center') }}</button>
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{ __('Edit Center') }}</button>
+                                <div id="submit-btn" class="ml-auto edit-act">
+                                    <button role="button" class="btn btn-danger btn-general" data-toggle="modal" data-target="#DeleteCenterModal" onclick="return false;">{{ __('Delete Center') }}</button>
+                                    <button class="btn  btn-yellow btn-general" type="submit"  title="Submit" role="button">{{ __('Edit Center') }}</button>
                                 </div>
                             </div>
 
@@ -101,8 +101,8 @@
                     {!! Form::open(['method'=>'DELETE', 'action'=> ['CenterController@destroy', $center->id]]) !!}
                     @csrf
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
-                        <button type="submit" class="btn btn-danger">{{ __('Delete Center') }}</button>
+                        <button type="button" class="btn btn-secondary btn-general" data-dismiss="modal">{{ __('Close') }}</button>
+                        <button type="submit" class="btn btn-danger btn-general">{{ __('Delete Center') }}</button>
                     </div>
                     {!! Form::close() !!}
                 </div>

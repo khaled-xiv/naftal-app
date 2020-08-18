@@ -219,8 +219,8 @@
 							@endif
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto edit-act">
-                                    <button class="btn btn-danger" data-toggle="modal" data-target="#DeleteEquipModal" role="button">{{__('Delete')." ".$temp}}</button>
-                                    <button class="btn btn-yellow" type="submit"  title="Submit" role="button">{{__('Edit')." ".$temp}}</button>
+                                    <button class="btn btn-danger btn-general" data-toggle="modal" data-target="#DeleteEquipModal" role="button" onclick="return false;">{{__('Delete')." ".$temp}}</button>
+                                    <button class="btn btn-yellow btn-general" type="submit"  title="Submit" role="button">{{__('Edit')." ".$temp}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}
@@ -252,16 +252,16 @@
                                             </p>
                                             <div class="comp-actions">
                                                 {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}
-                                                    <button class="component-edit" type="submit" role="button">{{__('Edit')." ".ucfirst(__('component'))}}</button>
+                                                    <button class="component-edit" type="submit" role="button">{{__('Edit')}}</button>
                                                 {!! Form::close() !!}
-                                                <button class="component-del" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">{{__('Delete')." ".ucfirst(__('component'))}}</button>
+                                                <button class="component-del" data-toggle="modal" data-target="#DeleteCompModal" data-comp-id="{{$component->id}}" role="button">{{__('Delete')}}</button>
                                             </div>
                                         </div>
                                     </div>
                             @endforeach
 							</div>
 							<div style="text-align: right;">
-								<button class="btn btn-yellow" data-toggle="modal" data-target="#ComponentModal" role="button">{{__('Add')." ".ucfirst(__('component'))}}</button>
+								<button class="btn btn-yellow btn-general" data-toggle="modal" data-target="#ComponentModal" role="button">{{__('Add')." ".ucfirst(__('component'))}}</button>
 							</div>
                         </div>
                     </div>
@@ -335,8 +335,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                        <button type="submit" class="btn btn-yellow">{{__('Add')." ".__('component')}}</button>
+                        <button type="button" class="btn btn-secondary btn-general" data-dismiss="modal">{{__('Close')}}</button>
+                        <button type="submit" class="btn btn-yellow btn-general">{{__('Add')." ".__('component')}}</button>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -356,8 +356,8 @@
                     {!! Form::open(['method'=>'DELETE', 'action'=> ['EquipmentController@destroy', $equipment->id]]) !!}
                     @csrf
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
-                        <button type="submit" class="btn btn-danger">{{__('Delete')." ".__('equipment')}}</button>
+                        <button type="button" class="btn btn-secondary btn-general" data-dismiss="modal">{{__('Close')}}</button>
+                        <button type="submit" class="btn btn-danger btn-general">{{__('Delete')." ".__('equipment')}}</button>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -378,8 +378,8 @@
                         @csrf
                         <input type="hidden" name="_method" value="DELETE"/>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__("Close")}}</button>
-                            <button type="submit" class="btn btn-danger">{{__('Delete')." ".__('component')}}</button>
+                            <button type="button" class="btn btn-secondary btn-general" data-dismiss="modal">{{__("Close")}}</button>
+                            <button type="submit" class="btn btn-danger btn-general">{{__('Delete')." ".__('component')}}</button>
                         </div>
                     </form>
                 </div>

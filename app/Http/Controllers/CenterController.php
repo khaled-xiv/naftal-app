@@ -59,7 +59,8 @@ class CenterController extends Controller
                 ->withInput();
         }
         Center::create($request->all());
-        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers'));
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers'))
+            ->with('status',__('Center was successfully added'));
     }
 
     /**

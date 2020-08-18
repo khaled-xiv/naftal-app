@@ -652,12 +652,14 @@ div.forum-box-footer:before {
 
 .component-list .component-item {
 	margin-left: 10px;
-	width: 400px;
+    height: 200px;
+	width: 230px;
 }
 
 .comp-actions {
 	display: flex;
 	align-items: center;
+    flex-wrap: nowrap;
 	justify-content: space-between;
 	padding: 3px;
 }
@@ -674,6 +676,7 @@ div.forum-box-footer:before {
 	white-space: nowrap;
 	cursor: pointer;
 	background: #fcfcfc;
+    width: 80px;
 	padding: 7px 5px;
 	transition-duration: .4s;
 	font-weight: 500;
@@ -683,11 +686,11 @@ div.forum-box-footer:before {
 }
 
 .comp-actions .component-edit:hover {
-	background: rgba(0, 102, 153, .08);
+	background: rgba(0, 102, 153, .05);
 }
 
 .comp-actions .component-del:hover{
-	background: rgba(244, 67, 54, .08);
+	background: rgba(244, 67, 54, .05);
 }
 
 div.mrgn-bottom {

@@ -230,7 +230,7 @@
                             @endif
                             <div class="row">
                                 <div id="submit-btn" class="ml-auto">
-                                    <button class="btn  btn-yellow" type="submit"  title="Submit" role="button">{{__('Add')." ".$temp}}</button>
+                                    <button class="btn  btn-yellow btn-general" type="submit"  title="Submit" role="button">{{__('Add')." ".$temp}}</button>
                                 </div>
                             </div>
                         {!! Form::close() !!}

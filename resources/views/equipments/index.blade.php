@@ -380,9 +380,9 @@
         });
 
         $(document).ready(function($) {
-			var add = "add ";
+			var add = "Add ";
 			@if($lang)
-				add = "ajouter ";
+				add = "Ajouter ";
 			@endif
             let equipment = $("ul li.active a").html();
             $('#add-icon').attr('title',add + equipment);
@@ -394,6 +394,22 @@
                 $("button.btn-general").html(add + equipment);
                 document.cookie='equip =' + equipment;
             });
+            
+            @if (Session::has('status'))
+            $.toast({
+                text : "{{Session::get('status')}}",
+                showHideTransition : 'slide',
+                bgColor : 'green',
+                textColor : '#eee',
+                allowToastClose : true,
+                hideAfter : 3000,
+                stack : 5,
+                textAlign : 'center',
+                position : 'bottom-center',
+                width:"100%"
+            })
+            @endif
+            
         });
     </script>
 @endSection
