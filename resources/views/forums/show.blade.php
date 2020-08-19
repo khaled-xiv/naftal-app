@@ -11,7 +11,7 @@
             <div class="container">
 
 
-                <div class="row" style="display:{!! $errors->hasBag('update') ? 'inline;' : 'none;' !!}">
+                <div class="row" style="margin-left: 5px; display:{!! $errors->hasBag('update') ? 'inline-block;' : 'none;' !!}">
                     <div class="alert alert-danger" role = "alert">
                         {{ __('Could not complete your request, make sure your input is valid.') }}
                     </div>
@@ -21,6 +21,12 @@
 
                     <!-- Post Content Column -->
                     <div class="col-md-8">
+						
+						<form class="forum-search small-scr-search" method="GET" action="/search/results">
+							<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
+							<input title="Search" value="" type="submit" class="search-button">
+						</form>
+						
 						<div class="contact-right" style="margin-top: 40px;">
                         <!-- Title -->
 						
@@ -74,10 +80,10 @@
 										{!! Form::open(['method'=>'POST', 'action'=> 'AnswerController@store']) !!}
 											<input type="hidden" name="forum" value="{{$forum->id}}"/>
 											<div class="row">
-												<textarea id="body" name="body" style="margin: 5px 20px; padding: 5px 20px; border-radius: 5px;" class="form-control" value="{{ old('body') }}" required placeholder="{{ __('You can answer here...') }}" rows="5"></textarea>
+												<textarea id="body" name="body" style="margin: 5px 20px; padding: 5px 20px; border-radius: 5px;" class="form-control" value="{{ old('body') }}" required placeholder="{{ __('You can answer here...') }}" rows="4"></textarea>
 											</div>
 											<div class="row pull-right">
-												<button style="margin: 5px 20px;" class="btn btn-outline-primary" type="submit">{{ __('Submit answer') }}</button>
+												<button style="margin: 5px 20px;" class="btn btn-yellow btn-general" type="submit">{{ __('Submit answer') }}</button>
 											</div>
 										{!! Form::close() !!}
 										<div class="clearfix"></div>
@@ -132,7 +138,7 @@
                     </div>
 
                     <!-- Sidebar Widgets Column -->
-                    <div class="col-md-4 justify-content-center">
+                    <div style="margin-top: 20px;" class="col-md-4 justify-content-center">
 
                         <div id="fix-div" class="position-fixed">
                             @include('forums.sideBar')

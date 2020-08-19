@@ -14,8 +14,13 @@
 
                     <!-- Post Content Column -->
                     <div class="col-lg-8 col-md-8">
+					
+						<form class="forum-search small-scr-search" method="GET" action="/search/results">
+							<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
+							<input title="Search" value="" type="submit" class="search-button">
+						</form>
 
-                        <div class="contact-right" style="overflow: hidden;">
+                        <div class="contact-right" style="margin-top: 20px;overflow: hidden;">
 
                             {!! Form::open(['method'=>'POST', 'action'=> 'ForumController@store']) !!}
                             @csrf
@@ -75,26 +80,5 @@
         </div>
         <!-- /.container -->
     </section>
-
-    <script>
-
-        $(document).ready(function($) {
-
-            let $window = $(window);
-            let $div = $('#fix-div');
-
-            function checkWidth() {
-                let window_size = $window.width();
-                if (window_size > 768) {
-                    $div.addClass('position-fixed');
-                }else{
-                    $div.removeClass('position-fixed');
-                }
-            }
-            checkWidth();
-            $(window).resize(checkWidth);
-        });
-
-    </script>
 
 @endsection

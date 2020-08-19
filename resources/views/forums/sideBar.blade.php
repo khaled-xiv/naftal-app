@@ -4,7 +4,7 @@
     $limit = count($tags);
 ?>
 {{--<form method="GET" action="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.search')}}">--}}
-<form class="forum-search" method="GET" action="/search/results">
+<form class="forum-search big-scr-search" method="GET" action="/search/results">
     <input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
 	<input title="Search" value="" type="submit" class="search-button">
 </form>

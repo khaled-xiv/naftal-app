@@ -153,6 +153,10 @@
         width: 100%;
         margin-left: 0;
     }
+	
+	#side-nav-item-lang {
+		display: none;
+	}
     /* show mobile nav open btn */
     #mobile-nav-open-btn {
         margin-right: 13px;
@@ -232,19 +236,34 @@
     .navbar {
         padding: 20px 0;
     }
+	
     .site-nav-wrapper,
     .white-nav-top {
         padding: 19px 0;
     }
+	
+	.small-scr-search {
+		display: flex;
+	}
+
+	.big-scr-search {
+		display: none;
+	}
 
     #left-side{
         width: 0;
     }
-    #right-side{
+    
+	#right-side{
         width: 100%;
         margin-left: 0;
     }
-    /*profil photo*/
+	
+	#side-nav-item-lang {
+		display: none;
+	}
+    
+	/*profil photo*/
     .team-member{
         margin: 8px;
     }

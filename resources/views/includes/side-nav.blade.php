@@ -47,7 +47,7 @@
         </a>
     </div>
 
-    <div class="side-nav-item" style="position: absolute; bottom: 90px">
+    <div id="side-nav-item-lang" class="side-nav-item">
     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
         @if($localeCode !=app()->getLocale())
             <a  hreflang="{{ $localeCode }}"

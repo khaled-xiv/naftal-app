@@ -31,23 +31,55 @@ $(function () {
 ============================================ */
 
 var sideNavHidden = false;
-if($( window ).width()<= 767){
-    sideNavHidden = true;
-}
+var left = document.getElementById("left-side");
+var right = document.getElementById("right-side");
+var lang = document.getElementById("side-nav-item-lang");
+
+
 function hideSideNav(){
-    let left = document.getElementById("left-side");
-    let right = document.getElementById("right-side");
     if(!sideNavHidden){
         right.style.width = "100%";
         right.style.marginLeft = "0px";
         left.style.width = "0";
+		if(lang)
+			lang.style.display="none";
     }else{
         right.style.width = "calc(100% - 250px)";
         right.style.marginLeft = "250px";
         left.style.width = "250px";
+		if(lang)
+			lang.style.display="flex";
     }
     sideNavHidden = !sideNavHidden;
 }
+
+ $(document).ready(function($) {
+    let $window = $(window);
+    let $div = $('#fix-div');
+	
+    function checkWidth() {
+		let window_size = $window.width();
+		if(window_size < 991){
+			right.removeAttribute("style");
+			left.removeAttribute("style");
+			lang.removeAttribute("style");
+			sideNavHidden = true;
+			if (window_size > 767) {
+				if($div)
+					$div.addClass('position-fixed');
+			}else{
+				if($div)
+					$div.removeClass('position-fixed');
+			}
+		}else {
+			sideNavHidden = false;
+			if($div)
+				$div.addClass('position-fixed');
+		}
+    }
+    checkWidth();
+    $(window).resize(checkWidth);
+});
 
 /* =========================================
                Responsive Tabs

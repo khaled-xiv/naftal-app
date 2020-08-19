@@ -13,6 +13,11 @@
                 <div class="row">
 
                     <div class="col-md-8">
+					
+						<form class="forum-search small-scr-search" method="GET" action="/search/results">
+							<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
+							<input title="Search" value="" type="submit" class="search-button">
+						</form>
 						
 						<div class="forum-index-header">
 							<h2 class="forum-index-title">
@@ -29,7 +34,9 @@
 						</div>
                         <!-- Blog Post -->
                         @if(count($forums) === 0)
-                            {{ __('No results were found') }}
+						<div class="empty-result">
+							{{ __('No results were found') }}
+						</div>
                         @else
 						<div class="forums-holder">
 							@foreach($forums as $forum)

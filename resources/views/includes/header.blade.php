@@ -58,7 +58,7 @@
                                                         <img src="{{($notification->user->photo) ? asset('img/users/'.Auth()->user()->photo):asset('img/users/profile-placeholder.jpg')}}" class="w-50 rounded-circle">
                                                     </div>
                                                     <div class="col-lg-8 col-sm-8 col-8">
-                                                        <strong class="text-info">{{$notification->user->name}}</strong>
+                                                        <strong class="text-info">{{$notification->sender}}</strong>
                                                         <div>
                                                             {{$notification->content}}
                                                             <span> <a href="{{$notification->link}}"> see more</a></span>

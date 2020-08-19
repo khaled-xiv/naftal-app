@@ -66,6 +66,8 @@ class AnswerController extends Controller
 		if($forum->user_id !== $user->id){
 			$notification=Notification::create([
 				'user_id' => $forum->user_id,
+				'sender' => $user->name,
+				'user_photo' => $user->photo,
 				'link' => "forum/".$forum->id,
 				'is_read' => 0,
 				'content' => "You have a new answer to your question \"".$forum->title."\"",

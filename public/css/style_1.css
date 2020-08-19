@@ -560,6 +560,11 @@ div.forum-box-footer:before {
 	transition-duration: .5s;
 }
 
+#left-side #side-nav-item-lang {
+	position: absolute;
+	bottom: 90px;
+}
+
 #left-side .side-nav .side-nav-item a {
 	width: 100%;
 	height: 50px;
@@ -705,7 +710,7 @@ form.forum-search {
 	outline: 0;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 	border-radius: 4px;
-	display: flex;
+	width: 100%;
 }
 
 form.forum-search > .searchbox {
@@ -746,6 +751,23 @@ form.forum-search > .search-button {
 
 form.forum-search > .search-button:hover {
 	background-color: rgb(244, 198, 19);
+}
+
+.small-scr-search {
+	display: none;
+}
+
+.big-scr-search {
+	display: flex;
+}
+
+.empty-result {
+	font-size: 20px;
+	font-weight: 500;
+	box-sizing: border-box;
+	color: #444;
+	margin: 30px;
+	padding: 20px;
 }
 
 /*table*/
