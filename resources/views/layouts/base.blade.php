@@ -65,12 +65,11 @@
     channel.bind('notify', function(data) {
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var notification=(data.notification);
-        console.log(notification);
         var newNotificationHtml = `
           <li class="notification-box bg-gray">
              <div class="row">
                 <div class="col-lg-3 col-sm-3 col-3 text-center">
-                    <img src="https://api.adorable.io/avatars/71/\`+avatar+\`.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
+                    <img src="/img/users/`+notification.user_photo+`" class="w-50 rounded-circle" alt="50x50">
                 </div>
                 <div class="col-lg-8 col-sm-8 col-8">
                 <strong class="text-info">`+notification.sender+`</strong>
@@ -84,6 +83,7 @@
                </li>
         `;
         $(newNotificationHtml).insertAfter ($('ul.dropdown-menu-1 li.head'));
+        $('ul.dropdown-menu-1 li.no-notifications').remove();
         $('#bell').addClass('bell-animations');
         setTimeout(function () {
             $('#bell').removeClass('bell-animations');

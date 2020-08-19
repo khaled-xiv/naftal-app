@@ -10,7 +10,7 @@
             {{__('Dashboard') }}
         </a>
     </div>
-    
+
     <div class="side-nav-item">
         <a href="{{url(app()->getLocale().'/'.__('centers'))}}"><i class="fa fa-building-o"></i>
             {{ ucwords(__('centers')) }}
@@ -47,7 +47,7 @@
         </a>
     </div>
 
-    <div class="side-nav-item">
+    <div class="side-nav-item" style="position: absolute; bottom: 90px">
     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
         @if($localeCode !=app()->getLocale())
             <a  hreflang="{{ $localeCode }}"

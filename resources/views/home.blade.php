@@ -13,8 +13,8 @@
     <link rel="shortcut icon" src="{{ asset ('favicon.ico')}}">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="{{asset('fonts/Raleway.css')}}" rel="stylesheet">
+    <link href="{{asset('fonts/Open Sans.css')}}" rel="stylesheet">
 
     <!-- Fontawesome -->
     <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">

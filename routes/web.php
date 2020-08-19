@@ -38,6 +38,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
             'user_id'=>1,
             'link'=>1,
             'sender'=>'khaled',
+            'user_photo'=>'profile-placeholder.jpg',
             'is_read'=>0,
             'content'=>"hi",
         ]);

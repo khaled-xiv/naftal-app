@@ -30,32 +30,47 @@
                                     <span class="num" @if (Auth()->user()->unReadNotifications()->count()==0) style="display: none" @endif>{{Auth()->user()->unReadNotifications()->count()}}</span>
 
                                 </a>
+
                                 <ul class="dropdown-menu dropdown-menu-1 scrollar" id="style-1">
                                     <li class="head text-light bg-dark">
                                         <div class="row">
                                             <div class="col-lg-12 col-sm-12 col-12">
                                                 <span id="count-nots">Notifications</span>
-                                                <a href="#" onclick="markAsRead()" class="float-right text-light">Mark all as read</a>
+                                                <a href="#" onclick="markAsRead()" class="float-right text-light">{{__('Mark all as read')}}</a>
                                             </div>
                                         </div>
                                     </li>
-                                    @foreach(Auth()->user()->notifications as $notification)
-                                    <li class="notification-box {{$notification->is_read?:'bg-gray'}}">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                                <img src="{{($notification->user->photo) ? asset('img/users/'.Auth()->user()->photo):asset('img/users/profile-placeholder.jpg')}}" class="w-50 rounded-circle">
-                                            </div>
-                                            <div class="col-lg-8 col-sm-8 col-8">
-                                                <strong class="text-info">{{$notification->user->name}}</strong>
-                                                <div>
-                                                    {{$notification->content}}
-													<span> <a href="{{$notification->link}}"> see more</a></span>
+                                    @if (Auth()->user()->unReadNotifications()->count()==0)
+                                        <li class="notification-box no-notifications">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 col-12">
+                                                    <div class="text-center">
+                                                        {{__('There is no new notifications')}}
+                                                    </div>
                                                 </div>
-                                                <small class="text-warning">{{$notification->created_at}}</small>
                                             </div>
-                                        </div>
-                                    </li>
-                                    @endforeach
+                                        </li>
+                                    @else
+                                        @foreach(Auth()->user()->notifications as $notification)
+                                            <li class="notification-box {{$notification->is_read?:'bg-gray'}}">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-sm-3 col-3 text-center">
+                                                        <img src="{{($notification->user->photo) ? asset('img/users/'.Auth()->user()->photo):asset('img/users/profile-placeholder.jpg')}}" class="w-50 rounded-circle">
+                                                    </div>
+                                                    <div class="col-lg-8 col-sm-8 col-8">
+                                                        <strong class="text-info">{{$notification->user->name}}</strong>
+                                                        <div>
+                                                            {{$notification->content}}
+                                                            <span> <a href="{{$notification->link}}"> see more</a></span>
+                                                        </div>
+                                                        <small class="text-warning">{{$notification->created_at}}</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    @endif
+
+
                                 </ul>
                             </li>
                             <li><img src="{{(Auth()->user()->photo) ? asset('img/users/'.Auth()->user()->photo):asset('img/users/profile-placeholder.jpg')}}" style="border-radius: 50%; width: 45px; height: 45px" alt=""></li>
@@ -84,7 +99,13 @@
                         <ul class="nav " style="display: flex;flex-direction: column;">
 
                             @if(Auth()->user()->is_technician())
-                                <li><a class="btn btn-link" href="{{url(app()->getLocale())}}">{{ __('home') }}</a></li>
+                                <li><a class="btn btn-link smooth-scroll" href="/">{{ __('home') }}</a></li>
+                                <li><a class="btn btn-link smooth-scroll" href="/#about">{{ __('about') }}</a></li>
+                                <li><a class="btn btn-link smooth-scroll" href="#team">{{ __('team') }}</a></li>
+                                <li><a class="btn btn-link smooth-scroll" href="#center">{{ __('centers') }}</a></li>
+                                <li><a class="btn btn-link smooth-scroll" href="#services">{{ __('services') }}</a></li>
+                                <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
+                                <li><a class="btn btn-link smooth-scroll" href="#contact">{{ __('contact') }}</a></li>
                             @guest
                                     <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('login'))}}">{{ __('Sign In') }}</a></li>
                                 @else

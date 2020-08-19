@@ -31,6 +31,9 @@ $(function () {
 ============================================ */
 
 var sideNavHidden = false;
+if($( window ).width()<= 767){
+    sideNavHidden = true;
+}
 function hideSideNav(){
     let left = document.getElementById("left-side");
     let right = document.getElementById("right-side");
