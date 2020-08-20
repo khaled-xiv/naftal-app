@@ -89,28 +89,7 @@
                     var Labels = new Array();
                     var counts = new Array();
                     $(document).ready(function(){
-						$("#notif-content").html("notif " + "hi there");
-						$("#notif").animate({right: '30px'}, 1000, function(){
-							$("#notif").css("position", "fixed");
-							$("#notif-dec").animate({right: '0'}, 10000);
-							timeout = setTimeout(function(){
-								$("#notif").remove();								
-							}, 10000);
-						});
-						
-						$("#notif").mouseover( function () {
-							$("#notif-dec").stop();
-							$("#notif-dec").css("right", "300px");
-							clearTimeout(timeout);
-						});
-						
-						$("#notif").mouseout( function () {
-							$("#notif-dec").animate({right: '0'}, 10000);
-							timeout = setTimeout(function(){
-								$("#notif").remove();
-							}, 10000);
-						});
-
+						getPredictions();
                         $.get(url, function(response){
                             response.forEach(function(data){
                                 error_codes.push(data.error_code);
@@ -232,29 +211,56 @@
 					<?php
 						$lang = \Illuminate\Support\Facades\App::getLocale()=='fr';
 					?>
-					// function getPredictions(){
-						// let error503 = "Couldn't find prediction model";
-						// let error400 = "Not enough data to make predictions";
-						// @if($lang)
-						// error503 = "Il y a pas un modèle de prédiction";
-						// error400 = "Pas assez de données pour faire la prédiction";
-						// @endif
-						// $.ajax({
-							// type:'GET',
-							// url:'http://127.0.0.1:8000/maintenance/equipments/',
-							// success:function(data) {
-								// if(data.length !== 0){
-									// $("#notif").html("notif " + data);
-								// }
-							// },
-							// error: function(data) {
-								// if(data.status == 503)
-									// alert(erroe503);
-								// else if(data.status == 400)
-									// alert(error400);
-							// }
-						// });
-					// }
+					function getPredictions(){
+						msg = "";
+						let error503 = "Couldn't find prediction model";
+						let error400 = "Not enough data to make predictions";
+						@if($lang)
+						error503 = "Il y a pas un modèle de prédiction";
+						error400 = "Pas assez de données pour faire la prédiction";
+						@endif
+						$.ajax({
+							type:'GET',
+							url:'http://127.0.0.1:8000/maintenance/equipments/',
+							success:function(data) {
+								if(data.length !== 0){
+									for(let i = 0; i < data.length; i++){
+										msg += data[i].code;
+										if(i !== data.length -1)
+											msg += ", ";
+									}
+									msg += " might have a problem.";
+									$("#notif-content").html(msg);
+									$("#notif").animate({right: '30px'}, 1000, function(){
+										$("#notif").css("position", "fixed");
+										$("#notif-dec").animate({right: '0'}, 10000);
+										timeout = setTimeout(function(){
+											$("#notif").remove();								
+										}, 10000);
+									});
+									
+									$("#notif").mouseover( function () {
+										$("#notif-dec").stop();
+										$("#notif-dec").css("right", "300px");
+										clearTimeout(timeout);
+									});
+									
+									$("#notif").mouseout( function () {
+										$("#notif-dec").animate({right: '0'}, 10000);
+										timeout = setTimeout(function(){
+											$("#notif").remove();
+										}, 10000);
+									});
+								}
+							},
+							error: function(data) {
+								if(data.status == 503)
+									alert(erroe503);
+								else if(data.status == 400)
+									alert(error400);
+							}
+						});
+					}
                 </script>
 
             </div>
