@@ -45,12 +45,11 @@
                                                 <th style="min-width:150px;">{{ucwords(__('Equipment'))}}</th>
                                                 <th style="min-width:150px;">{{__('Equipment code')}}</th>
                                                 <th style="min-width:150px;">{{__('Error code')}}</th>
-                                                @if(!Auth()->user()->is_district_chief())
-                                                <th style="min-width:100px;">{{__('Created at')}}</th>
-                                                @endif
                                                 <th style="min-width:150px;">{{__('Degree of urgency')}}</th>
-                                                @if(Auth()->user()->is_district_chief())
+                                                @if(Auth()->user()->is_district_chief() ||  Auth()->user()->is_admin())
                                                     <th style="min-width:100px;">{{ucwords(__('Center'))}}</th>
+                                                @else
+                                                    <th style="min-width:100px;">{{__('Created at')}}</th>
                                                 @endif
                                                 <th style="min-width:100px;">Action</th>
                                             </tr>
@@ -64,12 +63,11 @@
                                                     <td>{{$openned_req->equipment_name}}</td>
                                                     <td>{{$openned_req->code}} </td>
                                                     <td>{{$openned_req->error_code}} </td>
-                                                    @if(!Auth()->user()->is_district_chief())
-                                                    <td>{{$openned_req->created_at}}</td>
-                                                    @endif
                                                     <td>{{$openned_req->degree_urgency}}</td>
-                                                    @if(Auth()->user()->is_district_chief())
+                                                    @if(Auth()->user()->is_district_chief() ||  Auth()->user()->is_admin())
                                                         <td>{{$openned_req->center}}</td>
+                                                    @else
+                                                        <td>{{$openned_req->created_at}}</td>
                                                     @endif
 
                                                     <td class="actions" style="height: 50px">
@@ -118,12 +116,11 @@
                                                 <th style="min-width:150px;">{{__('Equipment')}}</th>
                                                 <th style="min-width:150px;">{{__('Equipment code')}}</th>
                                                 <th style="min-width:150px;">{{__('Error code')}}</th>
-                                                @if(!Auth()->user()->is_district_chief())
-                                                    <th style="min-width:100px;">{{__('Created at')}}</th>
-                                                @endif
                                                 <th style="min-width:150px;">{{__('Degree of urgency')}}</th>
-                                                @if(Auth()->user()->is_district_chief())
+                                                @if(Auth()->user()->is_district_chief() ||  Auth()->user()->is_admin())
                                                     <th style="min-width:100px;">{{ucwords(__('Center'))}}</th>
+                                                @else
+                                                    <th style="min-width:100px;">{{__('Created at')}}</th>
                                                 @endif
                                                 <th style="min-width:100px;">Action</th>
                                             </tr>
@@ -137,12 +134,11 @@
                                                     <td>{{$closed_req->equipment_name}}</td>
                                                     <td>{{$closed_req->code}} </td>
                                                     <td>{{$closed_req->error_code}} </td>
-                                                    @if(!Auth()->user()->is_district_chief())
-                                                        <td>{{$closed_req->created_at}}</td>
-                                                    @endif
                                                     <td>{{$closed_req->degree_urgency}}</td>
-                                                    @if(Auth()->user()->is_district_chief())
+                                                    @if(Auth()->user()->is_district_chief() ||  Auth()->user()->is_admin())
                                                         <td>{{$closed_req->center}}</td>
+                                                    @else
+                                                        <td>{{$closed_req->created_at}}</td>
                                                     @endif
 
                                                     <td class="actions" style="height: 50px">

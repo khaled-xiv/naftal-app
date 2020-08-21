@@ -1,12 +1,12 @@
 @extends('layouts.base')
-@section('title', ucwords(__('users')))
+@section('title', __('Dashboard'))
 @section('content')
     <!-- Users -->
     <section id="dashboard">
 
         <div class="content-box-md">
             <div class="container">
-			
+
 				<div id="notif">
 					<div id="notif-dec"></div>
 					<div id="notif-content"></div>
@@ -17,31 +17,31 @@
                     <div class="stats-item text-center">
                         <i class="fa fa-building-o"></i>
                         <h3 class="counter">{{$count['centers']}}</h3>
-                        <p>Centers</p>
+                        <p>{{__('Centers')}}</p>
                     </div>
 
                     <div class="stats-item text-center">
                         <i class="fa fa-gears"></i>
                         <h3 class="counter">{{$count['equipments']}}</h3>
-                        <p>Equipments</p>
+                        <p>{{__('Equipments')}}</p>
                     </div>
 
                     <div class="stats-item text-center">
                         <i class="fa fa-users"></i>
                         <h3 class="counter">{{$count['users']}}</h3>
-                        <p>New Users</p>
+                        <p>{{__('New users')}}</p>
                     </div>
 
                     <div class="stats-item text-center">
                         <i class="fa fa-newspaper-o"></i>
                         <h3 class="counter">{{$count['posts']}}</h3>
-                        <p>New posts</p>
+                        <p>{{__('New posts')}}</p>
                     </div>
 
                     <div class="stats-item text-center">
                         <i class="fa fa-comments"></i>
                         <h3 class="counter">{{$count['comments']}}</h3>
-                        <p>New comments</p>
+                        <p>{{__('New comments')}}</p>
                     </div>
 
                 </div>
@@ -50,18 +50,22 @@
                     <br/>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-10 offset-1">
                         <div class="panel panel-default contact-right">
-                            <div class="panel-heading"><b>Errors history</b></div>
+                            <div class="panel-heading"><b>{{__('Errors history')}}</b></div>
                             <div class="panel-body">
                                 <canvas id="errors" height="350" width="600"></canvas>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6">
+                </div>
+                <div class="row">
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-1">
                         <div class="panel panel-default contact-right">
-                            <div class="panel-heading"><b>Maintenances history</b></div>
+                            <div class="panel-heading"><b>{{__('Maintenances history')}}</b></div>
                             <div class="panel-body">
                                 <canvas id="maints" height="350" width="600"></canvas>
                             </div>
@@ -72,9 +76,9 @@
                     <br>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-10 offset-1">
                         <div class="panel panel-default contact-right">
-                            <div class="panel-heading"><b>Failures history</b></div>
+                            <div class="panel-heading"><b>{{__('Failures history')}}</b></div>
                             <div class="panel-body">
                                 <canvas id="failures" height="350" width="600"></canvas>
                             </div>
@@ -83,6 +87,16 @@
                 </div>
                 <script src="{{asset('js/chart/Chart.min.js')}}"></script>
                 <script>
+
+                    function getRandomColor() {
+                        var letters = '0123456789ABCDEF'.split('');
+                        var color = '#';
+                        for (var i = 0; i < 6; i++ ) {
+                            color += letters[Math.floor(Math.random() * 16)];
+                        }
+                        return color;
+                    }
+
 					var timeout;
                     var url = "{{url('dashboard/errors')}}";
                     var error_codes = new Array();
@@ -102,14 +116,12 @@
                                 data: {
                                     labels:error_codes,
                                     datasets: [{
-                                        label: "total number of errors occured",
+                                        label: "{{__('Total number of errors occured')}}",
                                         data: counts,
-                                        borderWidth: 1,
-                                        barPercentage: 0.5,
-                                        barThickness: 6,
-                                        maxBarThickness: 8,
-                                        minBarLength: 2,
-                                        backgroundColor: ["#4e73df",'#1cc88a','#36b9cc','rgb(255, 99, 132)'],
+                                        barThickness: 30,
+                                        maxBarThickness: 30,
+                                        minBarLength: 10,
+                                        backgroundColor:getRandomColor()
                                     }],
                                 },
                                 options: {
@@ -117,7 +129,7 @@
                                         xAxes: [{
                                             scaleLabel: {
                                                 display: true,
-                                                labelString: 'Errors'
+                                                labelString: '{{__('Errors')}}'
                                             }
                                         }],
                                         yAxes: [{
@@ -126,7 +138,7 @@
                                             },
                                             scaleLabel: {
                                                 display: true,
-                                                labelString: 'Count'
+                                                labelString: '{{__('Count')}}'
                                             }
                                         }]
                                     }
@@ -146,19 +158,39 @@
                                 counts2.push(data.count);
                             });
                             var ctx = document.getElementById("maints").getContext('2d');
+
+
                             var myChart = new Chart(ctx, {
-                                type: 'doughnut',
+                                type: 'bar',
                                 data: {
                                     labels:comps,
                                     datasets: [{
-                                        label: 'number of maintenances',
+                                        label: '{{__('Number of maintenances')}}',
                                         data: counts2,
-                                        borderWidth: 1,
-                                        backgroundColor: ["#4e73df",'#1cc88a','#36b9cc','rgb(255, 99, 132)'],
+                                        barThickness: 30,
+                                        maxBarThickness: 30,
+                                        minBarLength: 10,
+                                        backgroundColor:getRandomColor()
                                     }]
                                 },
                                 options: {
-
+                                    scales: {
+                                        xAxes: [{
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: '{{__('Components')}}'
+                                            }
+                                        }],
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            },
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: '{{__('Count')}}'
+                                            }
+                                        }]
+                                    }
                                 }
                             });
                         });
@@ -181,9 +213,12 @@
                                 data: {
                                     labels:comps3,
                                     datasets: [{
-                                        label: 'number of failures',
+                                        label: '{{__('Number of failures')}}',
                                         data: counts3,
-                                        borderWidth: 1
+                                        barThickness: 30,
+                                        maxBarThickness: 30,
+                                        minBarLength: 10,
+                                        backgroundColor:getRandomColor()
                                     }]
                                 },
                                 options: {
@@ -191,7 +226,7 @@
                                         xAxes: [{
                                             scaleLabel: {
                                                 display: true,
-                                                labelString: 'Components'
+                                                labelString: '{{__('Components')}}'
                                             }
                                         }],
                                         yAxes: [{
@@ -200,7 +235,7 @@
                                             },
                                             scaleLabel: {
                                                 display: true,
-                                                labelString: 'Count'
+                                                labelString: '{{__('Count')}}'
                                             }
                                         }]
                                     }
@@ -235,16 +270,16 @@
 										$("#notif").css("position", "fixed");
 										$("#notif-dec").animate({right: '0'}, 10000);
 										timeout = setTimeout(function(){
-											$("#notif").remove();								
+											$("#notif").remove();
 										}, 10000);
 									});
-									
+
 									$("#notif").mouseover( function () {
 										$("#notif-dec").stop();
 										$("#notif-dec").css("right", "300px");
 										clearTimeout(timeout);
 									});
-									
+
 									$("#notif").mouseout( function () {
 										$("#notif-dec").animate({right: '0'}, 10000);
 										timeout = setTimeout(function(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Center;
+use App\Component;
 use App\Equipment;
 use App\Error;
 use App\Failure;
@@ -39,22 +40,30 @@ class DashboardController extends Controller
 
     public function getMaints()
     {
-        $result = Maintenance::
+        $results = Maintenance::
         select('comp',DB::raw('count(*) as count'))
             ->groupBy('comp')
             ->orderBy('count','desc')
             ->get();
-        return response()->json($result);
+        foreach ($results as $result){
+            $des=Component::where('generic_name',$result['comp'])->first();
+            $result['comp']=$des['designation'];
+        }
+        return response()->json($results);
     }
 
     public function getFailures()
     {
-        $result = Failure::
+        $results = Failure::
         select('comp',DB::raw('count(*) as count'))
             ->groupBy('comp')
             ->orderBy('count','desc')
             ->get();
-        return response()->json($result);
+        foreach ($results as $result){
+            $des=Component::where('generic_name',$result['comp'])->first();
+            $result['comp']=$des['designation'];
+        }
+        return response()->json($results);
     }
 
     public function uploadMachines(Request $request)

@@ -53,7 +53,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         {!! Form::label('error_code', __('Error code').':',['class'=>'label_padding']) !!}
-                                        {!! Form::select('error_code', array('electrique'=>'1','mecanique'=>'2','3'=>'3') , null,
+                                        {!! Form::select('error_code', array('Electrique'=>'Electrique','Mecanique'=>'Mecanique',
+                                        'Hydraulique'=>'Hydraulique','Electronique'=>'Electronique','Compression'=>'Compression') , null,
                                         ['class'=>'form-control'])!!}
                                         @error('error_code')
                                         <span class="invalid-feedback" role="alert">
