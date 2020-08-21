@@ -6,7 +6,7 @@
     </div>
 
     <div class="side-nav-item">
-        <a href="{{url(app()->getLocale().'/dashboard')}}"><i class="fa fa-dashboard"></i>
+        <a href="{{url(app()->getLocale().'/'.__('dashboard1'))}}"><i class="fa fa-dashboard"></i>
             {{__('Dashboard') }}
         </a>
     </div>
