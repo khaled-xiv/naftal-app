@@ -171,7 +171,7 @@ class Req_interController extends Controller
         ]);
         Error::create([
             'equipment_id' => $request['equipment_id'],
-            'error_code' => $request['error_code'],
+            'error_code' => $this->convert($request['error_code']),
             'dateTime' => $request['created_at'],
         ]);
         return  redirect()->route('requests.show')->with('status',__('An item was successfully added'));
@@ -246,11 +246,23 @@ class Req_interController extends Controller
             ->delete();
         Error::create([
             'equipment_id' => $openned_req->equipment_id,
-            'error_code' => $openned_req->error_code,
+            'error_code' => $this->convert($openned_req->error_code),
             'dateTime' => $openned_req->created_at,
         ]);
         return  redirect()->route('request.edit',encrypt($id))->with('status',__('Your changes have been made'));
     }
+
+    public function convert($error)
+    {
+        switch ($error) {
+            case 'Electrique':return 'error1';break;
+            case 'Mecanique':return 'error2';break;
+            case 'Hydraulique':return 'error3';break;
+            case 'Electronique':return 'error4';break;
+            case 'Compression':return 'error5';break;
+        }
+    }
+
 
     public function update_after_inter(Request $request,$id)
     {
