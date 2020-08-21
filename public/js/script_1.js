@@ -59,22 +59,20 @@ function hideSideNav(){
 	
     function checkWidth() {
 		let window_size = $window.width();
-		if(window_size < 991){
-			right.removeAttribute("style");
-			left.removeAttribute("style");
-			lang.removeAttribute("style");
-			sideNavHidden = true;
-			if (window_size > 767) {
-				if($div)
-					$div.addClass('position-fixed');
-			}else{
-				if($div)
-					$div.removeClass('position-fixed');
-			}
-		}else {
-			sideNavHidden = false;
+		if(window_size > 1200){
 			if($div)
 				$div.addClass('position-fixed');
+		}else{
+			if($div)
+				$div.removeClass('position-fixed');
+			if(window_size > 991){
+				right.removeAttribute("style");
+				left.removeAttribute("style");
+				lang.removeAttribute("style");
+				sideNavHidden = true;
+			}else {
+				sideNavHidden = false;
+			}
 		}
     }
     checkWidth();

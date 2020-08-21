@@ -57,12 +57,15 @@
 									</div>
 									<div class="forum-box-footer">
 										<div>
+											<span class="box question-score @if($forum->votes > 0) good-result @elseif($forum->votes < 0) bad-result @endif"> {{ $forum->votes }}</span>
+										</div>
+										<div>
 											{{ __('Posted on')." ".$forum->created_at." ".__('by')}}
 											&nbsp;<span class="username">{{$forum->user->name}}</span>
 										</div>
 										<div>
-											<span class="answer-count">{{ $forum->answers->count() }}</span>
-										</div>
+											<span class="box answer-count">{{ $forum->answers->count()." ".__('answer')."(s)" }}</span>
+										</div>									
 									</div>
 								</div>
 							@endforeach
