@@ -212,6 +212,7 @@
 						$lang = \Illuminate\Support\Facades\App::getLocale()=='fr';
 					?>
 					function getPredictions(){
+						$("#notif").hide();
 						msg = "";
 						let error503 = "Couldn't find prediction model";
 						let error400 = "Not enough data to make predictions";
@@ -231,6 +232,7 @@
 									}
 									msg += " might have a problem.";
 									$("#notif-content").html(msg);
+									$("#notif").show();
 									$("#notif").animate({right: '30px'}, 1000, function(){
 										$("#notif").css("position", "fixed");
 										$("#notif-dec").animate({right: '0'}, 10000);

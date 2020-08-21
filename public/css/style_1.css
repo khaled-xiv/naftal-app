@@ -388,17 +388,38 @@ div.forum-box-footer {
 	padding-left: 5px;
 }
 
-div .forum-box-footer .answer-count {
-	position:relative;
-	left: -10px;
-	width: 40px;
+div .forum-box-footer .box {
 	height: 25px;
-	background: #fcfcfc;
 	display: inline-flex;
 	border: 1px #eee solid;
 	border-radius: 5px;
 	align-items: center;
 	justify-content: center;
+}
+
+div .forum-box-footer .question-score {
+	width: 40px;
+}
+
+div .forum-box-footer .good-result {
+	color: rgba(50, 200, 50, .7);
+	border-color: rgba(50, 200, 50, .7);
+}
+
+div .forum-box-footer .normal-result {
+	background: #fcfcfc;
+}
+
+div .forum-box-footer .bad-result {
+	color: rgba(220, 50, 50, .7);
+	border-color: rgba(220, 50, 50, .7);
+}
+	
+div .forum-box-footer .answer-count {
+	position:relative;
+	left: -10px;
+	width: 80px;
+	background: #fcfcfc;
 }
 
 div .forum-box-footer .answer-count:hover {
@@ -786,17 +807,6 @@ form.forum-search > .search-button:hover {
 	overflow: hidden;
 	z-index: 1000;
 }
-
-/* #notif:before { */
-	/* content: ""; */
-	/* width: 4px; */
-	/* position: absolute; */
-	/* left: 0; */
-	/* top: 0; */
-	/* bottom: 0; */
-	/* background: #f4c613; */
-	/* z-index: 1000; */
-/* } */
 
 #notif #notif-dec {
 	position:absolute;
