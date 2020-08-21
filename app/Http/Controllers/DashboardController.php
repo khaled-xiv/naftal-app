@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Center;
+use App\Component;
 use App\Equipment;
 use App\Error;
 use App\Failure;
@@ -29,32 +30,54 @@ class DashboardController extends Controller
     }
     public function getErrors()
     {
-        $result = Error::
+        $results = Error::
             select('error_code',DB::raw('count(*) as count'))
             ->groupBy('error_code')
             ->orderBy('count','desc')
             ->get();
-        return response()->json($result);
+        foreach ($results as $result){
+            $result['error_code']=$this->convertBack($result['error_code']);
+        }
+        return response()->json($results);
+    }
+
+    public function convertBack($error)
+    {
+        switch ($error) {
+            case  'error1':return 'Electrique';break;
+            case 'error2':return 'Mecanique';break;
+            case 'error3':return 'Hydraulique';break;
+            case 'error4':return 'Electronique';break;
+            case 'error5':return 'Compression';break;
+        }
     }
 
     public function getMaints()
     {
-        $result = Maintenance::
+        $results = Maintenance::
         select('comp',DB::raw('count(*) as count'))
             ->groupBy('comp')
             ->orderBy('count','desc')
             ->get();
-        return response()->json($result);
+        foreach ($results as $result){
+            $des=Component::where('generic_name',$result['comp'])->first();
+            $result['comp']=$des['designation'];
+        }
+        return response()->json($results);
     }
 
     public function getFailures()
     {
-        $result = Failure::
+        $results = Failure::
         select('comp',DB::raw('count(*) as count'))
             ->groupBy('comp')
             ->orderBy('count','desc')
             ->get();
-        return response()->json($result);
+        foreach ($results as $result){
+            $des=Component::where('generic_name',$result['comp'])->first();
+            $result['comp']=$des['designation'];
+        }
+        return response()->json($results);
     }
 
     public function uploadMachines(Request $request)

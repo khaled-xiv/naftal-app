@@ -20,6 +20,9 @@ return  array(
     "request-create"=>"demande-d-intervention/ajouter",
     "request-edit"=>"demande-d-intervention/{id}/modifier",
 
+    "dashboard"=>"tableau-de-bord",
+
+
 
     "centers"=>"centres",
     "center-create"=>"centres/ajouter",
