@@ -47,7 +47,9 @@
                             </div>
                             <div class="forum-box-footer">
 								<div>
-									<span class="box question-score @if($forum->votes > 0) good-result @elseif($forum->votes < 0) bad-result @endif"> {{ $forum->votes }}</span>
+									<span class="box question-score @if($forum->votes > 0) good-result @elseif($forum->votes < 0) bad-result @endif">
+										@if($forum->votes > 0) {{ "+".$forum->votes }} @else {{ $forum->votes }} @endif
+									</span>
 								</div>
 								<div>
 									{{ __('Posted on')." ".$forum->created_at." ".__('by')}}

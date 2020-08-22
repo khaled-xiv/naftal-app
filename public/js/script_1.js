@@ -69,9 +69,9 @@ function hideSideNav(){
 				right.removeAttribute("style");
 				left.removeAttribute("style");
 				lang.removeAttribute("style");
-				sideNavHidden = true;
-			}else {
 				sideNavHidden = false;
+			}else {
+				sideNavHidden = true;
 			}
 		}
     }
