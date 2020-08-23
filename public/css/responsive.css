@@ -154,23 +154,12 @@
     .white-nav-top {
         padding: 19px 0px ;
     }
-    #left-side{
-        width: 0;
-    }
-    #right-side{
-        width: 100%;
-        margin-left: 0;
-    }
 	
 	.small-scr-search {
 		display: flex;
 	}
 
 	.big-scr-search {
-		display: none;
-	}
-	
-	#side-nav-item-lang {
 		display: none;
 	}
     /* show mobile nav open btn */
@@ -257,25 +246,12 @@
     .white-nav-top {
         padding: 19px 0;
     }
-
-    #left-side{
-        width: 0;
-    }
-    
-	#right-side{
-        width: 100%;
-        margin-left: 0;
-    }
 	
 	.small-scr-search {
 		display: flex;
 	}
 
 	.big-scr-search {
-		display: none;
-	}
-	
-	#side-nav-item-lang {
 		display: none;
 	}
     
