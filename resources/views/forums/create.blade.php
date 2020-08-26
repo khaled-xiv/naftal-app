@@ -4,7 +4,7 @@
 
     <!-- Page Content -->
 
-    <section id="edit-equipment">
+    <section>
 
         <div class="content-box-md">
 
@@ -80,5 +80,7 @@
         </div>
         <!-- /.container -->
     </section>
+
+    @include('forums.tags')
 
 @endsection

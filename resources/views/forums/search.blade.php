@@ -96,6 +96,8 @@
 
     </section>
 
+    @include('forums.tags')
+
     <script>
 
         $(document).ready(function($) {

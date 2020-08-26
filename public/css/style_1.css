@@ -180,9 +180,6 @@ ul.img-icons li:nth-child(2) a:hover {
     background: none!important;
     border: none;
     padding: 0!important;
-    /*optional*/
-    font-family: arial, sans-serif;
-    /*input has OS specific font-family*/
     color: #069;
     text-decoration: underline;
     cursor: pointer;
@@ -462,6 +459,7 @@ div.forum-box-footer:before {
 	height: 180px;
 	margin-bottom: 20px;
 	padding: 5px 15px;
+    position: relative;
 }
 
 .widget-card:before {
@@ -515,6 +513,16 @@ div.forum-box-footer:before {
 	color: #069;
 	font-weight: 900;
 	vertical-align: middle;
+}
+
+.widget-card .see-more {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color: #f4c613;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
 }
 
 .answer-box {
@@ -683,6 +691,12 @@ div.forum-box-footer:before {
 	width: 230px;
 }
 
+.component-list .component-item .yellow-bg{
+	background: rgba(244, 198, 19, .8);
+    color: #222;
+    font-weight: 500;
+}
+
 .comp-actions {
 	display: flex;
 	align-items: center;
@@ -707,6 +721,7 @@ div.forum-box-footer:before {
 	padding: 7px 5px;
 	transition-duration: .4s;
 	font-weight: 500;
+    font-size: 13px;
 	border: none;
 	border-radius: 4px;
 	overflow: hidden;
@@ -830,6 +845,33 @@ form.forum-search > .search-button:hover {
 	justify-content: center;
 	align-items: center;
 	z-index: 1000;
+}
+
+.tag-list {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    overflow-y: auto;
+    height: 300px;
+}
+
+.tag-list .tag-item {
+    padding: 3px 5px;
+    margin: 10px;
+    height: 30px;
+    border: .5px solid #ddd;
+    border-radius: 15px;
+}
+
+.tag-list .tag-item:hover {
+    background: #fcfcfc;
+}
+
+.tag-list .tag-item .tag-button-2 {
+    color: #555;
+    font-weight: 500;
 }
 
 /*table*/

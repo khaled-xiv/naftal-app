@@ -61,7 +61,7 @@
 									<p class="lead">
 										{{$forum->body}}
 									</p>
-									@if(Auth::user() == $forum->user)
+									@if(Auth::user()->id == $forum->user->id)
 										<div class="pull-right">
 											<button style="display: block;" class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">{{ __('Edit')." question" }}</button>
 											<button class="link-button" onclick="getSimilar({{$forum->id}})">{{ __('Find me an answer') }}</button>
@@ -195,6 +195,8 @@
                 </div>
             </div>
         </div>
+        
+        @include('forums.tags')
 
 
     </section>

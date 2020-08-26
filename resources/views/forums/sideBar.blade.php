@@ -42,6 +42,9 @@
             @endfor
         </ul>
     </div>
+    <button class="see-more" data-toggle="modal" data-target="#SeeAll" role="button">
+        {{ __('See all tags') }}
+    </button>
 </div>
 <br>
 <!-- Side Widget -->
