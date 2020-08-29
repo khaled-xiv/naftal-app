@@ -188,8 +188,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
-                            <button type="submit" class="btn btn-danger">{{ __('Edit') }}</button>
+                            <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-general btn-danger">{{ __('Edit') }}</button>
                         </div>
                     </form>
                 </div>
@@ -290,18 +290,33 @@
                 }
             });
         }
+		
+		<?php
+			$lang = \Illuminate\Support\Facades\App::getLocale()=='fr';
+		?>
 
 		var done = false;
+		var forumText = "these links could be helpful:";
+		var alert0 = "we couldn't find answers to your question.";
+		var alert1 = "working on it, this may take some time";
+		var alert2 = "some error occurred while looking for an answer";
+		@if($lang)
+			forumText = "ces liens peuvent etre utiles:";
+			alert0 = "on n'a pas pu trouver des réponses à votre question";
+			alert1 = "ça peut prendre du temps, veuillez patientez";
+			alert2 = "il y a eu un problème";
+		@endif
+		
         function getSimilar(id){
             $.ajax({
                 type:'GET',
                 url:'http://127.0.0.1:8000/sim/forums/'+id+"/",
                 success:function(data) {
                     if(data.length == 0)
-                        alert("we couldn't find answers to your question.");
+                        alert(alert0);
                     else if(!done){
 						done = true;
-                        $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text("these forums could be helpful:"));
+                        $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text(forumText));
                         for(i = 0; i < data.length; i++){
                             $(".alert-dismissible").append($("<a href='"+data[i].id+"' style='display:block;'>").addClass("alert-link").text(data[i].title));
                         }
@@ -309,9 +324,9 @@
                 },
                 error: function(data) {
 					if(data.status == 409)
-						alert("working on it, this may take some time");
+						alert(alert1);
 					else
-						alert("some error occurred while looking for an answer");
+						alert(alert2);
                 }
             });
         }
