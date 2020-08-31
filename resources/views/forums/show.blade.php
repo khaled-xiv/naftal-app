@@ -32,7 +32,7 @@
 						
 							<h3 class="forum-title">{{$forum->title}}</h3>
 							<!-- Author -->
-							by
+							{{ __('by') }}
 							<span class="username">@if($forum->user) {{ $forum->user->name }} @else {{ "[".__('removed')."]" }} @endif</span>
 							<!-- Date/Time -->
 							<p class="text-muted">{{ __('Posted on')." ".$forum->created_at }}</p>

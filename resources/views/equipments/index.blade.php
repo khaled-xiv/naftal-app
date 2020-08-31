@@ -386,16 +386,17 @@
     <script>
         $(document).ready(function() {
 			tableList = [];
+			var size = 8;
+			@if(!Auth::user()->is_admin())
+				size--;
+			@endif
 			for(var i = 1; i <= 5; i++){
 				var list = [];
-				var size = 8;
-				@if(!Auth::user()->is_admin())
-					size--;
-				@endif
 				if(i == 4)
 					size -= 2;
 				if(i == 5)
 					size += 1;
+				console.log(size);
 				for(var j = 0; j < size; j++)
 					list.push(null);
 				var dataTable = $('#filtertable'+i).DataTable({
