@@ -20,6 +20,7 @@ class CreateCentersTable extends Migration
             $table->string('phone');
             $table->integer('storage_capacity');
             $table->timestamps();
+			$table->softDeletes();
         });
     }
 

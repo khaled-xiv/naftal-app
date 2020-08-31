@@ -63,7 +63,7 @@
 										</div>
 										<div>
 											{{ __('Posted on')." ".$forum->created_at." ".__('by')}}
-											&nbsp;<span class="username">{{$forum->user->name}}</span>
+											&nbsp;<span class="username">@if($forum->user) {{ $forum->user->name }} @else {{ "[".__('removed')."]" }} @endif</span>
 										</div>
 										<div>
 											<span class="box answer-count">{{ $forum->answers->count()." ".__('answer')."(s)" }}</span>

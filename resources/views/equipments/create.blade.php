@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('centers', __('Centers').":", ['class'=>'label_padding']) !!}
+                                        {!! Form::label('centers', __('Center').":", ['class'=>'label_padding']) !!}
                                         {!! Form::select('centers', $centers , null, ['class'=>'form-control'])!!}
                                     </div>
                                 </div>

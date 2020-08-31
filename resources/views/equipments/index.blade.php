@@ -25,9 +25,9 @@
                                     <div class="card_body">
                                         <div class="row d-flex">
                                             <div class="col-sm-4">
-                                                @if(!Auth::user()->is_center_chief())
+                                                @if(Auth::user()->is_admin())
                                                 {!! Form::open(['method'=>'GET', 'route' =>'equipment-create' ]) !!}
-                                                <button class="btn btn-general btn-yellow"></button>
+                                                <button id="btn-add" class="btn btn-general btn-yellow"></button>
                                                 {!! Form::close() !!}
                                                 @endif
                                             </div>
@@ -49,7 +49,9 @@
                                                     <th style="min-width:100px;">{{ __('rate') }}</th>
                                                     <th style="min-width:100px;">{{ __('state') }}</th>
                                                     <th style="min-width:80px;">{{ __('center') }}</th>
+													@if(Auth::user()->is_admin())
                                                     <th style="min-width:100px;">Action</th>
+													@endif
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -62,16 +64,18 @@
                                                         <td>{{$pump->rate}}</td>
                                                         <td><span class="mode mode_on"> {{$pump->equipment->state}}</span> </td>
                                                         <td>{{$pump->equipment->center->code}}</td>
+														@if(Auth::user()->is_admin())
                                                         <td class="actions" style="height: 50px">
                                                             <span class="actionCust">
                                                                 <a href="{{str_replace('{id}', $pump->equipment->id,
                                                                              LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
                                                                               'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                             </span>
-                                                                <span class="actionCust" >
-                                                                <a href="#"><i class="fa fa-trash"></i></a>
+                                                                <span class="actionCust">
+                                                                <button class="center-del equip-del" data-toggle="modal" data-id="{{$pump->equipment->id}}" data-target="#DeleteEquipmentModal" role="button"><i class="fa fa-trash"></i></button>
                                                             </span>
                                                         </td>
+														@endif
                                                     </tr>
                                                     @endforeach
 
@@ -112,7 +116,9 @@
                                                     <th style="min-width:100px;">{{ __('capacity') }}</th>
                                                     <th style="min-width:100px;">{{ __('state') }}</th>
                                                     <th style="min-width:80px;">{{ __('center') }}</th>
+													@if(Auth::user()->is_admin())
                                                     <th style="min-width:100px;">Action</th>
+													@endif
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -125,16 +131,18 @@
                                                         <td>{{$tank->capacity}}</td>
                                                         <td><span class="mode mode_on"> {{$tank->equipment->state}}</span> </td>
 														<td>{{$tank->equipment->center->code}}</td>
+														@if(Auth::user()->is_admin())
                                                         <td class="actions" style="height: 50px">
                                                             <span class="actionCust">
                                                                 <a href="{{str_replace('{id}', $tank->equipment->id,
                                                                              LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
                                                                               'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                             </span>
-                                                            <span class="actionCust" >
-                                                                <a href="#"><i class="fa fa-trash"></i></a>
+                                                            <span class="actionCust">
+                                                                <button class="center-del equip-del" data-toggle="modal" data-id="{{$tank->equipment->id}}" data-target="#DeleteEquipmentModal" role="button"><i class="fa fa-trash"></i></button>
                                                             </span>
                                                         </td>
+														@endif
                                                     </tr>
                                                 @endforeach
 
@@ -176,7 +184,9 @@
                                                     <th style="min-width:100px;">{{ __('rate') }}</th>
                                                     <th style="min-width:100px;">{{ __('state') }}</th>
                                                     <th style="min-width:80px;">{{ __('center') }}</th>
+													@if(Auth::user()->is_admin())
                                                     <th style="min-width:100px;">Action</th>
+													@endif
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -189,16 +199,18 @@
                                                         <td>{{$loadingArm->rate}}</td>
                                                         <td><span class="mode mode_on"> {{$loadingArm->equipment->state}}</span> </td>
 														<td>{{$loadingArm->equipment->center->code}}</td>
+														@if(Auth::user()->is_admin())
                                                         <td class="actions" style="height: 50px">
                                                             <span class="actionCust">
                                                                 <a href="{{str_replace('{id}', $loadingArm->equipment->id,
                                                                              LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
                                                                               'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                             </span>
-                                                            <span class="actionCust" >
-                                                                <a href="#"><i class="fa fa-trash"></i></a>
+                                                            <span class="actionCust">
+                                                                <button class="center-del equip-del" data-toggle="modal" data-id="{{$loadingArm->equipment->id}}" data-target="#DeleteEquipmentModal" role="button"><i class="fa fa-trash"></i></button>
                                                             </span>
                                                         </td>
+														@endif
                                                     </tr>
                                                 @endforeach
 
@@ -237,7 +249,9 @@
                                                     <th style="min-width:100px;">{{ __('model') }}</th>
                                                     <th style="min-width:100px;">{{ __('state') }}</th>
                                                     <th style="min-width:80px;">{{ __('center') }}</th>
+													@if(Auth::user()->is_admin())
                                                     <th style="min-width:100px;">Action</th>
+													@endif
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -248,16 +262,18 @@
                                                         <td>{{$generator->equipment->model}}</td>
                                                         <td><span class="mode mode_on"> {{$generator->equipment->state}}</span> </td>
 														<td>{{$generator->equipment->center->code}}</td>
+														@if(Auth::user()->is_admin())
                                                         <td class="actions" style="height: 50px">
                                                             <span class="actionCust">
                                                                 <a href="{{str_replace('{id}', $generator->equipment->id,
                                                                              LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
                                                                               'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                             </span>
-                                                            <span class="actionCust" >
-                                                                <a href="#"><i class="fa fa-trash"></i></a>
+                                                            <span class="actionCust">
+                                                                <button class="center-del equip-del" data-toggle="modal" data-id="{{$generator->equipment->id}}" data-target="#DeleteEquipmentModal" role="button"><i class="fa fa-trash"></i></button>
                                                             </span>
                                                         </td>
+														@endif
                                                     </tr>
                                                 @endforeach
 
@@ -297,7 +313,9 @@
                                                     <th style="min-width:100px;">{{ __('category') }}</th>
                                                     <th style="min-width:100px;">{{ __('state') }}</th>
                                                     <th style="min-width:80px;">{{ __('center') }}</th>
+													@if(Auth::user()->is_admin())
                                                     <th style="min-width:100px;">Action</th>
+													@endif
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -309,16 +327,18 @@
                                                         <td>{{$fuelMeter->category}}</td>
                                                         <td><span class="mode mode_on"> {{$fuelMeter->equipment->state}}</span> </td>
 														<td>{{$fuelMeter->equipment->center->code}}</td>
+														@if(Auth::user()->is_admin())
                                                         <td class="actions" style="height: 50px">
                                                             <span class="actionCust">
                                                                 <a href="{{str_replace('{id}', $fuelMeter->equipment->id,
                                                                              LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(),
                                                                               'routes.equipment-edit'))}}"><i class="fa fa-pencil-square-o"></i></a>
                                                             </span>
-                                                            <span class="actionCust" >
-                                                                <a href="#"><i class="fa fa-trash"></i></a>
+                                                            <span class="actionCust">
+                                                                <button class="center-del equip-del" data-toggle="modal" data-id="{{$fuelMeter->equipment->id}}" data-target="#DeleteEquipmentModal" role="button"><i class="fa fa-trash"></i></button>
                                                             </span>
                                                         </td>
+														@endif
                                                     </tr>
                                                 @endforeach
 
@@ -335,6 +355,27 @@
             </div>
             <!-- Services 02 Ends -->
         </div>
+		
+		<div class="modal fade" id="DeleteEquipmentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteEquipment" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="DeleteEquipment">{{__('Are you sure you want to delete this equipment?')}}</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form id="equip-del-form" method="POST">
+						@csrf
+						<input type="hidden" name="_method" value="DELETE"/>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+							<button type="submit" class="btn btn-general btn-danger">{{ __('Delete') }}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
     </section>
     <!-- Services Ends -->
@@ -348,10 +389,13 @@
 			for(var i = 1; i <= 5; i++){
 				var list = [];
 				var size = 8;
+				@if(!Auth::user()->is_admin())
+					size--;
+				@endif
 				if(i == 4)
-					size = 6;
+					size -= 2;
 				if(i == 5)
-					size = 7;
+					size += 1;
 				for(var j = 0; j < size; j++)
 					list.push(null);
 				var dataTable = $('#filtertable'+i).DataTable({
@@ -380,6 +424,12 @@
         });
 
         $(document).ready(function($) {
+			
+			$(document).on("click", ".equip-del", function () {
+                let Id = $(this).data('id');
+                $("#equip-del-form").attr('action', '/en/equipments/' + Id);
+            });
+			
 			var add = "Add ";
 			@if($lang)
 				add = "Ajouter ";
@@ -387,11 +437,11 @@
             let equipment = $("ul li.active a").html();
             $('#add-icon').attr('title',add + equipment);
 
-            $("button.btn-general").html(add + equipment);
+            $("#btn-add").html(add + equipment);
             document.cookie='equip =' + equipment;
             $("li.equipment > a").click(function() {
                 let equipment = $(this).html();
-                $("button.btn-general").html(add + equipment);
+                $("#btn-add").html(add + equipment);
                 document.cookie='equip =' + equipment;
             });
             
