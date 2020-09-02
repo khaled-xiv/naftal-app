@@ -426,9 +426,13 @@
 
         $(document).ready(function($) {
 			
+			var url = 'equipments/';
+			@if($lang)
+				url = 'equipements/';
+			@endif
 			$(document).on("click", ".equip-del", function () {
                 let Id = $(this).data('id');
-                $("#equip-del-form").attr('action', '/en/equipments/' + Id);
+                $("#equip-del-form").attr('action', url + Id);
             });
 			
 			var add = "Add ";

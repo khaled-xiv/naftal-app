@@ -116,18 +116,26 @@
 			</div>
 
     </section>
-
+	
+	<?php
+		$lang = \Illuminate\Support\Facades\App::getLocale()=='fr';
+	?>
 
     <script>
         $(document).ready(function() {
-			
+			var url = 'centers/';
+			var rest = '/restore';
+			@if($lang)
+				url = 'centres/';
+				rest = '/restorer';
+			@endif
 			$(document).on("click", ".center-del", function () {
                 let Id = $(this).data('id');
-                $("#center-del-form").attr('action', '/en/centers/' + Id);
+                $("#center-del-form").attr('action', url + Id);
             });
 			$(document).on("click", ".center-res", function () {
                 let Id = $(this).data('id');
-                $("#center-res-form").attr('action', '/en/centers/' + Id + "/restore");
+                $("#center-res-form").attr('action', url + Id + rest);
             });
 			
             var dataTable = $('#filtertable').DataTable({

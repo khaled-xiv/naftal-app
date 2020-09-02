@@ -20,7 +20,7 @@
                 <div class="row">
 
                     <!-- Post Content Column -->
-                    <div class="col-md-8">
+                    <div class="col-xl-8">
 						
 						<form class="forum-search small-scr-search" method="GET" action="/search/results">
 							<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
@@ -94,6 +94,7 @@
 											</div>
 											@foreach($forum->answers as $answer)
 												<div class="answer-box">
+													<button class="best-answer-button" onclick="chooseBestAnswer({{$answer->id}})"><i class="fa fa-check"></i></button>
 													<div class="row">
 														<div class="col-1">
 															<div>
@@ -117,10 +118,11 @@
 																<small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
 															</span>
 															<span class="username">{{$answer->user->name}}</span>
+															<span id="{{'answer'.$answer->id}}" class="@if($answer->best === 1) best-answer @else normal-answer @endif">{{__('Best Answer')}}</span>
 															<p id="{{$answer->id}}">
 																{{$answer->body}}
 															</p>
-															@if(Auth::user() == $answer->user)
+															@if(Auth::user()->id == $answer->user->id)
 															<div class="pull-right">
 																<button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button"> {{__('Edit')." ".__('answer')}}</button>
 															</div>
@@ -138,7 +140,7 @@
                     </div>
 
                     <!-- Sidebar Widgets Column -->
-                    <div style="margin-top: 20px;" class="col-md-4 justify-content-center">
+                    <div class="col-xl-4 justify-content-center">
 
                         <div id="fix-div" class="position-fixed">
                             @include('forums.sideBar')
@@ -224,6 +226,31 @@
                 $(".editFsAndAs-2 form").attr('action', '/en' + target + Id);
             });
         });
+		
+		function chooseBestAnswer(id) {
+			$current = $(".best-answer");
+			if($current && $current.attr('id') == 'answer'+id)
+				return;
+			$.ajax({
+                type:'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    _token : $('meta[name="csrf-token"]').attr('content')
+                },
+                url:'/en/answers/'+id+'/best',
+                success:function(data) {
+					console.log(data);
+					if($current){
+						$current.removeClass("best-answer");
+						$current.addClass("normal-answer");
+					}
+					$("#answer"+id).addClass("best-answer");
+					$("#answer"+id).removeClass("normal-answer");
+                }
+            });
+		}
 
         function updateVotes(type, up, id){
             let forumOrAnswer = (type === 1) ? '/en/forums/' : '/en/answers/';

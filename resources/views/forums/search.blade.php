@@ -12,7 +12,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-8">
+                    <div class="col-xl-8">
 					
 						<form class="forum-search small-scr-search" method="GET" action="/search/results">
 							<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
@@ -75,7 +75,7 @@
                         @endif
                     </div>
 
-                    <div class="col-md-4 justify-content-center">
+                    <div class="col-xl-4 justify-content-center">
 
                         <div id="fix-div" class="position-fixed">
                             @include('forums.sideBar')
@@ -97,27 +97,5 @@
     </section>
 
     @include('forums.tags')
-
-    <script>
-
-        $(document).ready(function($) {
-
-            let $window = $(window);
-            let $div = $('#fix-div');
-
-            function checkWidth() {
-                let window_size = $window.width();
-                if (window_size > 768) {
-                    $div.addClass('position-fixed');
-                } else {
-                    $div.removeClass('position-fixed');
-                }
-            }
-
-            checkWidth();
-            $(window).resize(checkWidth);
-        });
-
-    </script>
 
 @endsection

@@ -16,7 +16,7 @@ class Forum extends Model
 
     public function answers()
     {
-        return $this->hasMany("App\Answer")->orderBy("updated_at", "DESC");
+        return $this->hasMany("App\Answer")->orderBy("votes", "DESC")->orderBy("updated_at", "DESC");
     }
 
     public function users()

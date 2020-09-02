@@ -129,6 +129,19 @@ class AnswerController extends Controller
     {
         //
     }
+	
+	public function chooseBestAnswer($id){
+		
+		$answer = Answer::findOrFail($id);
+		$forum = $answer->forum;
+		$currentBest = Answer::where([['forum_id', '=', $forum->id], ['best', '=', 1]])->first();
+		if($currentBest){
+			$currentBest->update(['best' => '0']);
+		}
+		$answer->update(['best' => '1']);
+		return response()->noContent();
+		
+	}
 
     public function upvote($id){
 

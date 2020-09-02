@@ -73,8 +73,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get(LaravelLocalization::transRoute('routes.center-edit'), 'CenterController@edit')->name('center.edit')->middleware('role:admin');
     Route::post('centers', 'CenterController@store')->middleware('role:admin,district chief');
     Route::delete('centers/{id}', 'CenterController@destroy')->middleware('role:admin');
+    Route::delete('centres/{id}', 'CenterController@destroy')->middleware('role:admin');
     Route::put('centers/{id}', 'CenterController@update')->middleware('role:admin');
     Route::put('centers/{id}/restore', 'CenterController@restore')->middleware('role:admin');
+    Route::put('centres/{id}/restorer', 'CenterController@restore')->middleware('role:admin');
 
     //    Account routes
     Route::get(LaravelLocalization::transRoute('routes.account'), 'AccountController@index')
@@ -133,7 +135,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get(LaravelLocalization::transRoute('routes.equipment-edit'), 'EquipmentController@edit')->middleware('role:admin');
     Route::post('equipments', 'EquipmentController@store')->middleware('role:admin');
     Route::delete('equipments/{id}', 'EquipmentController@destroy')->middleware('role:admin');
+    Route::delete('equipements/{id}', 'EquipmentController@destroy')->middleware('role:admin');
     Route::put('equipments/{id}', 'EquipmentController@update')->middleware('role:admin');
+    Route::put('equipements/{id}', 'EquipmentController@update')->middleware('role:admin');
 
     //Route::resource('components', 'ComponentController');
     Route::get(LaravelLocalization::transRoute('routes.component-edit'), 'ComponentController@edit')->middleware('role:admin');
@@ -153,6 +157,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::resource('answers', 'AnswerController');
     Route::post('forums/{id}/upvote', 'ForumController@upvote');
     Route::post('forums/{id}/downvote', 'ForumController@downvote');
+    Route::post('answers/{id}/best', 'AnswerController@chooseBestAnswer');
     Route::post('answers/{id}/upvote', 'AnswerController@upvote');
     Route::post('answers/{id}/downvote', 'AnswerController@downvote');
     Route::get('tags/{id}/search', 'TagController@search');

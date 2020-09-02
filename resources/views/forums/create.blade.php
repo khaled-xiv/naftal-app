@@ -13,7 +13,7 @@
                 <div class="row">
 
                     <!-- Post Content Column -->
-                    <div class="col-lg-8 col-md-8">
+                    <div class="col-xl-8">
 					
 						<form class="forum-search small-scr-search" method="GET" action="/search/results">
 							<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
@@ -64,7 +64,7 @@
                     </div>
 
                     <!-- Sidebar Widgets Column -->
-                    <div class="col-md-4 justify-content-center">
+                    <div class="col-xl-4 justify-content-center">
 
                         <div id="fix-div" class="position-fixed">
                             @include('forums.sideBar')
