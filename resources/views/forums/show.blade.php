@@ -94,7 +94,9 @@
 											</div>
 											@foreach($forum->answers as $answer)
 												<div class="answer-box">
+													@if(Auth::user()->id == $forum->user->id)
 													<button class="best-answer-button" onclick="chooseBestAnswer({{$answer->id}})"><i class="fa fa-check"></i></button>
+													@endif
 													<div class="row">
 														<div class="col-1">
 															<div>
