@@ -3,7 +3,7 @@
     use App\Forum;
     $tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->take(6)->get();
     $limit = count($tags);
-    $latestForums = Forum::orderBy('created_at', 'desc')->take(3)->get();
+    $latestForums = Forum::orderBy('created_at', 'desc')->take(4)->get();
 ?>
 {{--<form method="GET" action="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.search')}}">--}}
 <form class="forum-search big-scr-search" method="GET" action="/search/results">

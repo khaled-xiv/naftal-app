@@ -1,6 +1,6 @@
 <?php
     use App\Tag;
-    $tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->get();
+    $tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->orderBy('content', 'asc')->get();
 ?>
 <div class="modal fade" id="SeeAll" tabindex="-1" role="dialog" aria-labelledby="SeeAllTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -503,7 +503,8 @@ div.forum-box-footer:before {
 
 .widget-body .latest-forum a {
 	position: relative;
-	color: #444;
+	font-size: .95em;
+	color: #069;
 	text-decoration: none;
 	transition-duration: .3s;
 }
