@@ -72,6 +72,7 @@ class AnswerController extends Controller
 				'is_read' => 0,
 				'content' => "You have a new answer to your question \"".$forum->title."\"",
 			]);
+            if(!$user->photo) $notification->user_photo='profile-placeholder.jpg';
 			event(new SendNotifications($notification));
 		}
         return redirect()->back();
