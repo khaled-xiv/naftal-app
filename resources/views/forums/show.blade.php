@@ -204,6 +204,10 @@
 
 
     </section>
+	
+	<?php
+		$lang = \Illuminate\Support\Facades\App::getLocale()=='fr';
+	?>
 
     <script>
 
@@ -213,14 +217,22 @@
                 let Id = $(this).data('id');
                 if(Id < 0){
                     $(".forum-title").show();
+					@if(!$lang)
                     $("#EditFsAndAs").html("Edit Question");
+					@else
+					$("#EditFsAndAs").html("Modifier Question");
+					@endif
                     $("#title").val($("h3.forum-title").html().trim());
                     $("textarea#Modalbody").val($("p.lead").html().trim());
                     Id = -Id;
                     target = '/forums/';
                 }else{
                     $(".forum-title").hide();
+                    @if(!$lang)
                     $("#EditFsAndAs").html("Edit Answer");
+					@else
+					$("#EditFsAndAs").html("Modifier Réponse");
+					@endif
                     $("#title").val("no title");
                     $("textarea#Modalbody").val($("#"+Id).html().trim());
                     target = '/answers/';
