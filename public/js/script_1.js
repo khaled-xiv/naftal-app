@@ -31,26 +31,32 @@ $(function () {
 ============================================ */
 
 var sideNavHidden = false;
+var locked = false;
 var left = document.getElementById("left-side");
 var right = document.getElementById("right-side");
 var lang = document.getElementById("side-nav-item-lang");
 
 
-function hideSideNav(){
+function hideSideNav(x){
     if(!sideNavHidden){
         right.style.width = "100%";
         right.style.marginLeft = "0px";
         left.style.width = "0";
 		if(lang)
 			lang.style.display="none";
+		if(x != 0)
+			locked = true;
+		sideNavHidden = true;
     }else{
         right.style.width = "calc(100% - 250px)";
         right.style.marginLeft = "250px";
         left.style.width = "250px";
 		if(lang)
 			lang.style.display="flex";
+		if(x != 0)
+			locked = false;
+		sideNavHidden = false;
     }
-    sideNavHidden = !sideNavHidden;
 }
 
  $(document).ready(function($) {
@@ -59,22 +65,21 @@ function hideSideNav(){
 	
     function checkWidth() {
 		let window_size = $window.width();
-		if(window_size < 991){
-			right.removeAttribute("style");
-			left.removeAttribute("style");
-			lang.removeAttribute("style");
-			sideNavHidden = true;
-			if (window_size > 767) {
-				if($div)
-					$div.addClass('position-fixed');
-			}else{
-				if($div)
-					$div.removeClass('position-fixed');
-			}
-		}else {
-			sideNavHidden = false;
+		if(window_size > 1200){
+			if(sideNavHidden && !locked)
+					hideSideNav(0);
 			if($div)
 				$div.addClass('position-fixed');
+		}else{
+			if($div)
+				$div.removeClass('position-fixed');
+			if(window_size > 991){
+				if(sideNavHidden && !locked)
+					hideSideNav(0);
+			}else {
+				if(!sideNavHidden)
+					hideSideNav(0);
+			}
 		}
     }
     checkWidth();

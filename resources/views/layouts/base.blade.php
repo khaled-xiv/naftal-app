@@ -9,6 +9,14 @@
 <!-- Header-->
 @include('includes.header')
 <!-- Header Ends-->
+@if(Auth()->user()->is_technician())
+<style>
+	#right-side {
+		width: 100%;
+		margin-left: 0;
+	}
+</style>
+@endif
 
 <div class="big-container">
     @if(!Auth()->user()->is_technician())

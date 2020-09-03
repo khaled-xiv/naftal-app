@@ -1,7 +1,9 @@
 <?php
     use App\Tag;
+    use App\Forum;
     $tags = Tag::withCount('forums')->orderBy('forums_count', 'desc')->take(6)->get();
     $limit = count($tags);
+    $latestForums = Forum::orderBy('created_at', 'desc')->take(3)->get();
 ?>
 {{--<form method="GET" action="{{LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.search')}}">--}}
 <form class="forum-search big-scr-search" method="GET" action="/search/results">
@@ -42,12 +44,17 @@
             @endfor
         </ul>
     </div>
+    <button class="see-more" data-toggle="modal" data-target="#SeeAll" role="button">
+        {{ __('See all tags') }}
+    </button>
 </div>
 <br>
 <!-- Side Widget -->
 <div class="widget-card">
-    <h5 class="widget-title">Side Widget</h5>
+    <h5 class="widget-title">{{ __('Latest Questions') }}</h5>
     <div class="widget-body">
-        You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+		@foreach($latestForums as $forum)
+		<div class="latest-forum"><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></div>
+		@endforeach
     </div>
 </div>

@@ -16,7 +16,7 @@
                             <!-- Logo -->
                             @if(!Auth()->user()->is_technician())
                             <li>
-                                <i id="toggle-side-nav-btn" onclick="hideSideNav()"class="fa fa-bars"></i>
+                                <i id="toggle-side-nav-btn" onclick="hideSideNav(1)"class="fa fa-bars"></i>
                             </li>
                             @else
                                 <a href="{{url(app()->getLocale())}}">

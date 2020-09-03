@@ -6,6 +6,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 use Illuminate\Http\Request;
 use App\Center;
+use App\Equipment;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -29,7 +30,7 @@ class CenterController extends Controller
 
     public function index()
     {
-        $centers = Center::all();
+        $centers = Center::withTrashed()->get();
         return view('centers.index', compact('centers'));
     }
 
@@ -115,6 +116,13 @@ class CenterController extends Controller
     public function destroy($id)
     {
         Center::findOrFail($id)->delete();
+        return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers'));
+    }
+	
+    public function restore($id)
+    {
+        Center::onlyTrashed()->where('id', $id)->restore();
+        Equipment::onlyTrashed()->where('center_id', $id)->restore();
         return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.centers'));
     }
 }

@@ -4,7 +4,7 @@
 
 <!-- Page Content -->
 
-<section id="edit-equipment">
+<section>
 
     <div class="content-box-md">
 
@@ -13,7 +13,7 @@
             <div class="row">
 
                 <!-- Blog Entries Column -->
-                <div class="col-md-8">
+                <div class="col-xl-8">
 					
 					<form class="forum-search small-scr-search" method="GET" action="/search/results">
 						<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
@@ -47,11 +47,13 @@
                             </div>
                             <div class="forum-box-footer">
 								<div>
-									<span class="box question-score @if($forum->votes > 0) good-result @elseif($forum->votes < 0) bad-result @endif"> {{ $forum->votes }}</span>
+									<span class="box question-score @if($forum->votes > 0) good-result @elseif($forum->votes < 0) bad-result @endif">
+										@if($forum->votes > 0) {{ "+".$forum->votes }} @else {{ $forum->votes }} @endif
+									</span>
 								</div>
 								<div>
 									{{ __('Posted on')." ".$forum->created_at." ".__('by')}}
-									&nbsp;<span class="username">{{$forum->user->name}}</span>
+									&nbsp;<span class="username">@if($forum->user) {{ $forum->user->name }} @else {{ "[".__('removed')."]" }} @endif</span>
 								</div>
 								<div>
 									<span class="box answer-count">{{ $forum->answers->count()." ".__('answer')."(s)" }}</span>
@@ -63,7 +65,7 @@
                 </div>
 
                 <!-- Sidebar Widgets Column -->
-                <div class="col-md-4 justify-content-center">
+                <div class="col-xl-4 justify-content-center">
 
                     <!-- Search Widget -->
                     <div id="fix-div" class="position-fixed">
@@ -85,26 +87,6 @@
     <!-- /.container -->
 </section>
 
-<script>
-
-    $(document).ready(function($) {
-
-        let $window = $(window);
-        let $div = $('#fix-div');
-
-        function checkWidth() {
-            let window_size = $window.width();
-            if (window_size > 768) {
-                $div.addClass('position-fixed');
-            } else {
-                $div.removeClass('position-fixed');
-            }
-        }
-
-        checkWidth();
-        $(window).resize(checkWidth);
-    });
-
-</script>
+@include('forums.tags')
 
 @endsection

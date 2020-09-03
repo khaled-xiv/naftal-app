@@ -241,14 +241,14 @@
                             <hr>
 							<div class="component-list">
                             @foreach($components as $component)
-                                    <div class="card border-dark mb-3 component-item">
-                                        <div class="card-header">
+                                    <div class="card mb-3 component-item">
+                                        <div class="card-header yellow-bg">
                                             <em>{{$component->designation}}</em>
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">
-                                                <b>{{__('mark').":"}}</b> {{$component->mark}}<br>
-                                                <b>{{__('reference').":"}}</b> {{$component->reference}}
+                                                <b>{{__('reference').":"}}</b> {{$component->reference}}<br>
+                                                <b>{{__('mark').":"}}</b> {{$component->mark}}
                                             </p>
                                             <div class="comp-actions">
                                                 {!! Form::open(['method'=>'GET', 'action'=> ['ComponentController@edit', $component->id]]) !!}

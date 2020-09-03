@@ -20,7 +20,7 @@
                 <div class="row">
 
                     <!-- Post Content Column -->
-                    <div class="col-md-8">
+                    <div class="col-xl-8">
 						
 						<form class="forum-search small-scr-search" method="GET" action="/search/results">
 							<input type="search" class="searchbox" name="search_query" placeholder="{{__('Search').'...'}}" required>
@@ -32,8 +32,8 @@
 						
 							<h3 class="forum-title">{{$forum->title}}</h3>
 							<!-- Author -->
-							by
-							<span class="username">{{$forum->user->name}}</span>
+							{{ __('by') }}
+							<span class="username">@if($forum->user) {{ $forum->user->name }} @else {{ "[".__('removed')."]" }} @endif</span>
 							<!-- Date/Time -->
 							<p class="text-muted">{{ __('Posted on')." ".$forum->created_at }}</p>
 
@@ -61,7 +61,7 @@
 									<p class="lead">
 										{{$forum->body}}
 									</p>
-									@if(Auth::user() == $forum->user)
+									@if(Auth::user()->id == $forum->user->id)
 										<div class="pull-right">
 											<button style="display: block;" class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{-$forum->id}}" data-target="#EditFsAndAsModal" role="button">{{ __('Edit')." question" }}</button>
 											<button class="link-button" onclick="getSimilar({{$forum->id}})">{{ __('Find me an answer') }}</button>
@@ -94,6 +94,9 @@
 											</div>
 											@foreach($forum->answers as $answer)
 												<div class="answer-box">
+													@if(Auth::user()->id == $forum->user->id)
+													<button class="best-answer-button" onclick="chooseBestAnswer({{$answer->id}})"><i class="fa fa-check"></i></button>
+													@endif
 													<div class="row">
 														<div class="col-1">
 															<div>
@@ -117,10 +120,11 @@
 																<small class="text-muted">{{ \Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</small>
 															</span>
 															<span class="username">{{$answer->user->name}}</span>
+															<span id="{{'answer'.$answer->id}}" class="@if($answer->best === 1) best-answer @else normal-answer @endif">{{__('Best Answer')}}</span>
 															<p id="{{$answer->id}}">
 																{{$answer->body}}
 															</p>
-															@if(Auth::user() == $answer->user)
+															@if(Auth::user()->id == $answer->user->id)
 															<div class="pull-right">
 																<button class="link-button editFsAndAs-1" data-toggle="modal" data-id="{{$answer->id}}" data-target="#EditFsAndAsModal" role="button"> {{__('Edit')." ".__('answer')}}</button>
 															</div>
@@ -138,7 +142,7 @@
                     </div>
 
                     <!-- Sidebar Widgets Column -->
-                    <div style="margin-top: 20px;" class="col-md-4 justify-content-center">
+                    <div class="col-xl-4 justify-content-center">
 
                         <div id="fix-div" class="position-fixed">
                             @include('forums.sideBar')
@@ -188,13 +192,15 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
-                            <button type="submit" class="btn btn-danger">{{ __('Edit') }}</button>
+                            <button type="button" class="btn btn-general btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="submit" class="btn btn-general btn-danger">{{ __('Edit') }}</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        
+        @include('forums.tags')
 
 
     </section>
@@ -202,21 +208,6 @@
     <script>
 
          $(document).ready(function($) {
-
-             let $window = $(window);
-             let $div = $('#fix-div');
-
-             function checkWidth() {
-                 let window_size = $window.width();
-                 if (window_size > 768) {
-                     $div.addClass('position-fixed');
-                 }else{
-                     $div.removeClass('position-fixed');
-                 }
-             }
-             checkWidth();
-             $(window).resize(checkWidth);
-
             $(document).on("click", ".editFsAndAs-1", function () {
                 let target;
                 let Id = $(this).data('id');
@@ -237,6 +228,31 @@
                 $(".editFsAndAs-2 form").attr('action', '/en' + target + Id);
             });
         });
+		
+		function chooseBestAnswer(id) {
+			$current = $(".best-answer");
+			if($current && $current.attr('id') == 'answer'+id)
+				return;
+			$.ajax({
+                type:'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    _token : $('meta[name="csrf-token"]').attr('content')
+                },
+                url:'/en/answers/'+id+'/best',
+                success:function(data) {
+					console.log(data);
+					if($current){
+						$current.removeClass("best-answer");
+						$current.addClass("normal-answer");
+					}
+					$("#answer"+id).addClass("best-answer");
+					$("#answer"+id).removeClass("normal-answer");
+                }
+            });
+		}
 
         function updateVotes(type, up, id){
             let forumOrAnswer = (type === 1) ? '/en/forums/' : '/en/answers/';
@@ -288,18 +304,33 @@
                 }
             });
         }
+		
+		<?php
+			$lang = \Illuminate\Support\Facades\App::getLocale()=='fr';
+		?>
 
 		var done = false;
+		var forumText = "these links could be helpful:";
+		var alert0 = "we couldn't find answers to your question.";
+		var alert1 = "working on it, this may take some time";
+		var alert2 = "some error occurred while looking for an answer";
+		@if($lang)
+			forumText = "ces liens peuvent etre utiles:";
+			alert0 = "on n'a pas pu trouver des réponses à votre question";
+			alert1 = "ça peut prendre du temps, veuillez patientez";
+			alert2 = "il y a eu un problème";
+		@endif
+		
         function getSimilar(id){
             $.ajax({
                 type:'GET',
                 url:'http://127.0.0.1:8000/sim/forums/'+id+"/",
                 success:function(data) {
                     if(data.length == 0)
-                        alert("we couldn't find answers to your question.");
+                        alert(alert0);
                     else if(!done){
 						done = true;
-                        $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text("these forums could be helpful:"));
+                        $("#before-recommend").after($("<div>").addClass('alert-dismissible').addClass('alert-success').text(forumText));
                         for(i = 0; i < data.length; i++){
                             $(".alert-dismissible").append($("<a href='"+data[i].id+"' style='display:block;'>").addClass("alert-link").text(data[i].title));
                         }
@@ -307,9 +338,9 @@
                 },
                 error: function(data) {
 					if(data.status == 409)
-						alert("working on it, this may take some time");
+						alert(alert1);
 					else
-						alert("some error occurred while looking for an answer");
+						alert(alert2);
                 }
             });
         }
