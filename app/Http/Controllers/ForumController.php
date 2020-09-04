@@ -13,7 +13,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-ini_set('max_execution_time', 100);
+// ini_set('max_execution_time', 100);
 
 class ForumController extends Controller
 {
@@ -32,7 +32,7 @@ class ForumController extends Controller
     }
     public function index()
     {
-        $forums = Forum::orderBy('votes', 'desc')->paginate(5);
+        $forums = Forum::orderBy('votes', 'desc')->orderBy('created_at', 'desc')->paginate(5);
         return view('forums.index', compact('forums'));
     }
 
@@ -88,13 +88,12 @@ class ForumController extends Controller
         }
         $url = 'http://localhost:8000/sim/forums/'.$forum->id.'/embeddings/';
         $client = new Client();
-        Log::info('salam');
 		try {
 			$client->request('POST', $url, [
 				'timeout' => 7
 			]);
 		} catch (\Exception $e) {
-		    Log::info($e->getMessage());
+			
         }
         return redirect(LaravelLocalization::getUrlFromRouteNameTranslated(LaravelLocalization::getCurrentLocale(), 'routes.forums'));
     }
@@ -158,7 +157,9 @@ class ForumController extends Controller
         $forums = Forum::query()
             ->where('title', 'like', '%'.$query.'%')
             ->orWhere('body', 'like', '%'.$query.'%')
-            ->orderBy('votes', 'desc')->paginate(8);
+            ->orderBy('votes', 'desc')
+			->orderBy('created_at', 'desc')
+			->paginate(8);
         return view('forums.search',compact('forums'));
     }
 
