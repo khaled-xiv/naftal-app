@@ -349,7 +349,8 @@ ul.navbar-nav>li>a
     color: #fff;
     font-size: 13px;
     font-weight: 400;
-    padding: 10px ;
+	height: 100%;
+    padding: 15px 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
