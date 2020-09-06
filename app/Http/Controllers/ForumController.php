@@ -138,6 +138,15 @@ class ForumController extends Controller
                 ->withInput();
         }
         Forum::findOrFail($id)->update($request->all());
+		$url = 'http://localhost:8000/sim/forums/'.$id.'/embeddings/';
+        $client = new Client();
+		try {
+			$client->request('POST', $url, [
+				'timeout' => 7
+			]);
+		} catch (\Exception $e) {
+			
+        }
         return redirect()->back();
     }
 
