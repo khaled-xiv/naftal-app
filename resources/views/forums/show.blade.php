@@ -58,7 +58,7 @@
 									</div>
 								</div>
 								<div class="col-11">
-									<p class="lead">
+									<p style="font-size: 1.2rem; font-weight: 300;">
 										{{$forum->body}}
 									</p>
 									@if(Auth::user()->id == $forum->user->id)
