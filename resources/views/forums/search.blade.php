@@ -8,7 +8,7 @@
 
         <div class="content-box-md">
 
-            <div class="container">
+            <div id="frm-container">
 
                 <div class="row">
 

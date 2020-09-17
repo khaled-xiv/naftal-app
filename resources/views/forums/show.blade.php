@@ -8,7 +8,7 @@
 
         <div class="content-box-md">
 
-            <div class="container">
+            <div id="frm-container">
 
 
                 <div class="row" style="margin-left: 5px; display:{!! $errors->hasBag('update') ? 'inline-block;' : 'none;' !!}">

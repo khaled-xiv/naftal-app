@@ -941,6 +941,11 @@ form.forum-search > .search-button:hover {
     font-weight: 500;
 }
 
+div#frm-container {
+	margin: 0 20px 0;
+	transition-duration: .5s;
+}
+
 /*table*/
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting:before,
