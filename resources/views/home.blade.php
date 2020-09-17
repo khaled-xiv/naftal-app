@@ -65,8 +65,23 @@
                             <li><a class="btn btn-link smooth-scroll" href="#home">{{ __('home') }}</a></li>
                             <li><a class="btn btn-link smooth-scroll" href="#about">{{ __('about') }}</a></li>
                             <li><a class="btn btn-link smooth-scroll" href="#team">{{ __('team') }}</a></li>
+                            @if(!Auth()->check() || Auth()->user()->is_technician())
                             <li><a class="btn btn-link smooth-scroll" href="#center">{{ __('centers') }}</a></li>
+                            @endif
                             <li><a class="btn btn-link smooth-scroll" href="#services">{{ __('services') }}</a></li>
+                            @if(Auth()->check() && !Auth()->user()->is_technician())
+                            <li><a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('centers'))}}">
+                                    {{ ucwords(__('centers')) }}
+                                </a>
+                            </li>
+                            @endif
+                            @if(!Auth()->check() || !Auth()->user()->is_technician())
+                            <li>
+                                <a class="btn btn-link" href="{{url(app()->getLocale().'/'.__('equipments'))}}">
+                                    {{ ucwords(__('equipments')) }}
+                                </a>
+                            </li>
+                            @endif
                             <li><a class="btn btn-link" href="{{url(app()->getLocale().'/forums')}}">{{ __('forums') }}</a></li>
                             <li><a class="btn btn-link smooth-scroll" href="#contact">{{ __('contact') }}</a></li>
 
@@ -541,9 +556,9 @@
                                     <div class="office">
                                         <h4>Tiaret</h4>
                                         <ul class="office-details">
-                                            <li><i class="fa fa-mobile"></i><span>+(55) 879 58 87 46</span></li>
+                                            <li><i class="fa fa-mobile"></i><span>+(213) 627 333 210 </span></li>
                                             <li><i class="fa fa-envelope"></i><span>support@solo.com</span></li>
-                                            <li><i class="fa fa-map-marker"></i><span>524 Mina Street Building 05<br>Newyork, USA.</span></li>
+                                            <li><i class="fa fa-map-marker"></i><span>City belhadj elhachemi<br>Tiaret, Tiaret.</span></li>
                                         </ul>
                                     </div>
 
@@ -553,9 +568,9 @@
                                     <div class="office">
                                         <h4>Alger</h4>
                                         <ul class="office-details">
-                                            <li><i class="fa fa-mobile"></i><span>+(88) 457 87 74 87</span></li>
+                                            <li><i class="fa fa-mobile"></i><span>+(213) 627 333 210</span></li>
                                             <li><i class="fa fa-envelope"></i><span>support@solo.com</span></li>
-                                            <li><i class="fa fa-map-marker"></i><span>507 Din Street Building 55 <br>Sydney, Australia.</span></li>
+                                            <li><i class="fa fa-map-marker"></i><span>City belhadj elhachemi <br>ALger, Alger.</span></li>
                                         </ul>
                                     </div>
 

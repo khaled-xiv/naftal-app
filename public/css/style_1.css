@@ -412,7 +412,7 @@ div .forum-box-footer .bad-result {
 	color: rgba(220, 50, 50, .7);
 	border-color: rgba(220, 50, 50, .7);
 }
-	
+
 div .forum-box-footer .answer-count {
 	position:relative;
 	left: -10px;
@@ -645,7 +645,7 @@ div.forum-box-footer:before {
 	width: 250px;
 	position: fixed;
 	z-index: 5;
-    margin-top: 5px;
+    margin-top: 8px;
     box-shadow: 0 2px 1px 1px rgba(0,0,0,.2);
 	transition-duration: .5s;
 }
@@ -749,7 +749,7 @@ div.forum-box-footer:before {
 }
 
 .component-list + button {
-	
+
 }
 
 .component-list .component-item {
