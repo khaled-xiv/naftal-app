@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Ask a question')
+@section('title', __('Ask a')." question")
 @section('content')
 
     <!-- Page Content -->

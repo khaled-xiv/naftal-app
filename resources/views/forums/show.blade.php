@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Show Question')
+@section('title', $forum->title)
 @section('content')
 
     <!-- Page Content -->

@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Most upvoted questions')
+@section('title', __('Search results'))
 @section('content')
 
     <!-- Page Content -->

@@ -605,7 +605,7 @@ a.notif {
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    min-height: 180px;
+    height: 195px;
     padding: 25px 50px;
     margin:5px 10px ;
     -webkit-transition: all 400ms linear;
