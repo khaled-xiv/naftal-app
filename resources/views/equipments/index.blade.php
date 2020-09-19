@@ -27,7 +27,7 @@
                                             <div class="col-sm-4">
                                                 @if(Auth::user()->is_admin())
                                                 {!! Form::open(['method'=>'GET', 'route' =>'equipment-create' ]) !!}
-                                                <button id="btn-add" class="btn btn-general btn-yellow"></button>
+                                                <button class="btn btn-general btn-yellow">{{ __("Add pumps") }}</button>
                                                 {!! Form::close() !!}
                                                 @endif
                                             </div>
@@ -95,7 +95,7 @@
                                         <div class="row d-flex">
                                             <div class="col-sm-4">
                                                 {!! Form::open(['method'=>'GET', 'route' =>'equipment-create' ]) !!}
-                                                <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
+                                                <button class="btn btn-general btn-yellow">{{ __("Add tanks") }}</button>
                                                 {!! Form::close() !!}
                                             </div>
                                             <div class="col-sm-8  add_flex">
@@ -163,7 +163,7 @@
                                         <div class="row d-flex">
                                             <div class="col-sm-4">
                                                 {!! Form::open(['method'=>'GET', 'route' =>'equipment-create' ]) !!}
-                                                <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
+                                                <button class="btn btn-general btn-yellow">{{ __("Add loading arms") }}</button>
                                                 {!! Form::close() !!}
                                             </div>
                                             <div class="col-sm-8  add_flex">
@@ -230,7 +230,7 @@
                                         <div class="row d-flex">
                                             <div class="col-sm-4">
                                                 {!! Form::open(['method'=>'GET', 'route' =>'equipment-create' ]) !!}
-                                                <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
+                                                <button class="btn btn-general btn-yellow">{{ __("Add generators") }}</button>
                                                 {!! Form::close() !!}
                                             </div>
                                             <div class="col-sm-8  add_flex">
@@ -293,7 +293,7 @@
                                         <div class="row d-flex">
                                             <div class="col-sm-4">
                                                 {!! Form::open(['method'=>'GET', 'route' =>'equipment-create' ]) !!}
-                                                <button class="btn btn-general btn-yellow">{{__('Create new')}}</button>
+                                                <button class="btn btn-general btn-yellow">{{ __("Add fuel meters") }}</button>
                                                 {!! Form::close() !!}
                                             </div>
                                             <div class="col-sm-8  add_flex">
@@ -440,9 +440,6 @@
 				add = "Ajouter ";
 			@endif
             let equipment = $("ul li.active a").html();
-            $('#add-icon').attr('title',add + equipment);
-
-            $("#btn-add").html(add + equipment);
             document.cookie='equip =' + equipment;
             $("li.equipment > a").click(function() {
                 let equipment = $(this).html();

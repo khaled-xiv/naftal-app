@@ -162,7 +162,11 @@
     "Centers": "Centres",
     "Add Center": "Ajouter Centre",
     "Number": "Nombre",
-
+	"Add pumps": "Ajouter pompes",
+	"Add tanks": "Ajouter bacs",
+	"Add loading arms": "Ajouter bras de chargement",
+	"Add generators": "Ajouter groupes éléctroniques",
+	"Add fuel meters": "Ajouter compteurs",
     "Edit Center": "Modifier Centre",
     "Delete Center": "Supprimer Centre",
     "Storage capacity": "Capacité de storage",
