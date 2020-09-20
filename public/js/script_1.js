@@ -43,7 +43,8 @@ function hideSideNav(x){
         right.style.width = "100%";
         right.style.marginLeft = "0px";
         left.style.width = "0";
-		frmContainer.style.marginLeft = "70px";
+		if(frmContainer)
+			frmContainer.style.marginLeft = "70px";
 		if(lang)
 			lang.style.display="none";
 		if(x != 0)
@@ -53,7 +54,8 @@ function hideSideNav(x){
         right.style.width = "calc(100% - 250px)";
         right.style.marginLeft = "250px";
         left.style.width = "250px";
-		frmContainer.style.marginLeft = "20px";
+		if(frmContainer)
+			frmContainer.style.marginLeft = "20px";
 		if(lang)
 			lang.style.display="flex";
 		if(x != 0)

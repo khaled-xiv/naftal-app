@@ -369,12 +369,18 @@
 
                         <div class="account-settings ">
                             <div class="credential row">
-
-                                @foreach($latestForums as $forum)
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <label><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></label>
-                                    </div>
-                                @endforeach
+							
+								@if(count($latestForums) == 0)
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<label>{{ __("You haven't asked a question yet.") }}</label>
+									</div>
+								@else
+									@foreach($latestForums as $forum)
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<label><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></label>
+										</div>
+									@endforeach
+								@endif
 
                             </div>
                         </div>
