@@ -173,7 +173,22 @@ section {
     height: 60px;
 }
 
+/* =========================================
+                pagination
+============================================ */
 
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #f4c613;
+    border-color: #f4c613;
+}
+.page-link{
+    color: #f4c613;
+}
+li.page-item.disabled{
+    color: #f4c613;
+}
 
 /* =========================================
                 Center

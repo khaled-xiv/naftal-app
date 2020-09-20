@@ -55,7 +55,7 @@
                                             <li class="notification-box {{$notification->is_read?:'bg-gray'}}">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                                        <img src="{{($notification->user->photo) ? asset('img/users/'.Auth()->user()->photo):asset('img/users/profile-placeholder.jpg')}}" class="w-50 rounded-circle">
+                                                        <img src="{{($notification->sender()->photo) ? asset('img/users/'.$notification->sender()->photo):asset('img/users/profile-placeholder.jpg')}}" class="w-50 rounded-circle">
                                                     </div>
                                                     <div class="col-lg-8 col-sm-8 col-8">
                                                         <strong class="text-info">{{$notification->sender}}</strong>

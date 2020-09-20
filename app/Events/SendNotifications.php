@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Support\Facades\Log;
 
 class SendNotifications implements ShouldBroadcast
 {
@@ -17,6 +18,8 @@ class SendNotifications implements ShouldBroadcast
 
     public function __construct(Notification $notification)
     {
+        Log::info('from class');
+        Log::info($notification);
         $this->notification=$notification;
     }
 

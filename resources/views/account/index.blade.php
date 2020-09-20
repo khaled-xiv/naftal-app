@@ -3,6 +3,8 @@
 @section('content')
 <!-- Account -->
 <!-- Modal -->
+
+
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -361,7 +363,21 @@
 
                             </div>
                         </div>
+                        <br>
 
+                        <h3>{{__('Latest Questions')}}</h3>
+
+                        <div class="account-settings ">
+                            <div class="credential row">
+
+                                @foreach($latestForums as $forum)
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <label><a href="/forum/{{$forum->id}}">{{$forum->title}}</a></label>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
 
                         <br>
                         <h3>{{__('Deactivate Your Account')}}</h3>

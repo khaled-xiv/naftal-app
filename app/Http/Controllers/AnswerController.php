@@ -6,6 +6,7 @@ use App\Answer;
 use App\Forum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use App\Events\SendNotifications;
 use App\Notification;
@@ -64,15 +65,31 @@ class AnswerController extends Controller
         $user->forums()->save($answer);
 		$forum = Forum::findOrFail($request->forum);
 		if($forum->user_id !== $user->id){
-			$notification=Notification::create([
-				'user_id' => $forum->user_id,
-				'sender' => $user->name,
-				'user_photo' => $user->photo,
-				'link' => "forum/".$forum->id,
-				'is_read' => 0,
-				'content' => "You have a new answer to your question \"".$forum->title."\"",
-			]);
-            if(!$user->photo) $notification->user_photo='profile-placeholder.jpg';
+
+		    $notification=null;
+		    if($user->photo){
+                $notification = Notification::create([
+                    'user_id' => $forum->user_id,
+                    'sender_id' => $user->id,
+                    'sender' => $user->name,
+                    'user_photo' => $user->photo,
+                    'link' => "forum/" . $forum->id,
+                    'is_read' => 0,
+                    'content' => "You have a new answer to your question \"" . $forum->title . "\"",
+                ]);
+            }
+
+            if(!$user->photo) {
+                $notification = Notification::create([
+                    'user_id' => $forum->user_id,
+                    'sender_id' => $user->id,
+                    'sender' => $user->name,
+                    'user_photo' => 'profile-placeholder.jpg',
+                    'link' => "forum/" . $forum->id,
+                    'is_read' => 0,
+                    'content' => "You have a new answer to your question \"" . $forum->title . "\"",
+                ]);
+            }
 			event(new SendNotifications($notification));
 		}
         return redirect()->back();
@@ -130,9 +147,9 @@ class AnswerController extends Controller
     {
         //
     }
-	
+
 	public function chooseBestAnswer($id){
-		
+
 		$answer = Answer::findOrFail($id);
 		$forum = $answer->forum;
 		$currentBest = Answer::where([['forum_id', '=', $forum->id], ['best', '=', 1]])->first();
@@ -141,7 +158,7 @@ class AnswerController extends Controller
 		}
 		$answer->update(['best' => '1']);
 		return response()->noContent();
-		
+
 	}
 
     public function upvote($id){

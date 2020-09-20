@@ -17,6 +17,8 @@ class CreateNotificationsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('sender_id');
+            $table->foreign('sender_id')->references('id')->on('users');
             $table->string('link');
             $table->string('user_photo')->nullable();
             $table->string('sender');

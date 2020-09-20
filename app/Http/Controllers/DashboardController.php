@@ -60,7 +60,7 @@ class DashboardController extends Controller
             ->orderBy('count','desc')
             ->get();
         foreach ($results as $result){
-            $des=Component::where('generic_name',$result['comp'])->first();
+            $des=Component::where('generic_name',$result['comp'])->withTrashed()->first();
             $result['comp']=$des['designation'];
         }
         return response()->json($results);
@@ -74,7 +74,7 @@ class DashboardController extends Controller
             ->orderBy('count','desc')
             ->get();
         foreach ($results as $result){
-            $des=Component::where('generic_name',$result['comp'])->first();
+            $des=Component::where('generic_name',$result['comp'])->withTrashed()->first();
             $result['comp']=$des['designation'];
         }
         return response()->json($results);

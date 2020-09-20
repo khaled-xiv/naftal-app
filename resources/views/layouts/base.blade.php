@@ -57,7 +57,7 @@
     var pusher = new Pusher('ca6a1e4c88c7b53d41e7', {
         cluster: 'eu',
         encrypted: true,
-        authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
+        authEndpoint: 'http://naftal.com/broadcasting/auth',
         auth: {
             headers: {
                 'X-CSRF-Token':'{{csrf_token()}}',
@@ -73,6 +73,7 @@
     channel.bind('notify', function(data) {
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var notification=(data.notification);
+        console.log(data.notification);
         var newNotificationHtml = `
           <li class="notification-box bg-gray">
              <div class="row">

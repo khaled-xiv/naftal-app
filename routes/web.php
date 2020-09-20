@@ -166,7 +166,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 //  Dashboard routes
     Route::get(LaravelLocalization::transRoute('routes.dashboard'), 'DashboardController@index');
     Route::get('dashboard/errors', 'DashboardController@getErrors');
-    Route::get('dashboard/maints', 'DashboardController@getmaints');
+    Route::get('dashboard/maints', 'DashboardController@getMaints');
     Route::get('dashboard/failures', 'DashboardController@getFailures');
 
 });
