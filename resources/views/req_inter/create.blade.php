@@ -57,7 +57,7 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('error_code', __('Error code').':',['class'=>'label_padding']) !!}
+                                        {!! Form::label('error_code', __('Type of failure').':',['class'=>'label_padding']) !!}
                                         {!! Form::select('error_code', array('Electrique'=>'Electrique','Mecanique'=>'Mecanique',
                                         'Hydraulique'=>'Hydraulique','Electronique'=>'Electronique','Compression'=>'Compression') , null,
                                         ['class'=>'form-control'])!!}
@@ -74,6 +74,7 @@
                                     <div class="form-group">
                                         {!! Form::label('created_at', __('Date of creation').':',['class'=>'label_padding']) !!}
                                         <input id="created_at" type="datetime-local"
+                                               placeholder="yyyy-mm-dd hh:mm:ss"
                                                class="form-control @error('created_at')  is-invalid @enderror"
                                                name="created_at"
                                                value="{{ old('created_at') }}" required autocomplete="created_at">

@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-md-10 offset-1">
                         <div class="panel panel-default contact-right">
-                            <div class="panel-heading"><b>{{__('Errors history')}}</b></div>
+                            <div class="panel-heading"><b>{{__('Failures history')}}</b></div>
                             <div class="panel-body">
                                 <canvas id="errors" height="350" width="600"></canvas>
                             </div>
@@ -116,7 +116,7 @@
                                 data: {
                                     labels:error_codes,
                                     datasets: [{
-                                        label: "{{__('Total number of errors occured')}}",
+                                        label: "{{__('Total number of failures that occurred')}}",
                                         data: counts,
                                         barThickness: 30,
                                         maxBarThickness: 30,
@@ -129,7 +129,7 @@
                                         xAxes: [{
                                             scaleLabel: {
                                                 display: true,
-                                                labelString: '{{__('Errors')}}'
+                                                labelString: '{{__('Failures')}}'
                                             }
                                         }],
                                         yAxes: [{
@@ -213,7 +213,7 @@
                                 data: {
                                     labels:comps3,
                                     datasets: [{
-                                        label: '{{__('Number of failures')}}',
+                                        label: '{{__('Total number of failures that occurred')}}',
                                         data: counts3,
                                         barThickness: 30,
                                         maxBarThickness: 30,

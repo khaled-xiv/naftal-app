@@ -44,7 +44,7 @@
                                                 <th style="min-width:50px;">{{ucwords(__('Number'))}}</th>
                                                 <th style="min-width:150px;">{{ucwords(__('Equipment'))}}</th>
                                                 <th style="min-width:150px;">{{__('Equipment code')}}</th>
-                                                <th style="min-width:150px;">{{__('Error code')}}</th>
+                                                <th style="min-width:150px;">{{__('Type of failure')}}</th>
                                                 <th style="min-width:150px;">{{__('Degree of urgency')}}</th>
                                                 @if(Auth()->user()->is_district_chief() ||  Auth()->user()->is_admin())
                                                     <th style="min-width:100px;">{{ucwords(__('Center'))}}</th>
