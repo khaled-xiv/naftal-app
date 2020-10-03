@@ -158,7 +158,6 @@ class Req_interController extends Controller
 
     public function store(Request $request)
     {
-
         $this->validator($request->all())->validate();
         Req_inter::create([
             'number' => $request['number'],

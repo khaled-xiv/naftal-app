@@ -107,7 +107,7 @@
                                     <div class="form-group" id="equipment_id_code" style="display: none">
                                         {!! Form::label('equipment_id', __('Select the equipment code').':',['class'=>'label_padding']) !!}
                                         {!! Form::select('equipment_id',[], null,
-                                        ['class'=>'form-control', 'onclick="change_code()"', 'id'=>'equipment_id'])!!}
+                                        ['class'=>'form-control', 'id'=>'equipment_id'])!!}
                                         @error('equipment_id')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

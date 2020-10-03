@@ -18,7 +18,7 @@ class RegisterController extends Controller
     use RegistersUsers;
     public function showRegistrationForm()
     {
-        $centers=Center::all()->pluck('code','id');
+        $centers=Center::all()->pluck('location','id');
         $roles=['1'=>__('admin'),'2'=>__('district chief'),'3'=>__('center chief'),'4'=>__('technician')];
         return view('users.create',compact('roles', 'centers'));
     }

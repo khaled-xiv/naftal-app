@@ -169,7 +169,7 @@
 
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        {!! Form::label('need_district', __('Send to district').':',['class'=>'label_padding']) !!}
+                                        {!! Form::label('need_district', __('Failure not repaired (transfer to the distrcit)').':',['class'=>'label_padding']) !!}
                                         {!! Form::select('need_district', array('1'=>__('Yes'),'0'=>__('No')) , null,
                                         ['class'=>'form-control','required' => 'required'])!!}
                                         @error('need_district')

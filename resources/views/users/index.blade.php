@@ -53,7 +53,7 @@
                                             @if(Auth()->user()->is_center_chief())
                                                 <td>@if ($user->address){{$user->address}} @else &nbsp; @endif</td>
                                             @else
-                                                <td>{{$user->center->code}}</td>
+                                                <td>{{$user->center->location}}</td>
                                             @endif
 
                                             <td> <span class="mode {{($user->is_active==1)?'mode_on':'mode_off'}}">@if($user->is_active==1) Active @else Closed @endif</span> </td>
