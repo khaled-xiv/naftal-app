@@ -85,6 +85,23 @@
                         </div>
                     </div>
                 </div>
+				<div class="row">
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-1">
+                        <div class="panel panel-default contact-right">
+                            <div class="panel-heading"><b>{{__('Predictions history')}}</b></div>
+                            <div class="panel-body">
+                                <ul id="predictions">
+									@foreach($predictions as $prediction)
+									<li class="pred-item"><span class="pred-item1">{{$prediction->equipment}}</span><span class="pred-item1">{{$prediction->created_at}}</span></li>
+									@endforeach
+								</ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <script src="{{asset('js/chart/Chart.min.js')}}"></script>
                 <script>
 
@@ -248,22 +265,28 @@
 					?>
 					function getPredictions(){
 						$("#notif").hide();
+						var phpList = [];
+						var language = "en";
 						msg = "";
 						let error503 = "Couldn't find prediction model";
 						let error400 = "Not enough data to make predictions";
 						let gotEquips = " might have a problem.";
 						@if($lang)
+						language = "fr";
 						error503 = "Il y a pas un modèle de prédiction";
 						error400 = "Pas assez de données pour faire la prédiction";
 						gotEquips = " peuvent avoir un problème";
+						gotEquips2 = " peut avoir un problème";
 						@endif
 						$.ajax({
 							type:'GET',
 							url:'http://127.0.0.1:8000/maintenance/equipments/',
 							success:function(data) {
 								if(data.length !== 0){
-									console.log(data);
-									Object.keys(data.code).forEach(e => msg += data.code[e] + ", ");
+									Object.keys(data.code).forEach(e => {
+										msg += data.code[e] + ", ";
+										phpList.push(data.code[e]);
+									});
 									msg = msg.substr(0, msg.length - 2);
 									msg += gotEquips;
 									$("#notif-content").html(msg);
@@ -274,6 +297,23 @@
 										timeout = setTimeout(function(){
 											$("#notif").remove();
 										}, 10000);
+									});
+									$.ajax({
+										type: 'POST',
+										headers: {
+											'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+										},
+										data: {
+											equipment: phpList,
+											_token : $('meta[name="csrf-token"]').attr('content')
+										},
+										url: '/' + language + '/predictions/store',
+										success: function (data) {
+											for(var i = 0; i < data.length; i++){
+												let date = data[i].created_at;
+											$("#predictions").append("<li class='pred-item'><span class='pred-item1'>" + data[i].equipment + "</span><span class='pred-item1'>" + date.split("T")[0] + " " + date.split("T")[1].split(".")[0] + "</span></li>");
+											}
+										}
 									});
 
 									$("#notif").mouseover( function () {

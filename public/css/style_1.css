@@ -947,6 +947,30 @@ div#frm-container {
 	transition-duration: .5s;
 }
 
+ul#predictions {
+	margin-left: 50px;
+	margin-right: 50px;
+	width: 100%;
+}
+
+li.pred-item {
+	width: calc(100% - 100px);
+	list-style: none;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: .5px #888 solid;
+}
+
+li span.pred-item1:nth-child(1) {
+	width: 30%;
+	display: inline-block;
+}
+
+li span.pred-item1:nth-child(2) {
+	width: 70%;
+	display: inline-block;
+}
+
 /*table*/
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting:before,

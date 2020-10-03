@@ -3,6 +3,8 @@
 use App\Events\SendNotifications;
 use App\Notification;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Pusher\Pusher;
 
@@ -168,6 +170,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('dashboard/errors', 'DashboardController@getErrors');
     Route::get('dashboard/maints', 'DashboardController@getMaints');
     Route::get('dashboard/failures', 'DashboardController@getFailures');
+	
+	Route::post('predictions/store', function(){
+		$values = $_POST['equipment'];
+		$now = Carbon::now();
+		foreach($values as $value){
+			$newValues[] = array("equipment" => $value, "created_at" => $now);
+			DB::table('predictions')->insert(array("equipment" => $value, "created_at" => $now));
+		}
+		return $newValues;
+	});
 
 });
 

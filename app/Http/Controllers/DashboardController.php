@@ -26,7 +26,8 @@ class DashboardController extends Controller
         $count['users']=User::all()->count();
         $count['posts']=Forum::all()->count();
         $count['comments']=Answer::all()->count();
-        return view('dashboard.index',compact('count'));
+		$predictions = DB::select('SELECT equipment, created_at FROM predictions');
+        return view('dashboard.index',compact('count', 'predictions'));
     }
     public function getErrors()
     {
