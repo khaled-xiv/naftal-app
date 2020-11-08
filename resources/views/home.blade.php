@@ -157,7 +157,7 @@
 
             <div id="home-heading">
 
-                <h1 id="home-heading-1">{{ __('digitize') }}</h1><br>
+                <h1 id="home-heading-1">{{ __('Informatisez') }}</h1><br>
                 {{--                <h1 id="home-heading-1">Digital</h1><br>--}}
                 <h1 id="home-heading-2">{{__('your')}} <span>{{__('maintenance')}}</span></h1>
             </div>

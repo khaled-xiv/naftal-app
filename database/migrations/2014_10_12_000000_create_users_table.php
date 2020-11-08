@@ -39,9 +39,9 @@ class CreateUsersTable extends Migration
 
         DB::table('users')->insert([
             ['role_id' => '1', 'is_active' => 1,
-                'name' => 'administrator',
-                'email' => 'a.hachemi@esi-sba.dz',
-                'password' => Hash::make('12345678'),
+                'name' => 'admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('admin'),
                 'email_verified_at' => now()],
         ]);
     }
